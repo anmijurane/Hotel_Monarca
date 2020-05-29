@@ -14,9 +14,9 @@ public class Conection {
     public static final String PASSWORD = "rootroot";*/
     
     
-    public static final String URL_AWS = "jdbc:mysql://hotelmonarca.cutnsruxkj7l.us-east-2.rds.amazonaws.com:3306/hotelmonarca";
-    public static final String USERNAME_AWS = "team_requirement";
-    public static final String PASS_AWS = "team_monarca";
+    public static final String URL = "jdbc:mysql://hotelmonarca.cutnsruxkj7l.us-east-2.rds.amazonaws.com:3306/hotelmonarca";
+    public static final String USERNAME = "team_requirement";
+    public static final String PASSWORD = "team_monarca";
     
     //
     public static final String NAMEBD = "hotelmonarca";
@@ -52,7 +52,7 @@ public class Conection {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection(URL_AWS, USERNAME_AWS, PASS_AWS); 
+            con = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD); 
             System.out.println("Conexión exitosa");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " +e);
