@@ -9,7 +9,10 @@ public class main {
 
     public static void main(String[] args) {
        
-        coneccion();
-
+      //  coneccion();
+        
+        login v1 = new login();
+        v1.setVisible(true);
+        
     }
 }
