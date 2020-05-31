@@ -29,13 +29,13 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jComboBox2" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="cbxArea" min="-2" pref="170" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jBox_Dpto" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="cbxDepto" min="-2" pref="170" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="cbxCargo" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextField10" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="txtTelLocal" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                   </Group>
@@ -44,37 +44,42 @@
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField4" min="-2" pref="280" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                                      <Component id="txtCalle" min="-2" pref="280" max="-2" attributes="0"/>
+                                      <Component id="txtApPat" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jTextField3" min="-2" pref="220" max="-2" attributes="0"/>
+                                      <Component id="txtApMat" min="-2" pref="220" max="-2" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jTextField5" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <Component id="txtNumExt" min="-2" pref="85" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                          <Component id="jTextField6" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <Component id="txtNumInt" min="-2" pref="85" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField7" min="-2" pref="144" max="-2" attributes="0"/>
+                                  <Component id="txtColonia" min="-2" pref="144" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField11" min="-2" pref="144" max="-2" attributes="0"/>
+                                      <Component id="txtTelMovil" min="-2" pref="144" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jTextField8" min="-2" pref="144" max="-2" attributes="0"/>
+                                          <Component id="txtDelg" min="-2" pref="144" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jTextField9" min="-2" pref="144" max="-2" attributes="0"/>
+                                          <Component id="txtCP" min="-2" pref="144" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="jTextField1" min="-2" pref="302" max="-2" attributes="0"/>
+                          <Component id="txtName" min="-2" pref="302" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btn_insert" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,97 +87,99 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+              <Component id="txtName" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtApPat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtApMat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNumInt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNumExt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtColonia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDelg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTelLocal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTelMovil" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBox_Dpto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxDepto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxArea" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Component id="btn_insert" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txtName">
       <Properties>
         <Property name="text" type="java.lang.String" value="NOMBRE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="txtApPat">
       <Properties>
         <Property name="text" type="java.lang.String" value="AP. PATERNO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="txtApMat">
       <Properties>
         <Property name="text" type="java.lang.String" value="AP. MATERNO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="txtCalle">
       <Properties>
         <Property name="text" type="java.lang.String" value="CALLE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="txtNumExt">
       <Properties>
         <Property name="text" type="java.lang.String" value="NUM. EXT"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class="javax.swing.JTextField" name="txtNumInt">
       <Properties>
         <Property name="text" type="java.lang.String" value="NUM. INT"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField7">
+    <Component class="javax.swing.JTextField" name="txtColonia">
       <Properties>
         <Property name="text" type="java.lang.String" value="COLONIA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField8">
+    <Component class="javax.swing.JTextField" name="txtDelg">
       <Properties>
         <Property name="text" type="java.lang.String" value="DELEGACI&#xd3;N O MUNC"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField9">
+    <Component class="javax.swing.JTextField" name="txtCP">
       <Properties>
         <Property name="text" type="java.lang.String" value="C.P."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField10">
+    <Component class="javax.swing.JTextField" name="txtTelLocal">
       <Properties>
         <Property name="text" type="java.lang.String" value="TEL. LOCAL"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField11">
+    <Component class="javax.swing.JTextField" name="txtTelMovil">
       <Properties>
         <Property name="text" type="java.lang.String" value="TEL. MOVIL"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jBox_Dpto">
+    <Component class="javax.swing.JComboBox" name="cbxDepto">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="14">
@@ -197,7 +204,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cbxArea">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
@@ -214,7 +221,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
+    <Component class="javax.swing.JComboBox" name="cbxCargo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="16">
@@ -240,6 +247,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_insert">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_insertActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
