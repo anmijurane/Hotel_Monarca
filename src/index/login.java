@@ -1,6 +1,9 @@
 package index;
 
-import static SQLConex.Conection.coneccion;
+import static SQLConex.Conection.getConeccion;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import sun.security.util.Password;
 
 /**  * * @author LIA */
 public class login extends javax.swing.JFrame {
@@ -10,9 +13,7 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("INICIO DE SESION");
-       // coneccion();
-        
-        
+       // coneccion();                
     }
 
     @SuppressWarnings("unchecked")
@@ -21,9 +22,9 @@ public class login extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        jUser = new javax.swing.JTextField();
+        jPassword = new javax.swing.JPasswordField();
+        btnSignIn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -32,7 +33,12 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("CONTRASEÑA");
 
-        jButton1.setText("INGRESAR");
+        btnSignIn.setText("INGRESAR");
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignInActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("INICIO DE SESION");
 
@@ -53,11 +59,11 @@ public class login extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(156, 156, 156)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(1, 1, 1)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -72,26 +78,53 @@ public class login extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(btnSignIn)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+        try {
+            Connection con = null;
+            con = getConeccion();
+             
+            PreparedStatement ps;
+            ResultSet res;
+            
+            ps = con.prepareStatement("SELECT nombre, id_cargo FROM credencial WHERE id_personal= ? and password = ?");            
+            ps.setInt(1, new Integer(jUser.getText()));
+            ps.setString(2, new String(jPassword.getPassword()));
+            
+            res = ps.executeQuery();
+            
+            if (res.next()) {
+                JOptionPane.showMessageDialog(this, "BIENVENIDO: " +res.getString("nombre"));
+                System.out.println("IDENTIFICADOR: " +res.getString("id_cargo"));
+            }else{
+                JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
+            }
+            
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnSignInActionPerformed
+    
+    
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSignIn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
