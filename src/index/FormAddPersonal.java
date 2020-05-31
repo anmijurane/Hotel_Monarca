@@ -45,8 +45,6 @@ public class FormAddPersonal extends javax.swing.JFrame {
                 cbxDepto.addItem(rs.getString("nombre"));
             }
             
-            
-            ////////////////
             ps = Con.prepareStatement("SELECT nombre FROM cargo");
             rs = ps.executeQuery();
             
@@ -202,14 +200,18 @@ public class FormAddPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-        /*
-                
-        Personal P = new Personal(txtName.getText(), txtApPat.getText(),
-               txtApMat.getText(), cbxArea.getItemCount(), cbxDepto.getI );
+         
+        Personal person = new Personal(
+                txtName.getText(), txtApPat.getText(),
+                txtApMat.getText(), txtCalle.getText(),
+                txtNumExt.getText(), txtNumInt.getText(),
+                txtColonia.getText(),  txtDelg.getText(),
+                txtCP.getText(), txtTelLocal.getText(),
+                txtTelMovil.getText(), cbxArea.getSelectedIndex(),
+                cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());
         
-        Personal.Direccion Dir = new Personal.Direccion(txtCalle.getText(),
-                numExt, numInt, colonia, delegacion, cp, telLocal, telMovil)
-        */
+        System.out.println(person.toString());
+        
     }//GEN-LAST:event_btn_insertActionPerformed
 
     /**
