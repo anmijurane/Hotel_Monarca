@@ -3,7 +3,6 @@ package index;
 import static SQLConex.Conection.getConeccion;
 import java.sql.*;
 import javax.swing.JOptionPane;
-import sun.security.util.Password;
 
 /**  * * @author LIA */
 public class login extends javax.swing.JFrame {
@@ -95,7 +94,7 @@ public class login extends javax.swing.JFrame {
         try {
             Connection con = null;
             con = getConeccion();
-             
+            
             PreparedStatement ps;
             ResultSet res;
             
