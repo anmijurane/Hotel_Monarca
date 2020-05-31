@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  */
 public class FormAddPersonal extends javax.swing.JFrame {
         
+
     /**
      * Creates new form FormAddPersonal
      */
