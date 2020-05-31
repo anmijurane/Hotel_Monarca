@@ -110,6 +110,8 @@ public class login extends javax.swing.JFrame {
                 System.out.println("IDENTIFICADOR: " +res.getString("id_cargo"));
             }else{
                 JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
+                jUser.setText("");
+                jPassword.setText("");
             }
             
             

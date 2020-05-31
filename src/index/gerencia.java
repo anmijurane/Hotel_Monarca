@@ -1,5 +1,7 @@
 package index;
-/** * * @author LIA */
+/** 
+ * 
+ * @author LIA */
 public class gerencia extends javax.swing.JFrame {
 
     public gerencia() {
