@@ -32,8 +32,6 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("CONTRASEÑA");
 
-        jPasswordField1.setText("jPasswordField1");
-
         jButton1.setText("INGRESAR");
 
         jLabel3.setText("INICIO DE SESION");
