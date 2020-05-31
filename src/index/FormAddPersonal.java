@@ -1,6 +1,10 @@
 package index;
 
 import Entidades.Personal;
+import static SQLConex.Conection.getConeccion;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,12 +17,49 @@ public class FormAddPersonal extends javax.swing.JFrame {
      */
     public FormAddPersonal() {
         initComponents();
+        AddCbx();
     }
     
-    public static void getData(){
+    public static void AddCbx(){
         
+        try {            
+            
+            cbxArea.addItem("AREA");
+            cbxDepto.addItem("DEPARTAMENTO");
+            cbxCargo.addItem("CARGO");
+            
+            Connection Con = getConeccion();
+            PreparedStatement ps = Con.prepareStatement("SELECT nombre FROM area");
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                cbxArea.addItem(rs.getString("nombre"));
+            }
+            
+            /////////////////
+            
+            ps = Con.prepareStatement("SELECT nombre FROM departamento");        
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                cbxDepto.addItem(rs.getString("nombre"));
+            }
+            
+            
+            ////////////////
+            ps = Con.prepareStatement("SELECT nombre FROM cargo");
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                cbxCargo.addItem(rs.getString("nombre"));
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FormAddPersonal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        
+                        
     }
     
     /**
@@ -69,12 +110,6 @@ public class FormAddPersonal extends javax.swing.JFrame {
         txtTelLocal.setText("TEL. LOCAL");
 
         txtTelMovil.setText("TEL. MOVIL");
-
-        cbxDepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEPARTAMENTO:", "DIRECCIÓN", "VENTAS", "CALL CENTER", "ATC. TEL", "RECEPCIÓN", "LIMPIEZA", "CONSERJERIA", "HOSPITALARIO", "RESERVACIONES", "CONTABILIDAD", "COSTOS     ", "AUDITORIA    ", "DES HUMANO" }));
-
-        cbxArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ÁREA:", "DIR. GENERAL", "ÁREA COMERCIAL", "ÁREA OPERATIVA", "ÁREA FINANCIERA", "GESTION HUMANA" }));
-
-        cbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGO:", "DIRECTOR", "GERENTE", "GERENTE VENTAS", "VENTAS", "ATC", "RECEPCIONISTA", "MUCAMA ", "CONSERJE", "DOCTOR", "ENFERMERA", "RESERVACION", "CONTADOR", "ADMINISTRADOR", "AUDITOR", "RECLUTADOR" }));
 
         btn_insert.setText("jButton1");
         btn_insert.addActionListener(new java.awt.event.ActionListener() {
@@ -167,10 +202,14 @@ public class FormAddPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
+        /*
+                
+        Personal P = new Personal(txtName.getText(), txtApPat.getText(),
+               txtApMat.getText(), cbxArea.getItemCount(), cbxDepto.getI );
         
-        Personal P = new Personal(txtName.getText(), txtApPat.getText(), txtApMat.getText());
-        Personal.Direccion Dir = new Personal.Direccion(txtCalle.getText(), numExt, numInt, colonia, delegacion, cp, telLocal, telMovil)
-        
+        Personal.Direccion Dir = new Personal.Direccion(txtCalle.getText(),
+                numExt, numInt, colonia, delegacion, cp, telLocal, telMovil)
+        */
     }//GEN-LAST:event_btn_insertActionPerformed
 
     /**
@@ -210,9 +249,9 @@ public class FormAddPersonal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_insert;
-    private javax.swing.JComboBox<String> cbxArea;
-    private javax.swing.JComboBox<String> cbxCargo;
-    private javax.swing.JComboBox<String> cbxDepto;
+    private static javax.swing.JComboBox<String> cbxArea;
+    private static javax.swing.JComboBox<String> cbxCargo;
+    private static javax.swing.JComboBox<String> cbxDepto;
     private javax.swing.JTextField txtApMat;
     private javax.swing.JTextField txtApPat;
     private javax.swing.JTextField txtCP;
