@@ -2,9 +2,13 @@ package index;
 
 import static SQLConex.Conection.getConeccion;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**  * * @author LIA */
+/**
+ * * * @author LIA
+ */
 public class login extends javax.swing.JFrame {
 
     public login() {
@@ -12,7 +16,7 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("INICIO DE SESION");
-       // coneccion();                
+        // coneccion();                
     }
 
     @SuppressWarnings("unchecked")
@@ -91,35 +95,64 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        try {
+        
+        iniciosesion();
+        
+        /*try {
+
             Connection con = null;
             con = getConeccion();
-            
+
             PreparedStatement ps;
             ResultSet res;
-            
-            ps = con.prepareStatement("SELECT nombre, id_cargo FROM credencial WHERE id_personal= ? and password = ?");            
+
+            ps = con.prepareStatement("SELECT nombre, id_cargo FROM credencial WHERE id_personal= ? and password = ?");
             ps.setInt(1, new Integer(jUser.getText()));
             ps.setString(2, new String(jPassword.getPassword()));
-            
+
             res = ps.executeQuery();
-            
+
             if (res.next()) {
-                JOptionPane.showMessageDialog(this, "BIENVENIDO: " +res.getString("nombre"));
-                System.out.println("IDENTIFICADOR: " +res.getString("id_cargo"));
-            }else{
+                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + res.getString("nombre"));
+                System.out.println("IDENTIFICADOR: " + res.getString("id_cargo"));
+            } else {
                 JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
                 jUser.setText("");
                 jPassword.setText("");
             }
-            
-            
+
         } catch (Exception e) {
-        }
+        }*/
     }//GEN-LAST:event_btnSignInActionPerformed
-    
-    
-   
+
+    public void iniciosesion() {
+
+        Connection con = null;
+        con = getConeccion();
+
+        String usu = jUser.getText();
+        String pass = String.valueOf(jPassword.getPassword());
+
+        PreparedStatement ps;
+        ResultSet res;
+
+        try {
+            ps = con.prepareStatement("SELECT * FROM credencial WHERE nombre='" + usu + "' and password=md5('" + pass + "')");
+            res = ps.executeQuery();
+
+            if (res.next()) {
+                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + res.getString("nombre"));
+            } else {
+                JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
+                jUser.setText("");
+                jPassword.setText("");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignIn;
     private javax.swing.JLabel jLabel1;

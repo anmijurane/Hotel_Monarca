@@ -2,6 +2,7 @@ package index;
 
 import Entidades.Personal;
 import static SQLConex.Conection.getConeccion;
+import com.placeholder.PlaceHolder;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,12 +13,32 @@ import java.util.logging.Logger;
  */
 public class FormAddPersonal extends javax.swing.JFrame {
         
+    PlaceHolder ph;
     /**
      * Creates new form FormAddPersonal
      */
     public FormAddPersonal() {
         initComponents();
+        setLocationRelativeTo(null);
         AddCbx();
+        Holder();
+    }
+    
+    public void Holder(){
+        
+        btn_insert.requestFocus();
+        ph = new PlaceHolder(txtName, "NOMBRE");
+        ph = new PlaceHolder(txtApPat, "AP. PATERNO");
+        ph = new PlaceHolder(txtApMat, "AP. MATERNO");
+        ph = new PlaceHolder(txtCalle, "CALLE");
+        ph = new PlaceHolder(txtNumExt, "NUM. EXT");
+        ph = new PlaceHolder(txtNumInt, "NUM. INT");
+        ph = new PlaceHolder(txtColonia, "COLONIA");
+        ph = new PlaceHolder(txtDelg, "DELEGACIÓN O MUNICIPIO");
+        ph = new PlaceHolder(txtCP, "CP");
+        ph = new PlaceHolder(txtTelLocal ,"TEL. LOCAL");
+        ph = new PlaceHolder(txtTelMovil, "TEL. MÓVIL");
+        
     }
     
     public static void AddCbx(){
@@ -86,28 +107,6 @@ public class FormAddPersonal extends javax.swing.JFrame {
         btn_insert = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtName.setText("NOMBRE");
-
-        txtApPat.setText("AP. PATERNO");
-
-        txtApMat.setText("AP. MATERNO");
-
-        txtCalle.setText("CALLE");
-
-        txtNumExt.setText("NUM. EXT");
-
-        txtNumInt.setText("NUM. INT");
-
-        txtColonia.setText("COLONIA");
-
-        txtDelg.setText("DELEGACIÓN O MUNC");
-
-        txtCP.setText("C.P.");
-
-        txtTelLocal.setText("TEL. LOCAL");
-
-        txtTelMovil.setText("TEL. MOVIL");
 
         btn_insert.setText("jButton1");
         btn_insert.addActionListener(new java.awt.event.ActionListener() {
