@@ -219,7 +219,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
         System.out.println(prsn.toString());
         System.out.println(prsn.getCredencial());
         
-        /*
+        
         Con = getConeccion();
         PreparedStatement psmtpersonal = null;
         PreparedStatement psmtcredencial = null;        
@@ -252,7 +252,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
                 }                                
             }
         }
-        */
+        
     }            
     
     /**
