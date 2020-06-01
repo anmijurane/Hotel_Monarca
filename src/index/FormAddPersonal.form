@@ -125,59 +125,26 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NOMBRE"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApPat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="AP. PATERNO"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApMat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="AP. MATERNO"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCalle">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CALLE"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNumExt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NUM. EXT"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNumInt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NUM. INT"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtColonia">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="COLONIA"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDelg">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="DELEGACI&#xd3;N O MUNC"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCP">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="C.P."/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelLocal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="TEL. LOCAL"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelMovil">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="TEL. MOVIL"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbxDepto">
       <Properties>
