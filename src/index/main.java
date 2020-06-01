@@ -1,7 +1,6 @@
 package index;
 
 import Entidades.Personal;
-import static SQLConex.Conection.coneccion;
 
 /**
  *
@@ -31,10 +30,6 @@ public class main {
                 101,
                 1011);
         
-        
-        System.out.println(acc.toString());
-    
-    
     ////Horario SET time_zone = 'America/Mexico_city';
     
     }

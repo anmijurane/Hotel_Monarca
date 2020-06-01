@@ -89,8 +89,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jUser">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPassword">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSignIn">
       <Properties>
