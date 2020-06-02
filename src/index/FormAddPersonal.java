@@ -6,6 +6,7 @@ import com.placeholder.PlaceHolder;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,20 +18,21 @@ public class FormAddPersonal extends javax.swing.JFrame {
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
-    
+
     PlaceHolder ph;
+
     /**
      * Creates new form FormAddPersonal
      */
-    public FormAddPersonal() {        
+    public FormAddPersonal() {
         initComponents();
         setLocationRelativeTo(null);
         AddCbx();
         Holder();
     }
-    
-    public void Holder(){
-        
+
+    public void Holder() {
+
         btn_insert.requestFocus();
         ph = new PlaceHolder(txtName, "NOMBRE");
         ph = new PlaceHolder(txtApPat, "AP. PATERNO");
@@ -41,49 +43,47 @@ public class FormAddPersonal extends javax.swing.JFrame {
         ph = new PlaceHolder(txtColonia, "COLONIA");
         ph = new PlaceHolder(txtDelg, "DELEGACIÓN O MUNICIPIO");
         ph = new PlaceHolder(txtCP, "CP");
-        ph = new PlaceHolder(txtTelLocal ,"TEL. LOCAL");
+        ph = new PlaceHolder(txtTelLocal, "TEL. LOCAL");
         ph = new PlaceHolder(txtTelMovil, "TEL. MÓVIL");
-        
+
     }
-    
-    public static void AddCbx(){
-        
-        try {            
-            
+
+    public static void AddCbx() {
+
+        try {
+
             cbxArea.addItem(":-AREA-:");
             cbxDepto.addItem(":-DEPARTAMENTO-:");
             cbxCargo.addItem(":-CARGO-:");
-            
+
             Con = getConeccion();
             ps = Con.prepareStatement("SELECT nombre FROM area");
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 cbxArea.addItem(rs.getString("nombre"));
-            }                        
-            
-            ps = Con.prepareStatement("SELECT nombre FROM departamento");        
+            }
+
+            ps = Con.prepareStatement("SELECT nombre FROM departamento");
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 cbxDepto.addItem(rs.getString("nombre"));
             }
-            
+
             ps = Con.prepareStatement("SELECT nombre FROM cargo");
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 cbxCargo.addItem(rs.getString("nombre"));
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(FormAddPersonal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-                        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -202,59 +202,72 @@ public class FormAddPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-                       
+
         this.person = new Personal(
-            txtName.getText().toUpperCase(), txtApPat.getText().toUpperCase(),
-            txtApMat.getText().toUpperCase(), txtCalle.getText().toUpperCase(),
-            txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
-            txtColonia.getText().toUpperCase(),  txtDelg.getText().toUpperCase(),
-            txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-            txtTelMovil.getText(), cbxArea.getSelectedIndex(),
-            cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());            
+                txtName.getText().toUpperCase(), txtApPat.getText().toUpperCase(),
+                txtApMat.getText().toUpperCase(), txtCalle.getText().toUpperCase(),
+                txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
+                txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
+                txtCP.getText().toUpperCase(), txtTelLocal.getText(),
+                txtTelMovil.getText(), cbxArea.getSelectedIndex(),
+                cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());
         execurequery(person);
-        
+
     }//GEN-LAST:event_btn_insertActionPerformed
 
-    public void execurequery(Personal prsn){        
+    public void execurequery(Personal prsn) {
         System.out.println(prsn.toString());
         System.out.println(prsn.getCredencial());
-        
-        
+
         Con = getConeccion();
         PreparedStatement psmtpersonal = null;
-        PreparedStatement psmtcredencial = null;        
-        
+        PreparedStatement psmtcredencial = null;
+
         try {
             Con.setAutoCommit(false);
             psmtpersonal = Con.prepareStatement("INSERT INTO personal("
-                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,"
-                + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn +")");                                              
+                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,"
+                    + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")");
             psmtpersonal.executeUpdate();
-            
+
             psmtcredencial = Con.prepareStatement("INSERT INTO credencial("
-                + "id_personal,nombre,id_area,id_dpto,id_cargo,password) VALUES ("
-                + prsn.getCredencial()+")");
+                    + "id_personal,nombre,id_area,id_dpto,id_cargo,password) VALUES ("
+                    + prsn.getCredencial() + ")");
             psmtcredencial.executeUpdate();
-            
+
             //commit mysql
-            Con.commit();
-            
-        } catch (SQLException ex) {            
-            System.err.print("ERROR: " +ex.getMessage());
-            if (Con!=null) {
+            int value = JOptionPane.showConfirmDialog(null, "¿CONFIRMAS LOS DATOS?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            System.out.println(value);
+            //SI 0; NO 1; CANCEL 2
+            switch (value) {
+                case 0:
+                    Con.commit();
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getid_Personal());
+                    break;
+                case 1:
+                    Con.rollback();
+                    JOptionPane.showMessageDialog(this, "Se aborto la operación");
+                    break;                            
+                default:
+                    break;
+            }
+
+        } catch (SQLException ex) {
+            System.err.print("ERROR: " + ex.getMessage());
+            if (Con != null) {
                 System.out.println("implement Rollback");
                 try {
-                    Con.rollback();                    
+                    Con.rollback();
                 } catch (SQLException e) {
                     System.out.println("No se pudo deshacer la acción: "
-                    + e);
-                }                                
+                            + e);
+                }
             }
         }
-        
-    }            
-    
+
+    }
+
     /**
      * @param args the command line arguments
      */
