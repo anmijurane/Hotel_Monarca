@@ -1,6 +1,7 @@
 package index;
 
 import Entidades.Personal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,8 +12,8 @@ public class main {
     public static void main(String[] args) {
 
         //  coneccion();
-        login v1 = new login();
-        v1.setVisible(true);
+//        login v1 = new login();
+//        v1.setVisible(true);
 
         Personal acc = new Personal(                
                 "MONTZERRAT",
@@ -28,7 +29,7 @@ public class main {
                 "445-685-1328",
                 100,
                 101,
-                1011);
+                1011);       
         
     ////Horario SET time_zone = 'America/Mexico_city';
     

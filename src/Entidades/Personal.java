@@ -71,7 +71,7 @@ public class Personal extends Persona {
             System.out.println("Error: " + e);
         }
 
-        return id + 1;
+        return id;
     }
     int idPersonal = getid_Personal();
 
@@ -79,15 +79,16 @@ public class Personal extends Persona {
     public String toString() {
 
         return super.toString() + ", " + idArea + " , " + idDpto
-                + ", " + idCargo + ", " + idPersonal;
+                + ", " + idCargo + ", " + idPersonal+1;
     }
 
-    public String getCredencial() {
-
-        String password = idPersonal + "_" + super.getName() + idCargo;
-
-        return idPersonal + ", \"" + super.getName() + "\", " + idArea + ", " + idDpto
-                + ", " + idCargo + ", \"" + password + "\"";
-    }    
+    public String getCredencial(){
+        
+        String password = idPersonal+"_"+super.getName()+idCargo;
+        
+        return idPersonal + ", \""+super.getName()+"\", " + idArea +", " + idDpto 
+                + ", " +idCargo + ", md5(\""+password+"\")";
+    }
+    
 
 }
