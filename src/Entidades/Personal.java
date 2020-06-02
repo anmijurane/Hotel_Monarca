@@ -53,10 +53,7 @@ public class Personal extends Persona{
     public String toString() {
         
         return super.toString() + ", " + idArea + ", " + idDpto + ", " + idCargo;
-    }
-
-   
-    
+    }   
    
     
 }

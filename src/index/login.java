@@ -106,7 +106,8 @@ public class login extends javax.swing.JFrame {
             PreparedStatement ps;
             ResultSet res;
 
-            ps = con.prepareStatement("SELECT nombre, id_cargo FROM credencial WHERE id_personal= ? and password = ?");
+            ps = con.prepareStatement("SELECT  FROM credencial WHERE id_personal= ? and password = ?");
+            String nombre = ps.getString("nombre")
             ps.setInt(1, new Integer(jUser.getText()));
             ps.setString(2, new String(jPassword.getPassword()));
 
