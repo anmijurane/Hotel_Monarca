@@ -118,15 +118,16 @@ public class Persona {
     }
 
     public void setTelMovil(String telMovil) {
+        
         this.telMovil = telMovil;
     }
-
+    
     @Override
     public String toString() {
-        return ", " +name + "," + apellidoPat + 
-               ", " + apellidoMat + ", " + calle + ", " + numExt + 
-               ", " + numInt + ", " + colonia + ", " + delegacion +
-               ", " + cp + ", " + telLocal + ", " + telMovil;
+        return "\"" +name + "\" , \"" + apellidoPat + 
+               "\" , \"" + apellidoMat + "\" , \"" + calle + "\" , \"" + numExt + 
+               "\" , \"" + numInt + "\" , \"" + colonia + "\" , \"" + delegacion +
+               "\" , \"" + cp + "\" , \"" + telLocal + "\" , \"" + telMovil+"\"";
     }
         
 }

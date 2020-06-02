@@ -36,6 +36,10 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("CONTRASEÑA");
 
+        jUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         btnSignIn.setText("INGRESAR");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,17 +132,15 @@ public class login extends javax.swing.JFrame {
 
     public void iniciosesion() {
 
-        Connection con = null;
-        con = getConeccion();
-
-        String usu = jUser.getText();
-        String pass = String.valueOf(jPassword.getPassword());
+        Connection con = getConeccion();
 
         PreparedStatement ps;
         ResultSet res;
 
         try {
-            ps = con.prepareStatement("SELECT * FROM credencial WHERE nombre='" + usu + "' and password=md5('" + pass + "')");
+            ps = con.prepareStatement("SELECT * FROM credencial WHERE id_personal='" + 
+                    jUser.getText() + "' and password=md5('" +
+                    String.valueOf(jPassword.getPassword()) + "')");
             res = ps.executeQuery();
 
             if (res.next()) {
