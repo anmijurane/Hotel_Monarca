@@ -12,12 +12,17 @@ import java.util.logging.Logger;
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
  */
 public class FormAddPersonal extends javax.swing.JFrame {
-        
+
+    Personal person;
+    static Connection Con;
+    static PreparedStatement ps;
+    static ResultSet rs;
+    
     PlaceHolder ph;
     /**
      * Creates new form FormAddPersonal
      */
-    public FormAddPersonal() {
+    public FormAddPersonal() {        
         initComponents();
         setLocationRelativeTo(null);
         AddCbx();
@@ -45,19 +50,17 @@ public class FormAddPersonal extends javax.swing.JFrame {
         
         try {            
             
-            cbxArea.addItem("AREA");
-            cbxDepto.addItem("DEPARTAMENTO");
-            cbxCargo.addItem("CARGO");
+            cbxArea.addItem(":-AREA-:");
+            cbxDepto.addItem(":-DEPARTAMENTO-:");
+            cbxCargo.addItem(":-CARGO-:");
             
-            Connection Con = getConeccion();
-            PreparedStatement ps = Con.prepareStatement("SELECT nombre FROM area");
-            ResultSet rs = ps.executeQuery();
+            Con = getConeccion();
+            ps = Con.prepareStatement("SELECT nombre FROM area");
+            rs = ps.executeQuery();
             
             while (rs.next()) {
                 cbxArea.addItem(rs.getString("nombre"));
-            }
-            
-            /////////////////
+            }                        
             
             ps = Con.prepareStatement("SELECT nombre FROM departamento");        
             rs = ps.executeQuery();
@@ -199,20 +202,59 @@ public class FormAddPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-         
-        Personal person = new Personal(
-                txtName.getText(), txtApPat.getText(),
-                txtApMat.getText(), txtCalle.getText(),
-                txtNumExt.getText(), txtNumInt.getText(),
-                txtColonia.getText(),  txtDelg.getText(),
-                txtCP.getText(), txtTelLocal.getText(),
-                txtTelMovil.getText(), cbxArea.getSelectedIndex(),
-                cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());
-        
-        System.out.println(person.toString());
+                       
+        this.person = new Personal(
+            txtName.getText().toUpperCase(), txtApPat.getText().toUpperCase(),
+            txtApMat.getText().toUpperCase(), txtCalle.getText().toUpperCase(),
+            txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
+            txtColonia.getText().toUpperCase(),  txtDelg.getText().toUpperCase(),
+            txtCP.getText().toUpperCase(), txtTelLocal.getText(),
+            txtTelMovil.getText(), cbxArea.getSelectedIndex(),
+            cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());            
+        execurequery(person);
         
     }//GEN-LAST:event_btn_insertActionPerformed
 
+    public void execurequery(Personal prsn){        
+        System.out.println(prsn.toString());
+        System.out.println(prsn.getCredencial());
+        
+        
+        Con = getConeccion();
+        PreparedStatement psmtpersonal = null;
+        PreparedStatement psmtcredencial = null;        
+        
+        try {
+            Con.setAutoCommit(false);
+            psmtpersonal = Con.prepareStatement("INSERT INTO personal("
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,"
+                + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn +")");                                              
+            psmtpersonal.executeUpdate();
+            
+            psmtcredencial = Con.prepareStatement("INSERT INTO credencial("
+                + "id_personal,nombre,id_area,id_dpto,id_cargo,password) VALUES ("
+                + prsn.getCredencial()+")");
+            psmtcredencial.executeUpdate();
+            
+            //commit mysql
+            Con.commit();
+            
+        } catch (SQLException ex) {            
+            System.err.print("ERROR: " +ex.getMessage());
+            if (Con!=null) {
+                System.out.println("implement Rollback");
+                try {
+                    Con.rollback();                    
+                } catch (SQLException e) {
+                    System.out.println("No se pudo deshacer la acción: "
+                    + e);
+                }                                
+            }
+        }
+        
+    }            
+    
     /**
      * @param args the command line arguments
      */
