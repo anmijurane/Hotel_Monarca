@@ -1,4 +1,4 @@
-package index;
+package HotelService;
 
 import static SQLConex.Conection.getConeccion;
 import java.sql.*;

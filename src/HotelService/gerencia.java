@@ -1,8 +1,10 @@
-package index;
-/** * * @author LIA */
-public class area_finan extends javax.swing.JFrame {
+package HotelService;
+/** 
+ * 
+ * @author LIA */
+public class gerencia extends javax.swing.JFrame {
 
-    public area_finan() {
+    public gerencia() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -17,7 +19,7 @@ public class area_finan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("AREA FINANCIERA");
+        jLabel1.setText("GERENCIA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -26,7 +28,7 @@ public class area_finan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,4 +1,4 @@
-package index;
+package HotelService;
 
 import Entidades.Personal;
 import static SQLConex.Conection.getConeccion;
