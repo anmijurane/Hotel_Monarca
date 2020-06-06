@@ -1,16 +1,14 @@
-package index;
+package HotelService;
 /** * * @author LIA */
-public class area_comer extends javax.swing.JFrame {
+public class area_rh extends javax.swing.JFrame {
 
-  
-    public area_comer() {
+    public area_rh() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-       
+        
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -19,7 +17,7 @@ public class area_comer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("AREA COMERCIAL");
+        jLabel1.setText("RECURSOS HUMANOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -28,7 +26,7 @@ public class area_comer extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -41,8 +39,7 @@ public class area_comer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

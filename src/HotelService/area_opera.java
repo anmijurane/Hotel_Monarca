@@ -1,4 +1,4 @@
-package index;
+package HotelService;
 /** * * @author LIA */
 public class area_opera extends javax.swing.JFrame {
 
