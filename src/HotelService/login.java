@@ -99,34 +99,7 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        
         iniciosesion();
-        
-        /*try {
-
-            Connection con = null;
-            con = getConeccion();
-
-            PreparedStatement ps;
-            ResultSet res;
-
-            ps = con.prepareStatement("SELECT nombre, id_cargo FROM credencial WHERE id_personal= ? and password = ?");
-            ps.setInt(1, new Integer(jUser.getText()));
-            ps.setString(2, new String(jPassword.getPassword()));
-
-            res = ps.executeQuery();
-
-            if (res.next()) {
-                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + res.getString("nombre"));
-                System.out.println("IDENTIFICADOR: " + res.getString("id_cargo"));
-            } else {
-                JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
-                jUser.setText("");
-                jPassword.setText("");
-            }
-
-        } catch (Exception e) {
-        }*/
     }//GEN-LAST:event_btnSignInActionPerformed
 
     public void iniciosesion() {
@@ -152,7 +125,6 @@ public class login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
