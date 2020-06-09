@@ -49,9 +49,6 @@ public class FormAddClient extends javax.swing.JFrame {
         txtCP = new javax.swing.JTextField();
         txtTelLocal = new javax.swing.JTextField();
         txtTelMovil = new javax.swing.JTextField();
-        cbxDepto = new javax.swing.JComboBox<>();
-        cbxArea = new javax.swing.JComboBox<>();
-        cbxCargo = new javax.swing.JComboBox<>();
         btn_insert = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -68,41 +65,35 @@ public class FormAddClient extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 302, -1));
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 340, -1));
 
         txtApPat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApPatActionPerformed(evt);
             }
         });
-        getContentPane().add(txtApPat, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 220, 20));
-        getContentPane().add(txtApMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 220, -1));
-        getContentPane().add(txtCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 280, -1));
-        getContentPane().add(txtNumExt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 85, -1));
-        getContentPane().add(txtNumInt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 85, -1));
+        getContentPane().add(txtApPat, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 250, 20));
+        getContentPane().add(txtApMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 270, -1));
+        getContentPane().add(txtCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 280, -1));
+        getContentPane().add(txtNumExt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 85, -1));
+        getContentPane().add(txtNumInt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 85, -1));
 
         txtColonia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtColoniaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtColonia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 220, -1));
+        getContentPane().add(txtColonia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 220, -1));
 
         txtDelg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDelgActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDelg, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 280, -1));
-        getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 80, -1));
-        getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 180, -1));
-        getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 390, 180, -1));
-
-        getContentPane().add(cbxDepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 170, -1));
-
-        getContentPane().add(cbxArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 170, -1));
-
-        getContentPane().add(cbxCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 170, -1));
+        getContentPane().add(txtDelg, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 280, -1));
+        getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 350, 80, -1));
+        getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 180, -1));
+        getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 180, -1));
 
         btn_insert.setBackground(new java.awt.Color(222, 74, 16));
         btn_insert.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
@@ -115,39 +106,39 @@ public class FormAddClient extends javax.swing.JFrame {
         getContentPane().add(btn_insert, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 160, 40));
 
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         jLabel2.setText("APELLIDO PATERNO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         jLabel3.setText("APELLIDO MATERNO");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
 
         jLabel4.setText("CALLE");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
         jLabel5.setText("NUM EXT");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, -1, -1));
 
         jLabel6.setText("NUM INT");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, -1));
 
         jLabel7.setText("COLONIA");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 60, 20));
 
         jLabel8.setText("DELEGACION / MUNICIPIO");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 160, 20));
 
         jLabel9.setText("C.P.");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, -1, 20));
 
         jLabel10.setText("TEL LOCAL");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
         jLabel11.setText("TEL MOVIL");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
 
-        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
+        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ClienteOK.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, 980, 590));
 
         pack();
@@ -155,16 +146,16 @@ public class FormAddClient extends javax.swing.JFrame {
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
 
-        this.person = new Personal(
+    /*    this.person = new Personal(
                 txtName.getText().toUpperCase(), txtApPat.getText().toUpperCase(),
                 txtApMat.getText().toUpperCase(), txtCalle.getText().toUpperCase(),
                 txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-                txtTelMovil.getText(), cbxArea.getSelectedIndex(),
+               txtTelMovil.getText(), cbxArea.getSelectedIndex(),
                 cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());
-        execurequery(person);
-
+        execurequery(person);*/
+                
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
@@ -273,9 +264,6 @@ public class FormAddClient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JButton btn_insert;
-    private static javax.swing.JComboBox<String> cbxArea;
-    private static javax.swing.JComboBox<String> cbxCargo;
-    private static javax.swing.JComboBox<String> cbxDepto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
