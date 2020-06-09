@@ -1,5 +1,4 @@
 package SQLConex;
-import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -20,40 +19,14 @@ public class Conection {
     
     //
     public static final String NAMEBD = "hotelmonarca";
-
-    
-    public static void coneccion(){
-        try {
-            Connection con = null;
-            con = getConeccion();
-            
-            PreparedStatement ps;
-            ResultSet res;
-            
-            ps = con.prepareStatement("SELECT * FROM cliente");
-            
-            res = ps.executeQuery();
-            
-            if (res.next()) {
-                JOptionPane.showMessageDialog(null,res.getInt("id_cliente"+res.getString("nombre")));
-            }else{
-                JOptionPane.showMessageDialog(null, "No existen datos");
-            }
-            con.close();
-        } catch (HeadlessException | SQLException e) {
-            System.out.println("Error:"+e);
-        }
-    }
-    
-    
-    
+               
     public static Connection getConeccion(){
         Connection con = null;
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD); 
-            System.out.println("Conexión exitosa");
+            System.out.println("DEPLOYMENT");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " +e);
         }
