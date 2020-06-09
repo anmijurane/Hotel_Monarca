@@ -35,14 +35,14 @@ public class Limpieza extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FLATNUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRIMER PISO", "SEGUNDO PISO", " " }));
-        getContentPane().add(FLATNUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 32, 124, -1));
+        getContentPane().add(FLATNUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 200, 40));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "101", "102", "103", "104", "105", "106", "107", "108", "109", "110" }));
         jComboBox2.setToolTipText(FLATNUMBER.getName());
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 76, 124, -1));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 200, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/p4.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 580));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -11,9 +11,9 @@ public class main {
 
     public static void main(String[] args) {
 
-        //  coneccion();
-//        login v1 = new login();
-//        v1.setVisible(true);
+ //        coneccion();
+       login v1 = new login();
+        v1.setVisible(true);
 
         Personal acc = new Personal(                
                 "MONTZERRAT",
