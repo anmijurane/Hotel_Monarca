@@ -6,9 +6,6 @@
 package Service;
 
 import java.awt.event.ItemEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -97,46 +94,57 @@ public class Limpieza extends javax.swing.JFrame {
             System.out.println(FLAT_NUMBER.getSelectedIndex());
 
             int index = FLAT_NUMBER.getSelectedIndex();
-
+            boolean tf = true;
             switch (index) {
                 case 0:
-                    System.out.println("Seleciona un piso");
+                    System.out.println("Seleciona un piso");                    
+                    tf = false;
                     break;
                 case 1:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatOne));
-                    break;
+                    tf = true;
+                    break;                    
                 case 2:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTwo));
+                    tf = true;
                     break;
                 case 3:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTree));
+                    tf = true;
                     break;
                 case 4:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatFour));
+                    tf = true;
                     break;
                 case 5:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatFive));
+                    tf = true;
                     break;
                 case 6:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatSix));
+                    tf = true;
                     break;
                 case 7:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatSeven));
+                    tf = true;
                     break;
                 case 8:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatEight));
+                    tf = true;
                     break;
                 case 9:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatNine));
+                    tf = true;
                     break;
                 case 10:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTen));
+                    tf = true;
                     break;
 
                 default:
                     throw new AssertionError();
             }
-
+                ROOM_NUMBER.setEnabled(tf);
         }
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 

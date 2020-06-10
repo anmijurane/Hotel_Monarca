@@ -6,6 +6,11 @@ package Entidades;
  */
 public class Habitacion {
 
-    
+    public String[] a(){
+        
+        
+        
+        return null;        
+    }
     
 }
