@@ -5,6 +5,12 @@
  */
 package Service;
 
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
@@ -27,25 +33,112 @@ public class Limpieza extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FLATNUMBER = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        FLAT_NUMBER = new javax.swing.JComboBox<>();
+        ROOM_NUMBER = new javax.swing.JComboBox<>();
+        BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FLATNUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRIMER PISO", "SEGUNDO PISO", " " }));
-        getContentPane().add(FLATNUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 200, 40));
+        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
+        FLAT_NUMBER.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                FLAT_NUMBERItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 200, 40));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "101", "102", "103", "104", "105", "106", "107", "108", "109", "110" }));
-        jComboBox2.setToolTipText(FLATNUMBER.getName());
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 200, 40));
+        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "101", "102", "103", "104", "105", "106", "107", "108", "109", "110" }));
+        ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
+        getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 200, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
+        BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    String[] flatOne
+            = {"SELECIONA UNA HABITACION", "101", "102", "103", "104", "105", "106", "107", "108",
+                "109", "110"};
+    String[] flatTwo
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatTree
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatFour
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatFive
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatSix
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatSeven
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatEight
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatNine
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+    String[] flatTen
+            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
+                "209", "210"};
+              
+
+
+    private void FLAT_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FLAT_NUMBERItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+
+            System.out.println(FLAT_NUMBER.getSelectedIndex());
+
+            int index = FLAT_NUMBER.getSelectedIndex();
+
+            switch (index) {
+                case 0:
+                    System.out.println("Seleciona un piso");
+                    break;
+                case 1:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatOne));
+                    break;
+                case 2:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTwo));
+                    break;
+                case 3:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTree));
+                    break;
+                case 4:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatFour));
+                    break;
+                case 5:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatFive));
+                    break;
+                case 6:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatSix));
+                    break;
+                case 7:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatSeven));
+                    break;
+                case 8:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatEight));
+                    break;
+                case 9:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatNine));
+                    break;
+                case 10:
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTen));
+                    break;
+
+                default:
+                    throw new AssertionError();
+            }
+
+        }
+    }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -83,8 +176,8 @@ public class Limpieza extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> FLATNUMBER;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel BACKGROUND;
+    private javax.swing.JComboBox<String> FLAT_NUMBER;
+    private javax.swing.JComboBox<String> ROOM_NUMBER;
     // End of variables declaration//GEN-END:variables
 }

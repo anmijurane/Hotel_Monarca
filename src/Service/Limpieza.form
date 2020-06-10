@@ -25,26 +25,37 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="FLATNUMBER">
+    <Component class="javax.swing.JComboBox" name="FLAT_NUMBER">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="PRIMER PISO"/>
-            <StringItem index="1" value="SEGUNDO PISO"/>
-            <StringItem index="2" value=" "/>
+          <StringArray count="11">
+            <StringItem index="0" value="SELECIONA UN PISO"/>
+            <StringItem index="1" value="1&#xb0; PISO"/>
+            <StringItem index="2" value="2&#xb0; PISO"/>
+            <StringItem index="3" value="3&#xb0; PISO"/>
+            <StringItem index="4" value="4&#xb0; PISO"/>
+            <StringItem index="5" value="5&#xb0; PISO"/>
+            <StringItem index="6" value="6&#xb0; PISO"/>
+            <StringItem index="7" value="7&#xb0; PISO"/>
+            <StringItem index="8" value="8&#xb0; PISO"/>
+            <StringItem index="9" value="9&#xb0; PISO"/>
+            <StringItem index="10" value="10&#xb0; PISO"/>
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="FLAT_NUMBERItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="210" width="200" height="40"/>
+          <AbsoluteConstraints x="100" y="160" width="200" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="ROOM_NUMBER">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="10">
@@ -61,7 +72,7 @@
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection component="FLATNUMBER" name="name" type="property"/>
+          <Connection component="FLAT_NUMBER" name="name" type="property"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -69,11 +80,11 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="320" width="200" height="40"/>
+          <AbsoluteConstraints x="580" y="160" width="200" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="BACKGROUND">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Images/GENERIC.png"/>
