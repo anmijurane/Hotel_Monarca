@@ -1,11 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Service;
 
+import static SQLConex.Conection.getConeccion;
+import static Service.FormAddClient.Con;
+import static Service.FormAddClient.ps;
+import static Service.FormAddClient.rs;
 import java.awt.event.ItemEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -19,6 +21,64 @@ public class Limpieza extends javax.swing.JFrame {
      */
     public Limpieza() {
         initComponents();
+        setLocationRelativeTo(null);
+        label();
+    }
+
+    public void habitacion(String n_habitacion) {
+
+        String categoria = null, estado = null, categoriaf, capacidad, costo, camas, estadof;
+
+        try {
+            Con = getConeccion();
+            ps = Con.prepareStatement("SELECT * FROM habitacion WHERE id_habitacion = ?");
+            ps.setString(1, n_habitacion);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                categoria = rs.getString("id_categoria");
+                System.out.println("categoria: " + categoria);
+                estado = rs.getString("id_estado");
+                System.out.println("estado: " + estado);
+            }
+
+            ps = Con.prepareStatement("SELECT * FROM categoria WHERE id_categoria = ?");
+            ps.setString(1, categoria);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                categoriaf = rs.getString("categoria");
+                et_categoria.setText(categoriaf.toUpperCase());
+                capacidad = rs.getString("capacidad");
+                et_capacidad.setText(capacidad);
+                costo = rs.getString("costo");
+                et_costo.setText(costo);
+                camas = rs.getString("camas");
+                et_camas.setText(camas);
+
+            }
+
+            ps = Con.prepareStatement("SELECT * FROM estado WHERE id_estado = ?");
+            ps.setString(1, estado);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                estadof = rs.getString("nombre");
+                et_estado.setText(estadof.toUpperCase());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Limpieza.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void label() {
+        et_categoria.setText(null);
+        et_estado.setText(null);
+        et_capacidad.setText(null);
+        et_costo.setText(null);
+        et_camas.setText(null);
     }
 
     /**
@@ -32,6 +92,16 @@ public class Limpieza extends javax.swing.JFrame {
 
         FLAT_NUMBER = new javax.swing.JComboBox<>();
         ROOM_NUMBER = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        et_categoria = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        et_estado = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        et_capacidad = new javax.swing.JLabel();
+        et_costo = new javax.swing.JLabel();
+        et_camas = new javax.swing.JLabel();
         BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,7 +117,49 @@ public class Limpieza extends javax.swing.JFrame {
 
         ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION" }));
         ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
+        ROOM_NUMBER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ROOM_NUMBERActionPerformed(evt);
+            }
+        });
         getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 200, 40));
+
+        jLabel1.setText("CATEGORÍA");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
+
+        et_categoria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_categoria.setText("jLabel2");
+        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 80, -1));
+
+        jLabel2.setText("ESTADO");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 60, -1));
+
+        et_estado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_estado.setText("jLabel3");
+        getContentPane().add(et_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
+
+        jLabel3.setText("CAPACIDAD");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+
+        jLabel4.setText("COSTO");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
+
+        jLabel5.setText("CAMAS");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
+
+        et_capacidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_capacidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        et_capacidad.setText("jLabel6");
+        getContentPane().add(et_capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 60, -1));
+
+        et_costo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_costo.setText("jLabel7");
+        getContentPane().add(et_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
+
+        et_camas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_camas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        et_camas.setText("jLabel8");
+        getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, -1));
 
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
@@ -85,24 +197,22 @@ public class Limpieza extends javax.swing.JFrame {
     String[] flatTen
             = {"SELECIONA UNA HABITACION", "1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008",
                 "1009", "1010"};
-              
 
 
     private void FLAT_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FLAT_NUMBERItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
 
-            System.out.println(FLAT_NUMBER.getSelectedIndex());
-
+            //System.out.println(FLAT_NUMBER.getSelectedIndex());
             int index = FLAT_NUMBER.getSelectedIndex();
             boolean tf = true;
             switch (index) {
                 case 0:
-                    
+                    tf = false;
                     break;
                 case 1:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatOne));
                     tf = true;
-                    break;                    
+                    break;
                 case 2:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTwo));
                     tf = true;
@@ -142,9 +252,16 @@ public class Limpieza extends javax.swing.JFrame {
                 default:
                     throw new AssertionError();
             }
-                ROOM_NUMBER.setEnabled(tf);
+            ROOM_NUMBER.setEnabled(tf);
         }
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
+
+    private void ROOM_NUMBERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROOM_NUMBERActionPerformed
+
+        String rn = ROOM_NUMBER.getSelectedItem().toString();
+        habitacion(rn);
+
+    }//GEN-LAST:event_ROOM_NUMBERActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,5 +302,15 @@ public class Limpieza extends javax.swing.JFrame {
     private javax.swing.JLabel BACKGROUND;
     private javax.swing.JComboBox<String> FLAT_NUMBER;
     private javax.swing.JComboBox<String> ROOM_NUMBER;
+    private javax.swing.JLabel et_camas;
+    private javax.swing.JLabel et_capacidad;
+    private javax.swing.JLabel et_categoria;
+    private javax.swing.JLabel et_costo;
+    private javax.swing.JLabel et_estado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
