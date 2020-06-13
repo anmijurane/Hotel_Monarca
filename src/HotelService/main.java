@@ -15,7 +15,7 @@ public class main {
        login v1 = new login();
         v1.setVisible(true);
 
-        Personal acc = new Personal(                
+        /*Personal acc = new Personal(                
                 "MONTZERRAT",
                 "GONZÁLEZ",
                 "RIVERA",
@@ -30,7 +30,7 @@ public class main {
                 100,
                 101,
                 1011);       
-        
+        */
     ////Horario SET time_zone = 'America/Mexico_city';
     
     }
