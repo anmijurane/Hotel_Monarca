@@ -1,6 +1,6 @@
-#Sistema Hotelero
+# Sistema Hotelero
 
-##Integrantes
+## Integrantes
 ING. BOLAÑOS MAYA LISSETE GPE.
 ING. GONZÁLES RIVERA MONTZERRAT GPE.
 ING. JURADO NEGRETE MIGUEL ANDRES
