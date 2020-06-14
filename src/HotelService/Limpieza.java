@@ -21,13 +21,14 @@ public class Limpieza extends javax.swing.JFrame {
     static PreparedStatement ps;
     static ResultSet rs;
     Habitacion hab;
+
     /**
      * Creates new form Limpieza
      */
     public Limpieza() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
 
     public void habitacion(int n_habitacion) {
@@ -44,32 +45,35 @@ public class Limpieza extends javax.swing.JFrame {
                     + "WHERE habitacion.id_habitacion = ? "
                     + "AND habitacion.id_categoria = categoria.id_categoria "
                     + " GROUP BY habitacion.id_habitacion");
+
             ps.setInt(1, n_habitacion);
             System.out.println(ps);
             rs = ps.executeQuery();
             if (rs.next()) {
-                
+
                 hab = new Habitacion(
-                        rs.getInt("habitacion.id_habitacion")
-                        ,rs.getString("categoria.camas").toUpperCase()
-                        ,""
-                        ,0
-                        ,"");
-                rs.getInt("habitacion.id_habitacion");
-                et_habitacion.setText("HABITACIÓN: " + rs.getString("habitacion.id_habitacion").toUpperCase());
-                et_camas.setText(rs.getString("categoria.camas").toUpperCase());
-                et_capacidad.setText(rs.getString("categoria.capacidad").toUpperCase());
-                et_categoria.setText(rs.getString("categoria.categoria").toUpperCase());
-                et_estado.setText(rs.getString("estado.nombre").toUpperCase());
+                        rs.getInt("habitacion.id_habitacion"),
+                        rs.getString("categoria.categoria"),
+                        rs.getString("categoria.capacidad"),
+                        rs.getInt("categoria.camas"),
+                        rs.getString("estado.nombre"));
+                
+                llenarDatosEt();
+
             }
 
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-
-
     }
 
+    public void llenarDatosEt() {
+        et_habitacion.setText("HABITACIÓN: " + hab.getId_habitacio());
+        et_camas.setText("" + hab.getCamas());
+        et_capacidad.setText(hab.getCapacidad());
+        et_categoria.setText(hab.getCategoria());
+        et_estado.setText(hab.getEstado());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,15 +281,12 @@ public class Limpieza extends javax.swing.JFrame {
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     private void ROOM_NUMBERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROOM_NUMBERActionPerformed
-        
+
         habitacion(new Integer(ROOM_NUMBER.getSelectedItem().toString()));
 
     }//GEN-LAST:event_ROOM_NUMBERActionPerformed
 
     private void limpiandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiandoActionPerformed
-        if (et_categoria.equals("")) {
-            btnGroupOne.clearSelection();            
-        }
         isCheckLimpieza();
     }//GEN-LAST:event_limpiandoActionPerformed
 
@@ -293,14 +294,16 @@ public class Limpieza extends javax.swing.JFrame {
         isCheckLimpieza();
     }//GEN-LAST:event_disponibleActionPerformed
 
-    public void isCheckLimpieza(){
+    public void isCheckLimpieza() {
         if (limpiando.isSelected()) {
+            hab.setEstado("limpieza");
             System.out.println("Limpiando");
-        }else if (disponible.isSelected()) {
+        } else if (disponible.isSelected()) {
+            hab.setEstado("disponible");
             System.out.println("Disponible");
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
