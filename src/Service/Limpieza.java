@@ -25,51 +25,36 @@ public class Limpieza extends javax.swing.JFrame {
         label();
     }
 
-    public void habitacion(String n_habitacion) {
-
-        String categoria = null, estado = null, categoriaf, capacidad, costo, camas, estadof;
+    public void habitacion(int n_habitacion) {
 
         try {
+
             Con = getConeccion();
-            ps = Con.prepareStatement("SELECT * FROM habitacion WHERE id_habitacion = ?");
-            ps.setString(1, n_habitacion);
+            ps = Con.prepareStatement("SELECT habitacion.id_habitacion, "
+                    + "categoria.categoria, "
+                    + "categoria.capacidad, "
+                    + "categoria.camas, "
+                    + "estado.nombre "
+                    + "FROM habitacion, categoria, estado "
+                    + "WHERE habitacion.id_habitacion = ? "
+                    + "AND habitacion.id_categoria = categoria.id_categoria "
+                    + " GROUP BY habitacion.id_habitacion");
+            ps.setInt(1, n_habitacion);
+            System.out.println(ps);
             rs = ps.executeQuery();
-
             if (rs.next()) {
-                categoria = rs.getString("id_categoria");
-                System.out.println("categoria: " + categoria);
-                estado = rs.getString("id_estado");
-                System.out.println("estado: " + estado);
+
+                et_habitacion.setText("HABITACIÓN: " + rs.getString("habitacion.id_habitacion").toUpperCase());
+                et_camas.setText(rs.getString("categoria.camas").toUpperCase());
+                et_capacidad.setText(rs.getString("categoria.capacidad").toUpperCase());
+                et_categoria.setText(rs.getString("categoria.categoria").toUpperCase());
+                et_estado.setText(rs.getString("estado.nombre").toUpperCase());
             }
 
-            ps = Con.prepareStatement("SELECT * FROM categoria WHERE id_categoria = ?");
-            ps.setString(1, categoria);
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                categoriaf = rs.getString("categoria");
-                et_categoria.setText(categoriaf.toUpperCase());
-                capacidad = rs.getString("capacidad");
-                et_capacidad.setText(capacidad);
-                costo = rs.getString("costo");
-                et_costo.setText(costo);
-                camas = rs.getString("camas");
-                et_camas.setText(camas);
-
-            }
-
-            ps = Con.prepareStatement("SELECT * FROM estado WHERE id_estado = ?");
-            ps.setString(1, estado);
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                estadof = rs.getString("nombre");
-                et_estado.setText(estadof.toUpperCase());
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Limpieza.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
+
 
     }
 
@@ -77,7 +62,7 @@ public class Limpieza extends javax.swing.JFrame {
         et_categoria.setText(null);
         et_estado.setText(null);
         et_capacidad.setText(null);
-        et_costo.setText(null);
+        et_habitacion.setText(null);
         et_camas.setText(null);
     }
 
@@ -97,10 +82,9 @@ public class Limpieza extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         et_estado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         et_capacidad = new javax.swing.JLabel();
-        et_costo = new javax.swing.JLabel();
+        et_habitacion = new javax.swing.JLabel();
         et_camas = new javax.swing.JLabel();
         BACKGROUND = new javax.swing.JLabel();
 
@@ -124,43 +108,52 @@ public class Limpieza extends javax.swing.JFrame {
         });
         getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 200, 40));
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CATEGORÍA");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
 
         et_categoria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_categoria.setForeground(new java.awt.Color(0, 0, 0));
+        et_categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         et_categoria.setText("jLabel2");
-        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 80, -1));
+        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 130, 30));
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ESTADO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 60, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 60, -1));
 
         et_estado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_estado.setForeground(new java.awt.Color(0, 0, 0));
+        et_estado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         et_estado.setText("jLabel3");
-        getContentPane().add(et_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
+        getContentPane().add(et_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 120, 30));
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("CAPACIDAD");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, -1, -1));
 
-        jLabel4.setText("COSTO");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
-
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CAMAS");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 330, -1, -1));
 
         et_capacidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_capacidad.setForeground(new java.awt.Color(0, 0, 0));
         et_capacidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         et_capacidad.setText("jLabel6");
-        getContentPane().add(et_capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 60, -1));
+        getContentPane().add(et_capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 120, 30));
 
-        et_costo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        et_costo.setText("jLabel7");
-        getContentPane().add(et_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
+        et_habitacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        et_habitacion.setForeground(new java.awt.Color(0, 0, 0));
+        et_habitacion.setText("jLabel7");
+        getContentPane().add(et_habitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 350, 30));
 
         et_camas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        et_camas.setForeground(new java.awt.Color(0, 0, 0));
         et_camas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         et_camas.setText("jLabel8");
-        getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, -1));
+        getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, 140, 30));
 
+        BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
@@ -257,9 +250,8 @@ public class Limpieza extends javax.swing.JFrame {
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     private void ROOM_NUMBERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROOM_NUMBERActionPerformed
-
-        String rn = ROOM_NUMBER.getSelectedItem().toString();
-        habitacion(rn);
+        
+        habitacion(new Integer(ROOM_NUMBER.getSelectedItem().toString()));
 
     }//GEN-LAST:event_ROOM_NUMBERActionPerformed
 
@@ -305,12 +297,11 @@ public class Limpieza extends javax.swing.JFrame {
     private javax.swing.JLabel et_camas;
     private javax.swing.JLabel et_capacidad;
     private javax.swing.JLabel et_categoria;
-    private javax.swing.JLabel et_costo;
     private javax.swing.JLabel et_estado;
+    private javax.swing.JLabel et_habitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
