@@ -7,8 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -28,13 +26,14 @@ public class Limpieza extends javax.swing.JFrame {
     public Limpieza() {
         initComponents();
         setLocationRelativeTo(null);
-
     }
 
     public void habitacion(int n_habitacion) {
 
+        /*hab = new Habitacion(n_habitacion, "Individual", "1", 1,"Disponible");
+        llenarDatosEt();*/
         try {
-
+            
             Con = getConeccion();
             ps = Con.prepareStatement("SELECT habitacion.id_habitacion, "
                     + "categoria.categoria, "
@@ -44,13 +43,14 @@ public class Limpieza extends javax.swing.JFrame {
                     + "FROM habitacion, categoria, estado "
                     + "WHERE habitacion.id_habitacion = ? "
                     + "AND habitacion.id_categoria = categoria.id_categoria "
+                    + "AND habitacion.id_estado = estado.id_estado "
                     + " GROUP BY habitacion.id_habitacion");
 
             ps.setInt(1, n_habitacion);
             System.out.println(ps);
             rs = ps.executeQuery();
             if (rs.next()) {
-
+                System.out.println(rs.getString("estado.nombre"));
                 hab = new Habitacion(
                         rs.getInt("habitacion.id_habitacion"),
                         rs.getString("categoria.categoria"),
@@ -59,6 +59,7 @@ public class Limpieza extends javax.swing.JFrame {
                         rs.getString("estado.nombre"));
                 
                 llenarDatosEt();
+            Con.close();
 
             }
 
@@ -71,8 +72,18 @@ public class Limpieza extends javax.swing.JFrame {
         et_habitacion.setText("HABITACIÓN: " + hab.getId_habitacio());
         et_camas.setText("" + hab.getCamas());
         et_capacidad.setText(hab.getCapacidad());
-        et_categoria.setText(hab.getCategoria());
-        et_estado.setText(hab.getEstado());
+        et_categoria.setText(hab.getCategoria());        
+        System.out.println(hab);
+        String lmpz = hab.getEstado();        
+        if (lmpz.equals("LIMPIEZA")) {
+            limpiando.setSelected(true);
+            estadoHabitacion.setVisible(false);
+        }else{
+            estadoHabitacion.setVisible(true);
+            estadoHabitacion.setText(hab.getEstado());
+            estadoHabitacion.setSelected(true);
+        }
+        //et_estado.setText(hab.getEstado());
     }
 
     /**
@@ -97,7 +108,7 @@ public class Limpieza extends javax.swing.JFrame {
         et_habitacion = new javax.swing.JLabel();
         et_camas = new javax.swing.JLabel();
         limpiando = new javax.swing.JRadioButton();
-        disponible = new javax.swing.JRadioButton();
+        estadoHabitacion = new javax.swing.JRadioButton();
         BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,22 +178,22 @@ public class Limpieza extends javax.swing.JFrame {
         getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, 140, 30));
 
         btnGroupOne.add(limpiando);
-        limpiando.setText("LIMPIANDO");
+        limpiando.setText("LIMPIEZA");
         limpiando.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiandoActionPerformed(evt);
             }
         });
-        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 100, -1));
+        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 100, -1));
 
-        btnGroupOne.add(disponible);
-        disponible.setText("DISPONIBLE");
-        disponible.addActionListener(new java.awt.event.ActionListener() {
+        btnGroupOne.add(estadoHabitacion);
+        estadoHabitacion.setText("\"   \"");
+        estadoHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disponibleActionPerformed(evt);
+                estadoHabitacionActionPerformed(evt);
             }
         });
-        getContentPane().add(disponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+        getContentPane().add(estadoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 100, -1));
 
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
@@ -281,24 +292,22 @@ public class Limpieza extends javax.swing.JFrame {
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     private void ROOM_NUMBERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROOM_NUMBERActionPerformed
-
         habitacion(new Integer(ROOM_NUMBER.getSelectedItem().toString()));
-
     }//GEN-LAST:event_ROOM_NUMBERActionPerformed
 
     private void limpiandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiandoActionPerformed
         isCheckLimpieza();
     }//GEN-LAST:event_limpiandoActionPerformed
 
-    private void disponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibleActionPerformed
+    private void estadoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoHabitacionActionPerformed
         isCheckLimpieza();
-    }//GEN-LAST:event_disponibleActionPerformed
+    }//GEN-LAST:event_estadoHabitacionActionPerformed
 
     public void isCheckLimpieza() {
         if (limpiando.isSelected()) {
             hab.setEstado("limpieza");
             System.out.println("Limpiando");
-        } else if (disponible.isSelected()) {
+        } else if (estadoHabitacion.isSelected()) {
             hab.setEstado("disponible");
             System.out.println("Disponible");
         }
@@ -344,7 +353,7 @@ public class Limpieza extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> FLAT_NUMBER;
     private javax.swing.JComboBox<String> ROOM_NUMBER;
     private javax.swing.ButtonGroup btnGroupOne;
-    private javax.swing.JRadioButton disponible;
+    private javax.swing.JRadioButton estadoHabitacion;
     private javax.swing.JLabel et_camas;
     private javax.swing.JLabel et_capacidad;
     private javax.swing.JLabel et_categoria;

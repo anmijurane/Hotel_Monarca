@@ -64,7 +64,7 @@ public class Habitacion {
         return getId_habitacio() + ", "+getCategoria()+", "+getCapacidad()
                 +", "+getCamas()+", "+getEstado();
     }
-    
+        
     public String toString() {
         return getId_habitacio() + ", "+getCategoria()+", "+getCapacidad()
                 +", "+getCamas()+", "+getEstado();
