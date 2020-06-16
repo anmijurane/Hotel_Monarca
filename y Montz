@@ -1,0 +1,386 @@
+[33mcommit 2508ed466313cb713db1107a24e54c1631d2c603[m[33m ([m[1;36mHEAD -> [m[1;32mDiego[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 3920898 ab2c589
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Tue Jun 9 21:59:14 2020 -0500
+
+    Merge pull request #16 from anmijurane/Lis
+    
+    Lis y Montz
+
+[33mcommit ab2c589682640fd46ea8827c9e6d653d308ee22b[m
+Merge: 4045672 cd66fd1
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Tue Jun 9 21:55:01 2020 -0500
+
+    Merge pull request #15 from anmijurane/Montze
+    
+    Validar
+
+[33mcommit 3920898af5011b2642027285bbc6826b0131ba79[m
+Merge: 245254e cd66fd1
+Author: LiaBom <65981264+LiaBom@users.noreply.github.com>
+Date:   Tue Jun 9 18:52:13 2020 -0500
+
+    Merge pull request #14 from anmijurane/Montze
+    
+    Arreglé el formulario de cliente
+
+[33mcommit 4045672dacc0f02af6c0b5c55f10cc16853b4886[m
+Author: Lis <lissete_sic@tesco.edu.mx>
+Date:   Tue Jun 9 18:41:05 2020 -0500
+
+    Ventana terminada
+
+[33mcommit e170eab8ee91edeb2610ec8b301053783ff600f0[m
+Author: Lis <lissete_sic@tesco.edu.mx>
+Date:   Tue Jun 9 18:32:43 2020 -0500
+
+    Añadí el diseño de la ventana(FormAddPersonal) COMPLETO
+
+[33mcommit cd66fd15ed214ba02cb3961611a84ccba337e6a2[m
+Author: Montzerrat <montze.rv@outlook.es>
+Date:   Tue Jun 9 17:16:31 2020 -0500
+
+    Arreglé el formulario de cliente y comenté linea de codigo que causaba conflicto
+
+[33mcommit 245254e445ae62abbab995ba001fc35664c379aa[m[33m ([m[1;31morigin/Andres[m[33m)[m
+Merge: 5e3bd3b f202699
+Author: LiaBom <65981264+LiaBom@users.noreply.github.com>
+Date:   Tue Jun 9 15:34:32 2020 -0500
+
+    Merge pull request #13 from anmijurane/Montze
+    
+    Agregué algunas interfaces y acomodé un poco el formulario.
+
+[33mcommit f2026999d0899487aeb2c83dbe9cb64f0a3a8535[m
+Merge: abc43da 5e3bd3b
+Author: Montzerrat <montze.rv@outlook.es>
+Date:   Tue Jun 9 01:31:01 2020 -0500
+
+    Agregué y acomodé algunas interfaces
+
+[33mcommit abc43da62c8a7a00f532bbb4846b30074e7c4a26[m
+Author: Montzerrat <montze.rv@outlook.es>
+Date:   Mon Jun 8 22:55:53 2020 -0500
+
+    merge solucionado
+
+[33mcommit 5e3bd3ba8c2cd3f2079c7bdce4d5d373300d385e[m
+Merge: d99de01 3ea6d36
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Mon Jun 8 22:52:59 2020 -0500
+
+    Merge pull request #12 from anmijurane/Andres
+    
+    Diseño color atole
+
+[33mcommit 3ea6d3668e500f14fbe395f65ee1570436384941[m
+Merge: ed393e5 d99de01
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Mon Jun 8 22:50:39 2020 -0500
+
+    Conflict solved
+
+[33mcommit ed393e5a28f4962e50bfc4104179d121cb01bcbb[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Mon Jun 8 22:39:17 2020 -0500
+
+    Se agrego imagenes de prueba color Atole!
+    Se integro un nuevo form para los usuarios de limpieza
+
+[33mcommit d99de013f540a201828d1a660fc9679558a069f3[m
+Author: DiegoCardenas <diegocardenas355@gmail.com>
+Date:   Mon Jun 8 20:53:06 2020 -0500
+
+    Correccion de PlaceHolder, en la clase FormAddPersonal.java
+
+[33mcommit ac7f83a673b9ec88e177fd26affc3400be62742c[m
+Author: Lis <lissete_sic@tesco.edu.mx>
+Date:   Mon Jun 8 20:35:46 2020 -0500
+
+    Removi place holder y añadi etiquetas, (FormAddClien.java y FormAddPersonal.java)
+
+[33mcommit 3f92bbbb19bd04cc81ecc7cc0b77813aab5314f8[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat Jun 6 14:12:57 2020 -0500
+
+    Quite el codigo del loggin que estaba comentado
+
+[33mcommit 2d734c5af26d7acbfb639e5339d0f3c957edd69a[m
+Merge: 4ea60b8 af8323b
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sat Jun 6 14:10:00 2020 -0500
+
+    Merge pull request #11 from anmijurane/Andres
+    
+    Cambios grandes en reenombramiento de folder
+
+[33mcommit af8323bc3bbde0768f3b9f2f266bbeb254f28297[m
+Merge: d5bf586 4ea60b8
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat Jun 6 14:06:18 2020 -0500
+
+    Arreglo del merge de master
+
+[33mcommit d5bf5868b61249f6f6f146e14eafe19a3e7ce119[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat Jun 6 00:21:01 2020 -0500
+
+    Folfer name change index to HotelService, creating folder Service
+
+[33mcommit 4ea60b895ca37e730aa0ef5a306e8e2657d15475[m
+Merge: 3dc2aaa 897e5b6
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Mon Jun 1 22:40:44 2020 -0500
+
+    Merge pull request #10 from anmijurane/Andres
+    
+    md5 Integreed
+
+[33mcommit 897e5b6155d573987031310f7816e58797d2f25f[m
+Merge: 3d07bb4 3dc2aaa
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Mon Jun 1 22:36:52 2020 -0500
+
+    Merge branch 'master' of github.com:anmijurane/Hotel_Monarca into Andres
+
+[33mcommit 3d07bb482e5601f9fad52aad7f92336821bcae5d[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Mon Jun 1 22:32:16 2020 -0500
+
+    Se realizo;
+    1.- Se agrego la encriptación de la contraseña generada.
+    2.- Se valido si se queria agregar al usuario con un JOption
+    @Diego || @Andres
+
+[33mcommit 3dc2aaafa8cccef2f77fbc27a15e98f4bd3c21fd[m
+Merge: 775c055 3595d94
+Author: DiegoCardenas98 <65981259+DiegoCardenas98@users.noreply.github.com>
+Date:   Mon Jun 1 20:38:03 2020 -0500
+
+    Merge pull request #9 from anmijurane/Andres
+    
+    INSERT INTO () : Andres
+
+[33mcommit 3595d9479bcb1e572be672469a4aff2e02810b38[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Mon Jun 1 17:41:38 2020 -0500
+
+    Merge Experimental ---> Andres
+
+[33mcommit 53902525f7eaa0cfcf1139fa8e7bcf36c890a0d9[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Mon Jun 1 17:28:37 2020 -0500
+
+    Conexion a la Base para agregar un usuario (solo generente)
+    Modificaciones de los metodos toString de: Persona, Personal
+
+[33mcommit 116946f922401968db72c4919534be3d6df80138[m
+Merge: 1e61312 775c055
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sun May 31 20:52:35 2020 -0500
+
+    Merge branch 'master' of github.com:anmijurane/Hotel_Monarca into Experiment
+
+[33mcommit 1e6131298f3ff72fcae826a612ed89872114e559[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sun May 31 20:52:25 2020 -0500
+
+    Correcciones
+
+[33mcommit 775c0554127c3e03b5aa460ba2ecc5eb4c729eb4[m
+Merge: 07c586c e2f4622
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sun May 31 20:43:40 2020 -0500
+
+    Merge pull request #7 from anmijurane/Diego
+    
+    Diego - Modificaciones
+    Se agrego al index FormAddPersonal la librería PlaceHolder
+
+[33mcommit e2f4622e83b75652bd4b22e4de1a170f61997eba[m
+Merge: 9e1edc9 07c586c
+Author: DiegoCardenas <diegocardenas355@gmail.com>
+Date:   Sun May 31 18:12:27 2020 -0500
+
+    Inicio sesion y index
+
+[33mcommit 9e1edc9eaf9c2e176ae718b2f0092df971f2450b[m
+Author: DiegoCardenas <diegocardenas355@gmail.com>
+Date:   Sun May 31 15:22:35 2020 -0500
+
+    Correcciones
+
+[33mcommit 07c586c1268c05bce1b70bd149c8e0a84884beb3[m
+Merge: 8e115c4 21a7e3e
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sun May 31 03:06:12 2020 -0500
+
+    Merge pull request #6 from anmijurane/Andres
+    
+    FormAddPersonal y Archivos de Entidades POO
+
+[33mcommit 21a7e3e4f1d05bbf1655165414efad71b704a3c2[m
+Merge: 30460f9 8e115c4
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sun May 31 03:02:26 2020 -0500
+
+    Merge branch 'master' of github.com:anmijurane/Hotel_Monarca into Andres
+
+[33mcommit 30460f91ce0be88a6ae280218b8d463bfdc78bfa[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sun May 31 02:45:49 2020 -0500
+
+    nuevos archivos de persona y personal.
+    Creacion del metodo toString modificado para obtenerlos por comas.
+
+[33mcommit 55ae5e9c947a094f1edd06042bb15b318a44dd1d[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sun May 31 00:02:34 2020 -0500
+
+    Combo box añadidos por bd
+
+[33mcommit f3569e59cb674fa77a1a380016af15c9ceaa15e7[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat May 30 23:35:50 2020 -0500
+
+    Integre una carpeta de Entidades
+
+[33mcommit 10e8743e3cf96191d82ddcadd817ae4225cbf6ab[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat May 30 22:27:50 2020 -0500
+
+    Se agregó el form de para agregar al personal. Esta ventana solo estará disponible para el Gerente, Director y RH
+
+[33mcommit 8e115c40b586015bccc4946dcac3b77fd6fb49e4[m
+Merge: 88a78a1 5a2c1b7
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sat May 30 22:34:26 2020 -0500
+
+    Merge pull request #5 from anmijurane/Andres
+    
+    Form Personal add
+
+[33mcommit 5a2c1b747d5f5ab950ccb7820fad45750fb91708[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat May 30 22:27:50 2020 -0500
+
+    Se agregó el form de para agregar al personal. Esta ventana solo estará disponible para el Gerente, Director y RH
+
+[33mcommit 88a78a1ff291abe95f914edd3d0bd4b7ac461ec5[m
+Merge: 3d7854a 92aae5a
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sat May 30 22:24:23 2020 -0500
+
+    Merge pull request #4 from anmijurane/Andres
+    
+    Inicio de sesio agregado
+
+[33mcommit 92aae5afa006c21892e5409aa998f296218affdf[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat May 30 21:33:59 2020 -0500
+
+    Correction IDE
+
+[33mcommit c1b9c0034260788c26e6c12abe1ad7cf6e10fc26[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat May 30 21:30:38 2020 -0500
+
+    La validacion del inicio de sesion ya quedo.
+    Solo necesita los frame para los usuarios.
+
+[33mcommit e36f3969d834cd809809e7c5d15cbd985ad1a737[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Sat May 30 20:07:51 2020 -0500
+
+    Correcciones del merge
+
+[33mcommit 3d7854a711eba029e99c22075e67e3b47cf34e19[m
+Merge: 49be8e4 92b0266
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sat May 30 18:17:19 2020 -0500
+
+    Merge pull request #3 from anmijurane/Lis
+    
+    LISS: INDEX ADD
+
+[33mcommit 92b0266be86c3894456044adcc0a7979abd20322[m
+Merge: 326c40f 49be8e4
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Sat May 30 18:16:19 2020 -0500
+
+    Merge branch 'master' into Lis
+
+[33mcommit 326c40f81d4b01039267fc13b70c10cccc0302c7[m
+Author: Lis <lissete_sic@tesco.edu.mx>
+Date:   Sat May 30 00:43:22 2020 -0500
+
+    Realice 6 index
+
+[33mcommit 49be8e4238dea5c49bdcb7eb200557a00b00ffd0[m
+Merge: 91b2794 7114775
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Fri May 29 17:47:27 2020 -0500
+
+    Merge pull request #2 from anmijurane/Diego
+    
+    Diego:Inicie Hit Diego hizo su primer Pull Request
+
+[33mcommit ccb5329367e8c2443cff3a6cf8ab36d53ac77a6f[m
+Merge: 0b3b5c5 91b2794
+Author: Montzerrat <montze.rv@outlook.es>
+Date:   Fri May 29 17:14:58 2020 -0500
+
+    Merge branch 'master' of https://github.com/anmijurane/Hotel_Monarca into Montze
+
+[33mcommit 711477551089fdb95e30dc471bb428d38909f108[m
+Merge: abb05d3 91b2794
+Author: DiegoCardenas <diegocardenas355@gmail.com>
+Date:   Fri May 29 17:08:24 2020 -0500
+
+    Merge branch 'master' of https://github.com/anmijurane/Hotel_Monarca into Diego
+
+[33mcommit 91b2794aa1774f5d852244ba9e336a5c824e8562[m
+Merge: 5c7bdd8 bf1a0b7
+Author: anmijurane <anmijurane@gmail.com>
+Date:   Fri May 29 17:04:04 2020 -0500
+
+    Merge pull request #1 from anmijurane/Andres
+    
+    Base de datos remota añadida, codigo de integración.
+
+[33mcommit bf1a0b7c27a34a9153ca57e3fc7feae76ee665ff[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Fri May 29 17:01:33 2020 -0500
+
+    Conexion a la base de datos remota.
+
+[33mcommit abb05d36383ba88eefb3d2adfc38f2dde9df1d94[m
+Author: DiegoCardenas <diegocardenas355@gmail.com>
+Date:   Fri May 29 16:56:44 2020 -0500
+
+    Iniciando
+
+[33mcommit 0cb016c03824f1e923af258c36ee5e7134f07557[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Tue May 26 22:07:29 2020 -0500
+
+    Creacion de la clase para la base de datos
+
+[33mcommit e934465e7a62ba81256081abd138e6a7dfba5a59[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Tue May 26 17:58:17 2020 -0500
+
+    Nuevo Archivo para la conexion mysql
+
+[33mcommit 0b3b5c5ec780996e2beee6602e3f6ea9ec88a978[m
+Author: Montzerrat <montze.rv@outlook.es>
+Date:   Tue May 26 16:56:20 2020 -0500
+
+    Que onda morros
+
+[33mcommit 5c7bdd86333a04e461ce1d4677376bf763a3df82[m
+Author: Andres Jurado <anmijurane@gmail.com>
+Date:   Tue May 26 16:07:34 2020 -0500
+
+    Iniciamos proyecto Hotel Monarca
