@@ -1,11 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HotelService;
 
+import Entidades.Habitacion;
+import static SQLConex.Conection.getConeccion;
 import java.awt.event.ItemEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -14,11 +15,75 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Mantenimiento extends javax.swing.JFrame {
 
+    static Connection Con;
+    static PreparedStatement ps;
+    static ResultSet rs;
+    Habitacion hab;
+
     /**
      * Creates new form Limpieza
      */
     public Mantenimiento() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+
+    public void habitacion(int n_habitacion) {
+
+        /*hab = new Habitacion(n_habitacion, "Individual", "1", 1,"Disponible");
+        llenarDatosEt();*/
+        try {
+            
+            Con = getConeccion();
+            ps = Con.prepareStatement("SELECT habitacion.id_habitacion, "
+                    + "categoria.categoria, "
+                    + "categoria.capacidad, "
+                    + "categoria.camas, "
+                    + "estado.nombre "
+                    + "FROM habitacion, categoria, estado "
+                    + "WHERE habitacion.id_habitacion = ? "
+                    + "AND habitacion.id_categoria = categoria.id_categoria "
+                    + "AND habitacion.id_estado = estado.id_estado "
+                    + " GROUP BY habitacion.id_habitacion");
+
+            ps.setInt(1, n_habitacion);
+            System.out.println(ps);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println(rs.getString("estado.nombre"));
+                hab = new Habitacion(
+                        rs.getInt("habitacion.id_habitacion"),
+                        rs.getString("categoria.categoria"),
+                        rs.getString("categoria.capacidad"),
+                        rs.getInt("categoria.camas"),
+                        rs.getString("estado.nombre"));
+                
+                llenarDatosEt();
+            Con.close();
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void llenarDatosEt() {
+        et_habitacion.setText("HABITACIÓN: " + hab.getId_habitacio());
+        et_camas.setText("" + hab.getCamas());
+        et_capacidad.setText(hab.getCapacidad());
+        et_categoria.setText(hab.getCategoria());        
+        System.out.println(hab);
+        String lmpz = hab.getEstado();        
+        if (lmpz.equals("LIMPIEZA")) {
+            limpiando.setSelected(true);
+            estadoHabitacion.setVisible(false);
+        }else{
+            estadoHabitacion.setVisible(true);
+            estadoHabitacion.setText(hab.getEstado());
+            estadoHabitacion.setSelected(true);
+        }
+        //et_estado.setText(hab.getEstado());
     }
 
     /**
@@ -30,8 +95,21 @@ public class Mantenimiento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupOne = new javax.swing.ButtonGroup();
         FLAT_NUMBER = new javax.swing.JComboBox<>();
         ROOM_NUMBER = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        et_categoria = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        et_capacidad = new javax.swing.JLabel();
+        et_habitacion = new javax.swing.JLabel();
+        et_camas = new javax.swing.JLabel();
+        limpiando = new javax.swing.JRadioButton();
+        estadoHabitacion = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,12 +121,83 @@ public class Mantenimiento extends javax.swing.JFrame {
                 FLAT_NUMBERItemStateChanged(evt);
             }
         });
-        getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 200, 40));
+        getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 200, 40));
 
         ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION" }));
         ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
-        getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 200, 40));
+        ROOM_NUMBER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ROOM_NUMBERActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 200, 40));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("CATEGORÍA");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 130, -1));
+
+        et_categoria.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        et_categoria.setForeground(new java.awt.Color(0, 0, 0));
+        et_categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 130, 30));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("ESTADO");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 80, -1));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("CAPACIDAD");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 130, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("CAMAS");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 290, 90, -1));
+
+        et_capacidad.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        et_capacidad.setForeground(new java.awt.Color(0, 0, 0));
+        et_capacidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(et_capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 120, 30));
+
+        et_habitacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        et_habitacion.setForeground(new java.awt.Color(0, 0, 0));
+        et_habitacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        et_habitacion.setText("HABITACIÓN: ");
+        getContentPane().add(et_habitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 360, 30));
+
+        et_camas.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        et_camas.setForeground(new java.awt.Color(0, 0, 0));
+        et_camas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, 140, 30));
+
+        btnGroupOne.add(limpiando);
+        limpiando.setText("LIMPIEZA");
+        limpiando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiandoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 100, -1));
+
+        btnGroupOne.add(estadoHabitacion);
+        estadoHabitacion.setText("\"   \"");
+        estadoHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadoHabitacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(estadoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 100, -1));
+
+        jButton1.setText("ACTUALIZAR");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, -1, -1));
+
+        jButton2.setText("SALIR");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 490, 100, -1));
+
+        BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
@@ -85,24 +234,22 @@ public class Mantenimiento extends javax.swing.JFrame {
     String[] flatTen
             = {"SELECIONA UNA HABITACION", "1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008",
                 "1009", "1010"};
-              
 
 
     private void FLAT_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FLAT_NUMBERItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
 
-            System.out.println(FLAT_NUMBER.getSelectedIndex());
-
+            //System.out.println(FLAT_NUMBER.getSelectedIndex());
             int index = FLAT_NUMBER.getSelectedIndex();
             boolean tf = true;
             switch (index) {
                 case 0:
-                    
+                    tf = false;
                     break;
                 case 1:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatOne));
                     tf = true;
-                    break;                    
+                    break;
                 case 2:
                     ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTwo));
                     tf = true;
@@ -142,9 +289,31 @@ public class Mantenimiento extends javax.swing.JFrame {
                 default:
                     throw new AssertionError();
             }
-                ROOM_NUMBER.setEnabled(tf);
+            ROOM_NUMBER.setEnabled(tf);
         }
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
+
+    private void ROOM_NUMBERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROOM_NUMBERActionPerformed
+        habitacion(new Integer(ROOM_NUMBER.getSelectedItem().toString()));
+    }//GEN-LAST:event_ROOM_NUMBERActionPerformed
+
+    private void limpiandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiandoActionPerformed
+        isCheckLimpieza();
+    }//GEN-LAST:event_limpiandoActionPerformed
+
+    private void estadoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoHabitacionActionPerformed
+        isCheckLimpieza();
+    }//GEN-LAST:event_estadoHabitacionActionPerformed
+
+    public void isCheckLimpieza() {
+        if (limpiando.isSelected()) {
+            hab.setEstado("limpieza");
+            System.out.println("Limpiando");
+        } else if (estadoHabitacion.isSelected()) {
+            hab.setEstado("disponible");
+            System.out.println("Disponible");
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -173,8 +342,6 @@ public class Mantenimiento extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -188,5 +355,18 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JLabel BACKGROUND;
     private javax.swing.JComboBox<String> FLAT_NUMBER;
     private javax.swing.JComboBox<String> ROOM_NUMBER;
+    private javax.swing.ButtonGroup btnGroupOne;
+    private javax.swing.JRadioButton estadoHabitacion;
+    private javax.swing.JLabel et_camas;
+    private javax.swing.JLabel et_capacidad;
+    private javax.swing.JLabel et_categoria;
+    private javax.swing.JLabel et_habitacion;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JRadioButton limpiando;
     // End of variables declaration//GEN-END:variables
 }
