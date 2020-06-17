@@ -69,7 +69,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     }
 
     public void llenarDatosEt() {
-        et_habitacion.setText("HABITACIÓN: " + hab.getId_habitacio());
+        et_habitacion.setText("HABITACIÓN: " + hab.getId_habitacion());
         et_camas.setText("" + hab.getCamas());
         et_capacidad.setText(hab.getCapacidad());
         et_categoria.setText(hab.getCategoria());        

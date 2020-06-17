@@ -8,14 +8,14 @@ import java.util.Vector;
  */
 public class Habitacion {
 
-    private int id_habitacio;
+    private int id_habitacion;
     private String categoria;
     private String capacidad;
     private int camas;
     private String estado;
 
     public Habitacion(int id_habitacio, String categoria, String capacidad, int camas, String Estado) {
-        this.id_habitacio = id_habitacio;
+        this.id_habitacion = id_habitacio;
         this.categoria = categoria;
         this.capacidad = capacidad;
         this.camas = camas;
@@ -26,12 +26,12 @@ public class Habitacion {
         
     }
 
-    public int getId_habitacio() {
-        return id_habitacio;
+    public int getId_habitacion() {
+        return id_habitacion;
     }
 
-    public void setId_habitacio(int id_habitacio) {
-        this.id_habitacio = id_habitacio;
+    public void setId_habitacion(int id_habitacio) {
+        this.id_habitacion = id_habitacio;
     }
 
     public String getCategoria() {
@@ -127,12 +127,12 @@ public class Habitacion {
     }
     
     public String toQuerySQL(){        
-        return getId_habitacio() + ", "+getCategoria()+", "+getCapacidad()
+        return getId_habitacion() + ", "+getCategoria()+", "+getCapacidad()
                 +", "+getCamas()+", "+getEstado();
     }
         
     public String toString() {
-        return getId_habitacio() + ", "+getCategoria()+", "+getCapacidad()
+        return getId_habitacion() + ", "+getCategoria()+", "+getCapacidad()
                 +", "+getCamas()+", "+getEstado();
     }
 
