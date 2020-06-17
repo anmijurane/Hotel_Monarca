@@ -18,7 +18,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
-    Habitacion hab;
+    Habitacion hab;    
 
     /**
      * Creates new form Limpieza
@@ -204,39 +204,9 @@ public class Mantenimiento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    String[] flatOne
-            = {"SELECIONA UNA HABITACION", "101", "102", "103", "104", "105", "106", "107", "108",
-                "109", "110"};
-    String[] flatTwo
-            = {"SELECIONA UNA HABITACION", "201", "202", "203", "204", "205", "206", "207", "208",
-                "209", "210"};
-    String[] flatTree
-            = {"SELECIONA UNA HABITACION", "301", "302", "303", "304", "305", "306", "307", "308",
-                "309", "310"};
-    String[] flatFour
-            = {"SELECIONA UNA HABITACION", "401", "402", "403", "404", "405", "406", "407", "408",
-                "409", "410"};
-    String[] flatFive
-            = {"SELECIONA UNA HABITACION", "501", "502", "503", "504", "505", "506", "507", "508",
-                "509", "510"};
-    String[] flatSix
-            = {"SELECIONA UNA HABITACION", "601", "602", "603", "604", "605", "606", "607", "608",
-                "609", "610"};
-    String[] flatSeven
-            = {"SELECIONA UNA HABITACION", "701", "702", "703", "704", "705", "706", "707", "708",
-                "709", "710"};
-    String[] flatEight
-            = {"SELECIONA UNA HABITACION", "801", "802", "803", "804", "805", "806", "807", "808",
-                "809", "810"};
-    String[] flatNine
-            = {"SELECIONA UNA HABITACION", "901", "902", "903", "904", "905", "906", "907", "908",
-                "909", "910"};
-    String[] flatTen
-            = {"SELECIONA UNA HABITACION", "1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008",
-                "1009", "1010"};
-
 
     private void FLAT_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FLAT_NUMBERItemStateChanged
+        Habitacion Flat = new Habitacion();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
 
             //System.out.println(FLAT_NUMBER.getSelectedIndex());
@@ -247,43 +217,43 @@ public class Mantenimiento extends javax.swing.JFrame {
                     tf = false;
                     break;
                 case 1:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatOne));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatOne()));
                     tf = true;
                     break;
                 case 2:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTwo));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatTwo()));
                     tf = true;
                     break;
                 case 3:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTree));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatTree()));
                     tf = true;
                     break;
                 case 4:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatFour));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatFour()));
                     tf = true;
                     break;
                 case 5:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatFive));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatFive()));
                     tf = true;
                     break;
                 case 6:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatSix));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatSix()));
                     tf = true;
                     break;
                 case 7:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatSeven));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatSeven()));
                     tf = true;
                     break;
                 case 8:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatEight));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatEight()));
                     tf = true;
                     break;
                 case 9:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatNine));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatNine()));
                     tf = true;
                     break;
                 case 10:
-                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(flatTen));
+                    ROOM_NUMBER.setModel(new DefaultComboBoxModel<>(Flat.getFlatTen()));
                     tf = true;
                     break;
                 default:
