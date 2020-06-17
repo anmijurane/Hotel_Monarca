@@ -7,7 +7,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -281,26 +284,39 @@ public class Limpieza extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
-        String Consult = "UPDATE habitacion SET id_estado = "+getState(hab.getEstado())
-                +" WHERE id_habitacion = "+hab.getId_habitacion();
-        System.out.println(Consult);
+//        String Consult = "UPDATE habitacion SET id_estado = "+getState(hab.getEstado())
+//                +" WHERE id_habitacion = "+hab.getId_habitacion();
+//        System.out.println(Consult);
 
-//        Connection Con = null;
-//        PreparedStatement PrepSta = null;
-//        ResultSet rs = null;
-//
-//        try {
-//            Con.setAutoCommit(false);
-//            Con = getConeccion();
-//            PrepSta = Con.prepareStatement("UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?");
-//            PrepSta.setInt(1, getState(hab.getEstado()));
-//            PrepSta.setInt(2, hab.getId_habitacion());
-//            
-//            System.out.println(PrepSta);
-//
-//        } catch (SQLException e) {
-//        }
-//        System.out.println(getState(hab.getEstado()));
+        Connection Con = getConeccion();
+        PreparedStatement PrepSta = null;
+        ResultSet rs = null;
+            
+        try {
+            Con.setAutoCommit(false); //Deshabilitamos el ingreso directo a la bd
+            PrepSta = Con.prepareStatement("UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?");
+            PrepSta.setInt(1, getState(hab.getEstado()));
+            PrepSta.setInt(2, hab.getId_habitacion());            
+            PrepSta.executeUpdate();
+                                    
+            int value = JOptionPane.showConfirmDialog(null, "¿DESEAS CAMBIAR EL ESTADO DE LA HABITACIÓN?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            if (value == 0) {
+                Con.commit();
+                JOptionPane.showMessageDialog(this, "SE CAMBIO EL ESTADO A: " +hab.getEstado());
+            }else if (value == 1) {
+                Con.rollback();
+                JOptionPane.showMessageDialog(this, "NO DE CAMBIO EL ESTADO");
+            }
+        } catch (SQLException e) {
+            System.err.println("Ocurrio algún ERROR: " +e);
+            try {
+                Con.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Fue imposible deshacer la acción.");
+                Logger.getLogger(Limpieza.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        System.out.println(getState(hab.getEstado()));
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
