@@ -25,16 +25,20 @@ public class Limpieza extends javax.swing.JFrame {
      */
     public Limpieza() {
         initComponents();
+        limpiando.setVisible(false);
+        estadoHabitacion.setVisible(false);
         setLocationRelativeTo(null);
     }
 
     public void habitacion(int n_habitacion) {
+
+        /* //ONLY FOR TEST
+        hab = new Habitacion(n_habitacion, "Individual", "1", 1, "disponible");            
+        llenarDatosEt();*/ 
+        
         Connection Con;
         PreparedStatement ps;
         ResultSet rs;
-
-        /*hab = new Habitacion(n_habitacion, "Individual", "1", 1,"mantenimiento");
-        llenarDatosEt();*/
         try {
 
             Con = getConeccion();
@@ -60,10 +64,8 @@ public class Limpieza extends javax.swing.JFrame {
                         rs.getString("categoria.capacidad"),
                         rs.getInt("categoria.camas"),
                         rs.getString("estado.nombre"));
-
                 llenarDatosEt();
                 Con.close();
-
             }
 
         } catch (SQLException e) {
@@ -80,8 +82,10 @@ public class Limpieza extends javax.swing.JFrame {
         String lmpz = hab.getEstado();
         if (lmpz.equals("LIMPIEZA")) {
             limpiando.setSelected(true);
+            limpiando.setVisible(true);
             estadoHabitacion.setVisible(false);
         } else {
+            limpiando.setVisible(true);
             estadoHabitacion.setVisible(true);
             estadoHabitacion.setText(hab.getEstado());
             estadoHabitacion.setSelected(true);
@@ -143,7 +147,7 @@ public class Limpieza extends javax.swing.JFrame {
         et_categoria.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         et_categoria.setForeground(new java.awt.Color(0, 0, 0));
         et_categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 130, 30));
+        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 160, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -183,7 +187,7 @@ public class Limpieza extends javax.swing.JFrame {
                 limpiandoActionPerformed(evt);
             }
         });
-        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 160, -1));
+        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 160, -1));
 
         btnGroupOne.add(estadoHabitacion);
         estadoHabitacion.setText("\"   \"");
@@ -192,7 +196,7 @@ public class Limpieza extends javax.swing.JFrame {
                 estadoHabitacionActionPerformed(evt);
             }
         });
-        getContentPane().add(estadoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 160, -1));
+        getContentPane().add(estadoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 160, -1));
 
         btnUpdate.setText("ACTUALIZAR");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +207,11 @@ public class Limpieza extends javax.swing.JFrame {
         getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, -1, -1));
 
         btnExit.setText("SALIR");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 490, 100, -1));
 
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
@@ -283,32 +292,33 @@ public class Limpieza extends javax.swing.JFrame {
     }//GEN-LAST:event_estadoHabitacionActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-
-//        String Consult = "UPDATE habitacion SET id_estado = "+getState(hab.getEstado())
-//                +" WHERE id_habitacion = "+hab.getId_habitacion();
-//        System.out.println(Consult);
-
+        
+        /*  //ONLY FOR TEST
+        String Consult = "UPDATE habitacion SET id_estado = "+getState(hab.getEstado())
+                +" WHERE id_habitacion = "+hab.getId_habitacion();
+        System.out.println(Consult);*/
+        
         Connection Con = getConeccion();
         PreparedStatement PrepSta = null;
         ResultSet rs = null;
-            
+
         try {
             Con.setAutoCommit(false); //Deshabilitamos el ingreso directo a la bd
             PrepSta = Con.prepareStatement("UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?");
             PrepSta.setInt(1, getState(hab.getEstado()));
-            PrepSta.setInt(2, hab.getId_habitacion());            
+            PrepSta.setInt(2, hab.getId_habitacion());
             PrepSta.executeUpdate();
-                                    
+
             int value = JOptionPane.showConfirmDialog(null, "¿DESEAS CAMBIAR EL ESTADO DE LA HABITACIÓN?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             if (value == 0) {
                 Con.commit();
-                JOptionPane.showMessageDialog(this, "SE CAMBIO EL ESTADO A: " +hab.getEstado());
-            }else if (value == 1) {
+                JOptionPane.showMessageDialog(this, "SE CAMBIO EL ESTADO A: " + hab.getEstado());
+            } else if (value == 1) {
                 Con.rollback();
                 JOptionPane.showMessageDialog(this, "NO DE CAMBIO EL ESTADO");
             }
         } catch (SQLException e) {
-            System.err.println("Ocurrio algún ERROR: " +e);
+            System.err.println("Ocurrio algún ERROR: " + e);
             try {
                 Con.rollback();
             } catch (SQLException ex) {
@@ -316,21 +326,35 @@ public class Limpieza extends javax.swing.JFrame {
                 Logger.getLogger(Limpieza.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         System.out.println(getState(hab.getEstado()));
-
+        if (estadoHabitacion.isSelected()) {
+            ROOM_NUMBER.setEnabled(true);
+            FLAT_NUMBER.setEnabled(true);
+        }        
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        if (!(limpiando.isSelected())) {
+            JOptionPane.showMessageDialog(this, "SALIENDO");
+        } else {
+            JOptionPane.showMessageDialog(this, "ANTES DE SALIR, CAMBIA EL ESTADO DE LA HABITACION");
+        }
+    }//GEN-LAST:event_btnExitActionPerformed
 
     public void isCheckLimpieza() {
         if (limpiando.isSelected()) {
             hab.setEstado(limpiando.getText());
-            System.out.println(hab.getEstado());
+            ROOM_NUMBER.setEnabled(false);
+            FLAT_NUMBER.setEnabled(false);
+            System.out.println(hab.getEstado());            
         } else if (estadoHabitacion.isSelected()) {
             hab.setEstado(estadoHabitacion.getText());
             System.out.println(hab.getEstado());
         }
     }
-    
-    public int getState(String strState){
+
+    public int getState(String strState) {
         int state;
         switch (strState) {
             case "DISPONIBLE":
@@ -349,8 +373,8 @@ public class Limpieza extends javax.swing.JFrame {
                 throw new AssertionError();
         }
         return state;
-    }    
-    
+    }
+
     /**
      * @param args the command line arguments
      */
