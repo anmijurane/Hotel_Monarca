@@ -36,12 +36,11 @@ public class Limpieza extends javax.swing.JFrame {
         hab = new Habitacion(n_habitacion, "Individual", "1", 1, "disponible");            
         llenarDatosEt();*/ 
         
-        Connection Con;
+        Connection Con = getConeccion();       
         PreparedStatement ps;
         ResultSet rs;
         try {
-
-            Con = getConeccion();
+            
             ps = Con.prepareStatement("SELECT habitacion.id_habitacion, "
                     + "categoria.categoria, "
                     + "categoria.capacidad, "
