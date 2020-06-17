@@ -2,7 +2,6 @@ package HotelService;
 
 import Entidades.Habitacion;
 import static SQLConex.Conection.getConeccion;
-import java.awt.Frame;
 import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,9 +30,9 @@ public class Limpieza extends javax.swing.JFrame {
         PreparedStatement ps;
         ResultSet rs;
 
-        hab = new Habitacion(n_habitacion, "Individual", "1", 1,"mantenimiento");
-        llenarDatosEt();
-        /*try {
+        /*hab = new Habitacion(n_habitacion, "Individual", "1", 1,"mantenimiento");
+        llenarDatosEt();*/
+        try {
 
             Con = getConeccion();
             ps = Con.prepareStatement("SELECT habitacion.id_habitacion, "
@@ -66,7 +65,7 @@ public class Limpieza extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             System.out.println(e.toString());
-        }*/
+        }
     }
 
     public void llenarDatosEt() {
@@ -281,30 +280,37 @@ public class Limpieza extends javax.swing.JFrame {
     }//GEN-LAST:event_estadoHabitacionActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        Connection Con = null;
-        PreparedStatement PrepSta = null;
-        ResultSet rs = null;
 
-        try {
-            Con.setAutoCommit(false);
-            Con = getConeccion();
-            PrepSta = Con.prepareStatement("UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?");
-            PrepSta.setInt(1, getState(hab.getEstado()));
-            PrepSta.setInt(2, hab.getId_habitacion());
+        String Consult = "UPDATE habitacion SET id_estado = "+getState(hab.getEstado())
+                +" WHERE id_habitacion = "+hab.getId_habitacion();
+        System.out.println(Consult);
 
-        } catch (SQLException e) {
-        }
+//        Connection Con = null;
+//        PreparedStatement PrepSta = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            Con.setAutoCommit(false);
+//            Con = getConeccion();
+//            PrepSta = Con.prepareStatement("UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?");
+//            PrepSta.setInt(1, getState(hab.getEstado()));
+//            PrepSta.setInt(2, hab.getId_habitacion());
+//            
+//            System.out.println(PrepSta);
+//
+//        } catch (SQLException e) {
+//        }
 //        System.out.println(getState(hab.getEstado()));
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     public void isCheckLimpieza() {
         if (limpiando.isSelected()) {
-            hab.setEstado("limpieza");
-            System.out.println("Limpiando");
+            hab.setEstado(limpiando.getText());
+            System.out.println(hab.getEstado());
         } else if (estadoHabitacion.isSelected()) {
-            hab.setEstado("disponible");
-            System.out.println("Disponible");
+            hab.setEstado(estadoHabitacion.getText());
+            System.out.println(hab.getEstado());
         }
     }
     
