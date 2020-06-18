@@ -294,7 +294,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.err.print("ERROR: " + ex.getMessage());
             if (Con != null) {
-                System.out.println("implement Rollback");
+                System.out.println("Rollback implement");
                 try {
                     Con.rollback();
                 } catch (SQLException e) {
