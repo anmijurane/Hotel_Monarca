@@ -30,7 +30,7 @@ public class Limpieza extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public void habitacion(int n_habitacion) {
+    public void habitacion(int n_habitacion) { 
 
         /* //ONLY FOR TEST
         hab = new Habitacion(n_habitacion, "Individual", "1", 1, "disponible");            
