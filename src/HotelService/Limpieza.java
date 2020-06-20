@@ -28,6 +28,7 @@ public class Limpieza extends javax.swing.JFrame {
         limpiando.setVisible(false);
         estadoHabitacion.setVisible(false);
         setTitle("LIMPIEZA");
+        
         setLocationRelativeTo(null);
     }
 

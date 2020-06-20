@@ -16,6 +16,7 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("INICIO DE SESION");
+        
         // coneccion();                
     }
 

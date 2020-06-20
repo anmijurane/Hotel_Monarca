@@ -26,6 +26,7 @@ public class FormAddClient extends javax.swing.JFrame {
     public FormAddClient() {
         initComponents();
         setTitle("REGISTRO DEL CLIENTE");
+        
         setLocationRelativeTo(null);
     }
     

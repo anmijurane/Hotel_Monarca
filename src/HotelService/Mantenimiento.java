@@ -28,6 +28,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         limpiando.setVisible(false);
         estadoHabitacion.setVisible(false);
         setTitle("MANTENIMIENTO");
+        
         setLocationRelativeTo(null);
     }
 

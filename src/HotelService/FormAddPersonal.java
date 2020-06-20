@@ -25,6 +25,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
     public FormAddPersonal() {
         initComponents();
         setTitle("REGISTRO DEL PERSONAL");
+        
         setLocationRelativeTo(null);
         AddCbx();
     }
