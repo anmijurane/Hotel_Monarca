@@ -27,6 +27,8 @@ public class Limpieza extends javax.swing.JFrame {
         initComponents();
         limpiando.setVisible(false);
         estadoHabitacion.setVisible(false);
+        setTitle("LIMPIEZA");
+        
         setLocationRelativeTo(null);
     }
 
@@ -102,8 +104,8 @@ public class Limpieza extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGroupOne = new javax.swing.ButtonGroup();
-        FLAT_NUMBER = new javax.swing.JComboBox<>();
-        ROOM_NUMBER = new javax.swing.JComboBox<>();
+        FLAT_NUMBER = new javax.swing.JComboBox<String>();
+        ROOM_NUMBER = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         et_categoria = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -121,100 +123,123 @@ public class Limpieza extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
+        FLAT_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
         FLAT_NUMBER.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 FLAT_NUMBERItemStateChanged(evt);
             }
         });
-        getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 200, 40));
+        getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 210, 40));
 
-        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION" }));
+        ROOM_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION" }));
         ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
         ROOM_NUMBER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ROOM_NUMBERActionPerformed(evt);
             }
         });
-        getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 200, 40));
+        getContentPane().add(ROOM_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 220, 40));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CATEGORÍA");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 130, -1));
+        jLabel1.setToolTipText("");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 150, -1));
 
-        et_categoria.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        et_categoria.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         et_categoria.setForeground(new java.awt.Color(0, 0, 0));
         et_categoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 160, 30));
+        et_categoria.setToolTipText("");
+        getContentPane().add(et_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 150, 30));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ESTADO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 80, -1));
+        jLabel2.setToolTipText("");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 200, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara Light", 1, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("CAPACIDAD");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 130, -1));
+        jLabel3.setToolTipText("");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 150, -1));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara Light", 1, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("CAMAS");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 290, 90, -1));
+        jLabel5.setToolTipText("");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 100, -1));
 
-        et_capacidad.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        et_capacidad.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         et_capacidad.setForeground(new java.awt.Color(0, 0, 0));
         et_capacidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(et_capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 120, 30));
+        et_capacidad.setToolTipText("");
+        getContentPane().add(et_capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 150, 30));
 
-        et_habitacion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        et_habitacion.setFont(new java.awt.Font("Candara Light", 1, 22)); // NOI18N
         et_habitacion.setForeground(new java.awt.Color(0, 0, 0));
         et_habitacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         et_habitacion.setText("HABITACIÓN: ");
-        getContentPane().add(et_habitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 360, 30));
+        et_habitacion.setToolTipText("");
+        getContentPane().add(et_habitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 200, 20));
 
-        et_camas.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        et_camas.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         et_camas.setForeground(new java.awt.Color(0, 0, 0));
         et_camas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, 140, 30));
+        et_camas.setToolTipText("");
+        getContentPane().add(et_camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 330, 90, 30));
 
         btnGroupOne.add(limpiando);
+        limpiando.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         limpiando.setText("LIMPIEZA");
+        limpiando.setToolTipText("");
         limpiando.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiandoActionPerformed(evt);
             }
         });
-        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 160, -1));
+        getContentPane().add(limpiando, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 160, -1));
 
         btnGroupOne.add(estadoHabitacion);
+        estadoHabitacion.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         estadoHabitacion.setText("\"   \"");
         estadoHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 estadoHabitacionActionPerformed(evt);
             }
         });
-        getContentPane().add(estadoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 160, -1));
+        getContentPane().add(estadoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 160, -1));
 
+        btnUpdate.setBackground(new java.awt.Color(224, 131, 42));
+        btnUpdate.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         btnUpdate.setText("ACTUALIZAR");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, -1, -1));
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
 
+        btnExit.setBackground(new java.awt.Color(224, 131, 42));
+        btnExit.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         btnExit.setText("SALIR");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 490, 100, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, -1));
 
+        BACKGROUND.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        BACKGROUND.setToolTipText("");
         getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
