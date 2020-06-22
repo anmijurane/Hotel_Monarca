@@ -16,6 +16,7 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("INICIO DE SESION");
+        
         // coneccion();                
     }
 
@@ -33,17 +34,22 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jUser.setBackground(new java.awt.Color(245, 224, 192));
-        jUser.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jUser.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         jUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 380, 50));
+        getContentPane().add(jUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 360, 40));
 
         jPassword.setBackground(new java.awt.Color(245, 224, 192));
-        jPassword.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jPassword.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         jPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 380, 50));
+        jPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 360, 40));
 
         btnSignIn.setBackground(new java.awt.Color(222, 74, 16));
-        btnSignIn.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btnSignIn.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         btnSignIn.setForeground(new java.awt.Color(255, 255, 255));
         btnSignIn.setText("INGRESAR");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -51,13 +57,13 @@ public class login extends javax.swing.JFrame {
                 btnSignInActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 150, 60));
+        getContentPane().add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 510, 150, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/key.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 80, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 3, 800, 650));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -65,6 +71,10 @@ public class login extends javax.swing.JFrame {
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         iniciosesion();
     }//GEN-LAST:event_btnSignInActionPerformed
+
+    private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordActionPerformed
 
     public void iniciosesion() {
 

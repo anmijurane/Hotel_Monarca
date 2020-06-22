@@ -24,6 +24,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
      */
     public FormAddPersonal() {
         initComponents();
+        setTitle("REGISTRO DEL PERSONAL");
         setLocationRelativeTo(null);
         AddCbx();
     }
@@ -106,54 +107,59 @@ public class FormAddPersonal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtName.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtName.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 302, -1));
 
-        txtApPat.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtApPat.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtApPat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtApPat, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 220, -1));
 
-        txtApMat.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtApMat.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtApMat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtApMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 220, -1));
 
-        txtCalle.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtCalle.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtCalle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 280, -1));
 
-        txtNumExt.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtNumExt.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtNumExt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtNumExt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 85, -1));
 
-        txtNumInt.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtNumInt.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtNumInt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtNumInt, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 85, -1));
 
-        txtColonia.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtColonia.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
         txtColonia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtColonia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 144, -1));
 
-        txtDelg.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtDelg.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtDelg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtDelg, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 144, -1));
 
-        txtCP.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtCP.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtCP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 144, -1));
 
-        txtTelLocal.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtTelLocal.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelLocal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTelLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelLocalActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 144, -1));
 
-        txtTelMovil.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtTelMovil.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelMovil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 144, -1));
 
-        cbxDepto.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        cbxDepto.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         getContentPane().add(cbxDepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 170, 30));
 
-        cbxArea.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        cbxArea.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         cbxArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxAreaActionPerformed(evt);
@@ -161,11 +167,11 @@ public class FormAddPersonal extends javax.swing.JFrame {
         });
         getContentPane().add(cbxArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 170, 30));
 
-        cbxCargo.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        cbxCargo.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         getContentPane().add(cbxCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 170, 30));
 
         btn_insert.setBackground(new java.awt.Color(222, 74, 16));
-        btn_insert.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btn_insert.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         btn_insert.setText("REGISTRAR");
         btn_insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,57 +180,57 @@ public class FormAddPersonal extends javax.swing.JFrame {
         });
         getContentPane().add(btn_insert, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("NOMBRE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 300, -1));
 
-        jLabel2.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("APELLIDO PATERNO");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 210, -1));
 
-        jLabel3.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("APELLIDO MATERNO");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 220, -1));
 
-        jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("CALLE");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("NUM EXT");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("NUM INT");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, 30));
 
-        jLabel7.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("COLONIA");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, 30));
 
-        jLabel8.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel8.setText("DELEGACION O MUNICIPIO");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, 30));
 
-        jLabel9.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel9.setText("C.P.");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 30, 30));
 
-        jLabel10.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("TEL LOCAL");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 140, -1));
 
-        jLabel11.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("TEL MOVIL");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 140, -1));
@@ -252,6 +258,10 @@ public class FormAddPersonal extends javax.swing.JFrame {
     private void cbxAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAreaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxAreaActionPerformed
+
+    private void txtTelLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelLocalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelLocalActionPerformed
 
     public void execurequery(Personal prsn) {
         System.out.println(prsn.toString());
