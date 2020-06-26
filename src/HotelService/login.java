@@ -36,7 +36,7 @@ public class login extends javax.swing.JFrame {
         jUser.setBackground(new java.awt.Color(245, 224, 192));
         jUser.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         jUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 360, 40));
+        getContentPane().add(jUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 360, 40));
 
         jPassword.setBackground(new java.awt.Color(245, 224, 192));
         jPassword.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -46,7 +46,7 @@ public class login extends javax.swing.JFrame {
                 jPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 360, 40));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 360, 40));
 
         btnSignIn.setBackground(new java.awt.Color(222, 74, 16));
         btnSignIn.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -63,7 +63,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 800, 650));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
