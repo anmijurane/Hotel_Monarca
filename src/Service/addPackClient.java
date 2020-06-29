@@ -1,7 +1,8 @@
 package Service;
 
-import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 public class addPackClient extends javax.swing.JFrame {
@@ -26,20 +27,13 @@ public class addPackClient extends javax.swing.JFrame {
         Syear = check_out.getCalendar().get(Calendar.YEAR);
         System.out.println("SALIDA:  " + Sday + "/" + Smonth + "/" + Syear);
 
-        if (Emonth == Smonth && Eyear == Syear) {
-            if (Eday <= Sday) {
-                noches = Sday - Eday;
-                jTextField1.setText(Integer.toString(noches));
-            } else {
-                JOptionPane.showMessageDialog(null, "FECHAS INVALIDAS", "", 2);
-                jTextField1.setText(null);
-            }
-        } else {
-            //mese y año distintos 
-        }
+        Date checkIn = new Date(Eyear, Emonth, Eday);
+        Date checkOut = new Date(Syear, Smonth, Sday);        
+        Days.setText(""+(int)(TimeUnit.DAYS.convert((checkOut.getTime()-checkIn.getTime()), TimeUnit.MILLISECONDS)));
 
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +47,7 @@ public class addPackClient extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Days = new javax.swing.JTextField();
         check_in = new com.toedter.calendar.JDateChooser();
         check_out = new com.toedter.calendar.JDateChooser();
 
@@ -72,7 +66,7 @@ public class addPackClient extends javax.swing.JFrame {
 
         jLabel3.setText("NOCHES");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Days.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,14 +76,13 @@ public class addPackClient extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(check_out, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(check_in, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(check_in, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(Days))
                 .addGap(27, 27, 27)
                 .addComponent(jButton1)
                 .addContainerGap(347, Short.MAX_VALUE))
@@ -107,7 +100,7 @@ public class addPackClient extends javax.swing.JFrame {
                         .addComponent(check_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Days, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1)))
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
@@ -121,6 +114,7 @@ public class addPackClient extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         noches();
+        //getDateCalendar();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
@@ -159,12 +153,12 @@ public class addPackClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Days;
     private com.toedter.calendar.JDateChooser check_in;
     private com.toedter.calendar.JDateChooser check_out;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
