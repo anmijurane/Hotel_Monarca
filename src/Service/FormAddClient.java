@@ -247,7 +247,7 @@ public class FormAddClient extends javax.swing.JFrame {
                     + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,"
                     + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")");
             psmtpersonal.executeUpdate();
-
+            
             psmtcredencial = Con.prepareStatement("INSERT INTO credencial("
                     + "id_personal,nombre,id_area,id_dpto,id_cargo,password) VALUES ("
                     + prsn.getCredencial() + ")");

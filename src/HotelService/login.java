@@ -90,12 +90,13 @@ public class login extends javax.swing.JFrame {
             res = ps.executeQuery();
 
             if (res.next()) {
-                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + res.getString("nombre"));
+                String name = res.getString("nombre").toUpperCase();
                 int idCargo = res.getInt("id_dpto");
-                
+                int idPersonal = res.getInt("id_personal");
+                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name);
                 switch (idCargo) {
                     case 5: //
-                        new gerencia().setVisible(true);
+                        new gerencia(name, idCargo).setVisible(true);
                         this.dispose();
                         break;
                     case 6:

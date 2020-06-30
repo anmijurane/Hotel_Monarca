@@ -3,12 +3,22 @@ package HotelService;
  * 
  * @author LIA */
 public class gerencia extends javax.swing.JFrame {
-
+    private String name;
+    private int idPersonal;
+    
     public gerencia() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
+    }
+    
+    public gerencia(String name, int idPersonal){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.name = name;
+        this.idPersonal = idPersonal;
     }
 
     @SuppressWarnings("unchecked")
