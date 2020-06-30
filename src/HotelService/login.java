@@ -91,6 +91,24 @@ public class login extends javax.swing.JFrame {
 
             if (res.next()) {
                 JOptionPane.showMessageDialog(this, "BIENVENIDO: " + res.getString("nombre"));
+                int idCargo = res.getInt("id_dpto");
+                
+                switch (idCargo) {
+                    case 5: //
+                        new gerencia().setVisible(true);
+                        this.dispose();
+                        break;
+                    case 6:
+                        new Limpieza().setVisible(true);
+                        break;
+                    case 7:
+                        
+                        break;
+                            
+                    default:
+                        throw new AssertionError();
+                }
+                
             } else {
                 JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
                 jUser.setText("");
@@ -109,3 +127,20 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
+
+
+/*Consulta del departamento en la BD
+|    1 | DIRECCIÓN     |
+|    2 | VENTAS        |
+|    3 | CALL CENTER   |
+|    4 | ATC. TEL      |
+|    5 | RECEPCIÓN     |
+|    6 | LIMPIEZA      |
+|    7 | CONSERJERIA   |
+|    8 | HOSPITALARIO  |
+|    9 | RESERVACIONES |
+|   10 | CONTABILIDAD  |
+|   11 | COSTOS        |
+|   12 | AUDITORIA     |
+|   13 | DES HUMANO    |
+*/
