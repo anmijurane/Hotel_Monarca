@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
  */
 public class Mantenimiento extends javax.swing.JFrame {
-
+    private String name;
+    private int idPersonal;
     Habitacion hab;
 
     /**
@@ -27,9 +28,18 @@ public class Mantenimiento extends javax.swing.JFrame {
         initComponents();
         limpiando.setVisible(false);
         estadoHabitacion.setVisible(false);
-        setTitle("MANTENIMIENTO");
-        
+        setTitle("MANTENIMIENTO");        
         setLocationRelativeTo(null);
+    }
+    
+    public Mantenimiento(String name, int idPersonal){
+        initComponents();
+        limpiando.setVisible(false);
+        estadoHabitacion.setVisible(false);
+        setTitle("MANTENIMIENTO");        
+        setLocationRelativeTo(null);
+        this.name = name;
+        this.idPersonal = idPersonal;
     }
 
     public void habitacion(int n_habitacion) {
@@ -104,8 +114,8 @@ public class Mantenimiento extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGroupOne = new javax.swing.ButtonGroup();
-        FLAT_NUMBER = new javax.swing.JComboBox<String>();
-        ROOM_NUMBER = new javax.swing.JComboBox<String>();
+        FLAT_NUMBER = new javax.swing.JComboBox<>();
+        ROOM_NUMBER = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         et_categoria = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -118,13 +128,14 @@ public class Mantenimiento extends javax.swing.JFrame {
         estadoHabitacion = new javax.swing.JRadioButton();
         btnUpdate = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FLAT_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
-        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
+        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
         FLAT_NUMBER.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 FLAT_NUMBERItemStateChanged(evt);
@@ -133,7 +144,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 210, 40));
 
         ROOM_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
-        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION" }));
+        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION" }));
         ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
         ROOM_NUMBER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +242,11 @@ public class Mantenimiento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, -1));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("HOLA 'NAME' ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
@@ -443,6 +459,7 @@ public class Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JRadioButton limpiando;
     // End of variables declaration//GEN-END:variables

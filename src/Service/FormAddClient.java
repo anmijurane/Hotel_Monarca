@@ -204,15 +204,14 @@ public class FormAddClient extends javax.swing.JFrame {
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
 
-    /*    this.person = new Personal(
+        this.person = new Personal(
                 txtName.getText().toUpperCase(), txtApPat.getText().toUpperCase(),
                 txtApMat.getText().toUpperCase(), txtCalle.getText().toUpperCase(),
                 txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-               txtTelMovil.getText(), cbxArea.getSelectedIndex(),
-                cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());
-        execurequery(person);*/
+               txtTelMovil.getText());
+        execurequery(person);
                 
     }//GEN-LAST:event_btn_insertActionPerformed
 

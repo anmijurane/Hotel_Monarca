@@ -95,15 +95,17 @@ public class login extends javax.swing.JFrame {
                 int idPersonal = res.getInt("id_personal");
                 JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name);
                 switch (idCargo) {
-                    case 5: //
-                        new gerencia(name, idCargo).setVisible(true);
+                    case 5: //Recepcion Menu
+                        new gerencia(name, idPersonal).setVisible(true);
                         this.dispose();
                         break;
-                    case 6:
-                        new Limpieza().setVisible(true);
+                    case 6: //Limpieza Interfaz
+                        new Limpieza(name, idPersonal).setVisible(true);
+                        this.dispose();
                         break;
-                    case 7:
-                        
+                    case 7: //Mantenimiento Interfaz
+                        new Mantenimiento(name, idPersonal).setVisible(true);
+                        this.dispose();
                         break;
                             
                     default:
