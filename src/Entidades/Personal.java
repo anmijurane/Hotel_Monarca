@@ -4,6 +4,7 @@ import static SQLConex.Conection.getConeccion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -67,7 +68,7 @@ public class Personal extends Persona {
                 id = res.getInt("max(id_personal)");
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
 

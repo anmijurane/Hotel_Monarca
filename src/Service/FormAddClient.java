@@ -1,5 +1,6 @@
 package Service;
 
+import Entidades.Cliente;
 import HotelService.*;
 import Entidades.Personal;
 import static SQLConex.Conection.getConeccion;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class FormAddClient extends javax.swing.JFrame {
 
-    Personal person;
+    Cliente client;
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
@@ -62,6 +63,8 @@ public class FormAddClient extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,11 +128,11 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtTelLocal.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelLocal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 180, -1));
+        getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 180, -1));
 
         txtTelMovil.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelMovil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 180, -1));
+        getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 180, -1));
 
         btn_insert.setBackground(new java.awt.Color(222, 74, 16));
         btn_insert.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -189,12 +192,21 @@ public class FormAddClient extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("TEL LOCAL");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 180, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 180, -1));
 
         jLabel11.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("TEL MOVIL");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 180, -1));
+        jLabel11.setText("email");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 180, -1));
+
+        jLabel12.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("TEL MOVIL");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 180, -1));
+
+        txtEmail.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 180, -1));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
@@ -204,14 +216,14 @@ public class FormAddClient extends javax.swing.JFrame {
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
 
-        this.person = new Personal(
+        this.client = new Cliente(
                 txtName.getText().toUpperCase(), txtApPat.getText().toUpperCase(),
                 txtApMat.getText().toUpperCase(), txtCalle.getText().toUpperCase(),
                 txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-               txtTelMovil.getText());
-        execurequery(person);
+               txtTelMovil.getText(), txtEmail.getText());
+        execurequery(client);
                 
     }//GEN-LAST:event_btn_insertActionPerformed
 
@@ -231,9 +243,16 @@ public class FormAddClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumExtActionPerformed
 
-    public void execurequery(Personal prsn) {
-        System.out.println(prsn.toString());
-        System.out.println(prsn.getCredencial());
+    public void execurequery(Cliente prsn) {
+        //System.out.println(prsn.toString());
+        //System.out.println(prsn);
+        
+        String query = "INSERT INTO cliente("
+                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
+                    + ") VALUES ( " + prsn + ")";
+        
+        System.out.println(query);
 
         Con = getConeccion();
         PreparedStatement psmtpersonal = null;
@@ -241,25 +260,19 @@ public class FormAddClient extends javax.swing.JFrame {
 
         try {
             Con.setAutoCommit(false);
-            psmtpersonal = Con.prepareStatement("INSERT INTO personal("
-                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,"
-                    + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")");
+            psmtpersonal = Con.prepareStatement(query);
             psmtpersonal.executeUpdate();
-            
-            psmtcredencial = Con.prepareStatement("INSERT INTO credencial("
-                    + "id_personal,nombre,id_area,id_dpto,id_cargo,password) VALUES ("
-                    + prsn.getCredencial() + ")");
-            psmtcredencial.executeUpdate();
-
+                       
             //commit mysql
-            int value = JOptionPane.showConfirmDialog(null, "¿CONFIRMAS LOS DATOS?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
+            int value = JOptionPane.showConfirmDialog(null, "¿CONFIRMAS LOS DATOS?"
+                    + "\nID: "+prsn.getid_Cliente()+ "\nNombre: " +prsn.getName(),
+                    "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             System.out.println(value);
             //SI 0; NO 1; CANCEL 2
             switch (value) {
                 case 0:
                     Con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getid_Personal());
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getid_Cliente());
                     break;
                 case 1:
                     Con.rollback();
@@ -328,6 +341,7 @@ public class FormAddClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -342,6 +356,7 @@ public class FormAddClient extends javax.swing.JFrame {
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtColonia;
     private javax.swing.JTextField txtDelg;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumExt;
     private javax.swing.JTextField txtNumInt;
