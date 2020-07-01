@@ -96,7 +96,7 @@ public class login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name);
                 switch (idCargo) {
                     case 5: //Recepcion Menu
-                        new gerencia(name, idPersonal).setVisible(true);
+                        new MenuRecepcionista(name, idPersonal).setVisible(true);
                         this.dispose();
                         break;
                     case 6: //Limpieza Interfaz
