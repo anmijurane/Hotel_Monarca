@@ -86,9 +86,9 @@ public class FormAddPersonal extends javax.swing.JFrame {
         txtCP = new javax.swing.JTextField();
         txtTelLocal = new javax.swing.JTextField();
         txtTelMovil = new javax.swing.JTextField();
-        cbxDepto = new javax.swing.JComboBox<String>();
-        cbxArea = new javax.swing.JComboBox<String>();
-        cbxCargo = new javax.swing.JComboBox<String>();
+        cbxDepto = new javax.swing.JComboBox<>();
+        cbxArea = new javax.swing.JComboBox<>();
+        cbxCargo = new javax.swing.JComboBox<>();
         btn_insert = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -106,47 +106,47 @@ public class FormAddPersonal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtName.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtName.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 302, -1));
 
-        txtApPat.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtApPat.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtApPat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtApPat, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 220, -1));
 
-        txtApMat.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtApMat.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtApMat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtApMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 220, -1));
 
-        txtCalle.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtCalle.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtCalle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 280, -1));
 
-        txtNumExt.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtNumExt.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtNumExt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtNumExt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 85, -1));
 
-        txtNumInt.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtNumInt.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtNumInt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtNumInt, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 85, -1));
 
-        txtColonia.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtColonia.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtColonia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtColonia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 144, -1));
 
-        txtDelg.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtDelg.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtDelg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtDelg, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 144, -1));
 
-        txtCP.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtCP.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtCP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 144, -1));
 
-        txtTelLocal.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtTelLocal.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtTelLocal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 144, -1));
 
-        txtTelMovil.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        txtTelMovil.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         txtTelMovil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 144, -1));
 
