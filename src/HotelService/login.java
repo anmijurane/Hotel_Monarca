@@ -90,7 +90,28 @@ public class login extends javax.swing.JFrame {
             res = ps.executeQuery();
 
             if (res.next()) {
-                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + res.getString("nombre"));
+                String name = res.getString("nombre").toUpperCase();
+                int idCargo = res.getInt("id_dpto");
+                int idPersonal = res.getInt("id_personal");
+                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name);
+                switch (idCargo) {
+                    case 5: //Recepcion Menu
+                        new MenuRecepcionista(name, idPersonal).setVisible(true);
+                        this.dispose();
+                        break;
+                    case 6: //Limpieza Interfaz
+                        new Limpieza(name, idPersonal).setVisible(true);
+                        this.dispose();
+                        break;
+                    case 7: //Mantenimiento Interfaz
+                        new Mantenimiento(name, idPersonal).setVisible(true);
+                        this.dispose();
+                        break;
+                            
+                    default:
+                        throw new AssertionError();
+                }
+                
             } else {
                 JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
                 jUser.setText("");
@@ -109,3 +130,20 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
+
+
+/*Consulta del departamento en la BD
+|    1 | DIRECCIÓN     |
+|    2 | VENTAS        |
+|    3 | CALL CENTER   |
+|    4 | ATC. TEL      |
+|    5 | RECEPCIÓN     |
+|    6 | LIMPIEZA      |
+|    7 | CONSERJERIA   |
+|    8 | HOSPITALARIO  |
+|    9 | RESERVACIONES |
+|   10 | CONTABILIDAD  |
+|   11 | COSTOS        |
+|   12 | AUDITORIA     |
+|   13 | DES HUMANO    |
+*/
