@@ -19,10 +19,10 @@ public class Personal extends Persona {
     public Personal(String name,
             String apellidoPat, String apellidoMat, String calle,
             String numExt, String numInt, String colonia, String delegacion,
-            String cp, String telLocal, String telMovil, int idArea, int idDpto, int idCargo) {
+            String cp, String telLocal, String telMovil, String email, int idArea, int idDpto, int idCargo) {
 
         super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia,
-                delegacion, cp, telLocal, telMovil);
+                delegacion, cp, telLocal, telMovil,email);
 
         this.idArea = idArea;
         this.idDpto = idDpto;
@@ -70,8 +70,7 @@ public class Personal extends Persona {
 
         } catch (SQLException e) {
             System.out.println("Error: " + e);
-        }
-        System.out.println("ID: " +id);
+        }        
         return id+1;
     }
     int idPersonal = getid_Personal();    

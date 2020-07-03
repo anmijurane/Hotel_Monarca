@@ -34,6 +34,7 @@ public class Limpieza extends javax.swing.JFrame {
         estadoHabitacion.setVisible(false);
         setTitle("LIMPIEZA");
         setLocationRelativeTo(null);
+        jL_Welcome.setText("HOLA");
     }
 
     public Limpieza(String name, int idPersonal) {
@@ -44,7 +45,7 @@ public class Limpieza extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.name = name;
         this.idPersonal = idPersonal;
-        jL_Welcome.setText("BIENVENIDO: "+name.toUpperCase());
+        jL_Welcome.setText("HOLA, BIENVENIDO: "+name.toUpperCase());
     }
 
     public void habitacion(int n_habitacion) {
@@ -391,9 +392,9 @@ public class Limpieza extends javax.swing.JFrame {
             try {
                 Con.close();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "ERROR: " +ex);
+                System.out.println("ERROR: " +ex);
             }
-            JOptionPane.showMessageDialog(this, "SALIENDO");
+            JOptionPane.showMessageDialog(this, "PRESIONA OK PARA SALIR");
             new login().setVisible(true);
             this.dispose();
         } else {

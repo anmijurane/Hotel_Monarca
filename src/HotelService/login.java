@@ -110,9 +110,9 @@ public class login extends javax.swing.JFrame {
                     case 7: //Mantenimiento Interfaz
                         new Mantenimiento(name, idPersonal).setVisible(true);
                         this.dispose();
-                        break;
-                            
+                        break;                            
                     default:
+                        JOptionPane.showMessageDialog(this, "¡SIN ACCESO!");
                         throw new AssertionError();
                 }
                 

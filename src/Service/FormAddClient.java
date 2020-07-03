@@ -265,7 +265,7 @@ public class FormAddClient extends javax.swing.JFrame {
                        
             //commit mysql
             int value = JOptionPane.showConfirmDialog(null, "¿CONFIRMAS LOS DATOS?"
-                    + "\nID: "+prsn.getid_Cliente()+ "\nNombre: " +prsn.getName(),
+                    + "\nNombre: " +prsn.getName(),
                     "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             System.out.println(value);
             //SI 0; NO 1; CANCEL 2

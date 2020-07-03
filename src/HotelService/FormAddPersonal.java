@@ -103,7 +103,9 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        backgraound = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,11 +153,11 @@ public class FormAddPersonal extends javax.swing.JFrame {
                 txtTelLocalActionPerformed(evt);
             }
         });
-        getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 144, -1));
+        getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 144, -1));
 
         txtTelMovil.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelMovil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 144, -1));
+        getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 144, -1));
 
         cbxDepto.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         getContentPane().add(cbxDepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 170, 30));
@@ -229,19 +231,28 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("TEL LOCAL");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 140, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 140, -1));
 
         jLabel11.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("TEL MOVIL");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 140, -1));
+        jLabel11.setText("CORREO ELECTRONICO");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 140, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel13.setText("AÑADIR PERSONAL DEL HOTEL");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        txtEmail.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 144, -1));
+
+        jLabel14.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("TEL MOVIL");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 140, -1));
+
+        backgraound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
+        getContentPane().add(backgraound, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,7 +265,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
                 txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-                txtTelMovil.getText(), cbxArea.getSelectedIndex(),
+                txtTelMovil.getText(), txtEmail.getText(), cbxArea.getSelectedIndex(),
                 cbxDepto.getSelectedIndex(), cbxCargo.getSelectedIndex());
         execurequery(person);
 
@@ -271,22 +282,26 @@ public class FormAddPersonal extends javax.swing.JFrame {
     public void execurequery(Personal prsn) {
         System.out.println(prsn.toString());
         System.out.println(prsn.getCredencial());
-
+        String queryPersonal = "INSERT INTO personal("
+                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email,"
+                    + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")";
+        
+        String queryCredencial = "INSERT INTO credencial(id_personal,nombre,id_area,id_dpto,id_cargo,password,email) VALUES "
+                + "(" +prsn.getCredencial()+ ", \""+txtEmail.getText()+"\")";
+        
+        System.out.println(queryCredencial);
+        System.out.println(queryPersonal);
         Con = getConeccion();
         PreparedStatement psmtpersonal = null;
         PreparedStatement psmtcredencial = null;
 
         try {
             Con.setAutoCommit(false);
-            psmtpersonal = Con.prepareStatement("INSERT INTO personal("
-                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,"
-                    + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")");
+            psmtpersonal = Con.prepareStatement(queryPersonal);
             psmtpersonal.executeUpdate();
 
-            psmtcredencial = Con.prepareStatement("INSERT INTO credencial("
-                    + "id_personal,nombre,id_area,id_dpto,id_cargo,password) VALUES ("
-                    + prsn.getCredencial() + ")");
+            psmtcredencial = Con.prepareStatement(queryCredencial);
             psmtcredencial.executeUpdate();
 
             //commit mysql
@@ -361,6 +376,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgraound;
     private javax.swing.JButton btn_insert;
     private static javax.swing.JComboBox<String> cbxArea;
     private static javax.swing.JComboBox<String> cbxCargo;
@@ -368,8 +384,8 @@ public class FormAddPersonal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -384,6 +400,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtColonia;
     private javax.swing.JTextField txtDelg;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNumExt;
     private javax.swing.JTextField txtNumInt;
