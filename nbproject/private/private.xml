@@ -1,27 +1,19 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/FormAddClient.java</file>
-            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/addPackClient.java</file>
-            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/MenuRecepcionista.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Personal.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Cliente.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/InfoHabitacion.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/Mantenimiento.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/RecuperarContrase.java</file>
             <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/login.java</file>
-            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Habitacion.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/FormAddClient.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/FormAddPersonal.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/Limpieza.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/MenuRecepcionista.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Persona.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Montzerrat%20Rivera/Documents/NetBeansProjects/Hotel_Monarca/src/HotelService/login.java</file>
-            <file>file:/C:/Users/Montzerrat%20Rivera/Documents/NetBeansProjects/Hotel_Monarca/src/HotelService/MenuRecepcionista.java</file>
-            <file>file:/C:/Users/Montzerrat%20Rivera/Documents/NetBeansProjects/Hotel_Monarca/src/Service/addPackClient.java</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> 6c1cd37a8404924fd9321d275f12764d3b9a1465
