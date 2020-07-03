@@ -312,7 +312,8 @@ public class FormAddPersonal extends javax.swing.JFrame {
                 case 0:
                     Con.commit();
                     JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getidPers()+
-                            "\nContraseña: "+prsn.getPassword());                    
+                            "\nContraseña: "+prsn.getPassword());
+                    CleanTxt();
                     break;
                 case 1:
                     Con.rollback();
@@ -347,6 +348,22 @@ public class FormAddPersonal extends javax.swing.JFrame {
         }
     }   
     
+    public void CleanTxt(){
+        txtName.setText("");
+        txtApPat.setText("");
+        txtApMat.setText("");
+        txtCalle.setText("");
+        txtNumExt.setText("");
+        txtColonia.setText("");
+        txtDelg.setText("");
+        txtCP.setText("");
+        txtTelLocal.setText("");
+        txtTelMovil.setText("");
+        txtEmail.setText("");
+        cbxArea.setSelectedIndex(0);
+        cbxCargo.setSelectedIndex(0);
+        cbxDepto.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */
