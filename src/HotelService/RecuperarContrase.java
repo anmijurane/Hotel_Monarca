@@ -5,17 +5,44 @@
  */
 package HotelService;
 
+import static SQLConex.Conection.getConeccion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Montzerrat Rivera
  */
 public class RecuperarContrase extends javax.swing.JFrame {
 
+    private String idUser;
+
     /**
      * Creates new form RecuperarContrase
      */
     public RecuperarContrase() {
         initComponents();
+    }
+
+    public RecuperarContrase(String idUSer) {
+        initComponents();
+        this.idUser = idUSer;
+        jTidUser.setText(idUSer);
+    }
+
+    public boolean EqualsPass() {
+        String pass1 = String.valueOf(jPassword.getPassword());
+        String pass2 = String.valueOf(jPasswordConfirm.getPassword());
+        if (pass1.equals(pass2)) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "NO COINCIDEN LAS CONTRASEÑAS");
+            return false;
+        }
+
     }
 
     /**
@@ -32,14 +59,15 @@ public class RecuperarContrase extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        jTidUser = new javax.swing.JTextField();
+        jEmail = new javax.swing.JTextField();
+        jPassword = new javax.swing.JPasswordField();
+        jPasswordConfirm = new javax.swing.JPasswordField();
+        btnConfirmUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
@@ -62,46 +90,66 @@ public class RecuperarContrase extends javax.swing.JFrame {
         jLabel6.setText("Confirnar Contraseña:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTidUser.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        jTidUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTidUserActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 290, 30));
+        getContentPane().add(jTidUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 290, 30));
 
-        jTextField2.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 290, 30));
+        jEmail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        getContentPane().add(jEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 290, 30));
 
-        jPasswordField1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 290, 30));
+        jPassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 290, 30));
 
-        jPasswordField2.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 290, 30));
+        jPasswordConfirm.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        getContentPane().add(jPasswordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 290, 30));
 
-        jButton1.setBackground(new java.awt.Color(222, 74, 16));
-        jButton1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
-        jButton1.setText("CONFIRMAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmUpdate.setBackground(new java.awt.Color(222, 74, 16));
+        btnConfirmUpdate.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        btnConfirmUpdate.setText("CONFIRMAR");
+        btnConfirmUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConfirmUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 110, 40));
+        getContentPane().add(btnConfirmUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 110, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTidUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTidUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTidUserActionPerformed
+    private void btnConfirmUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmUpdateActionPerformed
+        //UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?
+        if (EqualsPass()) {
+            Connection Con = getConeccion();
+            PreparedStatement ps;
+            ResultSet rs;
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+            try {
+                ps = Con.prepareStatement("UPDATE credencial SET password = md5(\""+String.valueOf(jPassword.getPassword())+"\") WHERE id_personal = ? AND email = ?");
+                ps.setString(1, jTidUser.getText());
+                ps.setString(2, jEmail.getText());
+                int update = ps.executeUpdate();                
+                if (update != 0) {
+                    System.out.println("Lineas actualizadas: " +update);
+                    JOptionPane.showMessageDialog(this, "SE HA ACTUALIZADO LA CONTRASEÑA");
+                    this.dispose();
+                }
+                
+            } catch (SQLException e) {
+            }
+        }
+
+    }//GEN-LAST:event_btnConfirmUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,16 +187,16 @@ public class RecuperarContrase extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnConfirmUpdate;
+    private javax.swing.JTextField jEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JPasswordField jPasswordConfirm;
+    private javax.swing.JTextField jTidUser;
     // End of variables declaration//GEN-END:variables
 }

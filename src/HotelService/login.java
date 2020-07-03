@@ -16,8 +16,8 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("INICIO DE SESION");
-        
-        // coneccion();                
+        jTTittle.setText("INICIO DE SESION");
+               
     }
 
     @SuppressWarnings("unchecked")
@@ -29,7 +29,9 @@ public class login extends javax.swing.JFrame {
         btnSignIn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jTTittle = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,8 +68,20 @@ public class login extends javax.swing.JFrame {
         jLabel2.setText("ID USER");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
+        jTTittle.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        getContentPane().add(jTTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 420, 40));
+
+        jButton1.setBackground(new java.awt.Color(249, 112, 38));
+        jButton1.setText("RECUPERAR CONTRASEÑA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, -1, -1));
+
+        BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
+        getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,6 +93,10 @@ public class login extends javax.swing.JFrame {
     private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new RecuperarContrase(jUser.getText()).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void iniciosesion() {
 
@@ -127,11 +145,13 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BACKGROUND;
     private javax.swing.JButton btnSignIn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPassword;
+    private javax.swing.JLabel jTTittle;
     private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
