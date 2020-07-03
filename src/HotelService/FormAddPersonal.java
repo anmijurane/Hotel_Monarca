@@ -87,9 +87,9 @@ public class FormAddPersonal extends javax.swing.JFrame {
         txtCP = new javax.swing.JTextField();
         txtTelLocal = new javax.swing.JTextField();
         txtTelMovil = new javax.swing.JTextField();
-        cbxDepto = new javax.swing.JComboBox<String>();
-        cbxArea = new javax.swing.JComboBox<String>();
-        cbxCargo = new javax.swing.JComboBox<String>();
+        cbxDepto = new javax.swing.JComboBox<>();
+        cbxArea = new javax.swing.JComboBox<>();
+        cbxCargo = new javax.swing.JComboBox<>();
         btn_insert = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -102,6 +102,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -235,6 +236,10 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel11.setText("TEL MOVIL");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 140, -1));
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel13.setText("AÑADIR PERSONAL DEL HOTEL");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -291,7 +296,8 @@ public class FormAddPersonal extends javax.swing.JFrame {
             switch (value) {
                 case 0:
                     Con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getid_Personal());
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getidPers()+
+                            "\nContraseña: "+prsn.getPassword());                    
                     break;
                 case 1:
                     Con.rollback();
@@ -363,6 +369,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

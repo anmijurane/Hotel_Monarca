@@ -57,6 +57,11 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 250, 60));
 
         addUserHuesped.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
@@ -87,6 +92,10 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         new login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_SesionCloseActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
 

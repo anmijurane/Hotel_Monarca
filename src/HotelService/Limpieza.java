@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -21,6 +23,7 @@ public class Limpieza extends javax.swing.JFrame {
     Habitacion hab;
     private String name;
     private int idPersonal;
+    Timestamp dates = new Timestamp(new Date().getTime());
 
     /**
      * Creates new form Limpieza
@@ -130,6 +133,7 @@ public class Limpieza extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -253,6 +257,14 @@ public class Limpieza extends javax.swing.JFrame {
         jLabel4.setText("HOLA 'NAME' ");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
+        jButton1.setText("getDate");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, -1, -1));
+
         BACKGROUND.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
@@ -332,6 +344,10 @@ public class Limpieza extends javax.swing.JFrame {
         isCheckLimpieza();
     }//GEN-LAST:event_estadoHabitacionActionPerformed
 
+        Connection Con = getConeccion();
+        ResultSet rs = null;
+        PreparedStatement PrepSta = null;
+        PreparedStatement PrepServ = null;
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         
         /*  //ONLY FOR TEST
@@ -339,17 +355,21 @@ public class Limpieza extends javax.swing.JFrame {
                 +" WHERE id_habitacion = "+hab.getId_habitacion();
         System.out.println(Consult);*/
         
-        Connection Con = getConeccion();
-        PreparedStatement PrepSta = null;
-        ResultSet rs = null;
-
         try {
             Con.setAutoCommit(false); //Deshabilitamos el ingreso directo a la bd
             PrepSta = Con.prepareStatement("UPDATE habitacion SET id_estado = ? WHERE id_habitacion = ?");
             PrepSta.setInt(1, getState(hab.getEstado()));
             PrepSta.setInt(2, hab.getId_habitacion());
             PrepSta.executeUpdate();
-
+            
+            String sqlServ = "INSERT INTO serv_mant_limp(id_personal, id_habitacion, id_estado, FechaIni) VALUES (?, ?, ?, ?)";
+            System.out.println(sqlServ);            
+            PrepServ = Con.prepareStatement(sqlServ);
+            PrepServ.setInt(1, idPersonal);
+            PrepServ.setInt(2, hab.getId_habitacion());
+            PrepServ.setInt(3, getState(hab.getEstado()));
+            PrepServ.setTimestamp(4, dates);
+            
             int value = JOptionPane.showConfirmDialog(null, "¿DESEAS CAMBIAR EL ESTADO DE LA HABITACIÓN?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             if (value == 0) {
                 Con.commit();
@@ -382,6 +402,10 @@ public class Limpieza extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "ANTES DE SALIR, CAMBIA EL ESTADO DE LA HABITACION");
         }
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println(dates);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void isCheckLimpieza() {
         if (limpiando.isSelected()) {
@@ -467,6 +491,7 @@ public class Limpieza extends javax.swing.JFrame {
     private javax.swing.JLabel et_capacidad;
     private javax.swing.JLabel et_categoria;
     private javax.swing.JLabel et_habitacion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

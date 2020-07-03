@@ -71,25 +71,31 @@ public class Personal extends Persona {
         } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
-
-        return id;
+        System.out.println("ID: " +id);
+        return id+1;
     }
-    int idPersonal = getid_Personal();
+    int idPersonal = getid_Personal();    
     
     @Override
     public String toString() {
-
+        System.out.println("idPersonal: " +idPersonal);
         return super.toString() + ", " + idArea + " , " + idDpto
-                + ", " + idCargo + ", " + idPersonal+1;
+                + ", " + idCargo + ", " + idPersonal;
     }
 
-    public String getCredencial(){
-        
-        String password = idPersonal+"_"+super.getName()+idCargo;
+    public int getidPers(){
+        return idPersonal;
+    }
+    
+    public String getPassword(){
+        return idPersonal+"_"+super.getName()+idCargo;
+    }
+    
+    public String getCredencial(){                
         
         return idPersonal + ", \""+super.getName()+"\", " + idArea +", " + idDpto 
-                + ", " +idCargo + ", md5(\""+password+"\")";
-    }
+                + ", " +idCargo + ", md5(\""+getPassword()+"\")";
+    }    
     
 
 }
