@@ -300,172 +300,97 @@ public class addPackClient extends javax.swing.JFrame {
         PERSON7 = new javax.swing.JTextField();
         PERSON8 = new javax.swing.JTextField();
         PERSON9 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel1.setText("CHECK IN");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 147, -1));
 
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel2.setText("CHECK OUT");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 147, -1));
 
+        jButton1.setBackground(new java.awt.Color(222, 74, 16));
+        jButton1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jButton1.setText("CHECK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel3.setText("NOCHES");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, -1));
 
         Days.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(Days, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 41, -1));
 
+        check_in.setBackground(new java.awt.Color(255, 153, 51));
+        getContentPane().add(check_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 147, -1));
+
+        check_out.setBackground(new java.awt.Color(255, 153, 51));
+        getContentPane().add(check_out, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 147, -1));
+
+        NUMBER_ROOM.setBackground(new java.awt.Color(255, 153, 51));
         NUMBER_ROOM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NUMBER_ROOMActionPerformed(evt);
             }
         });
+        getContentPane().add(NUMBER_ROOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 147, -1));
 
+        ROOM1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM1.setText("HABITACION #1");
+        getContentPane().add(ROOM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
+        ROOM2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM2.setText("HABITACION #2");
+        getContentPane().add(ROOM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, -1, -1));
 
+        ROOM3.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM3.setText("HABITACION #3");
+        getContentPane().add(ROOM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
 
+        ROOM4.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM4.setText("HABITACION #4");
+        getContentPane().add(ROOM4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
 
+        ROOM5.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM5.setText("HABITACION #5");
+        getContentPane().add(ROOM5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
 
+        ROOM6.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM6.setText("HABITACION #6");
+        getContentPane().add(ROOM6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
 
+        ROOM7.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM7.setText("HABITACION #7");
+        getContentPane().add(ROOM7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
 
+        ROOM8.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM8.setText("HABITACION #8");
+        getContentPane().add(ROOM8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
 
+        ROOM9.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         ROOM9.setText("HABITACION #9");
+        getContentPane().add(ROOM9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+        getContentPane().add(PERSON1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 43, -1));
+        getContentPane().add(PERSON2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 43, -1));
+        getContentPane().add(PERSON3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 43, -1));
+        getContentPane().add(PERSON4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 43, -1));
+        getContentPane().add(PERSON5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 43, -1));
+        getContentPane().add(PERSON6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 43, -1));
+        getContentPane().add(PERSON7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 43, -1));
+        getContentPane().add(PERSON8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 43, -1));
+        getContentPane().add(PERSON9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 43, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(ROOM1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(PERSON1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(check_out, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(check_in, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Days, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(27, 27, 27)
-                            .addComponent(jButton1))
-                        .addComponent(NUMBER_ROOM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ROOM6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ROOM7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PERSON7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Days, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(27, 27, 27))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(check_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(check_out, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM7)
-                                    .addComponent(PERSON7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM8)
-                                    .addComponent(PERSON8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM9)
-                                    .addComponent(PERSON9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM3)
-                                    .addComponent(PERSON3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM4)
-                                    .addComponent(PERSON4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM5)
-                                    .addComponent(PERSON5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ROOM6)
-                                    .addComponent(PERSON6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(60, 60, 60)))
-                .addGap(18, 18, 18)
-                .addComponent(NUMBER_ROOM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ROOM1)
-                    .addComponent(PERSON1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ROOM2)
-                    .addComponent(PERSON2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -583,5 +508,6 @@ public class addPackClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
