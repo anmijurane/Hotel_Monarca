@@ -20,16 +20,14 @@ public class FormAddClient extends javax.swing.JFrame {
     static PreparedStatement ps;
     static ResultSet rs;
 
-
     /**
      * Creates new form FormAddPersonal
      */
     public FormAddClient() {
         initComponents();
-        setTitle("REGISTRO DEL CLIENTE");       
+        setTitle("REGISTRO DEL CLIENTE");
         setLocationRelativeTo(null);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -222,9 +220,9 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-               txtTelMovil.getText(), txtEmail.getText());
+                txtTelMovil.getText(), txtEmail.getText());
         execurequery(client);
-                
+
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
@@ -246,12 +244,12 @@ public class FormAddClient extends javax.swing.JFrame {
     public void execurequery(Cliente prsn) {
         //System.out.println(prsn.toString());
         //System.out.println(prsn);
-        
+
         String query = "INSERT INTO cliente("
-                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
-                    + ") VALUES ( " + prsn + ")";
-        
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
+                + ") VALUES ( " + prsn + ")";
+
         System.out.println(query);
 
         Con = getConeccion();
@@ -262,22 +260,23 @@ public class FormAddClient extends javax.swing.JFrame {
             Con.setAutoCommit(false);
             psmtpersonal = Con.prepareStatement(query);
             psmtpersonal.executeUpdate();
-                       
+
             //commit mysql
             int value = JOptionPane.showConfirmDialog(null, "¿CONFIRMAS LOS DATOS?"
-                    + "\nNombre: " +prsn.getName(),
+                    + "\nNombre: " + prsn.getName(),
                     "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             System.out.println(value);
             //SI 0; NO 1; CANCEL 2
             switch (value) {
                 case 0:
                     Con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getid_Cliente());
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + prsn.getName() + "\nCon el ID: " + prsn.getid_Cliente());
+                    CleanTxt();
                     break;
                 case 1:
                     Con.rollback();
                     JOptionPane.showMessageDialog(this, "Se aborto la operación");
-                    break;                            
+                    break;
                 default:
                     break;
             }
@@ -295,6 +294,20 @@ public class FormAddClient extends javax.swing.JFrame {
             }
         }
 
+    }
+
+    public void CleanTxt() {
+        txtName.setText("");
+        txtApPat.setText("");
+        txtApMat.setText("");
+        txtCalle.setText("");
+        txtNumExt.setText("");
+        txtColonia.setText("");
+        txtDelg.setText("");
+        txtCP.setText("");
+        txtTelLocal.setText("");
+        txtTelMovil.setText("");
+        txtEmail.setText("");
     }
 
     /**
