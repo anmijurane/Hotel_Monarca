@@ -337,6 +337,16 @@ public class FormAddPersonal extends javax.swing.JFrame {
 
     }
 
+    public void Valid(){
+        if (    txtName.getText().isEmpty() || txtApPat.getText().isEmpty()||
+                txtApMat.getText().isEmpty() || txtCalle.getText().isEmpty()||
+                txtNumExt.getText().isEmpty() || txtColonia.getText().isEmpty() || txtDelg.getText().isEmpty() ||
+                txtCP.getText().isEmpty() || txtTelLocal.getText().isEmpty() ||
+                txtTelMovil.getText().isEmpty() || txtEmail.getText().isEmpty()  ) {
+            JOptionPane.showMessageDialog(this, "INGRESA TODOS LOS CAMPOS PARA INGRESARLO");
+        }
+    }   
+    
     /**
      * @param args the command line arguments
      */
