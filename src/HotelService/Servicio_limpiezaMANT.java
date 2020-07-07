@@ -46,7 +46,7 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
     public void box_id() {
 
         try {
-            ps = Con.prepareStatement("SELECT * FROM serv_mant_limp");
+            ps = Con.prepareStatement("SELECT * FROM serv_mant_limp group by id_personal");
             rs = ps.executeQuery();
 
             while (rs.next()) {
