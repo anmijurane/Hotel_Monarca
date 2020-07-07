@@ -31,6 +31,7 @@ public class RecuperarContrase extends javax.swing.JFrame {
         initComponents();
         this.idUser = idUSer;
         jTidUser.setText(idUSer);
+        jEmail.requestFocus();
     }
 
     public boolean EqualsPass() {

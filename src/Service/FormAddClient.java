@@ -5,8 +5,6 @@ import HotelService.*;
 import Entidades.Personal;
 import static SQLConex.Conection.getConeccion;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +17,7 @@ public class FormAddClient extends javax.swing.JFrame {
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
+    int idPersonal;
 
     /**
      * Creates new form FormAddPersonal
@@ -27,8 +26,16 @@ public class FormAddClient extends javax.swing.JFrame {
         initComponents();
         setTitle("REGISTRO DEL CLIENTE");
         setLocationRelativeTo(null);
+        btn_back.setVisible(false);
     }
 
+    public FormAddClient(int idPersonal){
+        initComponents();
+        setTitle("REGISTRO DEL CLIENTE");
+        setLocationRelativeTo(null);
+        this.idPersonal = idPersonal;
+        btn_back.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +70,7 @@ public class FormAddClient extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        btn_back = new javax.swing.JButton();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -206,6 +214,16 @@ public class FormAddClient extends javax.swing.JFrame {
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 180, -1));
 
+        btn_back.setBackground(new java.awt.Color(222, 74, 16));
+        btn_back.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btn_back.setText("REGRESAR");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 160, 40));
+
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
@@ -240,6 +258,11 @@ public class FormAddClient extends javax.swing.JFrame {
     private void txtNumExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumExtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumExtActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        new RentarHabitacion(idPersonal).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_backActionPerformed
 
     public void execurequery(Cliente prsn) {
         //System.out.println(prsn.toString());
@@ -350,6 +373,7 @@ public class FormAddClient extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
+    private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_insert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
