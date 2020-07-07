@@ -96,7 +96,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addUserHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserHuespedActionPerformed
-        new FormAddClient(idPersonal).setVisible(true);
+        new FormAddClient(name,idPersonal,2).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addUserHuespedActionPerformed
 
@@ -111,7 +111,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEdoHabitacionActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new RentarHabitacion(idPersonal).setVisible(true);
+        new RentarHabitacion(name, idPersonal).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

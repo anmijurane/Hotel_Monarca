@@ -18,6 +18,8 @@ public class FormAddClient extends javax.swing.JFrame {
     static PreparedStatement ps;
     static ResultSet rs;
     int idPersonal;
+    String name;
+    int TypeForm;
 
     /**
      * Creates new form FormAddPersonal
@@ -29,13 +31,16 @@ public class FormAddClient extends javax.swing.JFrame {
         btn_back.setVisible(false);
     }
 
-    public FormAddClient(int idPersonal){
+    public FormAddClient(String name, int idPersonal, int TypeForm) {
         initComponents();
         setTitle("REGISTRO DEL CLIENTE");
         setLocationRelativeTo(null);
         this.idPersonal = idPersonal;
         btn_back.setVisible(true);
+        this.TypeForm = TypeForm;
+        this.name = name;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -260,8 +265,19 @@ public class FormAddClient extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumExtActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        new RentarHabitacion(idPersonal).setVisible(true);
-        this.dispose();
+        int val = TypeForm;
+        switch (val) {
+            case 1:
+                new RentarHabitacion(name, idPersonal).setVisible(true);
+                this.dispose();
+                break;
+            case 2:
+                new MenuRecepcionista(name, idPersonal).setVisible(true);
+                this.dispose();
+                break;
+            default:
+                throw new AssertionError();
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
     public void execurequery(Cliente prsn) {

@@ -23,14 +23,21 @@ public class RentarHabitacion extends javax.swing.JFrame {
     ResultSet rs;
     int idCliente;
     int idPersona;
+    String name;
 
     /**
      * Creates new form RentarHabitacion
      */
-    public RentarHabitacion(int idPersonal) {
+    public RentarHabitacion(String name, int idPersonal) {
         initComponents();
         getNameClient();
         this.idPersona = idPersonal;
+        this.name = name;
+        //btn_back.setVisible(true);
+    }
+
+    public RentarHabitacion() {
+        initComponents();
     }
 
     public void getNameClient() {
@@ -40,14 +47,14 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
             ps = Con.prepareStatement("SELECT id_cliente, nombre, apellido_p, apellido_m FROM cliente ORDER BY apellido_p ASC");
             rs = ps.executeQuery();
-            
-            while (rs.next()) {                
-                cbxClient.addItem(rs.getString("apellido_p") + " "+ rs.getString("apellido_m") + " "+ rs.getString("nombre"));
+
+            while (rs.next()) {
+                cbxClient.addItem(rs.getString("apellido_p") + " " + rs.getString("apellido_m") + " " + rs.getString("nombre"));
                 idCliente = rs.getInt("id_cliente");
             }
 
         } catch (SQLException e) {
-            System.out.println("ERROR EN " +e );
+            System.out.println("ERROR EN " + e);
         }
     }
 
@@ -67,6 +74,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         check_out = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,14 +97,17 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         jLabel3.setText("CHECK-OUT");
 
+        btn_back.setText("REGRESAR");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,6 +122,15 @@ public class RentarHabitacion extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(check_out, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(262, 262, 262))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_back)
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,16 +151,23 @@ public class RentarHabitacion extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addComponent(btn_back)
+                .addGap(125, 125, 125))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new FormAddClient(idPersona).setVisible(true);
+        new FormAddClient(name, idPersona, 1).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        new MenuRecepcionista(name, idPersona).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,12 +198,13 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {                
+            public void run() {
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_back;
     private javax.swing.JComboBox<String> cbxClient;
     private com.toedter.calendar.JDateChooser check_in;
     private com.toedter.calendar.JDateChooser check_out;
