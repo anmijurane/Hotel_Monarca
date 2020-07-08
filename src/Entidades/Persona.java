@@ -6,7 +6,7 @@ package Entidades;
  */
 public class Persona {
 
-    public Persona(String name, String apellidoPat, String apellidoMat, String calle, String numExt, String numInt, String colonia, String delegacion, String cp, String telLocal, String telMovil) {
+    public Persona(String name, String apellidoPat, String apellidoMat, String calle, String numExt, String numInt, String colonia, String delegacion, String cp, String telLocal, String telMovil, String email) {
         this.name = name;
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;
@@ -18,6 +18,7 @@ public class Persona {
         this.cp = cp;
         this.telLocal = telLocal;
         this.telMovil = telMovil;
+        this.email = email;
     }
 
 
@@ -32,6 +33,15 @@ public class Persona {
     private String cp;
     private String telLocal;
     private String telMovil;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
@@ -127,7 +137,7 @@ public class Persona {
         return "\"" +name + "\" , \"" + apellidoPat + 
                "\" , \"" + apellidoMat + "\" , \"" + calle + "\" , \"" + numExt + 
                "\" , \"" + numInt + "\" , \"" + colonia + "\" , \"" + delegacion +
-               "\" , \"" + cp + "\" , \"" + telLocal + "\" , \"" + telMovil+"\"";
+               "\" , \"" + cp + "\" , \"" + telLocal + "\" , \"" + telMovil+"\", \""+email+"\"";
     }
         
 }

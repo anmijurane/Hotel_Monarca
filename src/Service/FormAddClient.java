@@ -5,8 +5,6 @@ import HotelService.*;
 import Entidades.Personal;
 import static SQLConex.Conection.getConeccion;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,17 +17,29 @@ public class FormAddClient extends javax.swing.JFrame {
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
-
+    int idPersonal;
+    String name;
+    int TypeForm;
 
     /**
      * Creates new form FormAddPersonal
      */
     public FormAddClient() {
         initComponents();
-        setTitle("REGISTRO DEL CLIENTE");       
+        setTitle("REGISTRO DEL CLIENTE");
         setLocationRelativeTo(null);
+        btn_back.setVisible(false);
     }
-    
+
+    public FormAddClient(String name, int idPersonal, int TypeForm) {
+        initComponents();
+        setTitle("REGISTRO DEL CLIENTE");
+        setLocationRelativeTo(null);
+        this.idPersonal = idPersonal;
+        btn_back.setVisible(true);
+        this.TypeForm = TypeForm;
+        this.name = name;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +75,7 @@ public class FormAddClient extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        btn_back = new javax.swing.JButton();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,6 +219,16 @@ public class FormAddClient extends javax.swing.JFrame {
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 180, -1));
 
+        btn_back.setBackground(new java.awt.Color(222, 74, 16));
+        btn_back.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btn_back.setText("REGRESAR");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 160, 40));
+
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
@@ -222,9 +243,9 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtNumExt.getText().toUpperCase(), txtNumInt.getText().toUpperCase(),
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
-               txtTelMovil.getText(), txtEmail.getText());
+                txtTelMovil.getText(), txtEmail.getText());
         execurequery(client);
-                
+
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
@@ -243,15 +264,31 @@ public class FormAddClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumExtActionPerformed
 
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        int val = TypeForm;
+        switch (val) {
+            case 5: //Regreso a RentarHabitacion
+                new RentarHabitacion(name, idPersonal).setVisible(true);
+                this.dispose();
+                break;
+            case 2:
+                new MenuRecepcionista(name, idPersonal).setVisible(true);
+                this.dispose();
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }//GEN-LAST:event_btn_backActionPerformed
+
     public void execurequery(Cliente prsn) {
         //System.out.println(prsn.toString());
         //System.out.println(prsn);
-        
+
         String query = "INSERT INTO cliente("
-                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
-                    + ") VALUES ( " + prsn + ")";
-        
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
+                + ") VALUES ( " + prsn + ")";
+
         System.out.println(query);
 
         Con = getConeccion();
@@ -262,22 +299,23 @@ public class FormAddClient extends javax.swing.JFrame {
             Con.setAutoCommit(false);
             psmtpersonal = Con.prepareStatement(query);
             psmtpersonal.executeUpdate();
-                       
+
             //commit mysql
             int value = JOptionPane.showConfirmDialog(null, "¿CONFIRMAS LOS DATOS?"
-                    + "\nID: "+prsn.getid_Cliente()+ "\nNombre: " +prsn.getName(),
+                    + "\nNombre: " + prsn.getName(),
                     "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             System.out.println(value);
             //SI 0; NO 1; CANCEL 2
             switch (value) {
                 case 0:
                     Con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getid_Cliente());
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + prsn.getName() + "\nCon el ID: " + prsn.getid_Cliente());
+                    CleanTxt();
                     break;
                 case 1:
                     Con.rollback();
                     JOptionPane.showMessageDialog(this, "Se aborto la operación");
-                    break;                            
+                    break;
                 default:
                     break;
             }
@@ -295,6 +333,20 @@ public class FormAddClient extends javax.swing.JFrame {
             }
         }
 
+    }
+
+    public void CleanTxt() {
+        txtName.setText("");
+        txtApPat.setText("");
+        txtApMat.setText("");
+        txtCalle.setText("");
+        txtNumExt.setText("");
+        txtColonia.setText("");
+        txtDelg.setText("");
+        txtCP.setText("");
+        txtTelLocal.setText("");
+        txtTelMovil.setText("");
+        txtEmail.setText("");
     }
 
     /**
@@ -337,6 +389,7 @@ public class FormAddClient extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
+    private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_insert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

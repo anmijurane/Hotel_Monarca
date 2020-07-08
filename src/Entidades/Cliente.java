@@ -16,15 +16,7 @@ public class Cliente extends Persona{
             String numExt, String numInt, String colonia, String delegacion, String cp, 
             String telLocal, String telMovil, String email) {
         
-        super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia, delegacion, cp, telLocal, telMovil);
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+        super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia, delegacion, cp, telLocal, telMovil, email);
         this.email = email;
     }
 
@@ -52,7 +44,7 @@ public class Cliente extends Persona{
 
     @Override
     public String toString() {
-        return super.toString() + ", \"" +email+ "\"";
+        return super.toString();
     }
         
     

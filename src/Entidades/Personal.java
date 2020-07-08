@@ -19,10 +19,10 @@ public class Personal extends Persona {
     public Personal(String name,
             String apellidoPat, String apellidoMat, String calle,
             String numExt, String numInt, String colonia, String delegacion,
-            String cp, String telLocal, String telMovil, int idArea, int idDpto, int idCargo) {
+            String cp, String telLocal, String telMovil, String email, int idArea, int idDpto, int idCargo) {
 
         super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia,
-                delegacion, cp, telLocal, telMovil);
+                delegacion, cp, telLocal, telMovil,email);
 
         this.idArea = idArea;
         this.idDpto = idDpto;
@@ -70,26 +70,31 @@ public class Personal extends Persona {
 
         } catch (SQLException e) {
             System.out.println("Error: " + e);
-        }
-
-        return id;
+        }        
+        return id+1;
     }
-    int idPersonal = getid_Personal();
+    int idPersonal = getid_Personal();    
     
     @Override
     public String toString() {
-
+        System.out.println("idPersonal: " +idPersonal);
         return super.toString() + ", " + idArea + " , " + idDpto
-                + ", " + idCargo + ", " + idPersonal+1;
+                + ", " + idCargo + ", " + idPersonal;
     }
 
-    public String getCredencial(){
-        
-        String password = idPersonal+"_"+super.getName()+idCargo;
+    public int getidPers(){
+        return idPersonal;
+    }
+    
+    public String getPassword(){
+        return idPersonal+"_"+super.getName()+idCargo;
+    }
+    
+    public String getCredencial(){                
         
         return idPersonal + ", \""+super.getName()+"\", " + idArea +", " + idDpto 
-                + ", " +idCargo + ", md5(\""+password+"\")";
-    }
+                + ", " +idCargo + ", md5(\""+getPassword()+"\")";
+    }    
     
 
 }

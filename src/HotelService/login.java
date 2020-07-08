@@ -16,22 +16,30 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("INICIO DE SESION");
-        
-        // coneccion();                
+        jTTittle.setText("INICIO DE SESION");
+               
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTTittle = new javax.swing.JLabel();
         jUser = new javax.swing.JTextField();
         jPassword = new javax.swing.JPasswordField();
         btnSignIn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTTittle.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jTTittle.setForeground(new java.awt.Color(28, 27, 26));
+        jTTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jTTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 230, 30));
 
         jUser.setBackground(new java.awt.Color(245, 224, 192));
         jUser.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -62,8 +70,24 @@ public class login extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/key.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ID USER");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(249, 112, 38));
+        jButton1.setFont(new java.awt.Font("Candara Light", 1, 10)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(28, 27, 26));
+        jButton1.setText("RECUPERAR CONTRASEÑA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 580, 170, 30));
+
+        BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
+        getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,6 +99,10 @@ public class login extends javax.swing.JFrame {
     private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new RecuperarContrase(jUser.getText()).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void iniciosesion() {
 
@@ -91,30 +119,30 @@ public class login extends javax.swing.JFrame {
 
             if (res.next()) {
                 String name = res.getString("nombre").toUpperCase();
-                int idCargo = res.getInt("id_dpto");
+                int idCargo = res.getInt("id_cargo");
                 int idPersonal = res.getInt("id_personal");
-                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name);
+                JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name.toUpperCase());
                 switch (idCargo) {
-                    case 5: //Recepcion Menu
+                    case 6: //Recepcion Menu
                         new MenuRecepcionista(name, idPersonal).setVisible(true);
                         this.dispose();
                         break;
-                    case 6: //Limpieza Interfaz
+                    case 7: //Limpieza Interfaz
                         new Limpieza(name, idPersonal).setVisible(true);
                         this.dispose();
                         break;
-                    case 7: //Mantenimiento Interfaz
+                    case 8: //Mantenimiento Interfaz
                         new Mantenimiento(name, idPersonal).setVisible(true);
                         this.dispose();
-                        break;
-                            
+                        break;                            
                     default:
+                        JOptionPane.showMessageDialog(this, "¡SIN ACCESO!");
                         throw new AssertionError();
                 }
                 
             } else {
                 JOptionPane.showMessageDialog(this, "ACCESO DENEGADO");
-                jUser.setText("");
+                //jUser.setText("");
                 jPassword.setText("");
             }
         } catch (SQLException ex) {
@@ -123,10 +151,13 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BACKGROUND;
     private javax.swing.JButton btnSignIn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPassword;
+    private javax.swing.JLabel jTTittle;
     private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }

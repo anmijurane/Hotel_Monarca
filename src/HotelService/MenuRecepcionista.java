@@ -22,64 +22,81 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         this.setResizable(false);
         this.name = name;
         this.idPersonal = idPersonal;
+        jT_Tittle.setText("HOLA "+name.toUpperCase()+", ¿QUÉ DESEAS HACER?");
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FONDO = new javax.swing.JLabel();
+        jT_Tittle = new javax.swing.JLabel();
         SesionClose = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEdoHabitacion = new javax.swing.JButton();
         addUserHuesped = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnRentarHab = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FONDO.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        FONDO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        FONDO.setText("HOLA \"NAME\", ¿QUÉ DESEAS HACER?");
-        getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 470, 40));
+        jT_Tittle.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jT_Tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jT_Tittle.setText("HOLA \"NAME\", ¿QUÉ DESEAS HACER?");
+        getContentPane().add(jT_Tittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 470, 40));
 
-        SesionClose.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        SesionClose.setBackground(new java.awt.Color(222, 74, 16));
+        SesionClose.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         SesionClose.setText("CERRAR SESION");
         SesionClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SesionCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(SesionClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 521, 160, 40));
+        getContentPane().add(SesionClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 520, 180, 40));
 
-        jButton2.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jButton2.setText("ESTADO DE HABITACIÓN");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 250, 60));
+        btnEdoHabitacion.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnEdoHabitacion.setText("INFO DE HABITACIÓN");
+        btnEdoHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEdoHabitacion.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        btnEdoHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEdoHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdoHabitacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEdoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 260, 40));
 
-        addUserHuesped.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        addUserHuesped.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         addUserHuesped.setText("REGISTRAR UN USUARIO");
         addUserHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addUserHuespedActionPerformed(evt);
             }
         });
-        getContentPane().add(addUserHuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 250, 60));
+        getContentPane().add(addUserHuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 260, 40));
 
-        jButton4.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jButton4.setText("RENTAR UNA HABITACIÓN");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 250, 60));
+        btnRentarHab.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnRentarHab.setText("RENTAR UNA HABITACIÓN");
+        btnRentarHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentarHabActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRentarHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 260, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("MENU, RECEPCIÓN");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void addUserHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserHuespedActionPerformed
-        new FormAddClient().setVisible(true);
+        new FormAddClient(name,idPersonal,2).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addUserHuespedActionPerformed
 
@@ -88,14 +105,25 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_SesionCloseActionPerformed
 
+    private void btnEdoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdoHabitacionActionPerformed
+        new InfoHabitacion(name, idPersonal, 2).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEdoHabitacionActionPerformed
+
+    private void btnRentarHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarHabActionPerformed
+        new RentarHabitacion(name, idPersonal).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRentarHabActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FONDO;
     private javax.swing.JButton SesionClose;
     private javax.swing.JButton addUserHuesped;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnEdoHabitacion;
+    private javax.swing.JButton btnRentarHab;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jT_Tittle;
     // End of variables declaration//GEN-END:variables
 }

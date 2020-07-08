@@ -279,9 +279,7 @@ public class addPackClient extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Days = new javax.swing.JTextField();
-        check_in = new com.toedter.calendar.JDateChooser();
-        check_out = new com.toedter.calendar.JDateChooser();
-        NUMBER_ROOM = new javax.swing.JComboBox<>();
+        NUMBER_ROOM = new javax.swing.JComboBox<String>();
         ROOM1 = new javax.swing.JLabel();
         ROOM2 = new javax.swing.JLabel();
         ROOM3 = new javax.swing.JLabel();
@@ -300,95 +298,133 @@ public class addPackClient extends javax.swing.JFrame {
         PERSON7 = new javax.swing.JTextField();
         PERSON8 = new javax.swing.JTextField();
         PERSON9 = new javax.swing.JTextField();
+        check_in = new com.toedter.calendar.JDateChooser();
+        check_out = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CHECK IN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 147, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 150, -1));
 
-        jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CHECK OUT");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 147, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 147, -1));
 
         jButton1.setBackground(new java.awt.Color(222, 74, 16));
-        jButton1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jButton1.setText("CHECK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("NOCHES");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 120, -1));
 
+        Days.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         Days.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(Days, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 41, -1));
-
-        check_in.setBackground(new java.awt.Color(255, 153, 51));
-        getContentPane().add(check_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 147, -1));
-
-        check_out.setBackground(new java.awt.Color(255, 153, 51));
-        getContentPane().add(check_out, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 147, -1));
+        getContentPane().add(Days, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 360, 50, -1));
 
         NUMBER_ROOM.setBackground(new java.awt.Color(255, 153, 51));
+        NUMBER_ROOM.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         NUMBER_ROOM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NUMBER_ROOMActionPerformed(evt);
             }
         });
-        getContentPane().add(NUMBER_ROOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 147, -1));
+        getContentPane().add(NUMBER_ROOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 170, -1));
 
-        ROOM1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM1.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM1.setText("HABITACION #1");
-        getContentPane().add(ROOM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
+        getContentPane().add(ROOM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, 30));
 
-        ROOM2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM2.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM2.setText("HABITACION #2");
-        getContentPane().add(ROOM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, -1, -1));
+        getContentPane().add(ROOM2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, 30));
 
-        ROOM3.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM3.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM3.setText("HABITACION #3");
-        getContentPane().add(ROOM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
+        getContentPane().add(ROOM3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, -1, 30));
 
-        ROOM4.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM4.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM4.setText("HABITACION #4");
-        getContentPane().add(ROOM4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+        getContentPane().add(ROOM4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, -1, 30));
 
-        ROOM5.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM5.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM5.setText("HABITACION #5");
-        getContentPane().add(ROOM5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
+        getContentPane().add(ROOM5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, -1, 30));
 
-        ROOM6.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM6.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM6.setText("HABITACION #6");
-        getContentPane().add(ROOM6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
+        getContentPane().add(ROOM6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, -1, 30));
 
-        ROOM7.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM7.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM7.setText("HABITACION #7");
-        getContentPane().add(ROOM7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+        getContentPane().add(ROOM7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, -1, 30));
 
-        ROOM8.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM8.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM8.setText("HABITACION #8");
-        getContentPane().add(ROOM8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
+        getContentPane().add(ROOM8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, -1, 30));
 
-        ROOM9.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        ROOM9.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         ROOM9.setText("HABITACION #9");
-        getContentPane().add(ROOM9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
-        getContentPane().add(PERSON1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 43, -1));
-        getContentPane().add(PERSON2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 43, -1));
-        getContentPane().add(PERSON3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 43, -1));
-        getContentPane().add(PERSON4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 43, -1));
-        getContentPane().add(PERSON5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 43, -1));
-        getContentPane().add(PERSON6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 43, -1));
-        getContentPane().add(PERSON7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 43, -1));
-        getContentPane().add(PERSON8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 43, -1));
-        getContentPane().add(PERSON9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 43, -1));
+        getContentPane().add(ROOM9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, -1, 30));
 
+        PERSON1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 43, -1));
+
+        PERSON2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 43, -1));
+
+        PERSON3.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 43, -1));
+
+        PERSON4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 43, -1));
+
+        PERSON5.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 43, -1));
+
+        PERSON6.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 320, 43, -1));
+
+        PERSON7.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 43, -1));
+
+        PERSON8.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 43, -1));
+
+        PERSON9.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        PERSON9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(PERSON9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 390, 43, -1));
+        getContentPane().add(check_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 150, -1));
+        getContentPane().add(check_out, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 150, -1));
+
+        jLabel5.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("SELECCIONA LA HABITACION A RESERVAR");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 500, -1));
+
+        jLabel4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
@@ -437,7 +473,8 @@ public class addPackClient extends javax.swing.JFrame {
                 ROOM9();
                 break;
             case 10:
-                JOptionPane.showMessageDialog(null, "CONTATCTANDO CON UN ASESOR...");
+                JOptionPane.showMessageDialog(null, "CONTACTANDO CON UN ASESOR...");
+                NUMBER_ROOM.setSelectedIndex(0);
                 disable();
                 break;
             default:
@@ -509,5 +546,6 @@ public class addPackClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

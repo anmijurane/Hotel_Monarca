@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
  */
 public class Mantenimiento extends javax.swing.JFrame {
+
     private String name;
     private int idPersonal;
     Habitacion hab;
@@ -28,20 +31,20 @@ public class Mantenimiento extends javax.swing.JFrame {
         initComponents();
         limpiando.setVisible(false);
         estadoHabitacion.setVisible(false);
-        setTitle("MANTENIMIENTO");        
+        setTitle("MANTENIMIENTO");
         setLocationRelativeTo(null);
         messageName.setText("BIENVENIDO");
     }
-    
-    public Mantenimiento(String name, int idPersonal){
+
+    public Mantenimiento(String name, int idPersonal) {
         initComponents();
         limpiando.setVisible(false);
         estadoHabitacion.setVisible(false);
-        setTitle("MANTENIMIENTO");        
+        setTitle("MANTENIMIENTO");
         setLocationRelativeTo(null);
         this.name = name;
         this.idPersonal = idPersonal;
-        messageName.setText("Hola "+ name);
+        messageName.setText("HOLA, BIENVENIDO " + name.toUpperCase());
     }
 
     public void habitacion(int n_habitacion) {
@@ -49,7 +52,6 @@ public class Mantenimiento extends javax.swing.JFrame {
         /* 
         hab = new Habitacion(n_habitacion, "Individual", "1", 1,"disponible");
         llenarDatosEt();*/
-        
         Connection Con = getConeccion();
         PreparedStatement ps;
         ResultSet rs;
@@ -116,8 +118,8 @@ public class Mantenimiento extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGroupOne = new javax.swing.ButtonGroup();
-        FLAT_NUMBER = new javax.swing.JComboBox<>();
-        ROOM_NUMBER = new javax.swing.JComboBox<>();
+        FLAT_NUMBER = new javax.swing.JComboBox<String>();
+        ROOM_NUMBER = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         et_categoria = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -137,7 +139,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FLAT_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
-        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
+        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
         FLAT_NUMBER.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 FLAT_NUMBERItemStateChanged(evt);
@@ -146,7 +148,7 @@ public class Mantenimiento extends javax.swing.JFrame {
         getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 210, 40));
 
         ROOM_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
-        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION" }));
+        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION" }));
         ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
         ROOM_NUMBER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +235,7 @@ public class Mantenimiento extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
 
         btnExit.setBackground(new java.awt.Color(224, 131, 42));
         btnExit.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -243,12 +245,12 @@ public class Mantenimiento extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 140, -1));
 
-        messageName.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        messageName.setForeground(new java.awt.Color(0, 0, 0));
+        messageName.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        messageName.setForeground(new java.awt.Color(28, 27, 26));
         messageName.setText("HOLA 'NAME' ");
-        getContentPane().add(messageName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        getContentPane().add(messageName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
@@ -328,15 +330,16 @@ public class Mantenimiento extends javax.swing.JFrame {
         isCheckLimpieza();
     }//GEN-LAST:event_estadoHabitacionActionPerformed
 
+    Connection Con = getConeccion();
+    ResultSet rs = null;
+    PreparedStatement PrepSta = null;
+    PreparedStatement PrepServ = null;
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        Timestamp dates = new Timestamp(new Date().getTime());
         //ONLY FOR TEST
         /*String Consult = "UPDATE habitacion SET id_estado = " + getState(hab.getEstado())
                 + " WHERE id_habitacion = " + hab.getId_habitacion();
         System.out.println(Consult);*/
-
-        Connection Con = getConeccion();
-        PreparedStatement PrepSta = null;
-        ResultSet rs = null;
 
         try {
             Con.setAutoCommit(false); //Deshabilitamos el ingreso directo a la bd
@@ -344,6 +347,15 @@ public class Mantenimiento extends javax.swing.JFrame {
             PrepSta.setInt(1, getState(hab.getEstado()));
             PrepSta.setInt(2, hab.getId_habitacion());
             PrepSta.executeUpdate();
+
+            String sqlServ = "INSERT INTO serv_mant_limp(id_personal, id_habitacion, id_estado, FechaIni) VALUES (?, ?, ?, ?)";
+            System.out.println(sqlServ);
+            PrepServ = Con.prepareStatement(sqlServ);
+            PrepServ.setInt(1, idPersonal);
+            PrepServ.setInt(2, hab.getId_habitacion());
+            PrepServ.setInt(3, getState(hab.getEstado()));
+            PrepServ.setTimestamp(4, dates);
+            PrepServ.executeUpdate();
 
             int value = JOptionPane.showConfirmDialog(null, "¿DESEAS CAMBIAR EL ESTADO DE LA HABITACIÓN?", "ATENCIÓN", JOptionPane.WARNING_MESSAGE);
             if (value == 0) {
@@ -371,7 +383,12 @@ public class Mantenimiento extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         if (!(limpiando.isSelected())) {
-            JOptionPane.showMessageDialog(this, "SALIENDO");
+            try {
+                Con.close();
+            } catch (SQLException e) {
+                System.out.println("ERROR: " +e);
+            }
+            JOptionPane.showMessageDialog(this, "PRESIONA OK PARA SALIR");
         } else {
             JOptionPane.showMessageDialog(this, "ANTES DE SALIR, CAMBIA EL ESTADO DE LA HABITACION");
         }
