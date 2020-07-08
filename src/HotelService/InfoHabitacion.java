@@ -216,8 +216,8 @@ public class InfoHabitacion extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         switch (TypeForm) {
-            case 0:
-                
+            case 2:
+                new MenuRecepcionista(name, idPersonal).setVisible(true);
                 break;
             default:
                 throw new AssertionError();

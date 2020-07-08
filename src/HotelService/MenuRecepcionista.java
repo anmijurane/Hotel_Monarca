@@ -22,6 +22,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         this.setResizable(false);
         this.name = name;
         this.idPersonal = idPersonal;
+        jT_Tittle.setText("HOLA "+name.toUpperCase()+", ¿QUÉ DESEAS HACER?");
     }
 
     @SuppressWarnings("unchecked")
@@ -105,7 +106,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_SesionCloseActionPerformed
 
     private void btnEdoHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdoHabitacionActionPerformed
-        new InfoHabitacion().setVisible(true);
+        new InfoHabitacion(name, idPersonal, 2).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEdoHabitacionActionPerformed
 
