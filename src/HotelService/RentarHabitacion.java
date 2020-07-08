@@ -27,6 +27,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
     /**
      * Creates new form RentarHabitacion
+     * @param name
+     * @param idPersonal
      */
     public RentarHabitacion(String name, int idPersonal) {
         initComponents();
@@ -36,11 +38,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
         //btn_back.setVisible(true);
     }
 
-    public RentarHabitacion() {
-        initComponents();
-    }
 
-    public void getNameClient() {
+    public final void getNameClient() {
         try {
 
             cbxClient.addItem("ELIGE UN CLIENTE");
@@ -77,6 +76,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         btn_back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton1.setText("REGISTRAR CLIENTE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -157,10 +157,11 @@ public class RentarHabitacion extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new FormAddClient(name, idPersona, 1).setVisible(true);
+        new FormAddClient(name, idPersona, 5).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -214,3 +215,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
+
+
+//select habitacion.id_habitacion, categoria.capacidad, categoria.costo 
+//FROM habitacion INNER JOIN categoria ON habitacion.id_categoria = categoria.id_categoria;

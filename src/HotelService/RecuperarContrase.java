@@ -88,8 +88,8 @@ public class RecuperarContrase extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        jLabel6.setText("Confirnar Contraseña:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
+        jLabel6.setText("Confirmar Contraseña:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
 
         jTidUser.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         jTidUser.addActionListener(new java.awt.event.ActionListener() {

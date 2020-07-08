@@ -267,7 +267,7 @@ public class FormAddClient extends javax.swing.JFrame {
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         int val = TypeForm;
         switch (val) {
-            case 1:
+            case 5: //Regreso a RentarHabitacion
                 new RentarHabitacion(name, idPersonal).setVisible(true);
                 this.dispose();
                 break;

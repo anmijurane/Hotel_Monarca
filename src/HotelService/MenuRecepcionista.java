@@ -56,7 +56,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         getContentPane().add(SesionClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 521, 160, 40));
 
         btnEdoHabitacion.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        btnEdoHabitacion.setText("ESTADO DE HABITACIÓN");
+        btnEdoHabitacion.setText("INFO DE HABITACIÓN");
         btnEdoHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEdoHabitacion.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         btnEdoHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
