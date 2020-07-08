@@ -70,52 +70,62 @@ public class RecuperarContrase extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("RECUPERACIÓN DE CONTRASEÑA");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 530, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 620, 40));
 
-        jLabel4.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Correo Electrónico:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 170, 30));
 
-        jLabel3.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nombre de usuario:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 170, 30));
 
-        jLabel5.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Nueva Contraseña:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 170, 30));
 
-        jLabel6.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Confirnar Contraseña:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 180, 30));
 
-        jTidUser.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        jTidUser.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
+        jTidUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTidUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTidUserActionPerformed(evt);
             }
         });
-        getContentPane().add(jTidUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 290, 30));
+        getContentPane().add(jTidUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 290, 30));
 
-        jEmail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(jEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 290, 30));
+        jEmail.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
+        jEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 290, 30));
 
-        jPassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 290, 30));
+        jPassword.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
+        jPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 290, 30));
 
-        jPasswordConfirm.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(jPasswordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 290, 30));
+        jPasswordConfirm.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
+        jPasswordConfirm.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jPasswordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 290, 30));
 
         btnConfirmUpdate.setBackground(new java.awt.Color(222, 74, 16));
-        btnConfirmUpdate.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        btnConfirmUpdate.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         btnConfirmUpdate.setText("CONFIRMAR");
         btnConfirmUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConfirmUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 110, 40));
+        getContentPane().add(btnConfirmUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 460, 130, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));

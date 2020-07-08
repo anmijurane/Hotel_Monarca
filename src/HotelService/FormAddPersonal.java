@@ -87,9 +87,9 @@ public class FormAddPersonal extends javax.swing.JFrame {
         txtCP = new javax.swing.JTextField();
         txtTelLocal = new javax.swing.JTextField();
         txtTelMovil = new javax.swing.JTextField();
-        cbxDepto = new javax.swing.JComboBox<>();
-        cbxArea = new javax.swing.JComboBox<>();
-        cbxCargo = new javax.swing.JComboBox<>();
+        cbxDepto = new javax.swing.JComboBox<String>();
+        cbxArea = new javax.swing.JComboBox<String>();
+        cbxCargo = new javax.swing.JComboBox<String>();
         btn_insert = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -238,9 +238,11 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel11.setText("CORREO ELECTRONICO");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 140, -1));
 
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("AÑADIR PERSONAL DEL HOTEL");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         txtEmail.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
