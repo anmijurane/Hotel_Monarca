@@ -119,8 +119,8 @@ public class Limpieza extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGroupOne = new javax.swing.ButtonGroup();
-        FLAT_NUMBER = new javax.swing.JComboBox<>();
-        ROOM_NUMBER = new javax.swing.JComboBox<>();
+        FLAT_NUMBER = new javax.swing.JComboBox<String>();
+        ROOM_NUMBER = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         et_categoria = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -140,7 +140,7 @@ public class Limpieza extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FLAT_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
-        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
+        FLAT_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONA UN PISO", "1° PISO", "2° PISO", "3° PISO", "4° PISO", "5° PISO", "6° PISO", "7° PISO", "8° PISO", "9° PISO", "10° PISO" }));
         FLAT_NUMBER.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 FLAT_NUMBERItemStateChanged(evt);
@@ -149,7 +149,7 @@ public class Limpieza extends javax.swing.JFrame {
         getContentPane().add(FLAT_NUMBER, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 210, 40));
 
         ROOM_NUMBER.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
-        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION" }));
+        ROOM_NUMBER.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION" }));
         ROOM_NUMBER.setToolTipText(FLAT_NUMBER.getName());
         ROOM_NUMBER.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +240,7 @@ public class Limpieza extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
+        getContentPane().add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, -1, -1));
 
         btnExit.setBackground(new java.awt.Color(224, 131, 42));
         btnExit.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -250,12 +250,13 @@ public class Limpieza extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 140, -1));
 
-        jL_Welcome.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jL_Welcome.setForeground(new java.awt.Color(0, 0, 0));
+        jL_Welcome.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jL_Welcome.setForeground(new java.awt.Color(28, 27, 26));
+        jL_Welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jL_Welcome.setText("HOLA 'NAME' ");
-        getContentPane().add(jL_Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        getContentPane().add(jL_Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         BACKGROUND.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         BACKGROUND.setForeground(new java.awt.Color(0, 0, 0));

@@ -24,17 +24,22 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTTittle = new javax.swing.JLabel();
         jUser = new javax.swing.JTextField();
         jPassword = new javax.swing.JPasswordField();
         btnSignIn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTTittle = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         BACKGROUND = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTTittle.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jTTittle.setForeground(new java.awt.Color(28, 27, 26));
+        jTTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jTTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 230, 30));
 
         jUser.setBackground(new java.awt.Color(245, 224, 192));
         jUser.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -65,20 +70,21 @@ public class login extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/key.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 80, 40));
 
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ID USER");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
 
-        jTTittle.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        getContentPane().add(jTTittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 420, 40));
-
         jButton1.setBackground(new java.awt.Color(249, 112, 38));
+        jButton1.setFont(new java.awt.Font("Candara Light", 1, 10)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(28, 27, 26));
         jButton1.setText("RECUPERAR CONTRASEÑA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 580, 170, 30));
 
         BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
         getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
