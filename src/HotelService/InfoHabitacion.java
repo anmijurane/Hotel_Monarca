@@ -6,17 +6,29 @@
 package HotelService;
 
 import Entidades.Habitacion;
+import Entidades.RentaCliente;
+import static SQLConex.Conection.getConeccion;
 import java.awt.event.ItemEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
  */
 public class InfoHabitacion extends javax.swing.JFrame {
-    
+
     String name;
     int idPersonal, TypeForm;
+    Habitacion habitacion;
+    RentaCliente renta;
+
     /**
      * Creates new form InfoHabitacion
      */
@@ -30,6 +42,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
         this.idPersonal = idPersonal;
         this.TypeForm = TypeForm;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +76,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,6 +160,14 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jLabel11.setText("COSTO TOTAL");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, -1, -1));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -211,8 +233,77 @@ public class InfoHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     private void ROOM_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ROOM_NUMBERItemStateChanged
-        
+
     }//GEN-LAST:event_ROOM_NUMBERItemStateChanged
+
+    public void getData(int idHabitacion) {
+        Connection Con = getConeccion();
+        PreparedStatement infoHabitacion;
+        PreparedStatement clientInfo;
+        ResultSet rsHabitacion;
+        ResultSet rsCliente;
+
+        String sqlInfoHab = "select habitacion.id_habitacion, categoria.categoria, categoria.capacidad, categoria.costo, categoria.camas, estado.nombre"
+                + " FROM habitacion, categoria, estado"
+                + " WHERE id_habitacion = " + idHabitacion
+                + " AND categoria.id_categoria = habitacion.id_categoria"
+                + " AND estado.id_estado = habitacion.id_estado";
+
+        String sqlInfoClint = "select renta.id_habitacion, cliente.nombre, cliente.apellido_p, cliente.apellido_m, renta.id_cliente, \n"
+                + "renta.personas, renta.entrada, renta.salida, renta.costo_renta, renta.id_metpago from renta\n"
+                + " INNER JOIN cliente ON renta.id_cliente = cliente.id_cliente\n"
+                + " WHERE renta.id_habitacion = "+idHabitacion;
+
+        try {
+            infoHabitacion = Con.prepareStatement(sqlInfoHab);
+            //System.out.println(infoHabitacion);
+            rsHabitacion = infoHabitacion.executeQuery();
+            
+            clientInfo = Con.prepareStatement(sqlInfoClint);
+            //System.out.println(clientInfo);
+            rsCliente = clientInfo.executeQuery();
+            
+            if (rsHabitacion.next()) {
+
+                habitacion = new Habitacion(
+                        rsHabitacion.getInt(1),
+                        rsHabitacion.getString(2),
+                        rsHabitacion.getString(3),
+                        rsHabitacion.getInt(5),
+                        rsHabitacion.getString(6));
+                habitacion.setCosto(rsHabitacion.getDouble(4));
+                
+                //while (rsCliente.next()) {
+                    
+                    renta = new RentaCliente(
+                            rsCliente.getInt(1),
+                            rsCliente.getInt(5));                                        
+                    
+                    String nombre = rsCliente.getString(2); //nombre
+                    String apPat = rsCliente.getString(3);
+                    String apMat = rsCliente.getString(4);
+                    int numPer = rsCliente.getInt(6);
+                    Date entrada = rsCliente.getDate(7);
+                    Date salida = rsCliente.getDate(8);
+                    double costo = rsCliente.getDouble(9); //csoto
+                    int metodoPago = rsCliente.getInt(10); //metPago
+                    System.out.println(nombre);
+                    renta.setNombre(rsCliente.getString(2));
+                    renta.setApellidoP(apPat);
+                    renta.setApellidoM(apMat);
+                    renta.setPersonas(numPer);
+                    renta.setEntrada(entrada);
+                    renta.setSalida(salida);
+                    renta.setCostoTotal(costo);
+                    renta.setMetdPago(metodoPago);
+                //}
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR METOD GET DATA: " + e);
+        }
+
+    }
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         switch (TypeForm) {
@@ -223,6 +314,29 @@ public class InfoHabitacion extends javax.swing.JFrame {
                 throw new AssertionError();
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (ROOM_NUMBER.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "SELECCIONA UNA HABITACIÓN");
+            ROOM_NUMBER.requestFocus();
+        } else {
+            Timestamp dates = new Timestamp(new Date().getTime());
+            getData(202);
+            System.out.println(renta.toString());
+            System.out.println(habitacion.toString());
+            /*renta = new RentaCliente(202, 6);
+            renta.setNombre("ANDRES");
+            renta.setApellidoP("JURADO");
+            renta.setApellidoM("NEGRETE");
+            renta.setMetdPago(1);
+            renta.setPersonas(1);
+            renta.setEntrada(dates);
+            renta.setSalida(dates);
+            renta.setCostoTotal(1523.00);
+            
+            System.out.println(renta.toString());*/
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +378,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ROOM_NUMBER;
     private javax.swing.JLabel background;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -287,3 +402,18 @@ public class InfoHabitacion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
+
+/* CONSULTA DE INFORMACION DE HABITACIÓN
+select habitacion.id_habitacion, categoria.categoria, categoria.capacidad, categoria.costo, categoria.camas, estado.nombre
+    FROM habitacion, categoria, estado    
+    WHERE id_habitacion = 202
+    AND categoria.id_categoria = habitacion.id_categoria
+    AND estado.id_estado = habitacion.id_estado;
+    
+    CONSULTA DE USUARIO EN LA HABITACIÓN
+select renta.id_habitacion, cliente.nombre, cliente.apellido_p, cliente.apellido_m, renta.id_cliente, 
+renta.personas, renta.entrada, renta.salida, renta.costo_renta, renta.id_metpago from renta
+INNER JOIN cliente ON renta.id_cliente = cliente.id_cliente
+WHERE renta.id_habitacion = 202;
+
+ */

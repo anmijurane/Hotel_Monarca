@@ -1,0 +1,137 @@
+package Entidades;
+
+import java.util.Date;
+
+/**
+ *
+ * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
+ */
+public class RentaCliente {
+
+    private int idHabitacion;
+    private int idCliente;
+    private String nombreCompleto;
+    private String nombre;
+    private String apellidoP;
+    private String apellidoM;
+    private int personas;
+    private Date entrada;
+    private Date salida;
+    private double costoTotal;
+    private String metodoPago;
+
+    public RentaCliente(int idHabitacion, int idCliente) {
+        this.idHabitacion = idHabitacion;
+        this.idCliente = idCliente;
+    }
+
+    public int getIdHabitacion() {
+        return idHabitacion;
+    }
+
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto = apellidoP +" "+ apellidoM +" "+ nombre;
+    }
+
+    public int getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(int personas) {
+        this.personas = personas;
+    }
+
+    public Date getEntrada() {
+        return entrada;
+    }
+
+    public void setEntrada(Date entrada) {
+        this.entrada = entrada;
+    }
+
+    public Date getSalida() {
+        return salida;
+    }
+
+    public void setSalida(Date salida) {
+        this.salida = salida;
+    }
+
+    public double getCostoTotal() {
+        return costoTotal;
+    }
+
+    public void setCostoTotal(double costoTotal) {
+        this.costoTotal = costoTotal;
+    }
+
+    public String getMetdPago() { 
+        return metodoPago;
+    }
+    
+    public void setMetdPago(int metPago){    
+        switch (metPago) {
+            case 1:
+                this.metodoPago = "EFECTIVO";
+                System.out.println("EFECTIVO");
+                break;
+            case 2:
+                this.metodoPago = "TARJETA DE CREDITO";
+                System.out.println("TARJETA DE CREDITO");
+                break;
+            case 3:
+                this.metodoPago = "TARJETA DE DEBITO";
+                System.out.println("TARJETA DE DEBITO");
+                break;
+            default:
+                System.out.println("NO SE ENCONTRO UN METODO VALIDO");
+        }        
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidoP() {
+        return apellidoP;
+    }
+
+    public void setApellidoP(String apellidoP) {
+        this.apellidoP = apellidoP;
+    }
+
+    public String getApellidoM() {
+        return apellidoM;
+    }
+
+    public void setApellidoM(String apellidoM) {
+        this.apellidoM = apellidoM;
+    }
+
+    @Override
+    public String toString() {
+        return getIdCliente() + ", " +getNombre() +", "
+                + getApellidoP() + ", " +getApellidoM() + ", "
+                + getNombreCompleto() + ", " + getMetdPago()+ ", "
+                + getPersonas() + ", " + getEntrada() + ", " 
+                + getSalida() + ", " + getCostoTotal() + ", "
+                + getMetdPago();
+    }
+
+}
