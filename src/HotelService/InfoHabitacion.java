@@ -13,8 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -236,7 +234,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ROOM_NUMBERItemStateChanged
 
-    public void getData(int idHabitacion) {
+    public void getData(Object idHabitacion) {
         Connection Con = getConeccion();
         PreparedStatement infoHabitacion;        
         ResultSet rsHabitacion;        
@@ -266,10 +264,9 @@ public class InfoHabitacion extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("ERROR METOD GET DATA: " + e);
         }
-
     }
 
-    public void getClienteInfo(int idHabitacion) {
+    public void getClienteInfo(Object idHabitacion) {
 
         Connection Con = getConeccion();        
         PreparedStatement clientInfo;        
@@ -331,9 +328,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "SELECCIONA UNA HABITACIÓN");
             ROOM_NUMBER.requestFocus();
         } else {            
-            getData(202);
-            System.out.println(habitacion.toString());
-            getClienteInfo(202);
+            getClienteInfo(ROOM_NUMBER.getSelectedItem());
             System.out.println(renta.toString());
             System.out.println(renta.getDias());
 

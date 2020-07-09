@@ -140,6 +140,10 @@ public class RentaCliente {
         return day;
     }
     
+    public double CalcularCosto(){        
+        return costoTotal * getDias();
+    }
+    
     @Override
     public String toString() {
         return getIdCliente() + ", " +getNombre() +", "
