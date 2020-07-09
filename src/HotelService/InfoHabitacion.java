@@ -288,8 +288,8 @@ public class InfoHabitacion extends javax.swing.JFrame {
             if (rsCliente.next()) {
                 /*renta = new RentaCliente(
                         rsCliente.getInt(1),
-                        rsCliente.getInt(5));*/
-
+                        rsCliente.getInt(5));*/                
+                
                 renta = new RentaCliente(
                         rsCliente.getInt(1),
                         rsCliente.getInt(5),
@@ -297,39 +297,18 @@ public class InfoHabitacion extends javax.swing.JFrame {
                         rsCliente.getString(3),
                         rsCliente.getString(4),
                         rsCliente.getInt(6),
-                        rsCliente.getDate(7),
-                        rsCliente.getDate(8),
+                        rsCliente.getDate(7),                        
                         rsCliente.getDouble(9));
                 renta.setMetdPago(rsCliente.getInt(10));
-
-                /*String nombre = rsCliente.getString(2); //nombre
-                    String apPat = rsCliente.getString(3);
-                    String apMat = rsCliente.getString(4);
-                    int numPer = rsCliente.getInt(6);
-                    Date entrada = rsCliente.getDate(7);
-                    Date salida = rsCliente.getDate(8);
-                    double costo = rsCliente.getDouble(9); //csoto
-                    int metodoPago = rsCliente.getInt(10); //metPago
-                    
-                    
-                    System.out.println("Nombre: "+nombre);
-                    System.out.println("ApPaterno: "+apPat);
-                    System.out.println("ApMaterno: "+apMat);
-                    System.out.println("Num Persona: "+numPer);
-                    System.out.println("Entrada: " +entrada);
-                    System.out.println("Salida: "+salida);
-                    System.out.println("Costo: "+costo);
-                    System.out.println("Metodo Pago: "+metodoPago);
-                    
-                    
-                    /*renta.setNombre(rsCliente.getString(2));
-                    renta.setApellidoP(apPat);
-                    renta.setApellidoM(apMat);
-                    renta.setPersonas(numPer);
-                    renta.setEntrada(entrada);
-                    renta.setSalida(salida);
-                    renta.setCostoTotal(costo);
-                    renta.setMetdPago(metodoPago);*/
+                
+                String salidaE = rsCliente.getString(8);
+                System.out.println("SALIDA: " +salidaE);
+                if (salidaE.equals("0000-00-00")) {
+                    renta.setSalida("AL DIA");
+                }else{
+                    renta.setSalida(salidaE);
+                }
+                
             }
 
         } catch (SQLException e) {
@@ -357,8 +336,6 @@ public class InfoHabitacion extends javax.swing.JFrame {
             System.out.println(habitacion.toString());
             getClienteInfo(202);
             System.out.println(renta.toString());
-            /*System.out.println(renta.getCostoTotal());
-            System.out.println(renta.getNombreCompleto());*/
 
             //System.out.println(renta.getNombreCompleto());
            /* renta = new RentaCliente(202, 6);

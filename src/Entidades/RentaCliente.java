@@ -1,5 +1,6 @@
 package Entidades;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -16,24 +17,24 @@ public class RentaCliente {
     private String apellidoM;
     private int personas;
     private Date entrada;
-    private Date salida;
+    private String salida;
     private double costoTotal;
     private String metodoPago;
+    Timestamp dates = new Timestamp(new Date().getTime());
 
     public RentaCliente(int idHabitacion, int idCliente) {
         this.idHabitacion = idHabitacion;
         this.idCliente = idCliente;
     }
 
-    public RentaCliente(int idHabitacion, int idCliente, String nombre, String apellidoP, String apellidoM, int personas, Date entrada, Date salida, double costoTotal) {
+    public RentaCliente(int idHabitacion, int idCliente, String nombre, String apellidoP, String apellidoM, int personas, Date entrada, double costoTotal) {
         this.idHabitacion = idHabitacion;
         this.idCliente = idCliente;        
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.personas = personas;
-        this.entrada = entrada;
-        this.salida = salida;
+        this.entrada = entrada;        
         this.costoTotal = costoTotal;        
     }
 
@@ -73,11 +74,11 @@ public class RentaCliente {
         this.entrada = entrada;
     }
 
-    public Date getSalida() {
+    public String getSalida() {
         return salida;
     }
 
-    public void setSalida(Date salida) {
+    public void setSalida(String salida) {
         this.salida = salida;
     }
 
@@ -135,7 +136,7 @@ public class RentaCliente {
     public void setApellidoM(String apellidoM) {
         this.apellidoM = apellidoM;
     }
-
+    
     @Override
     public String toString() {
         return getIdCliente() + ", " +getNombre() +", "
