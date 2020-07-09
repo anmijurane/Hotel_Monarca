@@ -25,6 +25,18 @@ public class RentaCliente {
         this.idCliente = idCliente;
     }
 
+    public RentaCliente(int idHabitacion, int idCliente, String nombre, String apellidoP, String apellidoM, int personas, Date entrada, Date salida, double costoTotal) {
+        this.idHabitacion = idHabitacion;
+        this.idCliente = idCliente;        
+        this.nombre = nombre;
+        this.apellidoP = apellidoP;
+        this.apellidoM = apellidoM;
+        this.personas = personas;
+        this.entrada = entrada;
+        this.salida = salida;
+        this.costoTotal = costoTotal;        
+    }
+
     public int getIdHabitacion() {
         return idHabitacion;
     }
@@ -133,5 +145,7 @@ public class RentaCliente {
                 + getSalida() + ", " + getCostoTotal() + ", "
                 + getMetdPago();
     }
+    
+    
 
 }
