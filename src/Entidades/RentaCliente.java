@@ -2,6 +2,7 @@ package Entidades;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -19,8 +20,7 @@ public class RentaCliente {
     private Date entrada;
     private String salida;
     private double costoTotal;
-    private String metodoPago;
-    Timestamp dates = new Timestamp(new Date().getTime());
+    private String metodoPago;    
 
     public RentaCliente(int idHabitacion, int idCliente) {
         this.idHabitacion = idHabitacion;
@@ -97,16 +97,13 @@ public class RentaCliente {
     public void setMetdPago(int metPago){    
         switch (metPago) {
             case 1:
-                this.metodoPago = "EFECTIVO";
-                System.out.println("EFECTIVO");
+                this.metodoPago = "EFECTIVO";                
                 break;
             case 2:
-                this.metodoPago = "TARJETA DE CREDITO";
-                System.out.println("TARJETA DE CREDITO");
+                this.metodoPago = "TARJETA DE CREDITO";                
                 break;
             case 3:
-                this.metodoPago = "TARJETA DE DEBITO";
-                System.out.println("TARJETA DE DEBITO");
+                this.metodoPago = "TARJETA DE DEBITO";                
                 break;
             default:
                 System.out.println("NO SE ENCONTRO UN METODO VALIDO");
@@ -135,6 +132,12 @@ public class RentaCliente {
 
     public void setApellidoM(String apellidoM) {
         this.apellidoM = apellidoM;
+    }
+    
+    public int getDias(){
+        Timestamp dates = new Timestamp(new Date().getTime());
+        int day = (int) (TimeUnit.DAYS.convert((dates.getTime() - entrada.getTime()),TimeUnit.MILLISECONDS ));
+        return day;
     }
     
     @Override

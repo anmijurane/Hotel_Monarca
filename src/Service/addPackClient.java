@@ -49,7 +49,7 @@ public class addPackClient extends javax.swing.JFrame {
 
         if (Integer.parseInt(Days.getText().toString()) < 0) {
             JOptionPane.showMessageDialog(null, "SU FEHCA DE SALIDA NO PUEDE SER INFERIOR A LA DE SU ENTRADA", "ADVETENCIA", 2);
-            Days.setText(null);
+            Days.setText(null); 
         }
 
     }

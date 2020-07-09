@@ -330,12 +330,12 @@ public class InfoHabitacion extends javax.swing.JFrame {
         if (ROOM_NUMBER.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "SELECCIONA UNA HABITACIÓN");
             ROOM_NUMBER.requestFocus();
-        } else {
-            Timestamp dates = new Timestamp(new Date().getTime());
+        } else {            
             getData(202);
             System.out.println(habitacion.toString());
             getClienteInfo(202);
             System.out.println(renta.toString());
+            System.out.println(renta.getDias());
 
             //System.out.println(renta.getNombreCompleto());
            /* renta = new RentaCliente(202, 6);
