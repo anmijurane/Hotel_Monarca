@@ -27,6 +27,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
      */
     public InfoHabitacion() {
         initComponents();
+        setEditableJT(false);
     }
 
     public InfoHabitacion(String name, int idPersonal, int TypeForm) {
@@ -34,6 +35,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
         this.name = name;
         this.idPersonal = idPersonal;
         this.TypeForm = TypeForm;
+        setEditableJT(false);
     }
 
     /**
@@ -69,7 +71,6 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,13 +96,14 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jLabel1.setText("INFORMACIÓN DE HABITACIÓN");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 560, 50));
 
+        btnRegresar.setBackground(new java.awt.Color(255, 102, 0));
         btnRegresar.setText("REGRESAR");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, -1, -1));
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, -1, -1));
 
         jT_IdHabitacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_IdHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 110, -1));
@@ -173,14 +175,6 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jLabel11.setText("COSTO TOTAL");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, -1, -1));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, -1, -1));
-
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -246,7 +240,8 @@ public class InfoHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     private void ROOM_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ROOM_NUMBERItemStateChanged
-
+        getDataHabitacion(ROOM_NUMBER.getSelectedItem());
+        getClienteInfo(ROOM_NUMBER.getSelectedItem());
     }//GEN-LAST:event_ROOM_NUMBERItemStateChanged
 
     public void getDataHabitacion(Object idHabitacion) {
@@ -384,18 +379,18 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jT_CostoTotal.setText("");
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (ROOM_NUMBER.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "SELECCIONA UNA HABITACIÓN");
-            ROOM_NUMBER.requestFocus();
-        } else {
-            getDataHabitacion(ROOM_NUMBER.getSelectedItem());
-            getClienteInfo(ROOM_NUMBER.getSelectedItem());
-            System.out.println(renta.toString());
-            System.out.println(habitacion.toString());
-
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    public void setEditableJT(boolean statusFlag) {
+        jT_Camas.setEditable(statusFlag);
+        jT_Capacidad.setEditable(statusFlag);
+        jT_Categoria.setEditable(statusFlag);
+        jT_CheckIn.setEditable(statusFlag);
+        jT_CheckOut.setEditable(statusFlag);
+        jT_CostoTotal.setEditable(statusFlag);
+        jT_CostoxNoche.setEditable(statusFlag);
+        jT_Estado.setEditable(statusFlag);
+        jT_IdHabitacion.setEditable(statusFlag);
+        jT_NombreCompleto.setEditable(statusFlag);
+    }
 
     /**
      * @param args the command line arguments
@@ -437,7 +432,6 @@ public class InfoHabitacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ROOM_NUMBER;
     private javax.swing.JLabel background;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
