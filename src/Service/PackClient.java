@@ -19,6 +19,7 @@ public class PackClient extends javax.swing.JFrame {
     Connection Con = getConeccion();
     PreparedStatement ps;
     ResultSet rs;
+    String costo;
 
     public PackClient() {
         initComponents();
@@ -398,21 +399,41 @@ public class PackClient extends javax.swing.JFrame {
         switch (valor) {
             case 1:
                 sele_room();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
                 break;
             case 2:
                 sele_room();
                 sele_room2();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
                 break;
             case 3:
                 sele_room();
                 sele_room2();
                 sele_room3();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
                 break;
             case 4:
                 sele_room();
                 sele_room2();
                 sele_room3();
                 sele_room4();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
+                query_(type_4.getSelectedItem().toString());
+                price_4.setText(costo);
                 break;
             case 5:
                 sele_room();
@@ -420,6 +441,16 @@ public class PackClient extends javax.swing.JFrame {
                 sele_room3();
                 sele_room4();
                 sele_room5();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
+                query_(type_4.getSelectedItem().toString());
+                price_4.setText(costo);
+                query_(type_5.getSelectedItem().toString());
+                price_5.setText(costo);
                 break;
             case 6:
                 sele_room();
@@ -428,6 +459,18 @@ public class PackClient extends javax.swing.JFrame {
                 sele_room4();
                 sele_room5();
                 sele_room6();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
+                query_(type_4.getSelectedItem().toString());
+                price_4.setText(costo);
+                query_(type_5.getSelectedItem().toString());
+                price_5.setText(costo);
+                query_(type_6.getSelectedItem().toString());
+                price_6.setText(costo);
                 break;
             case 7:
                 sele_room();
@@ -437,6 +480,20 @@ public class PackClient extends javax.swing.JFrame {
                 sele_room5();
                 sele_room6();
                 sele_room7();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
+                query_(type_4.getSelectedItem().toString());
+                price_4.setText(costo);
+                query_(type_5.getSelectedItem().toString());
+                price_5.setText(costo);
+                query_(type_6.getSelectedItem().toString());
+                price_6.setText(costo);
+                query_(type_7.getSelectedItem().toString());
+                price_7.setText(costo);
                 break;
             case 8:
                 sele_room();
@@ -447,6 +504,22 @@ public class PackClient extends javax.swing.JFrame {
                 sele_room6();
                 sele_room7();
                 sele_room8();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
+                query_(type_4.getSelectedItem().toString());
+                price_4.setText(costo);
+                query_(type_5.getSelectedItem().toString());
+                price_5.setText(costo);
+                query_(type_6.getSelectedItem().toString());
+                price_6.setText(costo);
+                query_(type_7.getSelectedItem().toString());
+                price_7.setText(costo);
+                query_(type_8.getSelectedItem().toString());
+                price_8.setText(costo);
                 break;
             case 9:
                 sele_room();
@@ -458,6 +531,24 @@ public class PackClient extends javax.swing.JFrame {
                 sele_room7();
                 sele_room8();
                 sele_room9();
+                query_(type_1.getSelectedItem().toString());
+                price_1.setText(costo);
+                query_(type_2.getSelectedItem().toString());
+                price_2.setText(costo);
+                query_(type_3.getSelectedItem().toString());
+                price_3.setText(costo);
+                query_(type_4.getSelectedItem().toString());
+                price_4.setText(costo);
+                query_(type_5.getSelectedItem().toString());
+                price_5.setText(costo);
+                query_(type_6.getSelectedItem().toString());
+                price_6.setText(costo);
+                query_(type_7.getSelectedItem().toString());
+                price_7.setText(costo);
+                query_(type_8.getSelectedItem().toString());
+                price_8.setText(costo);
+                query_(type_9.getSelectedItem().toString());
+                price_9.setText(costo);
                 break;
             default:
                 throw new AssertionError();
@@ -815,23 +906,21 @@ public class PackClient extends javax.swing.JFrame {
         }
     }
 
-    /*public void query_() {
-        
-        String type = type_1.getSelectedItem().toString();
-        
+    public void query_(String type) {
+
         try {
             
             ps = Con.prepareStatement("select * from categoria where categoria = '"+type+"'");
             rs = ps.executeQuery();
             
             if(rs.next()){
-                price_1.setText(rs.getString("costo"));
+                costo = rs.getString("costo");
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(PackClient.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
