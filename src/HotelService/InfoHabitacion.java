@@ -357,6 +357,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
         switch (TypeForm) {
             case 2:
                 new MenuRecepcionista(name, idPersonal).setVisible(true);
+                this.dispose();
                 break;
             default:
                 throw new AssertionError();
