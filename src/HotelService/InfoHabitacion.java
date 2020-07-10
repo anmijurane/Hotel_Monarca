@@ -102,15 +102,35 @@ public class InfoHabitacion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, -1, -1));
+
+        jT_IdHabitacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_IdHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 110, -1));
+
+        jT_Categoria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 110, -1));
+
+        jT_Capacidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_Capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 110, -1));
+
+        jT_CostoxNoche.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_CostoxNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 120, -1));
+
+        jT_Camas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_Camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 90, -1));
+
+        jT_Estado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 90, -1));
+
+        jT_NombreCompleto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_NombreCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 290, -1));
+
+        jT_CheckIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_CheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 120, -1));
+
+        jT_CheckOut.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 110, -1));
+
+        jT_CostoTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_CostoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 130, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -229,7 +249,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ROOM_NUMBERItemStateChanged
 
-    public void getData(Object idHabitacion) {
+    public void getDataHabitacion(Object idHabitacion) {
         Connection Con = getConeccion();
         PreparedStatement infoHabitacion;
         ResultSet rsHabitacion;
@@ -254,6 +274,9 @@ public class InfoHabitacion extends javax.swing.JFrame {
                         rsHabitacion.getInt(5),
                         rsHabitacion.getString(6));
                 habitacion.setCosto(rsHabitacion.getDouble(4));
+                LlenarDatosHabitacion();
+            } else {
+                JOptionPane.showMessageDialog(this, "¡UY!, OCURRIO UN ERROR");
             }
 
         } catch (SQLException e) {
@@ -261,16 +284,18 @@ public class InfoHabitacion extends javax.swing.JFrame {
         }
     }
 
-    public void LlenarDatos() {
-        
-        LimpiarDatos();
-        
+    public void LlenarDatosHabitacion() {
+
         jT_IdHabitacion.setText("" + habitacion.getId_habitacion());
         jT_Categoria.setText(habitacion.getCategoria());
         jT_Capacidad.setText(habitacion.getCapacidad());
         jT_CostoxNoche.setText(habitacion.getCosto());
         jT_Camas.setText("" + habitacion.getCamas());
         jT_Estado.setText(habitacion.getEstado());
+
+    }
+
+    public void LlenarDatosCliente() {
 
         jT_NombreCompleto.setText(renta.getNombreCompleto());
         jT_CheckIn.setText("" + renta.getEntrada());
@@ -280,7 +305,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
     }
 
     public void getClienteInfo(Object idHabitacion) {
-
+        LimpiarDatosCliente();
         Connection Con = getConeccion();
         PreparedStatement clientInfo;
         ResultSet rsCliente;
@@ -292,7 +317,7 @@ public class InfoHabitacion extends javax.swing.JFrame {
         try {
 
             clientInfo = Con.prepareStatement(sqlInfoClint);
-            //System.out.println(clientInfo);
+            //System.out.println(clientInfo);            
             rsCliente = clientInfo.executeQuery();
 
             if (rsCliente.next()) {
@@ -313,12 +338,19 @@ public class InfoHabitacion extends javax.swing.JFrame {
 
                 String salidaE = rsCliente.getString(8);
                 System.out.println("SALIDA: " + salidaE);
+
                 if (salidaE.equals("0000-00-00")) {
                     renta.setSalida("AL DIA");
                 } else {
                     renta.setSalida(salidaE);
                 }
+                LlenarDatosCliente();
 
+            } else {
+                jT_NombreCompleto.setText("NO ASIGNADO");
+                jT_CheckIn.setText("");
+                jT_CheckOut.setText("");
+                jT_CostoTotal.setText("$ 000.00");
             }
 
         } catch (SQLException e) {
@@ -336,17 +368,20 @@ public class InfoHabitacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    public void LimpiarDatos() {
-        jT_Camas.setText("");
+    public void LimpiarDatosHabitacion() {
+        jT_IdHabitacion.setText("");
         jT_Capacidad.setText("");
         jT_Categoria.setText("");
+        jT_CostoxNoche.setText("");
+        jT_Camas.setText("");
+        jT_Estado.setText("");
+    }
+
+    public void LimpiarDatosCliente() {
+        jT_NombreCompleto.setText("");
         jT_CheckIn.setText("");
         jT_CheckOut.setText("");
         jT_CostoTotal.setText("");
-        jT_CostoxNoche.setText("");
-        jT_Estado.setText("");
-        jT_IdHabitacion.setText("");
-        jT_NombreCompleto.setText("");
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -354,25 +389,11 @@ public class InfoHabitacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "SELECCIONA UNA HABITACIÓN");
             ROOM_NUMBER.requestFocus();
         } else {
-            getData(ROOM_NUMBER.getSelectedItem());
+            getDataHabitacion(ROOM_NUMBER.getSelectedItem());
             getClienteInfo(ROOM_NUMBER.getSelectedItem());
             System.out.println(renta.toString());
             System.out.println(habitacion.toString());
 
-            LlenarDatos();
-
-            //System.out.println(renta.getNombreCompleto());
-            /* renta = new RentaCliente(202, 6);
-            renta.setNombre("ANDRES");
-            renta.setApellidoP("JURADO");
-            renta.setApellidoM("NEGRETE");
-            renta.setMetdPago(1);
-            renta.setPersonas(1);
-            renta.setEntrada(dates);
-            renta.setSalida(dates);
-            renta.setCostoTotal(1523.00);
-            
-            System.out.println(renta.toString());*/
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
