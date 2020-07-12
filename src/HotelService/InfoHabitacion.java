@@ -1,27 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HotelService;
 
 import Entidades.Habitacion;
+import Entidades.RentaCliente;
+import static SQLConex.Conection.getConeccion;
 import java.awt.event.ItemEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author anmijurane <miguel.andres_sic@tesco.edu.mx>
  */
 public class InfoHabitacion extends javax.swing.JFrame {
-    
+
     String name;
     int idPersonal, TypeForm;
+    Habitacion habitacion;
+    RentaCliente renta;
+
     /**
      * Creates new form InfoHabitacion
      */
     public InfoHabitacion() {
         initComponents();
+        setEditableJT(false);
     }
 
     public InfoHabitacion(String name, int idPersonal, int TypeForm) {
@@ -29,7 +35,9 @@ public class InfoHabitacion extends javax.swing.JFrame {
         this.name = name;
         this.idPersonal = idPersonal;
         this.TypeForm = TypeForm;
+        setEditableJT(false);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,16 +51,16 @@ public class InfoHabitacion extends javax.swing.JFrame {
         ROOM_NUMBER = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        jT_IdHabitacion = new javax.swing.JTextField();
+        jT_Categoria = new javax.swing.JTextField();
+        jT_Capacidad = new javax.swing.JTextField();
+        jT_CostoxNoche = new javax.swing.JTextField();
+        jT_Camas = new javax.swing.JTextField();
+        jT_Estado = new javax.swing.JTextField();
+        jT_NombreCompleto = new javax.swing.JTextField();
+        jT_CheckIn = new javax.swing.JTextField();
+        jT_CheckOut = new javax.swing.JTextField();
+        jT_CostoTotal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -88,23 +96,44 @@ public class InfoHabitacion extends javax.swing.JFrame {
         jLabel1.setText("INFORMACIÓN DE HABITACIÓN");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 560, 50));
 
+        btnRegresar.setBackground(new java.awt.Color(255, 102, 0));
         btnRegresar.setText("REGRESAR");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 110, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 110, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 110, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 120, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 90, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 90, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 290, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 120, -1));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 110, -1));
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 130, -1));
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 520, -1, -1));
+
+        jT_IdHabitacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_IdHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 110, -1));
+
+        jT_Categoria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 110, -1));
+
+        jT_Capacidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_Capacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 110, -1));
+
+        jT_CostoxNoche.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_CostoxNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 120, -1));
+
+        jT_Camas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_Camas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 90, -1));
+
+        jT_Estado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, 90, -1));
+
+        jT_NombreCompleto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_NombreCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 290, -1));
+
+        jT_CheckIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_CheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 120, -1));
+
+        jT_CheckOut.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 110, -1));
+
+        jT_CostoTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_CostoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 130, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NUM. HABITACIÓN");
@@ -211,18 +240,158 @@ public class InfoHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_FLAT_NUMBERItemStateChanged
 
     private void ROOM_NUMBERItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ROOM_NUMBERItemStateChanged
-        
+        getDataHabitacion(ROOM_NUMBER.getSelectedItem());
+        getClienteInfo(ROOM_NUMBER.getSelectedItem());
     }//GEN-LAST:event_ROOM_NUMBERItemStateChanged
+
+    public void getDataHabitacion(Object idHabitacion) {
+        Connection Con = getConeccion();
+        PreparedStatement infoHabitacion;
+        ResultSet rsHabitacion;
+
+        String sqlInfoHab = "select habitacion.id_habitacion, categoria.categoria, categoria.capacidad, categoria.costo, categoria.camas, estado.nombre"
+                + " FROM habitacion, categoria, estado"
+                + " WHERE id_habitacion = " + idHabitacion
+                + " AND categoria.id_categoria = habitacion.id_categoria"
+                + " AND estado.id_estado = habitacion.id_estado";
+
+        try {
+            infoHabitacion = Con.prepareStatement(sqlInfoHab);
+            //System.out.println(infoHabitacion);
+            rsHabitacion = infoHabitacion.executeQuery();
+
+            if (rsHabitacion.next()) {
+
+                habitacion = new Habitacion(
+                        rsHabitacion.getInt(1),
+                        rsHabitacion.getString(2),
+                        rsHabitacion.getString(3),
+                        rsHabitacion.getInt(5),
+                        rsHabitacion.getString(6));
+                habitacion.setCosto(rsHabitacion.getDouble(4));
+                LlenarDatosHabitacion();
+            } else {
+                JOptionPane.showMessageDialog(this, "¡UY!, OCURRIO UN ERROR");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR METOD GET DATA: " + e);
+        }
+    }
+
+    public void LlenarDatosHabitacion() {
+
+        jT_IdHabitacion.setText("" + habitacion.getId_habitacion());
+        jT_Categoria.setText(habitacion.getCategoria());
+        jT_Capacidad.setText(habitacion.getCapacidad());
+        jT_CostoxNoche.setText(habitacion.getCosto());
+        jT_Camas.setText("" + habitacion.getCamas());
+        jT_Estado.setText(habitacion.getEstado());
+
+    }
+
+    public void LlenarDatosCliente() {
+
+        jT_NombreCompleto.setText(renta.getNombreCompleto());
+        jT_CheckIn.setText("" + renta.getEntrada());
+        jT_CheckOut.setText(renta.getSalida());
+        jT_CostoTotal.setText(renta.CalcularCosto());
+
+    }
+
+    public void getClienteInfo(Object idHabitacion) {
+        LimpiarDatosCliente();
+        Connection Con = getConeccion();
+        PreparedStatement clientInfo;
+        ResultSet rsCliente;
+
+        String sqlInfoClint = "select renta.id_habitacion, cliente.nombre, cliente.apellido_p, cliente.apellido_m, renta.id_cliente, \n"
+                + "renta.personas, renta.entrada, renta.salida, renta.costo_renta, renta.id_metpago from renta\n"
+                + " INNER JOIN cliente ON renta.id_cliente = cliente.id_cliente\n"
+                + " WHERE renta.id_habitacion = " + idHabitacion;
+        try {
+
+            clientInfo = Con.prepareStatement(sqlInfoClint);
+            //System.out.println(clientInfo);            
+            rsCliente = clientInfo.executeQuery();
+
+            if (rsCliente.next()) {
+                /*renta = new RentaCliente(
+                        rsCliente.getInt(1),
+                        rsCliente.getInt(5));*/
+
+                renta = new RentaCliente(
+                        rsCliente.getInt(1),
+                        rsCliente.getInt(5),
+                        rsCliente.getString(2),
+                        rsCliente.getString(3),
+                        rsCliente.getString(4),
+                        rsCliente.getInt(6),
+                        rsCliente.getDate(7),
+                        rsCliente.getDouble(9));
+                renta.setMetdPago(rsCliente.getInt(10));
+
+                String salidaE = rsCliente.getString(8);
+                System.out.println("SALIDA: " + salidaE);
+
+                if (salidaE.equals("0000-00-00")) {
+                    renta.setSalida("AL DIA");
+                } else {
+                    renta.setSalida(salidaE);
+                }
+                LlenarDatosCliente();
+
+            } else {
+                jT_NombreCompleto.setText("NO ASIGNADO");
+                jT_CheckIn.setText("");
+                jT_CheckOut.setText("");
+                jT_CostoTotal.setText("$ 000.00");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR EN getClienteInfo: " + e);
+        }
+    }
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         switch (TypeForm) {
             case 2:
                 new MenuRecepcionista(name, idPersonal).setVisible(true);
+                this.dispose();
                 break;
             default:
                 throw new AssertionError();
         }
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    public void LimpiarDatosHabitacion() {
+        jT_IdHabitacion.setText("");
+        jT_Capacidad.setText("");
+        jT_Categoria.setText("");
+        jT_CostoxNoche.setText("");
+        jT_Camas.setText("");
+        jT_Estado.setText("");
+    }
+
+    public void LimpiarDatosCliente() {
+        jT_NombreCompleto.setText("");
+        jT_CheckIn.setText("");
+        jT_CheckOut.setText("");
+        jT_CostoTotal.setText("");
+    }
+
+    public void setEditableJT(boolean statusFlag) {
+        jT_Camas.setEditable(statusFlag);
+        jT_Capacidad.setEditable(statusFlag);
+        jT_Categoria.setEditable(statusFlag);
+        jT_CheckIn.setEditable(statusFlag);
+        jT_CheckOut.setEditable(statusFlag);
+        jT_CostoTotal.setEditable(statusFlag);
+        jT_CostoxNoche.setEditable(statusFlag);
+        jT_Estado.setEditable(statusFlag);
+        jT_IdHabitacion.setEditable(statusFlag);
+        jT_NombreCompleto.setEditable(statusFlag);
+    }
 
     /**
      * @param args the command line arguments
@@ -275,15 +444,30 @@ public class InfoHabitacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jT_Camas;
+    private javax.swing.JTextField jT_Capacidad;
+    private javax.swing.JTextField jT_Categoria;
+    private javax.swing.JTextField jT_CheckIn;
+    private javax.swing.JTextField jT_CheckOut;
+    private javax.swing.JTextField jT_CostoTotal;
+    private javax.swing.JTextField jT_CostoxNoche;
+    private javax.swing.JTextField jT_Estado;
+    private javax.swing.JTextField jT_IdHabitacion;
+    private javax.swing.JTextField jT_NombreCompleto;
     // End of variables declaration//GEN-END:variables
 }
+
+/* CONSULTA DE INFORMACION DE HABITACIÓN
+select habitacion.id_habitacion, categoria.categoria, categoria.capacidad, categoria.costo, categoria.camas, estado.nombre
+    FROM habitacion, categoria, estado    
+    WHERE id_habitacion = 202
+    AND categoria.id_categoria = habitacion.id_categoria
+    AND estado.id_estado = habitacion.id_estado;
+    
+    CONSULTA DE USUARIO EN LA HABITACIÓN
+select renta.id_habitacion, cliente.nombre, cliente.apellido_p, cliente.apellido_m, renta.id_cliente, 
+renta.personas, renta.entrada, renta.salida, renta.costo_renta, renta.id_metpago from renta
+INNER JOIN cliente ON renta.id_cliente = cliente.id_cliente
+WHERE renta.id_habitacion = 202;
+
+ */

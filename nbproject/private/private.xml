@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/addPackClient.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/RentaCliente.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/InfoHabitacion.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/MenuRecepcionista.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/Limpieza.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Habitacion.java</file>
+        </group>
     </open-files>
 </project-private>
