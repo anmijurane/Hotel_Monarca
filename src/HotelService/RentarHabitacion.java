@@ -5,12 +5,14 @@
  */
 package HotelService;
 
+import Entidades.Habitacion;
 import static SQLConex.Conection.getConeccion;
 import Service.FormAddClient;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -28,9 +30,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
     /**
      * Creates new form RentarHabitacion
+     *
      * @param name
      * @param idPersonal
-     */    
+     */
     public RentarHabitacion(String name, int idPersonal) {
         initComponents();
         getNameClient();
@@ -39,7 +42,6 @@ public class RentarHabitacion extends javax.swing.JFrame {
         this.name = name;
         //btn_back.setVisible(true);
     }
-    
 
     public final void getNameClient() {
         try {
@@ -129,12 +131,77 @@ public class RentarHabitacion extends javax.swing.JFrame {
             }
         });
 
-        jCbx_NumHab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Núm Habitaciones" }));
+        jCbx_NumHab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Núm Habitaciones", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         jCbx_NumHab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel4.setText("HABITACIONES");
 
         jCbx_01.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCbx_01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbx_01ActionPerformed(evt);
+            }
+        });
+
+        jP_Hab_01.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_01StateChanged(evt);
+            }
+        });
+
+        jP_Hab_02.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_02StateChanged(evt);
+            }
+        });
+
+        jP_Hab_03.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_03StateChanged(evt);
+            }
+        });
+
+        jP_Hab_04.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_04StateChanged(evt);
+            }
+        });
+
+        jP_Hab_05.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_05StateChanged(evt);
+            }
+        });
+
+        jP_Hab_06.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_06StateChanged(evt);
+            }
+        });
+
+        jP_Hab_07.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_07StateChanged(evt);
+            }
+        });
+
+        jP_Hab_08.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_08StateChanged(evt);
+            }
+        });
+
+        jP_Hab_09.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_09StateChanged(evt);
+            }
+        });
+
+        jP_Hab_010.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jP_Hab_010StateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,18 +334,63 @@ public class RentarHabitacion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 
+    private void jCbx_01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbx_01ActionPerformed
+
+    }//GEN-LAST:event_jCbx_01ActionPerformed
+
+    private void jP_Hab_01StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_01StateChanged
+        jCbx_01.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_01StateChanged
+
+    private void jP_Hab_02StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_02StateChanged
+        jCbx_02.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_02StateChanged
+
+    private void jP_Hab_03StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_03StateChanged
+        jCbx_03.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_03StateChanged
+
+    private void jP_Hab_04StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_04StateChanged
+        jCbx_04.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_04StateChanged
+
+    private void jP_Hab_05StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_05StateChanged
+        jCbx_05.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_05StateChanged
+
+    private void jP_Hab_06StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_06StateChanged
+        jCbx_06.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_06StateChanged
+
+    private void jP_Hab_07StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_07StateChanged
+        jCbx_07.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_07StateChanged
+
+    private void jP_Hab_08StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_08StateChanged
+        jCbx_08.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_08StateChanged
+
+    private void jP_Hab_09StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_09StateChanged
+        jCbx_09.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_09StateChanged
+
+    private void jP_Hab_010StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_010StateChanged
+        jCbx_010.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+    }//GEN-LAST:event_jP_Hab_010StateChanged
+
     public final void setModelSpinner() {
-        jP_Hab_01.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_010.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_02.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_03.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_04.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_05.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_06.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_07.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_08.setModel(new SpinnerNumberModel(1, 1, 4, 1));
-        jP_Hab_09.setModel(new SpinnerNumberModel(1, 1, 4, 1));                
-    }   
+        jP_Hab_01.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_010.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_02.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_03.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_04.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_05.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_06.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_07.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_08.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_09.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+    }
+
     /**
      * @param args the command line arguments
      */
