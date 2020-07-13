@@ -27,89 +27,154 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="cbxClient" alignment="0" min="-2" pref="257" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_NumHab" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="check_in" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <Component id="check_out" min="-2" pref="147" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLHab1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRegCliente" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jP_Hab_05" min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jCbx_05" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jP_Hab_05" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_04" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_03" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_02" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_01" min="-2" pref="60" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jCbx_01" max="32767" attributes="0"/>
-                          <Component id="jCbx_02" max="32767" attributes="0"/>
-                          <Component id="jCbx_03" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCbx_04" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jCbx_05" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLHab10" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab9" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab8" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab7" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLHab6" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jP_Hab_010" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_09" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_08" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_07" max="32767" attributes="0"/>
-                          <Component id="jP_Hab_06" min="-2" pref="60" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jCbx_07" max="32767" attributes="0"/>
-                          <Component id="jCbx_06" max="32767" attributes="0"/>
-                          <Component id="jCbx_08" max="32767" attributes="0"/>
-                          <Component id="jCbx_09" max="32767" attributes="0"/>
-                          <Component id="jCbx_010" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
+                      <Component id="btn_back" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnRegCliente" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLHab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxClient" alignment="0" min="-2" pref="257" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCbx_NumHab" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Precio1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jP_Hab_03" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="jP_Hab_01" alignment="1" pref="60" max="32767" attributes="0"/>
+                                              <Component id="jP_Hab_02" alignment="1" min="-2" pref="59" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jCbx_02" max="32767" attributes="0"/>
+                                              <Component id="jCbx_01" max="32767" attributes="0"/>
+                                              <Component id="jCbx_03" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                          <Component id="jLHab2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLHab4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLHab5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jP_Hab_04" min="-2" pref="60" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jCbx_04" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLHab3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextField1" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="Precio2" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="check_out" min="-2" pref="147" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButton1" min="-2" pref="86" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace pref="79" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jLHab9" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jP_Hab_010" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="jP_Hab_09" min="-2" pref="60" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                              <Component id="jP_Hab_06" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
+                                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                                  <Component id="jP_Hab_07" alignment="0" pref="60" max="32767" attributes="0"/>
+                                                                  <Component id="jP_Hab_08" alignment="0" max="32767" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                          <Component id="jLHab6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="jCbx_06" max="32767" attributes="0"/>
+                                                          <Component id="jCbx_07" max="32767" attributes="0"/>
+                                                          <Component id="jCbx_09" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="jCbx_08" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="jCbx_010" alignment="0" max="32767" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Component id="check_in" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace pref="275" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLHab10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLHab8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLHab7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextField6" max="32767" attributes="0"/>
+                                          <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField10" alignment="0" pref="99" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btn_back" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -130,66 +195,109 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="check_out" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="check_in" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLHab1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLHab6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="check_in" min="-2" max="-2" attributes="0"/>
-                          <Component id="check_out" min="-2" max="-2" attributes="0"/>
+                          <Component id="Precio2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Precio1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCbx_01" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jP_Hab_01" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jP_Hab_06" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_06" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab6" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCbx_01" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jP_Hab_01" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jP_Hab_06" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_06" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLHab2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLHab7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jP_Hab_02" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_02" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jP_Hab_07" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_07" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLHab3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLHab8" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jP_Hab_03" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_03" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jP_Hab_08" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_08" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLHab4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLHab9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jP_Hab_04" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_04" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jP_Hab_09" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_09" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLHab5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLHab10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jP_Hab_05" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_05" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jP_Hab_010" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbx_010" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jP_Hab_02" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jP_Hab_07" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_02" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_07" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jP_Hab_03" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jP_Hab_08" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_03" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_08" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab8" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jP_Hab_04" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jP_Hab_09" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_04" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_09" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab9" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jP_Hab_05" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jP_Hab_010" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_05" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCbx_010" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLHab5" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_back" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnRegCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
@@ -532,6 +640,41 @@
     <Component class="javax.swing.JLabel" name="jLHab10">
       <Properties>
         <Property name="text" type="java.lang.String" value="Habitacion 10:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Precio1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Precio $"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Precio2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Precio $"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField1">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField2">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField3">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField4">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField5">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField6">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField7">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField8">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField9">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField10">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="GO"/>
       </Properties>
     </Component>
   </SubComponents>
