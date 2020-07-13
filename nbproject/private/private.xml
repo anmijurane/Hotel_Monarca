@@ -9,12 +9,16 @@
             <file>file:/C:/Users/Diego%20C/Documents/NetBeansProjects/Hotel_Monarca/src/Service/addPackClient.java</file>
 
             <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/addPackClient.java</file>
-            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/RentaCliente.java</file>
-            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/InfoHabitacion.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/PackClient.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Service/FormAddClient.java</file>
+            <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Reserva.java</file>
             <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/MenuRecepcionista.java</file>
+<<<<<<< HEAD
             <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/HotelService/Limpieza.java</file>
             <file>file:/D:/Users/anmijurane/Documents/NetBeansProjects/Hotel_Monarca_APP/src/Entidades/Habitacion.java</file>
 
+=======
+>>>>>>> e39176404aeebef8407081afca2d09c584f8782f
         </group>
     </open-files>
 </project-private>

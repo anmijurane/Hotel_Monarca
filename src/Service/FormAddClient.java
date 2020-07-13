@@ -267,10 +267,14 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
                 txtTelMovil.getText(), txtEmail.getText());
+
         //execurequery(client);
         this.pack = new Paquete(pack.getPersonas(),pack.getEntrda(), pack.getSalida(), pack.getCosto(), pack.getId_room());
         new PackClientFinal(client, pack).setVisible(true);
         dispose();
+        
+        //execurequery(client);
+        
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
