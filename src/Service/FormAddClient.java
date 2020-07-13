@@ -245,7 +245,7 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
                 txtTelMovil.getText(), txtEmail.getText());
         execurequery(client);
-
+        
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
