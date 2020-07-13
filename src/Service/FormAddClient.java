@@ -1,8 +1,8 @@
 package Service;
 
 import Entidades.Cliente;
+import Entidades.Paquete;
 import HotelService.*;
-import Entidades.Personal;
 import static SQLConex.Conection.getConeccion;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 public class FormAddClient extends javax.swing.JFrame {
 
     Cliente client;
+    PackClient paquete;
+    Paquete pack;
+
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
@@ -39,6 +42,14 @@ public class FormAddClient extends javax.swing.JFrame {
         btn_back.setVisible(true);
         this.TypeForm = TypeForm;
         this.name = name;
+    }
+
+    public FormAddClient(Paquete pack) {
+        initComponents();
+        this.pack = pack;
+        setTitle("REGISTRO DEL CLIENTE");
+        setLocationRelativeTo(null);
+        btn_back.setVisible(false);
     }
 
     /**
@@ -153,7 +164,7 @@ public class FormAddClient extends javax.swing.JFrame {
                 btn_insertActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_insert, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 160, 40));
+        getContentPane().add(btn_insert, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 160, 40));
 
         jLabel1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -244,8 +255,12 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtColonia.getText().toUpperCase(), txtDelg.getText().toUpperCase(),
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
                 txtTelMovil.getText(), txtEmail.getText());
-        execurequery(client);
-
+        //execurequery(client);
+        
+        this.pack = new Paquete(
+                pack.getPersonas(), pack.getEntrda(), pack.getSalida(), pack.getCosto());
+        System.out.println(pack.toString());
+        
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
@@ -334,7 +349,12 @@ public class FormAddClient extends javax.swing.JFrame {
         }
 
     }
-
+    
+    public void querypack(){
+        
+        String query = "INSERT INTO renta ()";
+        
+    }
     public void CleanTxt() {
         txtName.setText("");
         txtApPat.setText("");
