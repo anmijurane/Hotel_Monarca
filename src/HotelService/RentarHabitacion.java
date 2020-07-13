@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -29,15 +30,16 @@ public class RentarHabitacion extends javax.swing.JFrame {
      * Creates new form RentarHabitacion
      * @param name
      * @param idPersonal
-     */
+     */    
     public RentarHabitacion(String name, int idPersonal) {
         initComponents();
         getNameClient();
+        setModelSpinner();
         this.idPersona = idPersonal;
         this.name = name;
         //btn_back.setVisible(true);
     }
-
+    
 
     public final void getNameClient() {
         try {
@@ -66,7 +68,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnRegCliente = new javax.swing.JButton();
         cbxClient = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         check_in = new com.toedter.calendar.JDateChooser();
@@ -74,7 +76,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCbx_NumHab = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jCbx_01 = new javax.swing.JComboBox<>();
         jP_Hab_01 = new javax.swing.JSpinner();
@@ -101,10 +103,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        jButton1.setText("REGISTRAR CLIENTE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegCliente.setText("REGISTRAR CLIENTE");
+        btnRegCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegClienteActionPerformed(evt);
             }
         });
 
@@ -127,8 +129,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Núm Habitaciones" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCbx_NumHab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Núm Habitaciones" }));
+        jCbx_NumHab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel4.setText("HABITACIONES");
 
@@ -146,7 +148,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbx_NumHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(check_in, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +160,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 .addGap(84, 84, 84))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnRegCliente)
                 .addGap(18, 18, 18)
                 .addComponent(btn_back)
                 .addGap(26, 26, 26))
@@ -205,7 +207,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCbx_NumHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -247,7 +249,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_back)
-                    .addComponent(jButton1))
+                    .addComponent(btnRegCliente))
                 .addGap(21, 21, 21))
         );
 
@@ -255,16 +257,28 @@ public class RentarHabitacion extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegClienteActionPerformed
         new FormAddClient(name, idPersona, 5).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegClienteActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
         new MenuRecepcionista(name, idPersona).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 
+    public final void setModelSpinner() {
+        jP_Hab_01.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_010.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_02.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_03.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_04.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_05.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_06.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_07.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_08.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_09.setModel(new SpinnerNumberModel(1, 1, 4, 1));                
+    }   
     /**
      * @param args the command line arguments
      */
@@ -297,14 +311,14 @@ public class RentarHabitacion extends javax.swing.JFrame {
             public void run() {
             }
         });
-    }        
-    
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegCliente;
     private javax.swing.JButton btn_back;
     private javax.swing.JComboBox<String> cbxClient;
     private com.toedter.calendar.JDateChooser check_in;
     private com.toedter.calendar.JDateChooser check_out;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCbx_01;
     private javax.swing.JComboBox<String> jCbx_010;
     private javax.swing.JComboBox<String> jCbx_02;
@@ -315,7 +329,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCbx_07;
     private javax.swing.JComboBox<String> jCbx_08;
     private javax.swing.JComboBox<String> jCbx_09;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCbx_NumHab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -332,7 +346,6 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JSpinner jP_Hab_09;
     // End of variables declaration//GEN-END:variables
 }
-
 
 //select habitacion.id_habitacion, categoria.capacidad, categoria.costo 
 //FROM habitacion INNER JOIN categoria ON habitacion.id_categoria = categoria.id_categoria;
