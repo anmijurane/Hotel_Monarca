@@ -13,6 +13,8 @@ public class Habitacion {
     private String capacidad;
     private int camas;
     private String estado;
+    private double costo;
+
 
     public Habitacion(int id_habitacio, String categoria, String capacidad, int camas, String Estado) {
         this.id_habitacion = id_habitacio;
@@ -20,6 +22,14 @@ public class Habitacion {
         this.capacidad = capacidad;
         this.camas = camas;
         this.estado = Estado;
+    }
+
+    public String getCosto() {
+        return "$ "+costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
     
     public Habitacion(){
@@ -133,7 +143,7 @@ public class Habitacion {
         
     public String toString() {
         return getId_habitacion() + ", "+getCategoria()+", "+getCapacidad()
-                +", "+getCamas()+", "+getEstado();
+                +", "+getCamas()+", "+getEstado()+", "+getCosto();
     }
 
 }
