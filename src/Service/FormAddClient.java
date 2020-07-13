@@ -94,10 +94,12 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtName.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtName.setText("diego");
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 300, -1));
 
         txtApPat.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtApPat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtApPat.setText("moreno");
         txtApPat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApPatActionPerformed(evt);
@@ -107,14 +109,17 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtApMat.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtApMat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtApMat.setText("cardenas");
         getContentPane().add(txtApMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 220, -1));
 
         txtCalle.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtCalle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCalle.setText("sor juana");
         getContentPane().add(txtCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 280, -1));
 
         txtNumExt.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtNumExt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNumExt.setText("5");
         txtNumExt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumExtActionPerformed(evt);
@@ -124,10 +129,12 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtNumInt.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtNumInt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNumInt.setText("0");
         getContentPane().add(txtNumInt, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 85, -1));
 
         txtColonia.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtColonia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtColonia.setText("san lorenzo");
         txtColonia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtColoniaActionPerformed(evt);
@@ -137,6 +144,7 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtDelg.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtDelg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDelg.setText("coacalco");
         txtDelg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDelgActionPerformed(evt);
@@ -146,14 +154,17 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtCP.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtCP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCP.setText("55715");
         getContentPane().add(txtCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 150, -1));
 
         txtTelLocal.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelLocal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTelLocal.setText("26002692");
         getContentPane().add(txtTelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 180, -1));
 
         txtTelMovil.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtTelMovil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTelMovil.setText("5510082803");
         getContentPane().add(txtTelMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 180, -1));
 
         btn_insert.setBackground(new java.awt.Color(222, 74, 16));
@@ -228,6 +239,7 @@ public class FormAddClient extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEmail.setText("diegocarenas@tesc.com");
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 180, -1));
 
         btn_back.setBackground(new java.awt.Color(222, 74, 16));
@@ -256,11 +268,9 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
                 txtTelMovil.getText(), txtEmail.getText());
         //execurequery(client);
-        
-        this.pack = new Paquete(
-                pack.getPersonas(), pack.getEntrda(), pack.getSalida(), pack.getCosto());
-        System.out.println(pack.toString());
-        
+        this.pack = new Paquete(pack.getPersonas(),pack.getEntrda(), pack.getSalida(), pack.getCosto(), pack.getId_room());
+        new PackClientFinal(client, pack).setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
@@ -349,12 +359,7 @@ public class FormAddClient extends javax.swing.JFrame {
         }
 
     }
-    
-    public void querypack(){
-        
-        String query = "INSERT INTO renta ()";
-        
-    }
+
     public void CleanTxt() {
         txtName.setText("");
         txtApPat.setText("");

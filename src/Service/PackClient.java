@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diego C
@@ -24,11 +25,10 @@ public class PackClient extends javax.swing.JFrame {
     PreparedStatement ps;
     ResultSet rs;
     double total_reserva;
-    String costo;
+    String costo, id_room;
 
     public PackClient() {
         initComponents();
-        total_rec.setVisible(false);
         setLocationRelativeTo(null);
         setResizable(false);
         deshabilitar();
@@ -39,7 +39,6 @@ public class PackClient extends javax.swing.JFrame {
 
     public PackClient(Reserva rvs) {
         initComponents();
-        total_rec.setVisible(false);
         this.rvs = rvs;
         fecha_ing.setText(rvs.getCheckIn());
         fecha_sal.setText(rvs.getCheckOut());
@@ -376,6 +375,22 @@ public class PackClient extends javax.swing.JFrame {
         }
     }
 
+    public void query_idroom(String type) {
+
+        try {
+
+            ps = Con.prepareStatement("select min(habitacion.id_habitacion) as idHabitacion, categoria.categoria from habitacion, categoria WHERE id_estado = 1 & 3 and categoria.categoria = '" + type + "' and habitacion.id_categoria = categoria.id_categoria");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                id_room = rs.getString("idHabitacion");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PackClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void query_price(String type) {
 
         try {
@@ -649,6 +664,7 @@ public class PackClient extends javax.swing.JFrame {
     public void price1() {
         query_price(type_1.getSelectedItem().toString());
         price_1.setText(costo);
+        query_idroom(type_1.getSelectedItem().toString());
     }
 
     public void price2() {
@@ -867,7 +883,6 @@ public class PackClient extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         t_price = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        total_rec = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -900,6 +915,11 @@ public class PackClient extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         type_1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        type_1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                type_1ItemStateChanged(evt);
+            }
+        });
         type_1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 type_1MouseClicked(evt);
@@ -913,6 +933,11 @@ public class PackClient extends javax.swing.JFrame {
         jPanel1.add(type_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 62, 100, -1));
 
         type_2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        type_2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                type_2ItemStateChanged(evt);
+            }
+        });
         type_2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 type_2MouseClicked(evt);
@@ -1104,14 +1129,6 @@ public class PackClient extends javax.swing.JFrame {
             }
         });
 
-        total_rec.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        total_rec.setText("RECALCULAR");
-        total_rec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                total_recActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1135,8 +1152,7 @@ public class PackClient extends javax.swing.JFrame {
                             .addComponent(room)
                             .addComponent(fecha_ing)
                             .addComponent(t_price, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jButton2)
-                    .addComponent(total_rec))
+                    .addComponent(jButton2))
                 .addGap(44, 44, 44)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1170,8 +1186,6 @@ public class PackClient extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(t_price))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(total_rec)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
@@ -1184,17 +1198,10 @@ public class PackClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿DESEA CONFIRMAR LOS DATOS PARA SU ESTANCIA?", "CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (confirmar == JOptionPane.YES_OPTION) {
-            this.pack = new Paquete(huespedes.getText(), fecha_ing.getText(), fecha_sal.getText(), t_price.getText());
-            new FormAddClient(pack).setVisible(true);
-            dispose();
-        } else if (confirmar == JOptionPane.NO_OPTION) {
-            JOptionPane.showMessageDialog(null, "PETICION CANCELADA", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-
-
+        costo();
+        this.pack = new Paquete(huespedes.getText(), fecha_ing.getText(), fecha_sal.getText(), t_price.getText(), id_room);
+        new FormAddClient(pack).setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void type_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_1ActionPerformed
@@ -1242,46 +1249,47 @@ public class PackClient extends javax.swing.JFrame {
         price_9.setText(costo);
     }//GEN-LAST:event_type_9ActionPerformed
 
-    private void total_recActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_recActionPerformed
-        costo();
-    }//GEN-LAST:event_total_recActionPerformed
-
     private void type_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_1MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_1MouseClicked
 
     private void type_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_2MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_2MouseClicked
 
     private void type_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_3MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_3MouseClicked
 
     private void type_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_4MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_4MouseClicked
 
     private void type_5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_5MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_5MouseClicked
 
     private void type_6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_6MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_6MouseClicked
 
     private void type_7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_7MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_7MouseClicked
 
     private void type_8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_8MouseClicked
-        total_rec.setVisible(true);
+
     }//GEN-LAST:event_type_8MouseClicked
 
     private void type_9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_type_9MouseClicked
-        total_rec.setVisible(true);
-        
+
     }//GEN-LAST:event_type_9MouseClicked
+
+    private void type_1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_type_1ItemStateChanged
+    }//GEN-LAST:event_type_1ItemStateChanged
+
+    private void type_2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_type_2ItemStateChanged
+    }//GEN-LAST:event_type_2ItemStateChanged
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1349,7 +1357,6 @@ public class PackClient extends javax.swing.JFrame {
     private javax.swing.JLabel price_9;
     private javax.swing.JLabel room;
     private javax.swing.JLabel t_price;
-    private javax.swing.JButton total_rec;
     private javax.swing.JComboBox<String> type_1;
     private javax.swing.JComboBox<String> type_2;
     private javax.swing.JComboBox<String> type_3;

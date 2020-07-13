@@ -5,10 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,7 +17,6 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
     DefaultTableModel STATUS = new DefaultTableModel();
     Connection Con = getConeccion();
     PreparedStatement ps;
-    Statement st;
     ResultSet rs;
 
     public Servicio_limpiezaMANT() {
