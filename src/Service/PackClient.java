@@ -2,6 +2,7 @@ package Service;
 
 import Entidades.Reserva;
 import Entidades.Paquete;
+import Entidades.Habitacion;
 import static SQLConex.Conection.getConeccion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class PackClient extends javax.swing.JFrame {
 
+    Habitacion hab = new Habitacion();
+
     ArrayList<String> type_room = new ArrayList<>();
     Reserva rvs;
     Paquete pack;
@@ -26,6 +29,7 @@ public class PackClient extends javax.swing.JFrame {
     ResultSet rs;
     double total_reserva;
     String costo, id_room;
+    String idHabitacionLocal;
 
     public PackClient() {
         initComponents();
@@ -43,7 +47,8 @@ public class PackClient extends javax.swing.JFrame {
         fecha_ing.setText(rvs.getCheckIn());
         fecha_sal.setText(rvs.getCheckOut());
         noches.setText(rvs.getNoches());
-        room.setText(rvs.getHabitaciones());
+        this.idHabitacionLocal = rvs.getHabitaciones();
+        room.setText(idHabitacionLocal);
         huespedes.setText(rvs.getPersonas());
         setLocationRelativeTo(null);
         setResizable(false);
@@ -51,6 +56,82 @@ public class PackClient extends javax.swing.JFrame {
         room();
         type();
         costo();
+    }
+
+    public void LlenarArreglo() {
+        int room = new Integer(idHabitacionLocal);
+        switch (room) {
+            case 0:
+                System.out.println("HO-HO");
+                break;
+            case 1:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                break;
+            case 2:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                break;
+            case 3:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                break;
+            case 4:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                break;
+            case 5:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
+                break;
+            case 6:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
+                break;
+            case 7:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_7.getSelectedItem().toString()), huesp_7.getText());
+
+                break;
+            case 8:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_7.getSelectedItem().toString()), huesp_7.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_8.getSelectedItem().toString()), huesp_8.getText());
+                break;
+            case 9:
+                pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_7.getSelectedItem().toString()), huesp_7.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_8.getSelectedItem().toString()), huesp_8.getText());
+                pack.addArrIdHabitaciones(query_idroom(type_9.getSelectedItem().toString()), huesp_9.getText());
+
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     public void deshabilitar() {
@@ -375,20 +456,20 @@ public class PackClient extends javax.swing.JFrame {
         }
     }
 
-    public void query_idroom(String type) {
-
+    public int query_idroom(String type) {
+        int identificador = 0;
         try {
 
             ps = Con.prepareStatement("select min(habitacion.id_habitacion) as idHabitacion, categoria.categoria from habitacion, categoria WHERE id_estado = 1 & 3 and categoria.categoria = '" + type + "' and habitacion.id_categoria = categoria.id_categoria");
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                id_room = rs.getString("idHabitacion");
+                identificador = rs.getInt("idHabitacion");
             }
         } catch (SQLException ex) {
             Logger.getLogger(PackClient.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return identificador;
     }
 
     public void query_price(String type) {
@@ -1199,7 +1280,7 @@ public class PackClient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         costo();
-        this.pack = new Paquete(huespedes.getText(), fecha_ing.getText(), fecha_sal.getText(), t_price.getText(), id_room);
+        this.pack = new Paquete(huespedes.getText(), fecha_ing.getText(), fecha_sal.getText(), t_price.getText());
         new FormAddClient(pack).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

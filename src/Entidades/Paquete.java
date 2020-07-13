@@ -1,4 +1,7 @@
 package Entidades;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Diego C
@@ -47,12 +50,53 @@ public class Paquete {
         this.id_room = id_room;
     }
 
-    public Paquete(String personas, String entrda, String salida, String costo, String id_room) {
+    public Paquete(String personas, String entrda, String salida, String costo) {
         this.personas = personas;
         this.entrda = entrda;
         this.salida = salida;
         this.costo = costo;
-        this.id_room = id_room;
+    }
+    
+        private ArrayList<HabitacionesArray> arrIdHabitaciones = new ArrayList<>();
+
+    public ArrayList<HabitacionesArray> getArrIdHabitaciones() {
+        return arrIdHabitaciones;
+    }
+
+    public void addArrIdHabitaciones(int idHabitaciones, String numPersonas) {
+        arrIdHabitaciones.add(new HabitacionesArray(idHabitaciones, numPersonas));
+    }        
+    
+    public static class HabitacionesArray{
+        
+        private int idHabitacion, personas;
+
+        public HabitacionesArray(int idHabitacion, String personas){
+            this.idHabitacion = idHabitacion;
+        } //Constructor
+
+        public int getPersonas() {
+            return personas;
+        }
+
+        public void setPersonas(int personas) {
+            this.personas = personas;
+        }
+        
+        
+        public int getIdHabitacion(){
+            return idHabitacion;
+        }
+        
+        public void setIdHabitacion(int idHabitacion){
+            this.idHabitacion = idHabitacion;
+        }
+        
+        @Override
+        public String toString(){
+            return "id Habitacion: "+idHabitacion;
+        }
+        
     }
 
 }
