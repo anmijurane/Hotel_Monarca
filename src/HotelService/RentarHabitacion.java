@@ -8,11 +8,13 @@ package HotelService;
 import Entidades.Habitacion;
 import static SQLConex.Conection.getConeccion;
 import Service.FormAddClient;
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -40,6 +42,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         setModelSpinner();
         this.idPersona = idPersonal;
         this.name = name;
+        cleanPanel(false);
         //btn_back.setVisible(true);
     }
 
@@ -100,6 +103,16 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jCbx_08 = new javax.swing.JComboBox<>();
         jCbx_09 = new javax.swing.JComboBox<>();
         jCbx_010 = new javax.swing.JComboBox<>();
+        jLHab1 = new javax.swing.JLabel();
+        jLHab4 = new javax.swing.JLabel();
+        jLHab3 = new javax.swing.JLabel();
+        jLHab2 = new javax.swing.JLabel();
+        jLHab5 = new javax.swing.JLabel();
+        jLHab9 = new javax.swing.JLabel();
+        jLHab8 = new javax.swing.JLabel();
+        jLHab7 = new javax.swing.JLabel();
+        jLHab6 = new javax.swing.JLabel();
+        jLHab10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -133,9 +146,15 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         jCbx_NumHab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Núm Habitaciones", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         jCbx_NumHab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCbx_NumHab.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCbx_NumHabItemStateChanged(evt);
+            }
+        });
 
         jLabel4.setText("HABITACIONES");
 
+        jCbx_01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_01.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jCbx_01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +222,44 @@ public class RentarHabitacion extends javax.swing.JFrame {
             }
         });
 
+        jCbx_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_03.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_04.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_05.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_06.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_07.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_08.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_09.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jCbx_010.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+
+        jLHab1.setText("Habitacion 1:");
+
+        jLHab4.setText("Habitacion 4:");
+
+        jLHab3.setText("Habitacion 3:");
+
+        jLHab2.setText("Habitacion 2:");
+
+        jLHab5.setText("Habitacion 5:");
+
+        jLHab9.setText("Habitacion 9:");
+
+        jLHab8.setText("Habitacion 8:");
+
+        jLHab7.setText("Habitacion 7:");
+
+        jLHab6.setText("Habitacion 6:");
+
+        jLHab10.setText("Habitacion 10:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,7 +273,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jCbx_NumHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(check_in, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -226,41 +283,56 @@ public class RentarHabitacion extends javax.swing.JFrame {
                     .addComponent(check_out, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegCliente)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLHab1)
+                            .addComponent(jLHab5)
+                            .addComponent(jLHab4)
+                            .addComponent(jLHab3)
+                            .addComponent(jLHab2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jP_Hab_05)
+                            .addComponent(jP_Hab_04)
+                            .addComponent(jP_Hab_03)
+                            .addComponent(jP_Hab_02)
+                            .addComponent(jP_Hab_01, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCbx_01, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_02, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_03, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_04, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_05, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLHab10, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLHab9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLHab8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLHab7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLHab6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jP_Hab_010)
+                            .addComponent(jP_Hab_09)
+                            .addComponent(jP_Hab_08)
+                            .addComponent(jP_Hab_07)
+                            .addComponent(jP_Hab_06, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCbx_07, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_06, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_08, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_09, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCbx_010, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegCliente)))
                 .addGap(18, 18, 18)
                 .addComponent(btn_back)
                 .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jP_Hab_05)
-                    .addComponent(jP_Hab_04)
-                    .addComponent(jP_Hab_03)
-                    .addComponent(jP_Hab_02)
-                    .addComponent(jP_Hab_01, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCbx_01, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_02, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_03, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_04, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_05, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(154, 154, 154)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jP_Hab_010)
-                    .addComponent(jP_Hab_09)
-                    .addComponent(jP_Hab_08)
-                    .addComponent(jP_Hab_07)
-                    .addComponent(jP_Hab_06, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCbx_07, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_06, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_08, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_09, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCbx_010, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,37 +355,47 @@ public class RentarHabitacion extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(check_in, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(check_out, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(57, 57, 57)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCbx_01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jP_Hab_01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jP_Hab_06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbx_06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbx_06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLHab1)
+                    .addComponent(jLHab6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jP_Hab_02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jP_Hab_07, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCbx_02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbx_07, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbx_07, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLHab7)
+                    .addComponent(jLHab2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jP_Hab_03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jP_Hab_08, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCbx_03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbx_08, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbx_08, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLHab3)
+                    .addComponent(jLHab8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jP_Hab_04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jP_Hab_09, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCbx_04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbx_09, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbx_09, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLHab4)
+                    .addComponent(jLHab9))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jP_Hab_05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jP_Hab_010, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCbx_05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbx_010, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                    .addComponent(jCbx_010, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLHab10)
+                    .addComponent(jLHab5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_back)
                     .addComponent(btnRegCliente))
@@ -343,52 +425,284 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jP_Hab_01StateChanged
 
     private void jP_Hab_02StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_02StateChanged
-        jCbx_02.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_02.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_02.getValue())));
     }//GEN-LAST:event_jP_Hab_02StateChanged
 
     private void jP_Hab_03StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_03StateChanged
-        jCbx_03.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_03.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_03.getValue())));
     }//GEN-LAST:event_jP_Hab_03StateChanged
 
     private void jP_Hab_04StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_04StateChanged
-        jCbx_04.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_04.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_04.getValue())));
     }//GEN-LAST:event_jP_Hab_04StateChanged
 
     private void jP_Hab_05StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_05StateChanged
-        jCbx_05.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_05.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_05.getValue())));
     }//GEN-LAST:event_jP_Hab_05StateChanged
 
     private void jP_Hab_06StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_06StateChanged
-        jCbx_06.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_06.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_06.getValue())));
     }//GEN-LAST:event_jP_Hab_06StateChanged
 
     private void jP_Hab_07StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_07StateChanged
-        jCbx_07.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_07.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_07.getValue())));
     }//GEN-LAST:event_jP_Hab_07StateChanged
 
     private void jP_Hab_08StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_08StateChanged
-        jCbx_08.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_08.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_08.getValue())));
     }//GEN-LAST:event_jP_Hab_08StateChanged
 
     private void jP_Hab_09StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_09StateChanged
-        jCbx_09.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_09.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_09.getValue())));
     }//GEN-LAST:event_jP_Hab_09StateChanged
 
     private void jP_Hab_010StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jP_Hab_010StateChanged
-        jCbx_010.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_01.getValue())));
+        jCbx_010.setModel(new DefaultComboBoxModel<>(new Habitacion().getCategoria(jP_Hab_010.getValue())));
     }//GEN-LAST:event_jP_Hab_010StateChanged
 
+    public final void cleanPanel(boolean value) {
+        jP_Hab_01.setVisible(value);
+        jP_Hab_02.setVisible(value);
+        jP_Hab_03.setVisible(value);
+        jP_Hab_04.setVisible(value);
+        jP_Hab_05.setVisible(value);
+        jP_Hab_06.setVisible(value);
+        jP_Hab_07.setVisible(value);
+        jP_Hab_08.setVisible(value);
+        jP_Hab_09.setVisible(value);
+        jP_Hab_010.setVisible(value);
+        jCbx_01.setVisible(value);
+        jCbx_02.setVisible(value);
+        jCbx_03.setVisible(value);
+        jCbx_04.setVisible(value);
+        jCbx_05.setVisible(value);
+        jCbx_06.setVisible(value);
+        jCbx_07.setVisible(value);
+        jCbx_08.setVisible(value);
+        jCbx_09.setVisible(value);
+        jCbx_010.setVisible(value);
+        jLHab1.setVisible(value);
+        jLHab2.setVisible(value);
+        jLHab3.setVisible(value);
+        jLHab4.setVisible(value);
+        jLHab5.setVisible(value);
+        jLHab6.setVisible(value);
+        jLHab7.setVisible(value);
+        jLHab8.setVisible(value);
+        jLHab9.setVisible(value);
+        jLHab10.setVisible(value);
+    }
+
+    private void jCbx_NumHabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_NumHabItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            cleanPanel(false);
+            int valor = jCbx_NumHab.getSelectedIndex();
+            switch (valor) {
+                case 0:
+                    JOptionPane.showMessageDialog(this, "AL MENOS DEBE EXISTIR UNA HABITACIÓN");
+                    jCbx_NumHab.setSelectedIndex(1);
+                    jP_Hab_01.setVisible(true);
+                    jCbx_01.setVisible(true);
+                    jLHab1.setVisible(true);
+                    break;
+                case 1:
+                    jP_Hab_01.setVisible(true);
+                    jCbx_01.setVisible(true);
+                    jLHab1.setVisible(true);
+                    break;
+                case 2:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+
+                    break;
+                case 3:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+
+                    break;
+                case 4:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+                    jP_Hab_04.setVisible(true);
+                    
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+                    jCbx_04.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+                    jLHab4.setVisible(true);
+
+                    break;
+                case 5:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+                    jP_Hab_04.setVisible(true);
+                    jP_Hab_05.setVisible(true);
+
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+                    jCbx_04.setVisible(true);
+                    jCbx_05.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+                    jLHab4.setVisible(true);
+                    jLHab5.setVisible(true);
+
+                    break;
+                case 6:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+                    jP_Hab_04.setVisible(true);
+                    jP_Hab_05.setVisible(true);
+                    jP_Hab_06.setVisible(true);
+
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+                    jCbx_04.setVisible(true);
+                    jCbx_05.setVisible(true);
+                    jCbx_06.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+                    jLHab4.setVisible(true);
+                    jLHab5.setVisible(true);
+                    jLHab6.setVisible(true);
+
+                    break;
+                case 7:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+                    jP_Hab_04.setVisible(true);
+                    jP_Hab_05.setVisible(true);
+                    jP_Hab_06.setVisible(true);
+                    jP_Hab_07.setVisible(true);
+                    
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+                    jCbx_04.setVisible(true);
+                    jCbx_05.setVisible(true);
+                    jCbx_06.setVisible(true);
+                    jCbx_07.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+                    jLHab4.setVisible(true);
+                    jLHab5.setVisible(true);
+                    jLHab6.setVisible(true);
+                    jLHab7.setVisible(true);
+
+                    break;
+                case 8:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+                    jP_Hab_04.setVisible(true);
+                    jP_Hab_05.setVisible(true);
+                    jP_Hab_06.setVisible(true);
+                    jP_Hab_07.setVisible(true);
+                    jP_Hab_08.setVisible(true);
+
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+                    jCbx_04.setVisible(true);
+                    jCbx_05.setVisible(true);
+                    jCbx_06.setVisible(true);
+                    jCbx_07.setVisible(true);
+                    jCbx_08.setVisible(true);                    
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+                    jLHab4.setVisible(true);
+                    jLHab5.setVisible(true);
+                    jLHab6.setVisible(true);
+                    jLHab7.setVisible(true);
+                    jLHab8.setVisible(true);                   
+
+                    break;
+                case 9:
+                    jP_Hab_01.setVisible(true);
+                    jP_Hab_02.setVisible(true);
+                    jP_Hab_03.setVisible(true);
+                    jP_Hab_04.setVisible(true);
+                    jP_Hab_05.setVisible(true);
+                    jP_Hab_06.setVisible(true);
+                    jP_Hab_07.setVisible(true);
+                    jP_Hab_08.setVisible(true);
+                    jP_Hab_09.setVisible(true);
+
+                    jCbx_01.setVisible(true);
+                    jCbx_02.setVisible(true);
+                    jCbx_03.setVisible(true);
+                    jCbx_04.setVisible(true);
+                    jCbx_05.setVisible(true);
+                    jCbx_06.setVisible(true);
+                    jCbx_07.setVisible(true);
+                    jCbx_08.setVisible(true);
+                    jCbx_09.setVisible(true);
+
+                    jLHab1.setVisible(true);
+                    jLHab2.setVisible(true);
+                    jLHab3.setVisible(true);
+                    jLHab4.setVisible(true);
+                    jLHab5.setVisible(true);
+                    jLHab6.setVisible(true);
+                    jLHab7.setVisible(true);
+                    jLHab8.setVisible(true);
+                    jLHab9.setVisible(true);
+
+                    break;
+                case 10:
+                    cleanPanel(true);
+                    break;
+
+                default:
+                    throw new AssertionError();
+            }
+        }
+    }//GEN-LAST:event_jCbx_NumHabItemStateChanged
+
     public final void setModelSpinner() {
-        jP_Hab_01.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_010.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_02.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_03.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_04.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_05.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_06.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_07.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_08.setModel(new SpinnerNumberModel(0, 0, 4, 1));
-        jP_Hab_09.setModel(new SpinnerNumberModel(0, 0, 4, 1));
+        jP_Hab_01.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_010.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_02.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_03.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_04.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_05.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_06.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_07.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_08.setModel(new SpinnerNumberModel(1, 1, 4, 1));
+        jP_Hab_09.setModel(new SpinnerNumberModel(1, 1, 4, 1));
     }
 
     /**
@@ -442,6 +756,16 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCbx_08;
     private javax.swing.JComboBox<String> jCbx_09;
     private javax.swing.JComboBox<String> jCbx_NumHab;
+    private javax.swing.JLabel jLHab1;
+    private javax.swing.JLabel jLHab10;
+    private javax.swing.JLabel jLHab2;
+    private javax.swing.JLabel jLHab3;
+    private javax.swing.JLabel jLHab4;
+    private javax.swing.JLabel jLHab5;
+    private javax.swing.JLabel jLHab6;
+    private javax.swing.JLabel jLHab7;
+    private javax.swing.JLabel jLHab8;
+    private javax.swing.JLabel jLHab9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
