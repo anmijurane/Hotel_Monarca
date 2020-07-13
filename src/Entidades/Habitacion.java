@@ -1,6 +1,6 @@
 package Entidades;
 
-import java.util.Vector;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -154,6 +154,39 @@ public class Habitacion {
             JOptionPane.showMessageDialog(null, "ELIGE AL MENOS UNA PERSONA");
         }
         return Array;
+    }
+    
+    private ArrayList<HabitacionesArray> arrIdHabitaciones = new ArrayList<>();
+
+    public ArrayList<HabitacionesArray> getArrIdHabitaciones() {
+        return arrIdHabitaciones;
+    }
+
+    public void addArrIdHabitaciones(int idHabitaciones) {
+        arrIdHabitaciones.add(new HabitacionesArray(idHabitaciones));
+    }        
+    
+    public static class HabitacionesArray{
+        
+        private int idHabitacion;
+        
+        public HabitacionesArray(int idHabitacion){
+            this.idHabitacion = idHabitacion;
+        }
+        
+        public int getIdHabitacion(){
+            return idHabitacion;
+        }
+        
+        public void setIdHabitacion(int idHabitacion){
+            this.idHabitacion = idHabitacion;
+        }
+        
+        @Override
+        public String toString(){
+            return "id Habitacion: "+idHabitacion;
+        }
+        
     }
     
     public String toQuerySQL() {
