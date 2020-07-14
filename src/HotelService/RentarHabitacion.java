@@ -45,9 +45,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
         this.idPersona = idPersonal;
         this.name = name;
         cleanPanel(false);
+        jT_total.setVisible(false);
         //btn_back.setVisible(true);
     }
-    
+
     public final void getNameClient() {
         try {
 
@@ -69,10 +70,32 @@ public class RentarHabitacion extends javax.swing.JFrame {
     public void ObtenerDatos() {
 
     }
-    
-    public double PrecioHab(String categoriaHab){
+
+    double total = 0;
+
+    public double CalcTotal() {
+        double hab1 = new Double(jTextField1.getText());
+        double hab2 = new Double(jTextField2.getText());
+        double hab3 = new Double(jTextField3.getText());
+        double hab4 = new Double(jTextField4.getText());
+        double hab5 = new Double(jTextField5.getText());
+        double hab6 = new Double(jTextField6.getText());
+        double hab7 = new Double(jTextField7.getText());
+        double hab8 = new Double(jTextField8.getText());
+        double hab9 = new Double(jTextField9.getText());
+        double hab10 = new Double(jTextField10.getText());
+
+        total = hab1 + hab2 + hab3 + hab4 + hab5 + hab6 + hab7 + hab8 + hab9 + hab10;
+
+        return total;
+    }
+
+    public double PrecioHab(String categoriaHab) {
         double costoHab = 0;
         switch (categoriaHab.toLowerCase()) {
+            case "SELECCIONA UNA HABITACION":
+                costoHab = 0.0;
+                break;
             case "individual":
                 costoHab = 839.00;
                 break;
@@ -99,10 +122,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 break;
             case "junior suite":
                 costoHab = 999.00;
-                break;                     
+                break;
             default:
-                throw new AssertionError();
-        }                
+                costoHab = 0.0;
+        }
         return costoHab;
     }
 
@@ -168,6 +191,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jT_total = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -411,19 +436,55 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         Precio2.setText("Precio $");
         getContentPane().add(Precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, -1, -1));
+
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("0.0");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 121, 99, -1));
+
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText("0.0");
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 187, 99, -1));
+
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setText("0.0");
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 254, 99, -1));
+
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.setText("0.0");
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 320, 99, -1));
+
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField5.setText("0.0");
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 386, 99, -1));
+
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField6.setText("0.0");
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 100, -1));
+
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField7.setText("0.0");
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 188, 100, -1));
+
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField8.setText("0.0");
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 254, 100, -1));
+
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField9.setText("0.0");
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 320, 100, -1));
+
+        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField10.setText("0.0");
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 386, 100, -1));
 
         jButton1.setText("GO");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 500, 86, -1));
+
+        jT_total.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 460, 150, -1));
+
+        jLabel5.setText("TOTAL:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 456, -1, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -550,6 +611,17 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
     private void jCbx_NumHabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_NumHabItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
+            jT_total.setText("0.0");
+            jTextField1.setText("0.0");
+            jTextField2.setText("0.0");
+            jTextField3.setText("0.0");
+            jTextField4.setText("0.0");
+            jTextField5.setText("0.0");
+            jTextField6.setText("0.0");
+            jTextField7.setText("0.0");
+            jTextField8.setText("0.0");
+            jTextField9.setText("0.0");
+            jTextField10.setText("0.0");
             cleanPanel(false);
             int valor = jCbx_NumHab.getSelectedIndex();
             switch (valor) {
@@ -811,43 +883,69 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jCbx_NumHabItemStateChanged
 
     private void jCbx_01ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_01ItemStateChanged
-        jTextField1.setText(""+PrecioHab(jCbx_01.getSelectedItem().toString()));
+        double hab1 = PrecioHab(jCbx_01.getSelectedItem().toString());
+        jTextField1.setText("" + hab1);
+        CalcTotal();
+        System.out.println("total: $" + total);
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_01ItemStateChanged
 
     private void jCbx_02ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_02ItemStateChanged
-        jTextField2.setText(""+PrecioHab(jCbx_02.getSelectedItem().toString()));
+        double hab2 = PrecioHab(jCbx_02.getSelectedItem().toString());
+        jTextField2.setText("" + hab2);
+        CalcTotal();
+        System.out.println("total:" + total);
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_02ItemStateChanged
 
     private void jCbx_03ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_03ItemStateChanged
-        jTextField3.setText(""+PrecioHab(jCbx_03.getSelectedItem().toString()));
+        double hab3 = PrecioHab(jCbx_03.getSelectedItem().toString());
+        jTextField3.setText("" + hab3);
+        CalcTotal();
+        System.out.println("total:" + total);
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_03ItemStateChanged
 
     private void jCbx_04ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_04ItemStateChanged
-        jTextField4.setText(""+PrecioHab(jCbx_04.getSelectedItem().toString()));
+        jTextField4.setText("" + PrecioHab(jCbx_04.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_04ItemStateChanged
 
     private void jCbx_05ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_05ItemStateChanged
-        jTextField5.setText(""+PrecioHab(jCbx_05.getSelectedItem().toString()));
+        jTextField5.setText("" + PrecioHab(jCbx_05.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_05ItemStateChanged
 
     private void jCbx_06ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_06ItemStateChanged
-        jTextField6.setText(""+PrecioHab(jCbx_06.getSelectedItem().toString()));
+        jTextField6.setText("" + PrecioHab(jCbx_06.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_06ItemStateChanged
 
     private void jCbx_07ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_07ItemStateChanged
-        jTextField7.setText(""+PrecioHab(jCbx_07.getSelectedItem().toString()));
+        jTextField7.setText("" + PrecioHab(jCbx_07.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_07ItemStateChanged
 
     private void jCbx_08ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_08ItemStateChanged
-        jTextField8.setText(""+PrecioHab(jCbx_08.getSelectedItem().toString()));
+        jTextField8.setText("" + PrecioHab(jCbx_08.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_08ItemStateChanged
 
     private void jCbx_09ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_09ItemStateChanged
-        jTextField9.setText(""+PrecioHab(jCbx_09.getSelectedItem().toString()));
+        jTextField9.setText("" + PrecioHab(jCbx_09.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_09ItemStateChanged
 
     private void jCbx_010ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_010ItemStateChanged
-        jTextField10.setText(""+PrecioHab(jCbx_010.getSelectedItem().toString()));
+        jTextField10.setText("" + PrecioHab(jCbx_010.getSelectedItem().toString()));
+        CalcTotal();
+        jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_010ItemStateChanged
 
     public final void setModelSpinner() {
@@ -931,6 +1029,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSpinner jP_Hab_01;
     private javax.swing.JSpinner jP_Hab_010;
     private javax.swing.JSpinner jP_Hab_02;
@@ -941,6 +1040,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JSpinner jP_Hab_07;
     private javax.swing.JSpinner jP_Hab_08;
     private javax.swing.JSpinner jP_Hab_09;
+    private javax.swing.JTextField jT_total;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
