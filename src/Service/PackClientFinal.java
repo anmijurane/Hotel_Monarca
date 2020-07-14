@@ -71,11 +71,14 @@ public class PackClientFinal extends javax.swing.JFrame {
         System.out.println("NÚM HABITACION: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
         System.out.println("NÚM PERSONAS: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
         System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
-        
+        System.out.println("ENTRADA: " +pqt.getEntrda());
+        System.out.println("SALIDA: " +pqt.getSalida());
         System.out.println("--------------------------");
         System.out.println(cliente.toString());
         System.out.println("--------------------------");
         
+        System.out.println(pqt.getArrIdHabitaciones().toString());
+       
     }
 
     @SuppressWarnings("unchecked")
