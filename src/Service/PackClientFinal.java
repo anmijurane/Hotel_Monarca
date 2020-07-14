@@ -25,17 +25,8 @@ public class PackClientFinal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         this.cli = cli;
-        nombre.setText(cli.getName().toUpperCase() + " " + cli.getApellidoMat().toUpperCase() + " " + cli.getApellidoPat().toUpperCase());
-        direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
-        movil.setText(cli.getTelMovil());
-        correo.setText(cli.getEmail());
-        id.setText(Integer.toString(cli.getid_ClienteSQL()));
         this.pack = pack;
-        entrada.setText(pack.getEntrda());
-        salida.setText(pack.getSalida());
-        huespedes.setText(pack.getPersonas());
-        total.setText(pack.getCosto());
-        habitacion.setText(pack.getArrIdHabitaciones().toString());
+        PresentarDatos(cli, pack);
     }
     
     Paquete pqt;
@@ -79,6 +70,19 @@ public class PackClientFinal extends javax.swing.JFrame {
         
         System.out.println(pqt.getArrIdHabitaciones().toString());
        
+    }
+    
+    public final void PresentarDatos(Cliente clnt, Paquete pqt){
+        nombre.setText(cli.getName().toUpperCase() + " " + cli.getApellidoMat().toUpperCase() + " " + cli.getApellidoPat().toUpperCase());
+        direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
+        movil.setText(cli.getTelMovil());
+        correo.setText(cli.getEmail());
+        id.setText(Integer.toString(cli.getid_ClienteSQL()));
+        entrada.setText(pack.getEntrda());
+        salida.setText(pack.getSalida());
+        huespedes.setText(pack.getPersonas());
+        total.setText(pack.getCosto());
+        habitacion.setText(pack.getArrIdHabitaciones().toString());
     }
 
     @SuppressWarnings("unchecked")

@@ -105,7 +105,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 + "\nDelegacion: " + cliente.get(indice).getDelegacion()
                 + "CP. " + cliente.get(indice).getCp();
         System.out.println("Dirección: " + Direccion);
-        System.out.println("Email: " + cliente.get(indice).getEmail());        
+        System.out.println("Email: " + cliente.get(indice).getEmail());       
     }
 
     public void getDHabitacion() {

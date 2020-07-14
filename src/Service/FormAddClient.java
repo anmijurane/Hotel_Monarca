@@ -44,9 +44,10 @@ public class FormAddClient extends javax.swing.JFrame {
         this.name = name;
     }
 
-    public FormAddClient(Paquete pack) {
+    public FormAddClient(Paquete pack, int TypeForm) {
         initComponents();
         this.pack = pack;
+        this.TypeForm = TypeForm;
         setTitle("REGISTRO DEL CLIENTE");
         setLocationRelativeTo(null);
         btn_back.setVisible(false);
@@ -268,13 +269,15 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
                 txtTelMovil.getText(), txtEmail.getText());
 
-        //execurequery(client);
-        new PackClientFinal(client, pack).setVisible(true);
-        dispose();
-        System.out.println(pack.getArrIdHabitaciones());
-        
-        //execurequery(client);
-        
+        if (TypeForm == 8) {
+            new PackClientFinal(client, pack).setVisible(true);
+            dispose();            
+            System.out.println(pack.getArrIdHabitaciones());
+        }else{            
+            execurequery(client);
+            System.out.println("REGISTRANDO");
+            client.toString();
+        }                
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed

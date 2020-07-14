@@ -1306,7 +1306,7 @@ public final class PackClient extends javax.swing.JFrame {
         pack.setEntrda(fecha_ing.getText());
         pack.setSalida(fecha_sal.getText());
         pack.setCosto(t_price.getText());
-        new FormAddClient(pack).setVisible(true);
+        new FormAddClient(pack, 8).setVisible(true);
         dispose();
         System.out.println(pack.getArrIdHabitaciones());
 
