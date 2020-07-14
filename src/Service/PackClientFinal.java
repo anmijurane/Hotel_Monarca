@@ -35,7 +35,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         salida.setText(pack.getSalida());
         huespedes.setText(pack.getPersonas());
         total.setText(pack.getCosto());
-        habitacion.setText(pack.getId_room());
+        habitacion.setText(pack.getArrIdHabitaciones().toString());
     }
     
     Paquete pqt;

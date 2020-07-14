@@ -111,7 +111,7 @@ public class Paquete {
         
         @Override
         public String toString(){
-            return "id Habitacion: "+idHabitacion;
+            return ""+idHabitacion;
         }
 
         public double getCosto() {
