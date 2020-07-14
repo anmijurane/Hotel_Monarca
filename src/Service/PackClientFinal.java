@@ -16,6 +16,7 @@ public class PackClientFinal extends javax.swing.JFrame {
 
     public PackClientFinal() {
         initComponents();
+        setTitle("PAQUETE CLIENTE FINAL");
         setLocationRelativeTo(null);
         setResizable(false);
     }
@@ -108,35 +109,43 @@ public class PackClientFinal extends javax.swing.JFrame {
         salida = new javax.swing.JLabel();
         entrada = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("DATOS CLIENTE"));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel1.setText("NOMBRE");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel2.setText("DIRECCION");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel3.setText("TEL MOVIL");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel5.setText("CORREO");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel4.setText("ID");
 
+        nombre.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         nombre.setText("jLabel6");
 
+        direccion.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         direccion.setText("jLabel7");
 
+        movil.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         movil.setText("jLabel8");
 
+        correo.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         correo.setText("jLabel9");
 
+        id.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         id.setText("jLabel10");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -158,7 +167,7 @@ public class PackClientFinal extends javax.swing.JFrame {
                     .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(movil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,31 +195,38 @@ public class PackClientFinal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 641, -1));
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("RESERVACION"));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel6.setText("ENTRADA");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel7.setText("SALIDA");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel8.setText("HUESPEDES");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel9.setText("TOTAL");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel10.setText("HABITACION");
 
+        habitacion.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         habitacion.setText("jLabel11");
 
+        total.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         total.setText("jLabel12");
 
+        huespedes.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         huespedes.setText("jLabel13");
 
+        salida.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         salida.setText("jLabel14");
 
+        entrada.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         entrada.setText("jLabel15");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -233,7 +249,7 @@ public class PackClientFinal extends javax.swing.JFrame {
                     .addComponent(huespedes)
                     .addComponent(salida)
                     .addComponent(entrada))
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addContainerGap(484, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,38 +277,25 @@ public class PackClientFinal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 640, 190));
+
+        jButton1.setBackground(new java.awt.Color(222, 74, 16));
+        jButton1.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
         jButton1.setText("CONFIRMAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
+        jLabel12.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel12.setText("PAQUETE CLIENTE FINAL");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 570));
 
         pack();
         setLocationRelativeTo(null);
@@ -353,6 +356,8 @@ public class PackClientFinal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

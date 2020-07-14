@@ -50,6 +50,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
      */
     public RentarHabitacion(String name, int idPersonal) {
         initComponents();
+        setTitle("RENTA DE HABITACIÓN");
         getNameClient();
         setModelSpinner();
         this.idPersona = idPersonal;
@@ -460,16 +461,16 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private void initComponents() {
 
         btnRegCliente = new javax.swing.JButton();
-        cbxClient = new javax.swing.JComboBox<>();
+        cbxClient = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         check_in = new com.toedter.calendar.JDateChooser();
         check_out = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
-        jCbx_NumHab = new javax.swing.JComboBox<>();
+        jCbx_NumHab = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
-        jCbx_01 = new javax.swing.JComboBox<>();
+        jCbx_01 = new javax.swing.JComboBox<String>();
         jP_Hab_01 = new javax.swing.JSpinner();
         jP_Hab_02 = new javax.swing.JSpinner();
         jP_Hab_03 = new javax.swing.JSpinner();
@@ -480,15 +481,15 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jP_Hab_08 = new javax.swing.JSpinner();
         jP_Hab_09 = new javax.swing.JSpinner();
         jP_Hab_010 = new javax.swing.JSpinner();
-        jCbx_02 = new javax.swing.JComboBox<>();
-        jCbx_03 = new javax.swing.JComboBox<>();
-        jCbx_04 = new javax.swing.JComboBox<>();
-        jCbx_05 = new javax.swing.JComboBox<>();
-        jCbx_06 = new javax.swing.JComboBox<>();
-        jCbx_07 = new javax.swing.JComboBox<>();
-        jCbx_08 = new javax.swing.JComboBox<>();
-        jCbx_09 = new javax.swing.JComboBox<>();
-        jCbx_010 = new javax.swing.JComboBox<>();
+        jCbx_02 = new javax.swing.JComboBox<String>();
+        jCbx_03 = new javax.swing.JComboBox<String>();
+        jCbx_04 = new javax.swing.JComboBox<String>();
+        jCbx_05 = new javax.swing.JComboBox<String>();
+        jCbx_06 = new javax.swing.JComboBox<String>();
+        jCbx_07 = new javax.swing.JComboBox<String>();
+        jCbx_08 = new javax.swing.JComboBox<String>();
+        jCbx_09 = new javax.swing.JComboBox<String>();
+        jCbx_010 = new javax.swing.JComboBox<String>();
         jLHab1 = new javax.swing.JLabel();
         jLHab4 = new javax.swing.JLabel();
         jLHab3 = new javax.swing.JLabel();
@@ -530,59 +531,78 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jTDias = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jT_total = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnRegCliente.setBackground(new java.awt.Color(224, 131, 41));
+        btnRegCliente.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         btnRegCliente.setText("REGISTRAR CLIENTE");
         btnRegCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
+        getContentPane().add(btnRegCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
 
-        cbxClient.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        getContentPane().add(cbxClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 38, 257, -1));
+        cbxClient.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
+        getContentPane().add(cbxClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 257, -1));
 
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CLIENTE:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 16, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 240, -1));
 
         check_in.setBackground(new java.awt.Color(255, 153, 51));
-        getContentPane().add(check_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 38, 147, -1));
+        getContentPane().add(check_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 147, -1));
 
         check_out.setBackground(new java.awt.Color(255, 153, 51));
-        getContentPane().add(check_out, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 40, 147, -1));
+        getContentPane().add(check_out, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, 147, -1));
 
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CHECK-IN");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 16, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 140, -1));
 
+        jLabel3.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("CHECK-OUT");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));
 
+        btn_back.setBackground(new java.awt.Color(224, 131, 41));
+        btn_back.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         btn_back.setText("REGRESAR");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_backActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, -1, -1));
 
-        jCbx_NumHab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Núm Habitaciones", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jCbx_NumHab.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_NumHab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Núm Habitaciones", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         jCbx_NumHab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jCbx_NumHab.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_NumHabItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_NumHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 40, -1, -1));
+        getContentPane().add(jCbx_NumHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("HABITACIONES");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 16, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 130, -1));
 
-        jCbx_01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_01.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_01.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_01.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jCbx_01.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -594,292 +614,394 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jCbx_01ActionPerformed(evt);
             }
         });
-        getContentPane().add(jCbx_01, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 121, -1, -1));
+        getContentPane().add(jCbx_01, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
 
+        jP_Hab_01.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_01.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_01StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_01, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 121, 60, -1));
+        getContentPane().add(jP_Hab_01, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 50, -1));
 
+        jP_Hab_02.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_02.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_02StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 187, 59, -1));
+        getContentPane().add(jP_Hab_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 50, -1));
 
+        jP_Hab_03.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_03.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_03StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_03, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 253, 60, -1));
+        getContentPane().add(jP_Hab_03, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 50, -1));
 
+        jP_Hab_04.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_04.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_04StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_04, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 319, 60, -1));
+        getContentPane().add(jP_Hab_04, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 50, -1));
 
+        jP_Hab_05.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_05.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_05StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_05, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 385, 60, -1));
+        getContentPane().add(jP_Hab_05, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 50, -1));
 
+        jP_Hab_06.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_06.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_06StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 60, -1));
+        getContentPane().add(jP_Hab_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 50, -1));
 
+        jP_Hab_07.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_07.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_07StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 60, -1));
+        getContentPane().add(jP_Hab_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 50, -1));
 
+        jP_Hab_08.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_08.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_08StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 60, -1));
+        getContentPane().add(jP_Hab_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 50, -1));
 
+        jP_Hab_09.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_09.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_09StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 60, -1));
+        getContentPane().add(jP_Hab_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 50, -1));
 
+        jP_Hab_010.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jP_Hab_010.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_010StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 60, -1));
+        getContentPane().add(jP_Hab_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 50, -1));
 
-        jCbx_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_02.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_02.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_02.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_02ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 187, -1, -1));
+        getContentPane().add(jCbx_02, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
-        jCbx_03.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_03.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_03.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_03.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_03ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_03, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 253, -1, -1));
+        getContentPane().add(jCbx_03, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
 
-        jCbx_04.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_04.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_04.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_04.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_04ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_04, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 319, -1, -1));
+        getContentPane().add(jCbx_04, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
-        jCbx_05.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_05.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_05.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_05.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_05ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_05, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 385, -1, -1));
+        getContentPane().add(jCbx_05, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
 
-        jCbx_06.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_06.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_06.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_06.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_06ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, -1));
+        getContentPane().add(jCbx_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, -1));
 
-        jCbx_07.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_07.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_07.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_07.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_07ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, -1));
+        getContentPane().add(jCbx_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
-        jCbx_08.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_08.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_08.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_08.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_08ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
+        getContentPane().add(jCbx_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, -1, -1));
 
-        jCbx_09.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_09.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_09.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_09.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_09ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
+        getContentPane().add(jCbx_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, -1, -1));
 
-        jCbx_010.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
+        jCbx_010.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jCbx_010.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_010.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCbx_010ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
+        getContentPane().add(jCbx_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, -1, -1));
 
+        jLHab1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab1.setForeground(new java.awt.Color(0, 0, 0));
         jLHab1.setText("Habitacion 1:");
-        getContentPane().add(jLHab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 99, -1, -1));
+        getContentPane().add(jLHab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
+        jLHab4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab4.setForeground(new java.awt.Color(0, 0, 0));
         jLHab4.setText("Habitacion 4:");
-        getContentPane().add(jLHab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 297, -1, -1));
+        getContentPane().add(jLHab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
+        jLHab3.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab3.setForeground(new java.awt.Color(0, 0, 0));
         jLHab3.setText("Habitacion 3:");
-        getContentPane().add(jLHab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 231, -1, -1));
+        getContentPane().add(jLHab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
+        jLHab2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab2.setForeground(new java.awt.Color(0, 0, 0));
         jLHab2.setText("Habitacion 2:");
-        getContentPane().add(jLHab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 165, -1, -1));
+        getContentPane().add(jLHab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
+        jLHab5.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab5.setForeground(new java.awt.Color(0, 0, 0));
         jLHab5.setText("Habitacion 5:");
-        getContentPane().add(jLHab5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 363, -1, -1));
+        getContentPane().add(jLHab5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
+        jLHab9.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab9.setForeground(new java.awt.Color(0, 0, 0));
         jLHab9.setText("Habitacion 9:");
-        getContentPane().add(jLHab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, -1, -1));
+        getContentPane().add(jLHab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, -1));
 
+        jLHab8.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab8.setForeground(new java.awt.Color(0, 0, 0));
         jLHab8.setText("Habitacion 8:");
-        getContentPane().add(jLHab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
+        getContentPane().add(jLHab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
 
+        jLHab7.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab7.setForeground(new java.awt.Color(0, 0, 0));
         jLHab7.setText("Habitacion 7:");
-        getContentPane().add(jLHab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+        getContentPane().add(jLHab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, -1, -1));
 
+        jLHab6.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab6.setForeground(new java.awt.Color(0, 0, 0));
         jLHab6.setText("Habitacion 6:");
-        getContentPane().add(jLHab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
+        getContentPane().add(jLHab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
 
+        jLHab10.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLHab10.setForeground(new java.awt.Color(0, 0, 0));
         jLHab10.setText("Habitacion 10:");
-        getContentPane().add(jLHab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, -1, -1));
+        getContentPane().add(jLHab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, -1, -1));
 
+        Precio1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        Precio1.setForeground(new java.awt.Color(255, 102, 0));
+        Precio1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Precio1.setText("Precio $");
-        getContentPane().add(Precio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 85, -1, -1));
+        getContentPane().add(Precio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 200, 80, -1));
 
+        Precio2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        Precio2.setForeground(new java.awt.Color(255, 102, 0));
+        Precio2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Precio2.setText("Precio $");
-        getContentPane().add(Precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
+        getContentPane().add(Precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 80, -1));
 
+        jTextField1.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("0.0");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 121, 99, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 80, -1));
 
+        jTextField2.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("0.0");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 187, 99, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 80, -1));
 
+        jTextField3.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.setText("0.0");
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 254, 99, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 80, -1));
 
+        jTextField4.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.setText("0.0");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 320, 99, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 80, -1));
 
+        jTextField5.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField5.setText("0.0");
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 386, 99, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 80, -1));
 
+        jTextField6.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.setText("0.0");
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, 100, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 80, -1));
 
+        jTextField7.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.setText("0.0");
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 100, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 80, -1));
 
+        jTextField8.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setText("0.0");
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 260, 100, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 80, -1));
 
+        jTextField9.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("0.0");
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 320, 100, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 80, -1));
 
+        jTextField10.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.setText("0.0");
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 100, -1));
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 80, -1));
 
-        jButton1.setText("GO");
+        jButton1.setBackground(new java.awt.Color(224, 131, 41));
+        jButton1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
+        jButton1.setText("IR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 500, 86, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, 86, -1));
 
+        jT_totalXdia.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jT_totalXdia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jT_totalXdia, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 150, -1));
+        getContentPane().add(jT_totalXdia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, 120, -1));
 
+        jLabel5.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("TOTAL X DIA:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, 30));
 
+        jLhab1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab1.setText("-");
-        getContentPane().add(jLhab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 60, -1));
+        getContentPane().add(jLhab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 70, 20));
 
+        jLabel7.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("# Habitación");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 90, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 200, 90, 20));
 
+        jLhab2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab2.setText("-");
-        getContentPane().add(jLhab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 70, 20));
+        getContentPane().add(jLhab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 70, 20));
 
+        jLhab3.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab3.setText("-");
-        getContentPane().add(jLhab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 70, -1));
+        getContentPane().add(jLhab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 70, 20));
 
+        jLhab4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab4.setText("-");
-        getContentPane().add(jLhab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 60, -1));
+        getContentPane().add(jLhab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 70, 20));
 
+        jLhab5.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab5.setText("-");
-        getContentPane().add(jLhab5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 60, -1));
+        getContentPane().add(jLhab5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 70, 20));
 
-        disp.setText("disponibilidad");
+        disp.setBackground(new java.awt.Color(224, 131, 41));
+        disp.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
+        disp.setText("DISPONIBILIDAD");
         disp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dispActionPerformed(evt);
             }
         });
-        getContentPane().add(disp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, -1));
+        getContentPane().add(disp, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, -1));
 
+        jLhab6.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab6.setText("-");
-        getContentPane().add(jLhab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 120, 50, -1));
+        getContentPane().add(jLhab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, 70, 20));
 
+        jLhab7.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab7.setText("-");
-        getContentPane().add(jLhab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 190, 50, -1));
+        getContentPane().add(jLhab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 70, 20));
 
+        jLhab8.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab8.setText("-");
-        getContentPane().add(jLhab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 260, 50, -1));
+        getContentPane().add(jLhab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 70, 20));
 
+        jLhab9.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab9.setText("-");
-        getContentPane().add(jLhab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 320, 60, -1));
+        getContentPane().add(jLhab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 70, 20));
 
+        jLhab10.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLhab10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLhab10.setText("-");
-        getContentPane().add(jLhab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 390, 60, -1));
+        getContentPane().add(jLhab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 470, 70, 20));
 
+        jLabel8.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("# Habitación");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 90, -1));
 
+        jTDias.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jTDias.setForeground(new java.awt.Color(255, 102, 0));
+        jTDias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jTDias.setText("DIAS: 15");
-        getContentPane().add(jTDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, -1, -1));
+        getContentPane().add(jTDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("TOTAL:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 456, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 540, -1, 30));
 
+        jT_total.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jT_total.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jT_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 460, 110, -1));
+        getContentPane().add(jT_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 120, -1));
+
+        jLabel10.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel10.setText("RENTA DE HABITACIÓN");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 570));
 
         pack();
         setLocationRelativeTo(null);
@@ -1456,6 +1578,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLHab8;
     private javax.swing.JLabel jLHab9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1463,6 +1586,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLhab1;
     private javax.swing.JLabel jLhab10;
     private javax.swing.JLabel jLhab2;

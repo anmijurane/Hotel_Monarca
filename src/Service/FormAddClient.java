@@ -87,6 +87,7 @@ public class FormAddClient extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btn_back = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -251,6 +252,11 @@ public class FormAddClient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 160, 40));
+
+        jLabel13.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel13.setText("AÑADIR CLIENTE");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
@@ -424,6 +430,7 @@ public class FormAddClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
