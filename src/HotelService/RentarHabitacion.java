@@ -5,6 +5,7 @@
  */
 package HotelService;
 
+import Entidades.Cliente;
 import Entidades.Habitacion;
 import Entidades.Paquete;
 import static SQLConex.Conection.getConeccion;
@@ -31,6 +32,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     int idPersona;
     String name;
     Paquete pack;
+    Cliente cltn;
 
     /**
      * Creates new form RentarHabitacion
@@ -45,7 +47,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         this.idPersona = idPersonal;
         this.name = name;
         cleanPanel(false);
-        jT_total.setVisible(false);
+        jT_total.setEditable(false);
         //btn_back.setVisible(true);
     }
 
@@ -54,12 +56,15 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
             cbxClient.addItem("ELIGE UN CLIENTE");
 
-            ps = Con.prepareStatement("SELECT id_cliente, nombre, apellido_p, apellido_m FROM cliente ORDER BY apellido_p ASC");
+            ps = Con.prepareStatement("SELECT * FROM cliente ORDER BY apellido_p ASC");
             rs = ps.executeQuery();
 
-            while (rs.next()) {
-                cbxClient.addItem(rs.getString("apellido_p") + " " + rs.getString("apellido_m") + " " + rs.getString("nombre"));
+            while (rs.next()) {                
                 idCliente = rs.getInt("id_cliente");
+                System.out.println("ID CLIENTE: " + idCliente);
+                cbxClient.addItem(rs.getString("apellido_p")
+                        + " " + rs.getString("apellido_m")
+                        + " " + rs.getString("nombre"));
             }
 
         } catch (SQLException e) {
@@ -67,8 +72,20 @@ public class RentarHabitacion extends javax.swing.JFrame {
         }
     }
 
-    public void ObtenerDatos() {
-
+    public void ObtenerSQLDatosCliente() {
+        try {
+            
+        ps = Con.prepareStatement("SELECT ");
+        this.cltn = new Cliente(
+                rs.getString("nombre"), rs.getString("apellido_p"),
+                rs.getString("apellido_m"), rs.getString("calle"),
+                rs.getString("numero_ext"), rs.getString("numero_int"),
+                rs.getString("colonia"), rs.getString("delegacion"),
+                rs.getString("cp"), rs.getString("tel_local"),
+                rs.getString("tel_movil"), rs.getString("email"));
+        
+        } catch (SQLException e) {
+        }
     }
 
     double total = 0;

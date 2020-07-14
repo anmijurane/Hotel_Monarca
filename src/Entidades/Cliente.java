@@ -12,14 +12,15 @@ import java.sql.SQLException;
  */
 public class Cliente extends Persona{
     private String email;
-    public Cliente(String name, String apellidoPat, String apellidoMat, String calle, 
-            String numExt, String numInt, String colonia, String delegacion, String cp, 
-            String telLocal, String telMovil, String email) {
+    public Cliente(String name, String apellidoPat, String apellidoMat,
+            String calle, String numExt, String numInt, String colonia, 
+            String delegacion, String cp, String telLocal, String telMovil,
+            String email) {
         
         super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia, delegacion, cp, telLocal, telMovil, email);
         this.email = email;
     }
-
+        
     public int getid_Cliente() {
         int id = 0;
         Connection con = getConeccion();
@@ -40,11 +41,27 @@ public class Cliente extends Persona{
 
         return id;
     }
-    int idCliente = getid_Cliente();
+    private int idCliente = getid_Cliente();
 
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
         
     
