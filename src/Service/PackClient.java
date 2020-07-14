@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author Diego C
  */
-public class PackClient extends javax.swing.JFrame {
+public final class PackClient extends javax.swing.JFrame {
 
     Habitacion hab = new Habitacion();
 
@@ -39,6 +39,7 @@ public class PackClient extends javax.swing.JFrame {
         room();
         type();
         costo();
+        LlenarArreglo();
     }
 
     public PackClient(Reserva rvs) {
@@ -47,8 +48,7 @@ public class PackClient extends javax.swing.JFrame {
         fecha_ing.setText(rvs.getCheckIn());
         fecha_sal.setText(rvs.getCheckOut());
         noches.setText(rvs.getNoches());
-        this.idHabitacionLocal = rvs.getHabitaciones();
-        room.setText(idHabitacionLocal);
+        room.setText(rvs.getHabitaciones());
         huespedes.setText(rvs.getPersonas());
         setLocationRelativeTo(null);
         setResizable(false);
@@ -56,31 +56,37 @@ public class PackClient extends javax.swing.JFrame {
         room();
         type();
         costo();
+        LlenarArreglo();
     }
 
     public void LlenarArreglo() {
-        int room = new Integer(idHabitacionLocal);
-        switch (room) {
+        int room_ = Integer.parseInt(room.getText());
+        this.pack = new Paquete("", "", "$"+total_reserva);
+        switch (room_) {
             case 0:
                 System.out.println("HO-HO");
                 break;
             case 1:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 2:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 3:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 4:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_2.getSelectedItem().toString()), huesp_2.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 5:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
@@ -88,6 +94,7 @@ public class PackClient extends javax.swing.JFrame {
                 pack.addArrIdHabitaciones(query_idroom(type_3.getSelectedItem().toString()), huesp_3.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 6:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
@@ -96,6 +103,7 @@ public class PackClient extends javax.swing.JFrame {
                 pack.addArrIdHabitaciones(query_idroom(type_4.getSelectedItem().toString()), huesp_4.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 7:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
@@ -105,7 +113,7 @@ public class PackClient extends javax.swing.JFrame {
                 pack.addArrIdHabitaciones(query_idroom(type_5.getSelectedItem().toString()), huesp_5.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_7.getSelectedItem().toString()), huesp_7.getText());
-
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 8:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
@@ -116,6 +124,7 @@ public class PackClient extends javax.swing.JFrame {
                 pack.addArrIdHabitaciones(query_idroom(type_6.getSelectedItem().toString()), huesp_6.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_7.getSelectedItem().toString()), huesp_7.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_8.getSelectedItem().toString()), huesp_8.getText());
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             case 9:
                 pack.addArrIdHabitaciones(query_idroom(type_1.getSelectedItem().toString()), huesp_1.getText());
@@ -127,7 +136,7 @@ public class PackClient extends javax.swing.JFrame {
                 pack.addArrIdHabitaciones(query_idroom(type_7.getSelectedItem().toString()), huesp_7.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_8.getSelectedItem().toString()), huesp_8.getText());
                 pack.addArrIdHabitaciones(query_idroom(type_9.getSelectedItem().toString()), huesp_9.getText());
-
+                id_hab.setText(pack.getArrIdHabitaciones().toString());
                 break;
             default:
                 throw new AssertionError();
@@ -964,6 +973,8 @@ public class PackClient extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         t_price = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        id_hab = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1210,6 +1221,11 @@ public class PackClient extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("# HABITACIONES");
+
+        id_hab.setText("jLabel7");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1233,7 +1249,9 @@ public class PackClient extends javax.swing.JFrame {
                             .addComponent(room)
                             .addComponent(fecha_ing)
                             .addComponent(t_price, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jLabel6)
+                    .addComponent(id_hab, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1260,6 +1278,10 @@ public class PackClient extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(room))
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(id_hab)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(huespedes))
@@ -1280,9 +1302,14 @@ public class PackClient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         costo();
-        this.pack = new Paquete(huespedes.getText(), fecha_ing.getText(), fecha_sal.getText(), t_price.getText());
+        pack.setPersonas(huespedes.getText());
+        pack.setEntrda(fecha_ing.getText());
+        pack.setSalida(fecha_sal.getText());
+        pack.setCosto(t_price.getText());
         new FormAddClient(pack).setVisible(true);
         dispose();
+        System.out.println(pack.getArrIdHabitaciones());
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void type_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_1ActionPerformed
@@ -1415,6 +1442,7 @@ public class PackClient extends javax.swing.JFrame {
     private javax.swing.JLabel huesp_8;
     private javax.swing.JLabel huesp_9;
     private javax.swing.JLabel huespedes;
+    private javax.swing.JLabel id_hab;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -1424,6 +1452,7 @@ public class PackClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel noches;

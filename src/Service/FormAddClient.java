@@ -269,9 +269,9 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtTelMovil.getText(), txtEmail.getText());
 
         //execurequery(client);
-        this.pack = new Paquete(pack.getPersonas(),pack.getEntrda(), pack.getSalida(), pack.getCosto());
         new PackClientFinal(client, pack).setVisible(true);
         dispose();
+        System.out.println(pack.getArrIdHabitaciones());
         
         //execurequery(client);
         
