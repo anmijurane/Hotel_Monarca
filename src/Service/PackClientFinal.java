@@ -2,7 +2,12 @@ package Service;
 
 import Entidades.Cliente;
 import Entidades.Paquete;
+import static SQLConex.Conection.getConeccion;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +21,7 @@ public class PackClientFinal extends javax.swing.JFrame {
 
     public PackClientFinal() {
         initComponents();
+        setTitle("PAQUETE CLIENTE FINAL");
         setLocationRelativeTo(null);
         setResizable(false);
     }
@@ -25,34 +31,36 @@ public class PackClientFinal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         this.cli = cli;
-        nombre.setText(cli.getName().toUpperCase() + " " + cli.getApellidoMat().toUpperCase() + " " + cli.getApellidoPat().toUpperCase());
-        direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
-        movil.setText(cli.getTelMovil());
-        correo.setText(cli.getEmail());
-        id.setText(Integer.toString(cli.getid_ClienteSQL()));
         this.pack = pack;
-        entrada.setText(pack.getEntrda());
-        salida.setText(pack.getSalida());
-        huespedes.setText(pack.getPersonas());
-        total.setText(pack.getCosto());
-        habitacion.setText(pack.getArrIdHabitaciones().toString());
+        PresentarDatosCliente(cli, pack);
+        //btnCliente.setVisible(true);
+        btnUsuario.setVisible(false);
     }
-    
+
     Paquete pqt;
     ArrayList<Cliente> cliente = new ArrayList<>();
     int indice;
-    
-    public PackClientFinal(Paquete pqt, ArrayList<Cliente> clnt, int indice){
+    Connection Con = getConeccion();
+    PreparedStatement insertData;
+    ResultSet rsData;
+
+    public PackClientFinal(Paquete pqt, ArrayList<Cliente> clnt, int indice) {
         initComponents();
         this.pqt = pqt;
-        this.cliente = clnt;                
+        this.cliente = clnt;
+        this.indice = indice;
         setDato(indice);
+        PresentarDatosAdmin(pqt, clnt, indice);
+        jLabel8.setVisible(false);
+        huespedes.setVisible(false);
+//        btnCliente.setVisible(false);
+        btnUsuario.setVisible(true);
     }
-    
-    public final void setDato(int indx){
+
+    public final void setDato(int indx) {
         System.out.println("--------------------------------");
         System.out.println("DATOS DE PACKCLIENTFINAL SETDATO");
-        System.out.println("INDICE EN PACKCLIENTFINAL: " +indx);
+        System.out.println("INDICE EN PACKCLIENTFINAL: " + indx);
         System.out.println("ID: " + cliente.get(indx).getId());
         //System.out.println(cliente.get(indice).getName());
 
@@ -67,18 +75,77 @@ public class PackClientFinal extends javax.swing.JFrame {
                 + "  CP. " + cliente.get(indx).getCp();
         System.out.println("Dirección: " + Direccion);
         System.out.println("Email: " + cliente.get(indx).getEmail());
-        
-        System.out.println("NÚM HABITACION: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
-        System.out.println("NÚM PERSONAS: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
-        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
-        System.out.println("ENTRADA: " +pqt.getEntrda());
-        System.out.println("SALIDA: " +pqt.getSalida());
+
+        System.out.println("NÚM HABITACION: " + pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NÚM PERSONAS: " + pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: " + pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("ENTRADA: " + pqt.getEntrda());
+        System.out.println("SALIDA: " + pqt.getSalida());
         System.out.println("--------------------------");
         System.out.println(cliente.toString());
         System.out.println("--------------------------");
-        
+
         System.out.println(pqt.getArrIdHabitaciones().toString());
-       
+
+    }
+
+    public final void PresentarDatosCliente(Cliente clnt, Paquete pqt) { //DIEGO
+        nombre.setText(cli.getName().toUpperCase() + " " + cli.getApellidoMat().toUpperCase() + " " + cli.getApellidoPat().toUpperCase());
+        direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
+        movil.setText(cli.getTelMovil());
+        correo.setText(cli.getEmail());
+        id.setText(Integer.toString(cli.getid_ClienteSQL()));
+        entrada.setText(pack.getEntrda());
+        salida.setText(pack.getSalida());
+        huespedes.setText(pack.getPersonas());
+        total.setText(pack.getCosto());
+        habitacion.setText(pack.getArrIdHabitaciones().toString());
+        //btnCliente.setVisible(true);
+        btnUsuario.setVisible(false);
+    }
+
+    public final void PresentarDatosAdmin(Paquete pqt, ArrayList<Cliente> clnt, int indx) {
+        //Datos de cliente
+        System.out.println("--------------------------------");
+        System.out.println("DATOS DE PACKCLIENTFINAL SETDATO");
+        System.out.println("INDICE EN PACKCLIENTFINAL: " + indx);
+        System.out.println("ID: " + cliente.get(indx).getId());
+        //System.out.println(cliente.get(indice).getName());
+
+        String NombreC = cliente.get(indx).getName()
+                + " " + cliente.get(indx).getApellidoPat()
+                + " " + cliente.get(indx).getApellidoMat();
+        nombre.setText(NombreC);
+        String Direccion = "CALLE: " + cliente.get(indx).getCalle()
+                + "  #" + cliente.get(indx).getNumExt()
+                + "  COLONIA: " + cliente.get(indx).getColonia()
+                + "  DELEGACIÓN: " + cliente.get(indx).getDelegacion()
+                + "  CP. " + cliente.get(indx).getCp();
+        direccion.setText(Direccion);
+        movil.setText(cliente.get(indx).getTelMovil());
+        correo.setText(cliente.get(indx).getEmail());
+        id.setText("" + cliente.get(indx).getId());
+
+        //Datos de Habitacion
+        entrada.setText(pqt.getEntrda());
+        salida.setText(pqt.getSalida());
+        total.setText(pqt.getCosto());
+        habitacion.setText(pqt.getArrIdHabitaciones().toString());
+
+        System.out.println("Email: " + cliente.get(indx).getEmail());
+
+        System.out.println("NÚM HABITACION: " + pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NÚM PERSONAS: " + pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: " + pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("ENTRADA: " + pqt.getEntrda());
+        System.out.println("SALIDA: " + pqt.getSalida());
+        System.out.println("--------------------------");
+        System.out.println(cliente.toString());
+        System.out.println("--------------------------");
+
+        System.out.println(pqt.getArrIdHabitaciones().toString());
+        clnt.toString();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -107,36 +174,45 @@ public class PackClientFinal extends javax.swing.JFrame {
         huespedes = new javax.swing.JLabel();
         salida = new javax.swing.JLabel();
         entrada = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        btnUsuario = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("DATOS CLIENTE"));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel1.setText("NOMBRE");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel2.setText("DIRECCION");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel3.setText("TEL MOVIL");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel5.setText("CORREO");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel4.setText("ID");
 
+        nombre.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         nombre.setText("jLabel6");
 
+        direccion.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         direccion.setText("jLabel7");
 
+        movil.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         movil.setText("jLabel8");
 
+        correo.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         correo.setText("jLabel9");
 
+        id.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         id.setText("jLabel10");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -158,7 +234,7 @@ public class PackClientFinal extends javax.swing.JFrame {
                     .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(movil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,31 +262,38 @@ public class PackClientFinal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 641, -1));
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("RESERVACION"));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel6.setText("ENTRADA");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel7.setText("SALIDA");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel8.setText("HUESPEDES");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel9.setText("TOTAL");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         jLabel10.setText("HABITACION");
 
+        habitacion.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         habitacion.setText("jLabel11");
 
+        total.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         total.setText("jLabel12");
 
+        huespedes.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         huespedes.setText("jLabel13");
 
+        salida.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         salida.setText("jLabel14");
 
+        entrada.setFont(new java.awt.Font("Candara Light", 0, 14)); // NOI18N
         entrada.setText("jLabel15");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -233,7 +316,7 @@ public class PackClientFinal extends javax.swing.JFrame {
                     .addComponent(huespedes)
                     .addComponent(salida)
                     .addComponent(entrada))
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addContainerGap(484, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,52 +344,104 @@ public class PackClientFinal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("CONFIRMAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 640, 190));
+
+        jLabel12.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel12.setText("PAQUETE CLIENTE FINAL");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        btnUsuario.setText("jButton1");
+        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 520, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
+        btnCliente.setText("btnCliente");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, -1, -1));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 570));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         int confirmar = JOptionPane.showConfirmDialog(null, "¿DESEA CONFIRMAR EL PAQUETE?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
-        
-        if(confirmar == JOptionPane.YES_OPTION){
+
+        if (confirmar == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(null, "PAQUETE CONFIRMADO \n¡BINVENIDO!", "EXITO", JOptionPane.INFORMATION_MESSAGE);
-        }else if(confirmar == JOptionPane.NO_OPTION){
+           // insert();
+        } else if (confirmar == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "TU RESERVACION HA SIDO CANCELADA", "CANCELANDO", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnUsuarioActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        int confirmar = JOptionPane.showConfirmDialog(null, "¿DESEA CONFIRMAR EL PAQUETE?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
+
+        if (confirmar == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "PAQUETE CONFIRMADO \n¡BINVENIDO!", "EXITO", JOptionPane.INFORMATION_MESSAGE);
+            //insertC();
+        } else if (confirmar == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "TU RESERVACION HA SIDO CANCELADA", "CANCELANDO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnClienteActionPerformed
+
+    public void insertC() {
+        String query = "INSERT INTO cliente("
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
+                + ") VALUES ( " + cli + ")";
+        
+        for (int indx = 0; indx < pack.getArrIdHabitaciones().size() - 1; indx++) {
+            querySQL(""+pack.getArrIdHabitaciones().get(indx).getIdHabitacion(),
+                     ""+cli.getid_ClienteSQL(),
+                     pack.getPersonas(),
+                     pack.getEntrda(),
+                     pack.getSalida(),
+                     pack.getCosto()
+                    );                        
+        }
+        
+        System.out.println(query);
+
+    }
+
+    public void insert() {
+        for (int indx = 0; indx < cliente.size() - 1; indx++) {
+            querySQL("" + pqt.getArrIdHabitaciones().get(indx),
+                    "" + cliente.get(indice).getId(),
+                    pqt.getArrIdHabitaciones().get(indx).getPersonas(),
+                    pqt.getEntrda(), pqt.getSalida(), "" + pqt.getCosto());
+        }
+    }
+
+    public void querySQL(String idHab, String idCliente, String personas, String In, String Out, String costoRnta) {
+        String queryRenta = "INSERT INTO renta (id_habitacion, id_cliente, personas, entrada, salida,"
+                + "costo_renta, id_metpago) VALUES (" + idHab + ", " + idCliente + ", " + personas + ", \"" + In + "\", \"" + Out + "\", " + costoRnta + ", " + "1)";
+
+        String queryHistHabitacion = "INSERT INTO hist_habitacion(id_habitacion, id_cliente, fentrada, fsalida) VALUES ("
+                + idHab + ", " + idCliente + ", \"" + In + "\", \"" + Out + "\")";
+
+        String updateEdoHabitacion = "UPDATE habitacion SET id_estado = 2 WHERE id_habitacion = " + idHab;
+        System.out.println("QUERYS");
+        System.out.println(queryRenta);
+        System.out.println(queryHistHabitacion);
+        System.out.println(updateEdoHabitacion);
+        System.out.println("=================");
+        
+        
+        
+    }
 
     /**
      * @param args the command line arguments
@@ -344,15 +479,18 @@ public class PackClientFinal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnUsuario;
     private javax.swing.JLabel correo;
     private javax.swing.JLabel direccion;
     private javax.swing.JLabel entrada;
     private javax.swing.JLabel habitacion;
     private javax.swing.JLabel huespedes;
     private javax.swing.JLabel id;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

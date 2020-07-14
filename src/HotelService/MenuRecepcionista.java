@@ -19,6 +19,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
     public MenuRecepcionista(String name, int idPersonal){
         initComponents();
         this.setLocationRelativeTo(null);
+        setTitle("MENU-RECEPCIÓN");
         this.setResizable(false);
         this.name = name;
         this.idPersonal = idPersonal;
@@ -55,7 +56,9 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         });
         getContentPane().add(SesionClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 520, 180, 40));
 
+        btnEdoHabitacion.setBackground(new java.awt.Color(204, 85, 39));
         btnEdoHabitacion.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnEdoHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         btnEdoHabitacion.setText("INFO DE HABITACIÓN");
         btnEdoHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEdoHabitacion.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -67,7 +70,9 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         });
         getContentPane().add(btnEdoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 260, 40));
 
+        addUserHuesped.setBackground(new java.awt.Color(255, 102, 0));
         addUserHuesped.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        addUserHuesped.setForeground(new java.awt.Color(51, 51, 51));
         addUserHuesped.setText("REGISTRAR UN USUARIO");
         addUserHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +81,9 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         });
         getContentPane().add(addUserHuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 260, 40));
 
+        btnRentarHab.setBackground(new java.awt.Color(222, 74, 16));
         btnRentarHab.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnRentarHab.setForeground(new java.awt.Color(255, 255, 255));
         btnRentarHab.setText("RENTAR UNA HABITACIÓN");
         btnRentarHab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,9 +92,10 @@ public class MenuRecepcionista extends javax.swing.JFrame {
         });
         getContentPane().add(btnRentarHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 260, 40));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(28, 27, 26));
         jLabel1.setText("MENU, RECEPCIÓN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));

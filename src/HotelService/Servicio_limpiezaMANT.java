@@ -22,6 +22,7 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
     public Servicio_limpiezaMANT() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("SERVICIO DE LIMPIEZA");
         table_status.setModel(STATUS);
         STATUS.addColumn("ID");
         STATUS.addColumn("NOMBRE");
@@ -92,6 +93,7 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
         table_status = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         ID = new javax.swing.JComboBox<String>();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,6 +129,11 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 150, -1));
+
+        jLabel3.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel3.setText("SERVCIO");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
@@ -195,6 +202,7 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_status;
     // End of variables declaration//GEN-END:variables

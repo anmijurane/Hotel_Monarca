@@ -89,19 +89,19 @@ public class addPackClient extends javax.swing.JFrame {
 
     public void noches() {
 
-        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
         int Eday, Emonth, Eyear, Sday, Smonth, Syear, noches;
 
         Eday = check_in.getCalendar().get(Calendar.DAY_OF_MONTH);
         Emonth = check_in.getCalendar().get(Calendar.MONTH) + 1;
         Eyear = check_in.getCalendar().get(Calendar.YEAR);
-        System.out.println("ENTRADA: " + Eday + "/" + Emonth + "/" + Eyear);
+        System.out.println("ENTRADA: " + Eday + "-" + Emonth + "-" + Eyear);
 
         Sday = check_out.getCalendar().get(Calendar.DAY_OF_MONTH);
         Smonth = check_out.getCalendar().get(Calendar.MONTH) + 1;
         Syear = check_out.getCalendar().get(Calendar.YEAR);
-        System.out.println("SALIDA:  " + Sday + "/" + Smonth + "/" + Syear);
+        System.out.println("SALIDA:  " + Sday + "-" + Smonth + "-" + Syear);
 
         Date checkIn = new Date(Eyear, Emonth, Eday);
         Date checkOut = new Date(Syear, Smonth, Sday);
@@ -385,7 +385,7 @@ public class addPackClient extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Days = new javax.swing.JTextField();
-        NUMBER_ROOM = new javax.swing.JComboBox<>();
+        NUMBER_ROOM = new javax.swing.JComboBox<String>();
         ROOM1 = new javax.swing.JLabel();
         ROOM2 = new javax.swing.JLabel();
         ROOM3 = new javax.swing.JLabel();
@@ -408,6 +408,7 @@ public class addPackClient extends javax.swing.JFrame {
         sp7 = new javax.swing.JSpinner();
         sp8 = new javax.swing.JSpinner();
         sp9 = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -431,7 +432,7 @@ public class addPackClient extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -513,6 +514,11 @@ public class addPackClient extends javax.swing.JFrame {
         getContentPane().add(sp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
         getContentPane().add(sp8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, -1, -1));
         getContentPane().add(sp9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 390, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel6.setText("RENTA DE HABITACIÓN");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
@@ -642,6 +648,7 @@ public class addPackClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     public static javax.swing.JSpinner sp1;
     public static javax.swing.JSpinner sp2;
     public static javax.swing.JSpinner sp3;

@@ -50,7 +50,7 @@ public class Cliente extends Persona{
             System.out.println("Error: " + e);
         }
 
-        return id;
+        return id+1;
     }
     private int idCliente;
 

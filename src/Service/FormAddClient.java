@@ -44,9 +44,10 @@ public class FormAddClient extends javax.swing.JFrame {
         this.name = name;
     }
 
-    public FormAddClient(Paquete pack) {
+    public FormAddClient(Paquete pack, int TypeForm) {
         initComponents();
         this.pack = pack;
+        this.TypeForm = TypeForm;
         setTitle("REGISTRO DEL CLIENTE");
         setLocationRelativeTo(null);
         btn_back.setVisible(false);
@@ -87,6 +88,7 @@ public class FormAddClient extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btn_back = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -252,6 +254,11 @@ public class FormAddClient extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 160, 40));
 
+        jLabel13.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(28, 27, 26));
+        jLabel13.setText("AÑADIR CLIENTE");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
@@ -268,13 +275,15 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtCP.getText().toUpperCase(), txtTelLocal.getText(),
                 txtTelMovil.getText(), txtEmail.getText());
 
-        //execurequery(client);
-        new PackClientFinal(client, pack).setVisible(true);
-        dispose();
-        System.out.println(pack.getArrIdHabitaciones());
-        
-        //execurequery(client);
-        
+        if (TypeForm == 8) {
+            new PackClientFinal(client, pack).setVisible(true);
+            dispose();            
+            System.out.println(pack.getArrIdHabitaciones());
+        }else{            
+            execurequery(client);
+            System.out.println("REGISTRANDO");
+            client.toString();
+        }                
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void txtDelgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDelgActionPerformed
@@ -424,6 +433,7 @@ public class FormAddClient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
