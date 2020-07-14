@@ -50,45 +50,53 @@ public class Paquete {
         this.id_room = id_room;
     }
 
-    public Paquete(String personas, String entrda, String salida, String costo) {
+    public Paquete(String entrda, String salida, String costo) {        
+        this.entrda = entrda;
+        this.salida = salida;
+        this.costo = costo;
+    }
+    public Paquete(String personas, String entrda, String salida, String costo) {        
         this.personas = personas;
         this.entrda = entrda;
         this.salida = salida;
         this.costo = costo;
     }
     
-        private ArrayList<HabitacionesArray> arrIdHabitaciones = new ArrayList<>();
+    private ArrayList<HabitacionesArray> arrIdHabitaciones = new ArrayList<>();
 
     public ArrayList<HabitacionesArray> getArrIdHabitaciones() {
         return arrIdHabitaciones;
     }
 
+    public void addArrIdHabitaciones(int idHabitaciones, String numPersonas, double costo, String categoria) {
+        arrIdHabitaciones.add(new HabitacionesArray(idHabitaciones, numPersonas, costo, categoria));
+    }        
     public void addArrIdHabitaciones(int idHabitaciones, String numPersonas) {
         arrIdHabitaciones.add(new HabitacionesArray(idHabitaciones, numPersonas));
     }        
     
     public static class HabitacionesArray{
         
-        private int idHabitacion, personas;
+        private int idHabitacion;
         private double costo;
-        private String categoria;
+        private String categoria, personas;
 
         public HabitacionesArray(int idHabitacion, String personas){
             this.idHabitacion = idHabitacion;
         } //Constructor
         
-        public HabitacionesArray(int idHabitacion, int personas, double costo, String categoria){
+        public HabitacionesArray(int idHabitacion, String personas, double costo, String categoria){
             this.idHabitacion = idHabitacion;
             this.personas = personas;
             this.costo = costo;
             this.categoria = categoria;
         }
 
-        public int getPersonas() {
+        public String getPersonas() {
             return personas;
         }
 
-        public void setPersonas(int personas) {
+        public void setPersonas(String personas) {
             this.personas = personas;
         }
         
@@ -104,6 +112,22 @@ public class Paquete {
         @Override
         public String toString(){
             return "id Habitacion: "+idHabitacion;
+        }
+
+        public double getCosto() {
+            return costo;
+        }
+
+        public void setCosto(double costo) {
+            this.costo = costo;
+        }
+
+        public String getCategoria() {
+            return categoria;
+        }
+
+        public void setCategoria(String categoria) {
+            this.categoria = categoria;
         }
         
     }

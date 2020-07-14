@@ -8,7 +8,6 @@ package HotelService;
 import Entidades.Cliente;
 import Entidades.Habitacion;
 import Entidades.Paquete;
-import Entidades.Paquete.HabitacionesArray;
 import static SQLConex.Conection.getConeccion;
 import Service.FormAddClient;
 import java.awt.event.ItemEvent;
@@ -18,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
@@ -36,6 +34,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     int idPersona;
     String name;
     Paquete pack;
+    Paquete pqt;
     Cliente cltn;
 
     /**
@@ -86,10 +85,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
     public void getCliente() {
         int indice = cbxClient.getSelectedIndex() - 1;
-        System.out.println(indice);
-        cliente.get(indice).getName();
-        System.out.println(cliente.get(indice).getId());
-        System.out.println(cliente.get(indice).getName());
+        //System.out.println(indice);
+        //cliente.get(indice).getName();
+        System.out.println("ID: " + cliente.get(indice).getId());
+        //System.out.println(cliente.get(indice).getName());
 
         String NombreC = cliente.get(indice).getName()
                 + " " + cliente.get(indice).getApellidoPat()
@@ -102,7 +101,12 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 + "CP. " + cliente.get(indice).getCp();
         System.out.println("Dirección: " + Direccion);
         System.out.println("Email: " + cliente.get(indice).getEmail());
+    }
 
+    public void getDHabitacion() {
+        System.out.println(""+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println(pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println(pqt.getArrIdHabitaciones().get(0).getCategoria());
     }
 
     public int getDisponibilidad(String categoria) {
@@ -130,10 +134,13 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
     public void getDatosHabitacion() {
         int index = jCbx_NumHab.getSelectedIndex();
-
+        this.pqt = new Paquete("14/07/2020", "16/07/2020", "$" + total);
         switch (index) {
             case 1:
-                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                int id = getDisponibilidad(jCbx_01.getSelectedItem().toString());
+                jLhab1.setText("" + id);
+                //ID, PERSONAS, COSTO, CATEGORIA
+                pqt.addArrIdHabitaciones(id, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 break;
             case 2:
                 jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
@@ -1163,8 +1170,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jCbx_010ItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        getDisponibilidad(jCbx_01.getSelectedItem().toString());
         getCliente();
+        getDHabitacion();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void dispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispActionPerformed
