@@ -3,6 +3,10 @@ package Service;
 import Entidades.Cliente;
 import Entidades.Paquete;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.function.Consumer;
 import javax.swing.JOptionPane;
 
@@ -28,26 +32,31 @@ public class PackClientFinal extends javax.swing.JFrame {
         this.cli = cli;
         this.pack = pack;
         PresentarDatosCliente(cli, pack);
+        btnCliente.setVisible(true);
+        btnUsuario.setVisible(false);
     }
-    
+
     Paquete pqt;
     ArrayList<Cliente> cliente = new ArrayList<>();
     int indice;
-    
-    public PackClientFinal(Paquete pqt, ArrayList<Cliente> clnt, int indice){
+
+    public PackClientFinal(Paquete pqt, ArrayList<Cliente> clnt, int indice) {
         initComponents();
         this.pqt = pqt;
-        this.cliente = clnt;                
+        this.cliente = clnt;
+        this.indice = indice;
         setDato(indice);
-        PresentarDatosAdmin(pqt, clnt,indice);
+        PresentarDatosAdmin(pqt, clnt, indice);
         jLabel8.setVisible(false);
         huespedes.setVisible(false);
+        btnCliente.setVisible(false);
+        btnUsuario.setVisible(true);
     }
-    
-    public final void setDato(int indx){
+
+    public final void setDato(int indx) {
         System.out.println("--------------------------------");
         System.out.println("DATOS DE PACKCLIENTFINAL SETDATO");
-        System.out.println("INDICE EN PACKCLIENTFINAL: " +indx);
+        System.out.println("INDICE EN PACKCLIENTFINAL: " + indx);
         System.out.println("ID: " + cliente.get(indx).getId());
         //System.out.println(cliente.get(indice).getName());
 
@@ -62,21 +71,21 @@ public class PackClientFinal extends javax.swing.JFrame {
                 + "  CP. " + cliente.get(indx).getCp();
         System.out.println("Dirección: " + Direccion);
         System.out.println("Email: " + cliente.get(indx).getEmail());
-        
-        System.out.println("NÚM HABITACION: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
-        System.out.println("NÚM PERSONAS: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
-        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
-        System.out.println("ENTRADA: " +pqt.getEntrda());
-        System.out.println("SALIDA: " +pqt.getSalida());
+
+        System.out.println("NÚM HABITACION: " + pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NÚM PERSONAS: " + pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: " + pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("ENTRADA: " + pqt.getEntrda());
+        System.out.println("SALIDA: " + pqt.getSalida());
         System.out.println("--------------------------");
         System.out.println(cliente.toString());
         System.out.println("--------------------------");
-        
+
         System.out.println(pqt.getArrIdHabitaciones().toString());
-       
+
     }
-    
-    public final void PresentarDatosCliente(Cliente clnt, Paquete pqt){
+
+    public final void PresentarDatosCliente(Cliente clnt, Paquete pqt) { //DIEGO
         nombre.setText(cli.getName().toUpperCase() + " " + cli.getApellidoMat().toUpperCase() + " " + cli.getApellidoPat().toUpperCase());
         direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
         movil.setText(cli.getTelMovil());
@@ -87,13 +96,15 @@ public class PackClientFinal extends javax.swing.JFrame {
         huespedes.setText(pack.getPersonas());
         total.setText(pack.getCosto());
         habitacion.setText(pack.getArrIdHabitaciones().toString());
+        btnCliente.setVisible(true);
+        btnUsuario.setVisible(false);
     }
-    
-    public final void PresentarDatosAdmin(Paquete pqt, ArrayList<Cliente> clnt, int indx){
+
+    public final void PresentarDatosAdmin(Paquete pqt, ArrayList<Cliente> clnt, int indx) {
         //Datos de cliente
         System.out.println("--------------------------------");
         System.out.println("DATOS DE PACKCLIENTFINAL SETDATO");
-        System.out.println("INDICE EN PACKCLIENTFINAL: " +indx);
+        System.out.println("INDICE EN PACKCLIENTFINAL: " + indx);
         System.out.println("ID: " + cliente.get(indx).getId());
         //System.out.println(cliente.get(indice).getName());
 
@@ -109,29 +120,30 @@ public class PackClientFinal extends javax.swing.JFrame {
         direccion.setText(Direccion);
         movil.setText(cliente.get(indx).getTelMovil());
         correo.setText(cliente.get(indx).getEmail());
-        id.setText(""+cliente.get(indx).getId());
-        
+        id.setText("" + cliente.get(indx).getId());
+
         //Datos de Habitacion
-        
         entrada.setText(pqt.getEntrda());
         salida.setText(pqt.getSalida());
         total.setText(pqt.getCosto());
         habitacion.setText(pqt.getArrIdHabitaciones().toString());
-        
+
         System.out.println("Email: " + cliente.get(indx).getEmail());
-        
-        System.out.println("NÚM HABITACION: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
-        System.out.println("NÚM PERSONAS: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
-        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
-        System.out.println("ENTRADA: " +pqt.getEntrda());
-        System.out.println("SALIDA: " +pqt.getSalida());
+
+        System.out.println("NÚM HABITACION: " + pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NÚM PERSONAS: " + pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: " + pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("ENTRADA: " + pqt.getEntrda());
+        System.out.println("SALIDA: " + pqt.getSalida());
         System.out.println("--------------------------");
         System.out.println(cliente.toString());
         System.out.println("--------------------------");
-        
+
         System.out.println(pqt.getArrIdHabitaciones().toString());
+        clnt.toString();
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -158,7 +170,8 @@ public class PackClientFinal extends javax.swing.JFrame {
         huespedes = new javax.swing.JLabel();
         salida = new javax.swing.JLabel();
         entrada = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnUsuario = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -312,10 +325,17 @@ public class PackClientFinal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("CONFIRMAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuario.setText("CONFIRMAR");
+        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnUsuarioActionPerformed(evt);
+            }
+        });
+
+        btnCliente.setText("CONFIRMAR");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
             }
         });
 
@@ -330,7 +350,9 @@ public class PackClientFinal extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnCliente)
+                        .addGap(143, 143, 143)
+                        .addComponent(btnUsuario)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -340,24 +362,83 @@ public class PackClientFinal extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUsuario)
+                    .addComponent(btnCliente))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         int confirmar = JOptionPane.showConfirmDialog(null, "¿DESEA CONFIRMAR EL PAQUETE?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
-        
-        if(confirmar == JOptionPane.YES_OPTION){
+
+        if (confirmar == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(null, "PAQUETE CONFIRMADO \n¡BINVENIDO!", "EXITO", JOptionPane.INFORMATION_MESSAGE);
-        }else if(confirmar == JOptionPane.NO_OPTION){
+            insert();
+        } else if (confirmar == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "TU RESERVACION HA SIDO CANCELADA", "CANCELANDO", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnUsuarioActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        int confirmar = JOptionPane.showConfirmDialog(null, "¿DESEA CONFIRMAR EL PAQUETE?", "CONFIRMACION", JOptionPane.YES_NO_OPTION);
+
+        if (confirmar == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "PAQUETE CONFIRMADO \n¡BINVENIDO!", "EXITO", JOptionPane.INFORMATION_MESSAGE);
+            insertC();
+        } else if (confirmar == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "TU RESERVACION HA SIDO CANCELADA", "CANCELANDO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnClienteActionPerformed
+
+    public void insertC() {
+        String query = "INSERT INTO cliente("
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
+                + ") VALUES ( " + cli + ")";
+        
+        for (int indx = 0; indx < pack.getArrIdHabitaciones().size() - 1; indx++) {
+            querySQL(""+pack.getArrIdHabitaciones().get(indx).getIdHabitacion(),
+                     ""+cli.getid_ClienteSQL(),
+                     pack.getPersonas(),
+                     pack.getEntrda(),
+                     pack.getSalida(),
+                     pack.getCosto()
+                    );                        
+        }
+        
+        System.out.println(query);
+
+    }
+
+    public void insert() {
+        for (int indx = 0; indx < cliente.size() - 1; indx++) {
+            querySQL("" + pqt.getArrIdHabitaciones().get(indx),
+                    "" + cliente.get(indice).getId(),
+                    pqt.getArrIdHabitaciones().get(indx).getPersonas(),
+                    pqt.getEntrda(), pqt.getSalida(), "" + pqt.getCosto());
+        }
+    }
+
+    public void querySQL(String idHab, String idCliente, String personas, String In, String Out, String costoRnta) {
+        String queryRenta = "INSERT INTO renta (id_habitacion, id_cliente, personas, entrada, salida,"
+                + "costo_renta, id_metpago) VALUES (" + idHab + ", " + idCliente + ", " + personas + ", \"" + In + "\", \"" + Out + "\", " + costoRnta + ", " + "1)";
+
+        String queryHistHabitacion = "INSERT INTO hist_habitacion(id_habitacion, id_cliente, fentrada, fsalida) VALUES ("
+                + idHab + ", " + idCliente + ", \"" + In + "\", \"" + Out + "\")";
+
+        String updateEdoHabitacion = "UPDATE habitacion SET id_estado = 2 WHERE id_habitacion = " + idHab;
+        System.out.println("QUERYS");
+        System.out.println(queryRenta);
+        System.out.println(queryHistHabitacion);
+        System.out.println(updateEdoHabitacion);
+        System.out.println("=================");
+                
+    }
 
     /**
      * @param args the command line arguments
@@ -395,13 +476,14 @@ public class PackClientFinal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnUsuario;
     private javax.swing.JLabel correo;
     private javax.swing.JLabel direccion;
     private javax.swing.JLabel entrada;
     private javax.swing.JLabel habitacion;
     private javax.swing.JLabel huespedes;
     private javax.swing.JLabel id;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

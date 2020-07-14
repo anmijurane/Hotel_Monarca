@@ -167,17 +167,29 @@ public class RentarHabitacion extends javax.swing.JFrame {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
     
     public String CheckIn(){        
-        return f.format(check_in.getDate());
+        int Eday, Emonth, Eyear;
+
+        Eday = check_in.getCalendar().get(Calendar.DAY_OF_MONTH);
+        Emonth = check_in.getCalendar().get(Calendar.MONTH) + 1;
+        Eyear = check_in.getCalendar().get(Calendar.YEAR);
+        System.out.println("ENTRADA: " +Eyear+"-"+Emonth+"-"+Eday);
+        return ""+Eyear+"-"+Emonth+"-"+Eday;
     }
     
     public String CheckOut(){
-        return f.format(check_out.getDate());
+        int Sday, Smonth, Syear;
+
+        Sday = check_out.getCalendar().get(Calendar.DAY_OF_MONTH);
+        Smonth = check_out.getCalendar().get(Calendar.MONTH) + 1;
+        Syear = check_out.getCalendar().get(Calendar.YEAR);
+        System.out.println("SALIDA:  " +Syear+"-"+Smonth+"-"+Sday);
+        return ""+Syear+"-"+Smonth+"-"+Sday;
     }
 
     public void getDatosHabitacion() {
         int index = jCbx_NumHab.getSelectedIndex();
         int idHab1,idHab2,idHab3,idHab4,idHab5,idHab6,idHab7,idHab8,idHab9,idHab10;
-        this.pqt = new Paquete(CheckIn(), CheckOut(), "$" + costoTotal);
+        this.pqt = new Paquete(CheckIn(), CheckOut(), "" + costoTotal);
         switch (index) {
             case 1:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -871,9 +883,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         jLabel8.setText("# Habitación");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
-
-        jTDias.setText("DIAS: 15");
-        getContentPane().add(jTDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, -1, -1));
+        getContentPane().add(jTDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, 60, 20));
 
         jLabel6.setText("TOTAL:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 456, -1, 30));
