@@ -108,11 +108,15 @@ public class Paquete {
         public void setIdHabitacion(int idHabitacion){
             this.idHabitacion = idHabitacion;
         }
-        
+
         @Override
-        public String toString(){
-            return "id Habitacion: "+idHabitacion;
-        }
+        public String toString() {
+            return ""+idHabitacion;
+        }                
+        
+        public String StringData() {
+            return "----------------\n"+"idHabitacion= " + idHabitacion + ",\ncosto= " + costo + ",\ncategoria= " + categoria + ",\npersonas=" + personas + "\n----------------";
+        }                
 
         public double getCosto() {
             return costo;
