@@ -2,12 +2,12 @@ package Service;
 
 import Entidades.Cliente;
 import Entidades.Paquete;
+import static SQLConex.Conection.getConeccion;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.function.Consumer;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,6 +39,9 @@ public class PackClientFinal extends javax.swing.JFrame {
     Paquete pqt;
     ArrayList<Cliente> cliente = new ArrayList<>();
     int indice;
+    Connection Con = getConeccion();
+    PreparedStatement insertData;
+    ResultSet rsData;
 
     public PackClientFinal(Paquete pqt, ArrayList<Cliente> clnt, int indice) {
         initComponents();
@@ -437,7 +440,9 @@ public class PackClientFinal extends javax.swing.JFrame {
         System.out.println(queryHistHabitacion);
         System.out.println(updateEdoHabitacion);
         System.out.println("=================");
-                
+        
+        
+        
     }
 
     /**
