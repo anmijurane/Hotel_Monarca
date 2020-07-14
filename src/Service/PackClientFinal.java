@@ -3,6 +3,7 @@ package Service;
 import Entidades.Cliente;
 import Entidades.Paquete;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,7 +27,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         setResizable(false);
         this.cli = cli;
         this.pack = pack;
-        PresentarDatos(cli, pack);
+        PresentarDatosCliente(cli, pack);
     }
     
     Paquete pqt;
@@ -38,6 +39,9 @@ public class PackClientFinal extends javax.swing.JFrame {
         this.pqt = pqt;
         this.cliente = clnt;                
         setDato(indice);
+        PresentarDatosAdmin(pqt, clnt,indice);
+        jLabel8.setVisible(false);
+        huespedes.setVisible(false);
     }
     
     public final void setDato(int indx){
@@ -72,7 +76,7 @@ public class PackClientFinal extends javax.swing.JFrame {
        
     }
     
-    public final void PresentarDatos(Cliente clnt, Paquete pqt){
+    public final void PresentarDatosCliente(Cliente clnt, Paquete pqt){
         nombre.setText(cli.getName().toUpperCase() + " " + cli.getApellidoMat().toUpperCase() + " " + cli.getApellidoPat().toUpperCase());
         direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
         movil.setText(cli.getTelMovil());
@@ -84,7 +88,50 @@ public class PackClientFinal extends javax.swing.JFrame {
         total.setText(pack.getCosto());
         habitacion.setText(pack.getArrIdHabitaciones().toString());
     }
+    
+    public final void PresentarDatosAdmin(Paquete pqt, ArrayList<Cliente> clnt, int indx){
+        //Datos de cliente
+        System.out.println("--------------------------------");
+        System.out.println("DATOS DE PACKCLIENTFINAL SETDATO");
+        System.out.println("INDICE EN PACKCLIENTFINAL: " +indx);
+        System.out.println("ID: " + cliente.get(indx).getId());
+        //System.out.println(cliente.get(indice).getName());
 
+        String NombreC = cliente.get(indx).getName()
+                + " " + cliente.get(indx).getApellidoPat()
+                + " " + cliente.get(indx).getApellidoMat();
+        nombre.setText(NombreC);
+        String Direccion = "CALLE: " + cliente.get(indx).getCalle()
+                + "  #" + cliente.get(indx).getNumExt()
+                + "  COLONIA: " + cliente.get(indx).getColonia()
+                + "  DELEGACIÓN: " + cliente.get(indx).getDelegacion()
+                + "  CP. " + cliente.get(indx).getCp();
+        direccion.setText(Direccion);
+        movil.setText(cliente.get(indx).getTelMovil());
+        correo.setText(cliente.get(indx).getEmail());
+        id.setText(""+cliente.get(indx).getId());
+        
+        //Datos de Habitacion
+        
+        entrada.setText(pqt.getEntrda());
+        salida.setText(pqt.getSalida());
+        total.setText(pqt.getCosto());
+        habitacion.setText(pqt.getArrIdHabitaciones().toString());
+        
+        System.out.println("Email: " + cliente.get(indx).getEmail());
+        
+        System.out.println("NÚM HABITACION: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NÚM PERSONAS: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("ENTRADA: " +pqt.getEntrda());
+        System.out.println("SALIDA: " +pqt.getSalida());
+        System.out.println("--------------------------");
+        System.out.println(cliente.toString());
+        System.out.println("--------------------------");
+        
+        System.out.println(pqt.getArrIdHabitaciones().toString());
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

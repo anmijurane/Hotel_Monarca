@@ -40,6 +40,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     String name;    
     Paquete pqt;
     Cliente cltn;
+    double costoTotal;
     int indice;
 
     /**
@@ -114,9 +115,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
         System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
     }
     
-    public int noches(){
-        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-
+    public int noches(){        
+        
         int Eday, Emonth, Eyear, Sday, Smonth, Syear, noches;
 
         Eday = check_in.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -138,7 +138,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }
     
     public void CalcularCosto(){
-        double costoTotal = total * noches();
+        costoTotal = total * noches();
         jT_total.setText("$ "+costoTotal);
     }
     
@@ -164,7 +164,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         }
         return idHabitacion;
     }
-    SimpleDateFormat f = new SimpleDateFormat("dd-mm-yyyy");
+    SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
     
     public String CheckIn(){        
         return f.format(check_in.getDate());
@@ -177,7 +177,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     public void getDatosHabitacion() {
         int index = jCbx_NumHab.getSelectedIndex();
         int idHab1,idHab2,idHab3,idHab4,idHab5,idHab6,idHab7,idHab8,idHab9,idHab10;
-        this.pqt = new Paquete(CheckIn(), CheckOut(), "$" + total);
+        this.pqt = new Paquete(CheckIn(), CheckOut(), "$" + costoTotal);
         switch (index) {
             case 1:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -1362,14 +1362,14 @@ public class RentarHabitacion extends javax.swing.JFrame {
         CalcularCosto();
         jT_totalXdia.setText("$" + total);
     }//GEN-LAST:event_jCbx_010ItemStateChanged
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         getDatosHabitacion();
         System.out.println("RENTA HABITACIÓN");
         indice = cbxClient.getSelectedIndex()-1;
         System.out.println("INDICE RENTA HABITACION: " +indice);
         getCliente(indice);
-        getDHabitacion();
+        getDHabitacion();        
         new PackClientFinal(pqt, cliente, cbxClient.getSelectedIndex()-1).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -89,19 +89,19 @@ public class addPackClient extends javax.swing.JFrame {
 
     public void noches() {
 
-        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
         int Eday, Emonth, Eyear, Sday, Smonth, Syear, noches;
 
         Eday = check_in.getCalendar().get(Calendar.DAY_OF_MONTH);
         Emonth = check_in.getCalendar().get(Calendar.MONTH) + 1;
         Eyear = check_in.getCalendar().get(Calendar.YEAR);
-        System.out.println("ENTRADA: " + Eday + "/" + Emonth + "/" + Eyear);
+        System.out.println("ENTRADA: " + Eday + "-" + Emonth + "-" + Eyear);
 
         Sday = check_out.getCalendar().get(Calendar.DAY_OF_MONTH);
         Smonth = check_out.getCalendar().get(Calendar.MONTH) + 1;
         Syear = check_out.getCalendar().get(Calendar.YEAR);
-        System.out.println("SALIDA:  " + Sday + "/" + Smonth + "/" + Syear);
+        System.out.println("SALIDA:  " + Sday + "-" + Smonth + "-" + Syear);
 
         Date checkIn = new Date(Eyear, Emonth, Eday);
         Date checkOut = new Date(Syear, Smonth, Sday);
