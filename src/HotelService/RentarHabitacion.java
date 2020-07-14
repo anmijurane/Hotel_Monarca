@@ -8,6 +8,7 @@ package HotelService;
 import Entidades.Cliente;
 import Entidades.Habitacion;
 import Entidades.Paquete;
+import Entidades.Paquete.HabitacionesArray;
 import static SQLConex.Conection.getConeccion;
 import Service.FormAddClient;
 import java.awt.event.ItemEvent;
@@ -63,45 +64,153 @@ public class RentarHabitacion extends javax.swing.JFrame {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                cliente.add(new Cliente(rs.getInt("id_cliente"),rs.getString("nombre"), rs.getString("apellido_p"),
+                cliente.add(new Cliente(rs.getInt("id_cliente"), rs.getString("nombre"), rs.getString("apellido_p"),
                         rs.getString("apellido_m"), rs.getString("calle"),
                         rs.getString("numero_ext"), rs.getString("numero_int"),
                         rs.getString("colonia"), rs.getString("delegacion"),
                         rs.getString("cp"), rs.getString("tel_local"),
-                        rs.getString("tel_movil"), rs.getString("email")));               
+                        rs.getString("tel_movil"), rs.getString("email")));
             }
-            
+
             cliente.forEach((cliente1) -> {
-                cbxClient.addItem(cliente1.getApellidoPat() 
-                        +" "+cliente1.getApellidoMat()
-                        +" "+cliente1.getName());
-            });                                                
-           
+                cbxClient.addItem(cliente1.getApellidoPat()
+                        + " " + cliente1.getApellidoMat()
+                        + " " + cliente1.getName());
+            });
+
         } catch (SQLException e) {
             System.out.println("ERROR EN " + e);
         }
 
     }
-    
-    public void getCliente(){
-        int indice = cbxClient.getSelectedIndex()-1;
-        System.out.println(indice);        
+
+    public void getCliente() {
+        int indice = cbxClient.getSelectedIndex() - 1;
+        System.out.println(indice);
         cliente.get(indice).getName();
         System.out.println(cliente.get(indice).getId());
         System.out.println(cliente.get(indice).getName());
-        
-        String NombreC = cliente.get(indice).getName() 
-                +" "+ cliente.get(indice).getApellidoPat() 
-                +" "+ cliente.get(indice).getApellidoMat();
+
+        String NombreC = cliente.get(indice).getName()
+                + " " + cliente.get(indice).getApellidoPat()
+                + " " + cliente.get(indice).getApellidoMat();
         System.out.println(NombreC);
-        String Direccion = "Calle: " +cliente.get(indice).getCalle() 
-                +"  #"+cliente.get(indice).getNumExt()
-                +"\nColonia: "+cliente.get(indice).getColonia()
-                +"\nDelegacion: " +cliente.get(indice).getDelegacion() 
-                + ""+cliente.get(indice).getCp();
-        System.out.println("Dirección: " +Direccion);
-        System.out.println("Email: "+ cliente.get(indice).getEmail());
-        
+        String Direccion = "Calle: " + cliente.get(indice).getCalle()
+                + "  #" + cliente.get(indice).getNumExt()
+                + "\nColonia: " + cliente.get(indice).getColonia()
+                + "\nDelegacion: " + cliente.get(indice).getDelegacion()
+                + "CP. " + cliente.get(indice).getCp();
+        System.out.println("Dirección: " + Direccion);
+        System.out.println("Email: " + cliente.get(indice).getEmail());
+
+    }
+
+    public int getDisponibilidad(String categoria) {
+        int idHabitacion = 0;
+        try {
+            String squery = "select min(habitacion.id_habitacion) as idHabitacion, "
+                    + "categoria.categoria, categoria.costo from habitacion, categoria "
+                    + "WHERE id_estado = 1 & 3 and categoria.categoria = \"" + categoria + "\" and "
+                    + "habitacion.id_categoria = categoria.id_categoria";
+            System.out.println("QUERY: " + squery);
+            ps = Con.prepareStatement(squery);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idHabitacion = rs.getInt("idHabitacion");
+            } else {
+                JOptionPane.showMessageDialog(this, "En la categoria\n**" + categoria + " **No hay habitaciones disponibles");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error en getDisponibilidad: " + e);
+        }
+        return idHabitacion;
+    }
+
+    public void getDatosHabitacion() {
+        int index = jCbx_NumHab.getSelectedIndex();
+
+        switch (index) {
+            case 1:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                break;
+            case 2:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                break;
+            case 3:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                break;
+            case 4:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                break;
+            case 5:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                jLhab5.setText("" + getDisponibilidad(jCbx_05.getSelectedItem().toString()));
+                break;
+            case 6:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                jLhab5.setText("" + getDisponibilidad(jCbx_05.getSelectedItem().toString()));
+                jLhab6.setText("" + getDisponibilidad(jCbx_06.getSelectedItem().toString()));
+                break;
+            case 7:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                jLhab5.setText("" + getDisponibilidad(jCbx_05.getSelectedItem().toString()));
+                jLhab6.setText("" + getDisponibilidad(jCbx_06.getSelectedItem().toString()));
+                jLhab7.setText("" + getDisponibilidad(jCbx_07.getSelectedItem().toString()));
+                break;
+            case 8:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                jLhab5.setText("" + getDisponibilidad(jCbx_05.getSelectedItem().toString()));
+                jLhab6.setText("" + getDisponibilidad(jCbx_06.getSelectedItem().toString()));
+                jLhab7.setText("" + getDisponibilidad(jCbx_07.getSelectedItem().toString()));
+                jLhab8.setText("" + getDisponibilidad(jCbx_08.getSelectedItem().toString()));
+                break;
+            case 9:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                jLhab5.setText("" + getDisponibilidad(jCbx_05.getSelectedItem().toString()));
+                jLhab6.setText("" + getDisponibilidad(jCbx_06.getSelectedItem().toString()));
+                jLhab7.setText("" + getDisponibilidad(jCbx_07.getSelectedItem().toString()));
+                jLhab8.setText("" + getDisponibilidad(jCbx_08.getSelectedItem().toString()));
+                jLhab9.setText("" + getDisponibilidad(jCbx_09.getSelectedItem().toString()));
+                break;
+            case 10:
+                jLhab1.setText("" + getDisponibilidad(jCbx_01.getSelectedItem().toString()));
+                jLhab2.setText("" + getDisponibilidad(jCbx_02.getSelectedItem().toString()));
+                jLhab3.setText("" + getDisponibilidad(jCbx_03.getSelectedItem().toString()));
+                jLhab4.setText("" + getDisponibilidad(jCbx_04.getSelectedItem().toString()));
+                jLhab5.setText("" + getDisponibilidad(jCbx_05.getSelectedItem().toString()));
+                jLhab6.setText("" + getDisponibilidad(jCbx_06.getSelectedItem().toString()));
+                jLhab7.setText("" + getDisponibilidad(jCbx_07.getSelectedItem().toString()));
+                jLhab8.setText("" + getDisponibilidad(jCbx_08.getSelectedItem().toString()));
+                jLhab9.setText("" + getDisponibilidad(jCbx_09.getSelectedItem().toString()));
+                jLhab10.setText("" + getDisponibilidad(jCbx_010.getSelectedItem().toString()));
+                break;
+
+            default:
+                throw new AssertionError();
+        }
     }
 
     double total = 0;
@@ -226,6 +335,19 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jT_total = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLhab1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLhab2 = new javax.swing.JLabel();
+        jLhab3 = new javax.swing.JLabel();
+        jLhab4 = new javax.swing.JLabel();
+        jLhab5 = new javax.swing.JLabel();
+        disp = new javax.swing.JButton();
+        jLhab6 = new javax.swing.JLabel();
+        jLhab7 = new javax.swing.JLabel();
+        jLhab8 = new javax.swing.JLabel();
+        jLhab9 = new javax.swing.JLabel();
+        jLhab10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -332,35 +454,35 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jP_Hab_06StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 121, 60, -1));
+        getContentPane().add(jP_Hab_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 60, -1));
 
         jP_Hab_07.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_07StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 187, 60, -1));
+        getContentPane().add(jP_Hab_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 60, -1));
 
         jP_Hab_08.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_08StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 253, 60, -1));
+        getContentPane().add(jP_Hab_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 60, -1));
 
         jP_Hab_09.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_09StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 319, 60, -1));
+        getContentPane().add(jP_Hab_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 60, -1));
 
         jP_Hab_010.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jP_Hab_010StateChanged(evt);
             }
         });
-        getContentPane().add(jP_Hab_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 385, 60, -1));
+        getContentPane().add(jP_Hab_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 60, -1));
 
         jCbx_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_02.addItemListener(new java.awt.event.ItemListener() {
@@ -400,7 +522,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jCbx_06ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 121, -1, -1));
+        getContentPane().add(jCbx_06, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, -1, -1));
 
         jCbx_07.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_07.addItemListener(new java.awt.event.ItemListener() {
@@ -408,7 +530,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jCbx_07ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 187, -1, -1));
+        getContentPane().add(jCbx_07, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, -1));
 
         jCbx_08.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_08.addItemListener(new java.awt.event.ItemListener() {
@@ -416,7 +538,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jCbx_08ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 253, -1, -1));
+        getContentPane().add(jCbx_08, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
 
         jCbx_09.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_09.addItemListener(new java.awt.event.ItemListener() {
@@ -424,7 +546,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jCbx_09ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 319, -1, -1));
+        getContentPane().add(jCbx_09, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
 
         jCbx_010.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONA UNA HABITACION", "INDIVIDUAL", "JUNIOR SUITE" }));
         jCbx_010.addItemListener(new java.awt.event.ItemListener() {
@@ -432,7 +554,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jCbx_010ItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCbx_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 385, -1, -1));
+        getContentPane().add(jCbx_010, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
 
         jLHab1.setText("Habitacion 1:");
         getContentPane().add(jLHab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 99, -1, -1));
@@ -450,25 +572,25 @@ public class RentarHabitacion extends javax.swing.JFrame {
         getContentPane().add(jLHab5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 363, -1, -1));
 
         jLHab9.setText("Habitacion 9:");
-        getContentPane().add(jLHab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 297, -1, -1));
+        getContentPane().add(jLHab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, -1, -1));
 
         jLHab8.setText("Habitacion 8:");
-        getContentPane().add(jLHab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(796, 231, -1, -1));
+        getContentPane().add(jLHab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, -1, -1));
 
         jLHab7.setText("Habitacion 7:");
-        getContentPane().add(jLHab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(796, 165, -1, -1));
+        getContentPane().add(jLHab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
 
         jLHab6.setText("Habitacion 6:");
-        getContentPane().add(jLHab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 99, -1, -1));
+        getContentPane().add(jLHab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
 
         jLHab10.setText("Habitacion 10:");
-        getContentPane().add(jLHab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(796, 363, -1, -1));
+        getContentPane().add(jLHab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, -1, -1));
 
         Precio1.setText("Precio $");
         getContentPane().add(Precio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 85, -1, -1));
 
         Precio2.setText("Precio $");
-        getContentPane().add(Precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, -1, -1));
+        getContentPane().add(Precio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("0.0");
@@ -492,23 +614,23 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.setText("0.0");
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 100, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 120, 100, -1));
 
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.setText("0.0");
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 188, 100, -1));
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 100, -1));
 
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setText("0.0");
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 254, 100, -1));
+        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 260, 100, -1));
 
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("0.0");
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 320, 100, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 320, 100, -1));
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.setText("0.0");
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 386, 100, -1));
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 100, -1));
 
         jButton1.setText("GO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -523,6 +645,50 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         jLabel5.setText("TOTAL:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 456, -1, 30));
+
+        jLhab1.setText("-");
+        getContentPane().add(jLhab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 60, -1));
+
+        jLabel7.setText("# Habitación");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 90, -1, -1));
+
+        jLhab2.setText("-");
+        getContentPane().add(jLhab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 70, 20));
+
+        jLhab3.setText("-");
+        getContentPane().add(jLhab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 70, -1));
+
+        jLhab4.setText("-");
+        getContentPane().add(jLhab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 60, -1));
+
+        jLhab5.setText("-");
+        getContentPane().add(jLhab5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 60, -1));
+
+        disp.setText("disponibilidad");
+        disp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dispActionPerformed(evt);
+            }
+        });
+        getContentPane().add(disp, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
+
+        jLhab6.setText("-");
+        getContentPane().add(jLhab6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 120, 50, -1));
+
+        jLhab7.setText("-");
+        getContentPane().add(jLhab7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 190, 50, -1));
+
+        jLhab8.setText("-");
+        getContentPane().add(jLhab8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 260, 50, -1));
+
+        jLhab9.setText("-");
+        getContentPane().add(jLhab9, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 320, 60, -1));
+
+        jLhab10.setText("-");
+        getContentPane().add(jLhab10, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 390, 60, -1));
+
+        jLabel8.setText("# Habitación");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -645,6 +811,16 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jTextField10.setEditable(false);
         Precio1.setVisible(value);
         Precio2.setVisible(value);
+        jLhab1.setText("");
+        jLhab2.setText("");
+        jLhab3.setText("");
+        jLhab4.setText("");
+        jLhab5.setText("");
+        jLhab6.setText("");
+        jLhab7.setText("");
+        jLhab8.setText("");
+        jLhab9.setText("");
+        jLhab10.setText("");
     }
 
     private void jCbx_NumHabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCbx_NumHabItemStateChanged
@@ -987,8 +1163,13 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jCbx_010ItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        getDisponibilidad(jCbx_01.getSelectedItem().toString());
         getCliente();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void dispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispActionPerformed
+        getDatosHabitacion();
+    }//GEN-LAST:event_dispActionPerformed
 
     public final void setModelSpinner() {
         jP_Hab_01.setModel(new SpinnerNumberModel(1, 1, 4, 1));
@@ -1045,6 +1226,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxClient;
     private com.toedter.calendar.JDateChooser check_in;
     private com.toedter.calendar.JDateChooser check_out;
+    private javax.swing.JButton disp;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCbx_01;
     private javax.swing.JComboBox<String> jCbx_010;
@@ -1072,6 +1254,18 @@ public class RentarHabitacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLhab1;
+    private javax.swing.JLabel jLhab10;
+    private javax.swing.JLabel jLhab2;
+    private javax.swing.JLabel jLhab3;
+    private javax.swing.JLabel jLhab4;
+    private javax.swing.JLabel jLhab5;
+    private javax.swing.JLabel jLhab6;
+    private javax.swing.JLabel jLhab7;
+    private javax.swing.JLabel jLhab8;
+    private javax.swing.JLabel jLhab9;
     private javax.swing.JSpinner jP_Hab_01;
     private javax.swing.JSpinner jP_Hab_010;
     private javax.swing.JSpinner jP_Hab_02;

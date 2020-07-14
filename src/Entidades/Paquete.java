@@ -70,10 +70,19 @@ public class Paquete {
     public static class HabitacionesArray{
         
         private int idHabitacion, personas;
+        private double costo;
+        private String categoria;
 
         public HabitacionesArray(int idHabitacion, String personas){
             this.idHabitacion = idHabitacion;
         } //Constructor
+        
+        public HabitacionesArray(int idHabitacion, int personas, double costo, String categoria){
+            this.idHabitacion = idHabitacion;
+            this.personas = personas;
+            this.costo = costo;
+            this.categoria = categoria;
+        }
 
         public int getPersonas() {
             return personas;
