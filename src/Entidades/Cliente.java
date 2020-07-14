@@ -12,6 +12,7 @@ import java.sql.SQLException;
  */
 public class Cliente extends Persona{
     private String email;
+    private int id;
     public Cliente(String name, String apellidoPat, String apellidoMat,
             String calle, String numExt, String numInt, String colonia, 
             String delegacion, String cp, String telLocal, String telMovil,
@@ -20,8 +21,18 @@ public class Cliente extends Persona{
         super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia, delegacion, cp, telLocal, telMovil, email);
         this.email = email;
     }
+    
+    public Cliente(int id, String name, String apellidoPat, String apellidoMat,
+            String calle, String numExt, String numInt, String colonia, 
+            String delegacion, String cp, String telLocal, String telMovil,
+            String email) {
         
-    public int getid_Cliente() {
+        super(name, apellidoPat, apellidoMat, calle, numExt, numInt, colonia, delegacion, cp, telLocal, telMovil, email);
+        this.email = email;
+        this.id = id;
+    }
+        
+    public int getid_ClienteSQL() {
         int id = 0;
         Connection con = getConeccion();
         PreparedStatement ps;
@@ -41,7 +52,7 @@ public class Cliente extends Persona{
 
         return id;
     }
-    private int idCliente = getid_Cliente();
+    private int idCliente;
 
     @Override
     public String toString() {
@@ -52,8 +63,8 @@ public class Cliente extends Persona{
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdCliente() {
+        this.idCliente = getid_ClienteSQL();
     }
 
     public String getEmail() {
@@ -62,6 +73,14 @@ public class Cliente extends Persona{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
         
     

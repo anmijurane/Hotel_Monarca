@@ -28,7 +28,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
         movil.setText(cli.getTelMovil());
         correo.setText(cli.getEmail());
-        id.setText(Integer.toString(cli.getid_Cliente()));
+        id.setText(Integer.toString(cli.getid_ClienteSQL()));
         this.pack = pack;
         entrada.setText(pack.getEntrda());
         salida.setText(pack.getSalida());

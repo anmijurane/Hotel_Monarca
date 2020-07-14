@@ -338,7 +338,7 @@ public class FormAddClient extends javax.swing.JFrame {
             switch (value) {
                 case 0:
                     Con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + prsn.getName() + "\nCon el ID: " + prsn.getid_Cliente());
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + prsn.getName() + "\nCon el ID: " + prsn.getid_ClienteSQL());
                     CleanTxt();
                     break;
                 case 1:

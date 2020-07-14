@@ -15,7 +15,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
@@ -25,6 +27,7 @@ import javax.swing.SpinnerNumberModel;
  */
 public class RentarHabitacion extends javax.swing.JFrame {
 
+    ArrayList<Cliente> cliente = new ArrayList<>();
     Connection Con = getConeccion();
     PreparedStatement ps;
     ResultSet rs;
@@ -59,33 +62,46 @@ public class RentarHabitacion extends javax.swing.JFrame {
             ps = Con.prepareStatement("SELECT * FROM cliente ORDER BY apellido_p ASC");
             rs = ps.executeQuery();
 
-            while (rs.next()) {                
-                idCliente = rs.getInt("id_cliente");
-                System.out.println("ID CLIENTE: " + idCliente);
-                cbxClient.addItem(rs.getString("apellido_p")
-                        + " " + rs.getString("apellido_m")
-                        + " " + rs.getString("nombre"));
+            while (rs.next()) {
+                cliente.add(new Cliente(rs.getInt("id_cliente"),rs.getString("nombre"), rs.getString("apellido_p"),
+                        rs.getString("apellido_m"), rs.getString("calle"),
+                        rs.getString("numero_ext"), rs.getString("numero_int"),
+                        rs.getString("colonia"), rs.getString("delegacion"),
+                        rs.getString("cp"), rs.getString("tel_local"),
+                        rs.getString("tel_movil"), rs.getString("email")));               
             }
-
+            
+            cliente.forEach((cliente1) -> {
+                cbxClient.addItem(cliente1.getApellidoPat() 
+                        +" "+cliente1.getApellidoMat()
+                        +" "+cliente1.getName());
+            });                                                
+           
         } catch (SQLException e) {
             System.out.println("ERROR EN " + e);
         }
-    }
 
-    public void ObtenerSQLDatosCliente() {
-        try {
-            
-        ps = Con.prepareStatement("SELECT ");
-        this.cltn = new Cliente(
-                rs.getString("nombre"), rs.getString("apellido_p"),
-                rs.getString("apellido_m"), rs.getString("calle"),
-                rs.getString("numero_ext"), rs.getString("numero_int"),
-                rs.getString("colonia"), rs.getString("delegacion"),
-                rs.getString("cp"), rs.getString("tel_local"),
-                rs.getString("tel_movil"), rs.getString("email"));
+    }
+    
+    public void getCliente(){
+        int indice = cbxClient.getSelectedIndex()-1;
+        System.out.println(indice);        
+        cliente.get(indice).getName();
+        System.out.println(cliente.get(indice).getId());
+        System.out.println(cliente.get(indice).getName());
         
-        } catch (SQLException e) {
-        }
+        String NombreC = cliente.get(indice).getName() 
+                +" "+ cliente.get(indice).getApellidoPat() 
+                +" "+ cliente.get(indice).getApellidoMat();
+        System.out.println(NombreC);
+        String Direccion = "Calle: " +cliente.get(indice).getCalle() 
+                +"  #"+cliente.get(indice).getNumExt()
+                +"\nColonia: "+cliente.get(indice).getColonia()
+                +"\nDelegacion: " +cliente.get(indice).getDelegacion() 
+                + ""+cliente.get(indice).getCp();
+        System.out.println("Dirección: " +Direccion);
+        System.out.println("Email: "+ cliente.get(indice).getEmail());
+        
     }
 
     double total = 0;
@@ -495,7 +511,12 @@ public class RentarHabitacion extends javax.swing.JFrame {
         getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(888, 386, 100, -1));
 
         jButton1.setText("GO");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 500, 86, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 500, 86, -1));
 
         jT_total.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(jT_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 460, 150, -1));
@@ -964,6 +985,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
         CalcTotal();
         jT_total.setText("$" + total);
     }//GEN-LAST:event_jCbx_010ItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        getCliente();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public final void setModelSpinner() {
         jP_Hab_01.setModel(new SpinnerNumberModel(1, 1, 4, 1));
