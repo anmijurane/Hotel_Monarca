@@ -2,6 +2,7 @@ package Service;
 
 import Entidades.Cliente;
 import Entidades.Paquete;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +37,46 @@ public class PackClientFinal extends javax.swing.JFrame {
         total.setText(pack.getCosto());
         habitacion.setText(pack.getId_room());
     }
+    
+    Paquete pqt;
+    ArrayList<Cliente> cliente = new ArrayList<>();
+    int indice;
+    
+    public PackClientFinal(Paquete pqt, ArrayList<Cliente> clnt, int indice){
+        initComponents();
+        this.pqt = pqt;
+        this.cliente = clnt;                
+        setDato(indice);
+    }
+    
+    public final void setDato(int indx){
+        System.out.println("--------------------------------");
+        System.out.println("DATOS DE PACKCLIENTFINAL SETDATO");
+        System.out.println("INDICE EN PACKCLIENTFINAL: " +indx);
+        System.out.println("ID: " + cliente.get(indx).getId());
+        //System.out.println(cliente.get(indice).getName());
+
+        String NombreC = cliente.get(indx).getName()
+                + " " + cliente.get(indx).getApellidoPat()
+                + " " + cliente.get(indx).getApellidoMat();
+        System.out.println(NombreC);
+        String Direccion = "Calle: " + cliente.get(indx).getCalle()
+                + "  #" + cliente.get(indx).getNumExt()
+                + "\nColonia: " + cliente.get(indx).getColonia()
+                + "\nDelegacion: " + cliente.get(indx).getDelegacion()
+                + "  CP. " + cliente.get(indx).getCp();
+        System.out.println("Dirección: " + Direccion);
+        System.out.println("Email: " + cliente.get(indx).getEmail());
+        
+        System.out.println("NÚM HABITACION: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NÚM PERSONAS: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
+        
+        System.out.println("--------------------------");
+        System.out.println(cliente.toString());
+        System.out.println("--------------------------");
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -66,6 +107,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("DATOS CLIENTE"));
 
@@ -250,6 +292,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

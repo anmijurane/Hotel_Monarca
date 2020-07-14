@@ -10,6 +10,7 @@ import Entidades.Habitacion;
 import Entidades.Paquete;
 import static SQLConex.Conection.getConeccion;
 import Service.FormAddClient;
+import Service.PackClientFinal;
 import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,10 +33,10 @@ public class RentarHabitacion extends javax.swing.JFrame {
     ResultSet rs;
     int idCliente;
     int idPersona;
-    String name;
-    Paquete pack;
+    String name;    
     Paquete pqt;
     Cliente cltn;
+    int indice;
 
     /**
      * Creates new form RentarHabitacion
@@ -81,10 +82,9 @@ public class RentarHabitacion extends javax.swing.JFrame {
             System.out.println("ERROR EN " + e);
         }
 
-    }
-
-    public void getCliente() {
-        int indice = cbxClient.getSelectedIndex() - 1;
+    }    
+    public void getCliente(int indice) {
+        //indice = cbxClient.getSelectedIndex() - 1;
         //System.out.println(indice);
         //cliente.get(indice).getName();
         System.out.println("ID: " + cliente.get(indice).getId());
@@ -100,13 +100,13 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 + "\nDelegacion: " + cliente.get(indice).getDelegacion()
                 + "CP. " + cliente.get(indice).getCp();
         System.out.println("Dirección: " + Direccion);
-        System.out.println("Email: " + cliente.get(indice).getEmail());
+        System.out.println("Email: " + cliente.get(indice).getEmail());        
     }
 
     public void getDHabitacion() {
-        System.out.println(""+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
-        System.out.println(pqt.getArrIdHabitaciones().get(0).getPersonas());
-        System.out.println(pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("NUM HAB: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NUM PER: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
     }
 
     public int getDisponibilidad(String categoria) {
@@ -131,7 +131,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         }
         return idHabitacion;
     }
-
+        
     public void getDatosHabitacion() {
         int index = jCbx_NumHab.getSelectedIndex();
         this.pqt = new Paquete("14/07/2020", "16/07/2020", "$" + total);
@@ -1170,8 +1170,12 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jCbx_010ItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        getCliente();
+        System.out.println("RENTA HABITACIÓN");
+        indice = cbxClient.getSelectedIndex()-1;
+        System.out.println("INDICE RENTA HABITACION: " +indice);
+        getCliente(indice);
         getDHabitacion();
+        new PackClientFinal(pqt, cliente, cbxClient.getSelectedIndex()-1).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void dispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispActionPerformed
