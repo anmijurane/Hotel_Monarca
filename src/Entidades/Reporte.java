@@ -25,10 +25,12 @@ public class Reporte extends PackClientFinal {
         PdfWriter.getInstance(b, a);
 
         b.open();
-        
+
         Paragraph titulo = new Paragraph("\nHOTEL MONARCA\n");
         b.add(new Paragraph("\n"));
         titulo.setAlignment(1);
+        titulo.getFont().setSize(13);
+        titulo.getFont().setSize(Font.BOLD);
         b.add(titulo);
 
         Paragraph Subtitulo = new Paragraph("\nDATOS DEL CLIENTE\n");
@@ -62,7 +64,7 @@ public class Reporte extends PackClientFinal {
         } catch (IOException ex) {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         b.close();
 
     }
