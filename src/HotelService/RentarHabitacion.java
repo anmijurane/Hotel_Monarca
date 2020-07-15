@@ -38,6 +38,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     int idCliente;
     int idPersona;
     String name;
+    int TypeForm;
     Paquete pqt;
     Cliente cltn;
     double costoTotal;
@@ -49,11 +50,12 @@ public class RentarHabitacion extends javax.swing.JFrame {
      * @param name
      * @param idPersonal
      */
-    public RentarHabitacion(String name, int idPersonal) {
+    public RentarHabitacion(String name, int idPersonal, int TypeForm) {
         initComponents();
         setTitle("RENTA DE HABITACIÓN");
         getNameClient();
         setModelSpinner();
+        this.TypeForm = TypeForm;
         this.idPersona = idPersonal;
         this.name = name;
         cleanPanel(false);
@@ -1027,8 +1029,17 @@ public class RentarHabitacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegClienteActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        new MenuRecepcionista(name, idPersona).setVisible(true);
-        this.dispose();
+        switch (TypeForm) {
+            case 2:
+                new MenuRecepcionista(name, idPersona).setVisible(true);
+                this.dispose();                
+                break;
+            case 1:
+                new MenuGerencia(name, idPersona).setVisible(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void jCbx_01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbx_01ActionPerformed
