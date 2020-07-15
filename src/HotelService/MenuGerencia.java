@@ -54,50 +54,60 @@ public class MenuGerencia extends javax.swing.JFrame {
         jLabel2.setText("GERENCIA");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
+        btnRegistrarUsr.setBackground(new java.awt.Color(255, 102, 0));
         btnRegistrarUsr.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
-        btnRegistrarUsr.setText("REGISTRAR UN USUARIO");
+        btnRegistrarUsr.setForeground(new java.awt.Color(51, 51, 51));
+        btnRegistrarUsr.setText("REGISTRAR UN CLIENTE");
         btnRegistrarUsr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarUsrActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrarUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 260, 40));
+        getContentPane().add(btnRegistrarUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 260, 40));
 
+        btnInfoHab.setBackground(new java.awt.Color(204, 85, 39));
         btnInfoHab.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnInfoHab.setForeground(new java.awt.Color(51, 51, 51));
         btnInfoHab.setText("INFO DE HABITACIÓN");
         btnInfoHab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfoHabActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInfoHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 260, 40));
+        getContentPane().add(btnInfoHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 260, 40));
 
+        btnRentarHab.setBackground(new java.awt.Color(222, 74, 16));
         btnRentarHab.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnRentarHab.setForeground(new java.awt.Color(51, 51, 51));
         btnRentarHab.setText("RENTAR UNA HABITACIÓN");
         btnRentarHab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRentarHabActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRentarHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 260, 40));
+        getContentPane().add(btnRentarHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 260, 40));
 
+        btnConsultarServ.setBackground(new java.awt.Color(222, 74, 16));
         btnConsultarServ.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnConsultarServ.setForeground(new java.awt.Color(51, 51, 51));
         btnConsultarServ.setText("CONSULTAR SERVICIO");
         btnConsultarServ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarServActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConsultarServ, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 240, 40));
+        getContentPane().add(btnConsultarServ, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 260, 40));
 
+        btnAddUsuario.setBackground(new java.awt.Color(255, 102, 0));
         btnAddUsuario.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
-        btnAddUsuario.setText("AÑADIR USUARIO");
+        btnAddUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        btnAddUsuario.setText("AÑADIR USUARIO SYS");
         btnAddUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAddUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 240, 40));
+        getContentPane().add(btnAddUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, 260, 40));
 
         jButton6.setBackground(new java.awt.Color(222, 74, 16));
         jButton6.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N

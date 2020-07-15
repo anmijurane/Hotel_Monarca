@@ -389,6 +389,8 @@ public class Mantenimiento extends javax.swing.JFrame {
                 System.out.println("ERROR: " +e);
             }
             JOptionPane.showMessageDialog(this, "PRESIONA OK PARA SALIR");
+            new login().setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "ANTES DE SALIR, CAMBIA EL ESTADO DE LA HABITACION");
         }
