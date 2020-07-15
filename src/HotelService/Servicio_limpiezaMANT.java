@@ -18,9 +18,13 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
     Connection Con = getConeccion();
     PreparedStatement ps;
     ResultSet rs;
+    private String name;
+    private int idPersonal;
 
-    public Servicio_limpiezaMANT() {
+    public Servicio_limpiezaMANT(String name, int idPersonal) {
         initComponents();
+        this.name = name;
+        this.idPersonal = idPersonal;
         setLocationRelativeTo(null);
         setTitle("SERVICIO DE LIMPIEZA");
         table_status.setModel(STATUS);
@@ -33,7 +37,7 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
         box_id();
 
     }
-    
+
     public void clean_table() {
         int filas = table_status.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -92,9 +96,10 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_status = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        ID = new javax.swing.JComboBox<String>();
+        ID = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,8 +140,17 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
         jLabel3.setText("SERVCIO");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
+        btnBack.setBackground(new java.awt.Color(204, 51, 0));
+        btnBack.setText("REGRESAR");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 110, 40));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GENERIC.png"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,45 +177,16 @@ public class Servicio_limpiezaMANT extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_IDActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Servicio_limpiezaMANT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Servicio_limpiezaMANT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Servicio_limpiezaMANT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Servicio_limpiezaMANT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        new MenuGerencia(name, idPersonal).setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Servicio_limpiezaMANT().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ID;
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_status;

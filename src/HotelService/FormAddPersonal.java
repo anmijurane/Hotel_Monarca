@@ -17,19 +17,22 @@ public class FormAddPersonal extends javax.swing.JFrame {
     static Connection Con;
     static PreparedStatement ps;
     static ResultSet rs;
-
+    private String name;
+    private int idPersonal;
 
     /**
      * Creates new form FormAddPersonal
+     * @param name
+     * @param idPersonal
      */
-    public FormAddPersonal() {
+    public FormAddPersonal(String name, int idPersonal) {
         initComponents();
         setTitle("REGISTRO DEL PERSONAL");
         setLocationRelativeTo(null);
+        this.name = name;
+        this.idPersonal = idPersonal;
         AddCbx();
     }
-
- 
 
     public static void AddCbx() {
 
@@ -87,9 +90,9 @@ public class FormAddPersonal extends javax.swing.JFrame {
         txtCP = new javax.swing.JTextField();
         txtTelLocal = new javax.swing.JTextField();
         txtTelMovil = new javax.swing.JTextField();
-        cbxDepto = new javax.swing.JComboBox<String>();
-        cbxArea = new javax.swing.JComboBox<String>();
-        cbxCargo = new javax.swing.JComboBox<String>();
+        cbxDepto = new javax.swing.JComboBox<>();
+        cbxArea = new javax.swing.JComboBox<>();
+        cbxCargo = new javax.swing.JComboBox<>();
         btn_insert = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -105,6 +108,7 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         backgraound = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -253,6 +257,16 @@ public class FormAddPersonal extends javax.swing.JFrame {
         jLabel14.setText("TEL MOVIL");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 140, -1));
 
+        btnRegresar.setBackground(new java.awt.Color(222, 74, 16));
+        btnRegresar.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
+        btnRegresar.setText("REGRESAR");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, -1, -1));
+
         backgraound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AddCliente.png"))); // NOI18N
         getContentPane().add(backgraound, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -281,17 +295,21 @@ public class FormAddPersonal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelLocalActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        new MenuGerencia(name, idPersonal).setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     public void execurequery(Personal prsn) {
         System.out.println(prsn.toString());
         System.out.println(prsn.getCredencial());
         String queryPersonal = "INSERT INTO personal("
-                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email,"
-                    + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")";
-        
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email,"
+                + "id_area,id_dpto,id_cargo,id_personal) VALUES ( " + prsn + ")";
+
         String queryCredencial = "INSERT INTO credencial(id_personal,nombre,id_area,id_dpto,id_cargo,password,email) VALUES "
-                + "(" +prsn.getCredencial()+ ", \""+txtEmail.getText()+"\")";
-        
+                + "(" + prsn.getCredencial() + ", \"" + txtEmail.getText() + "\")";
+
         System.out.println(queryCredencial);
         System.out.println(queryPersonal);
         Con = getConeccion();
@@ -313,14 +331,14 @@ public class FormAddPersonal extends javax.swing.JFrame {
             switch (value) {
                 case 0:
                     Con.commit();
-                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " +prsn.getName()+ "\nCon el ID: "+prsn.getidPers()+
-                            "\nContraseña: "+prsn.getPassword());
+                    JOptionPane.showMessageDialog(this, "Se agrego el usuario: " + prsn.getName() + "\nCon el ID: " + prsn.getidPers()
+                            + "\nContraseña: " + prsn.getPassword());
                     CleanTxt();
                     break;
                 case 1:
                     Con.rollback();
                     JOptionPane.showMessageDialog(this, "Se aborto la operación");
-                    break;                            
+                    break;
                 default:
                     break;
             }
@@ -340,17 +358,17 @@ public class FormAddPersonal extends javax.swing.JFrame {
 
     }
 
-    public void Valid(){
-        if (    txtName.getText().isEmpty() || txtApPat.getText().isEmpty()||
-                txtApMat.getText().isEmpty() || txtCalle.getText().isEmpty()||
-                txtNumExt.getText().isEmpty() || txtColonia.getText().isEmpty() || txtDelg.getText().isEmpty() ||
-                txtCP.getText().isEmpty() || txtTelLocal.getText().isEmpty() ||
-                txtTelMovil.getText().isEmpty() || txtEmail.getText().isEmpty()  ) {
+    public void Valid() {
+        if (txtName.getText().isEmpty() || txtApPat.getText().isEmpty()
+                || txtApMat.getText().isEmpty() || txtCalle.getText().isEmpty()
+                || txtNumExt.getText().isEmpty() || txtColonia.getText().isEmpty() || txtDelg.getText().isEmpty()
+                || txtCP.getText().isEmpty() || txtTelLocal.getText().isEmpty()
+                || txtTelMovil.getText().isEmpty() || txtEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "INGRESA TODOS LOS CAMPOS PARA INGRESARLO");
         }
-    }   
-    
-    public void CleanTxt(){
+    }
+
+    public void CleanTxt() {
         txtName.setText("");
         txtApPat.setText("");
         txtApMat.setText("");
@@ -366,46 +384,10 @@ public class FormAddPersonal extends javax.swing.JFrame {
         cbxCargo.setSelectedIndex(0);
         cbxDepto.setSelectedIndex(0);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormAddPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormAddPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormAddPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormAddPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormAddPersonal().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgraound;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btn_insert;
     private static javax.swing.JComboBox<String> cbxArea;
     private static javax.swing.JComboBox<String> cbxCargo;

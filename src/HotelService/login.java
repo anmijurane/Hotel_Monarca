@@ -123,6 +123,10 @@ public class login extends javax.swing.JFrame {
                 int idPersonal = res.getInt("id_personal");
                 JOptionPane.showMessageDialog(this, "BIENVENIDO: " + name.toUpperCase());
                 switch (idCargo) {
+                    case 2: //Gerente Menu
+                        new MenuGerencia(name, idPersonal).setVisible(true);
+                        this.dispose();
+                        break;
                     case 6: //Recepcion Menu
                         new MenuRecepcionista(name, idPersonal).setVisible(true);
                         this.dispose();

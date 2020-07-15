@@ -294,11 +294,15 @@ public class FormAddClient extends javax.swing.JFrame {
         int val = TypeForm;
         switch (val) {
             case 5: //Regreso a RentarHabitacion
-                new RentarHabitacion(name, idPersonal).setVisible(true);
+                new RentarHabitacion(name, idPersonal, 5).setVisible(true);
                 this.dispose();
                 break;
             case 2:
                 new MenuRecepcionista(name, idPersonal).setVisible(true);
+                this.dispose();
+                break;
+            case 1:
+                new MenuGerencia(name, idPersonal).setVisible(true);
                 this.dispose();
                 break;
             default:

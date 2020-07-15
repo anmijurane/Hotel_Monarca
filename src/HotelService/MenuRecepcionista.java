@@ -72,7 +72,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
 
         addUserHuesped.setBackground(new java.awt.Color(255, 102, 0));
         addUserHuesped.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
-        addUserHuesped.setForeground(new java.awt.Color(51, 51, 51));
+        addUserHuesped.setForeground(new java.awt.Color(255, 255, 255));
         addUserHuesped.setText("REGISTRAR UN USUARIO");
         addUserHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +119,7 @@ public class MenuRecepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEdoHabitacionActionPerformed
 
     private void btnRentarHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarHabActionPerformed
-        new RentarHabitacion(name, idPersonal).setVisible(true);
+        new RentarHabitacion(name, idPersonal,2).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRentarHabActionPerformed
 
