@@ -37,7 +37,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
     ResultSet rs;
     int idCliente;
     int idPersona;
-    String name;    
+    String name;
     Paquete pqt;
     Cliente cltn;
     double costoTotal;
@@ -60,6 +60,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
         jT_totalXdia.setEditable(false);
         jT_total.setEditable(false);
         //btn_back.setVisible(true);
+        jTDias.setVisible(false);
     }
 
     public final void getNameClient() {
@@ -89,7 +90,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
             System.out.println("ERROR EN " + e);
         }
 
-    }    
+    }
+
     public void getCliente(int indice) {
         //indice = cbxClient.getSelectedIndex() - 1;
         //System.out.println(indice);
@@ -107,17 +109,17 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 + "\nDelegacion: " + cliente.get(indice).getDelegacion()
                 + "CP. " + cliente.get(indice).getCp();
         System.out.println("Dirección: " + Direccion);
-        System.out.println("Email: " + cliente.get(indice).getEmail());       
+        System.out.println("Email: " + cliente.get(indice).getEmail());
     }
 
     public void getDHabitacion() {
-        System.out.println("NUM HAB: "+pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
-        System.out.println("NUM PER: "+pqt.getArrIdHabitaciones().get(0).getPersonas());
-        System.out.println("CATEGORIA: "+pqt.getArrIdHabitaciones().get(0).getCategoria());
+        System.out.println("NUM HAB: " + pqt.getArrIdHabitaciones().get(0).getIdHabitacion());
+        System.out.println("NUM PER: " + pqt.getArrIdHabitaciones().get(0).getPersonas());
+        System.out.println("CATEGORIA: " + pqt.getArrIdHabitaciones().get(0).getCategoria());
     }
-    
-    public int noches(){        
-        
+
+    public int noches() {
+
         int Eday, Emonth, Eyear, Sday, Smonth, Syear, noches;
 
         Eday = check_in.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -137,12 +139,12 @@ public class RentarHabitacion extends javax.swing.JFrame {
 
         return dys;
     }
-    
-    public void CalcularCosto(){
+
+    public void CalcularCosto() {
         costoTotal = total * noches();
-        jT_total.setText("$ "+costoTotal);
+        jT_total.setText("$ " + costoTotal);
     }
-    
+
     public int getDisponibilidad(String categoria) {
         int idHabitacion = 0;
         try {
@@ -166,40 +168,40 @@ public class RentarHabitacion extends javax.swing.JFrame {
         return idHabitacion;
     }
     SimpleDateFormat f = new SimpleDateFormat("yyyy-mm-dd");
-    
-    public String CheckIn(){        
+
+    public String CheckIn() {
         int Eday, Emonth, Eyear;
 
         Eday = check_in.getCalendar().get(Calendar.DAY_OF_MONTH);
         Emonth = check_in.getCalendar().get(Calendar.MONTH) + 1;
         Eyear = check_in.getCalendar().get(Calendar.YEAR);
-        System.out.println("ENTRADA: " +Eyear+"-"+Emonth+"-"+Eday);
-        return ""+Eyear+"-"+Emonth+"-"+Eday;
+        System.out.println("ENTRADA: " + Eyear + "-" + Emonth + "-" + Eday);
+        return "" + Eyear + "-" + Emonth + "-" + Eday;
     }
-    
-    public String CheckOut(){
+
+    public String CheckOut() {
         int Sday, Smonth, Syear;
 
         Sday = check_out.getCalendar().get(Calendar.DAY_OF_MONTH);
         Smonth = check_out.getCalendar().get(Calendar.MONTH) + 1;
         Syear = check_out.getCalendar().get(Calendar.YEAR);
-        System.out.println("SALIDA:  " +Syear+"-"+Smonth+"-"+Sday);
-        return ""+Syear+"-"+Smonth+"-"+Sday;
+        System.out.println("SALIDA:  " + Syear + "-" + Smonth + "-" + Sday);
+        return "" + Syear + "-" + Smonth + "-" + Sday;
     }
 
     public void getDatosHabitacion() {
         int index = jCbx_NumHab.getSelectedIndex();
-        int idHab1,idHab2,idHab3,idHab4,idHab5,idHab6,idHab7,idHab8,idHab9,idHab10;
+        int idHab1, idHab2, idHab3, idHab4, idHab5, idHab6, idHab7, idHab8, idHab9, idHab10;
         this.pqt = new Paquete(CheckIn(), CheckOut(), "" + costoTotal);
         switch (index) {
             case 1:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
-                jLhab1.setText("" + idHab1);                
+                jLhab1.setText("" + idHab1);
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 break;
             case 2:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
-                idHab2 = getDisponibilidad(jCbx_02.getSelectedItem().toString());                
+                idHab2 = getDisponibilidad(jCbx_02.getSelectedItem().toString());
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
@@ -209,31 +211,31 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
                 idHab2 = getDisponibilidad(jCbx_02.getSelectedItem().toString());
                 idHab3 = getDisponibilidad(jCbx_03.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
-                pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());                                
+                pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
                 break;
             case 4:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
                 idHab2 = getDisponibilidad(jCbx_02.getSelectedItem().toString());
                 idHab3 = getDisponibilidad(jCbx_03.getSelectedItem().toString());
                 idHab4 = getDisponibilidad(jCbx_04.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
                 jLhab4.setText("" + idHab4);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab4, jP_Hab_04.getValue().toString(), new Double(jTextField4.getText()), jCbx_04.getSelectedItem().toString());
-                
+
                 break;
             case 5:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -241,19 +243,19 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab3 = getDisponibilidad(jCbx_03.getSelectedItem().toString());
                 idHab4 = getDisponibilidad(jCbx_04.getSelectedItem().toString());
                 idHab5 = getDisponibilidad(jCbx_05.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
                 jLhab4.setText("" + idHab4);
                 jLhab5.setText("" + idHab5);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab4, jP_Hab_04.getValue().toString(), new Double(jTextField4.getText()), jCbx_04.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab5, jP_Hab_05.getValue().toString(), new Double(jTextField5.getText()), jCbx_05.getSelectedItem().toString());
-                
+
                 break;
             case 6:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -262,14 +264,14 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab4 = getDisponibilidad(jCbx_04.getSelectedItem().toString());
                 idHab5 = getDisponibilidad(jCbx_05.getSelectedItem().toString());
                 idHab6 = getDisponibilidad(jCbx_06.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
                 jLhab4.setText("" + idHab4);
                 jLhab5.setText("" + idHab5);
                 jLhab6.setText("" + idHab6);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
@@ -285,7 +287,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab5 = getDisponibilidad(jCbx_05.getSelectedItem().toString());
                 idHab6 = getDisponibilidad(jCbx_06.getSelectedItem().toString());
                 idHab7 = getDisponibilidad(jCbx_07.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
@@ -293,7 +295,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jLhab5.setText("" + idHab5);
                 jLhab6.setText("" + idHab6);
                 jLhab7.setText("" + idHab7);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
@@ -301,7 +303,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 pqt.addArrIdHabitaciones(idHab5, jP_Hab_05.getValue().toString(), new Double(jTextField5.getText()), jCbx_05.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab6, jP_Hab_06.getValue().toString(), new Double(jTextField6.getText()), jCbx_06.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab7, jP_Hab_07.getValue().toString(), new Double(jTextField7.getText()), jCbx_07.getSelectedItem().toString());
-                
+
                 break;
             case 8:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -312,7 +314,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab6 = getDisponibilidad(jCbx_06.getSelectedItem().toString());
                 idHab7 = getDisponibilidad(jCbx_07.getSelectedItem().toString());
                 idHab8 = getDisponibilidad(jCbx_08.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
@@ -321,7 +323,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jLhab6.setText("" + idHab6);
                 jLhab7.setText("" + idHab7);
                 jLhab8.setText("" + idHab8);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
@@ -330,7 +332,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 pqt.addArrIdHabitaciones(idHab6, jP_Hab_06.getValue().toString(), new Double(jTextField6.getText()), jCbx_06.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab7, jP_Hab_07.getValue().toString(), new Double(jTextField7.getText()), jCbx_07.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab8, jP_Hab_08.getValue().toString(), new Double(jTextField8.getText()), jCbx_08.getSelectedItem().toString());
-                
+
                 break;
             case 9:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -342,7 +344,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab7 = getDisponibilidad(jCbx_07.getSelectedItem().toString());
                 idHab8 = getDisponibilidad(jCbx_08.getSelectedItem().toString());
                 idHab9 = getDisponibilidad(jCbx_09.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
@@ -352,7 +354,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jLhab7.setText("" + idHab7);
                 jLhab8.setText("" + idHab8);
                 jLhab9.setText("" + idHab9);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
@@ -362,7 +364,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 pqt.addArrIdHabitaciones(idHab7, jP_Hab_07.getValue().toString(), new Double(jTextField7.getText()), jCbx_07.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab8, jP_Hab_08.getValue().toString(), new Double(jTextField8.getText()), jCbx_08.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab9, jP_Hab_09.getValue().toString(), new Double(jTextField9.getText()), jCbx_09.getSelectedItem().toString());
-                
+
                 break;
             case 10:
                 idHab1 = getDisponibilidad(jCbx_01.getSelectedItem().toString());
@@ -375,7 +377,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 idHab8 = getDisponibilidad(jCbx_08.getSelectedItem().toString());
                 idHab9 = getDisponibilidad(jCbx_09.getSelectedItem().toString());
                 idHab10 = getDisponibilidad(jCbx_010.getSelectedItem().toString());
-                
+
                 jLhab1.setText("" + idHab1);
                 jLhab2.setText("" + idHab2);
                 jLhab3.setText("" + idHab3);
@@ -386,7 +388,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 jLhab8.setText("" + idHab8);
                 jLhab9.setText("" + idHab9);
                 jLhab10.setText("" + idHab10);
-                
+
                 pqt.addArrIdHabitaciones(idHab1, jP_Hab_01.getValue().toString(), new Double(jTextField1.getText()), jCbx_01.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab2, jP_Hab_02.getValue().toString(), new Double(jTextField2.getText()), jCbx_02.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab3, jP_Hab_03.getValue().toString(), new Double(jTextField3.getText()), jCbx_03.getSelectedItem().toString());
@@ -397,7 +399,7 @@ public class RentarHabitacion extends javax.swing.JFrame {
                 pqt.addArrIdHabitaciones(idHab8, jP_Hab_08.getValue().toString(), new Double(jTextField8.getText()), jCbx_08.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab9, jP_Hab_09.getValue().toString(), new Double(jTextField9.getText()), jCbx_09.getSelectedItem().toString());
                 pqt.addArrIdHabitaciones(idHab10, jP_Hab_010.getValue().toString(), new Double(jTextField10.getText()), jCbx_09.getSelectedItem().toString());
-                
+
                 break;
 
             default:
@@ -1163,6 +1165,8 @@ public class RentarHabitacion extends javax.swing.JFrame {
             jTextField10.setText("0.0");
             cleanPanel(false);
             int valor = jCbx_NumHab.getSelectedIndex();
+            jTDias.setText("");
+            jTDias.setVisible(true);
             switch (valor) {
                 case 0:
                     JOptionPane.showMessageDialog(this, "AL MENOS DEBE EXISTIR UNA HABITACIÓN");
@@ -1496,15 +1500,15 @@ public class RentarHabitacion extends javax.swing.JFrame {
         CalcularCosto();
         jT_totalXdia.setText("$" + total);
     }//GEN-LAST:event_jCbx_010ItemStateChanged
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         getDatosHabitacion();
         System.out.println("RENTA HABITACIÓN");
-        indice = cbxClient.getSelectedIndex()-1;
-        System.out.println("INDICE RENTA HABITACION: " +indice);
+        indice = cbxClient.getSelectedIndex() - 1;
+        System.out.println("INDICE RENTA HABITACION: " + indice);
         getCliente(indice);
-        getDHabitacion();        
-        new PackClientFinal(pqt, cliente, cbxClient.getSelectedIndex()-1).setVisible(true);
+        getDHabitacion();
+        new PackClientFinal(pqt, cliente, cbxClient.getSelectedIndex() - 1).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void dispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispActionPerformed

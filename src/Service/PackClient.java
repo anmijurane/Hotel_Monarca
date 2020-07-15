@@ -941,15 +941,15 @@ public final class PackClient extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         huespedes = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        type_1 = new javax.swing.JComboBox<String>();
-        type_2 = new javax.swing.JComboBox<String>();
-        type_3 = new javax.swing.JComboBox<String>();
-        type_4 = new javax.swing.JComboBox<String>();
-        type_5 = new javax.swing.JComboBox<String>();
-        type_6 = new javax.swing.JComboBox<String>();
-        type_7 = new javax.swing.JComboBox<String>();
-        type_8 = new javax.swing.JComboBox<String>();
-        type_9 = new javax.swing.JComboBox<String>();
+        type_1 = new javax.swing.JComboBox<>();
+        type_2 = new javax.swing.JComboBox<>();
+        type_3 = new javax.swing.JComboBox<>();
+        type_4 = new javax.swing.JComboBox<>();
+        type_5 = new javax.swing.JComboBox<>();
+        type_6 = new javax.swing.JComboBox<>();
+        type_7 = new javax.swing.JComboBox<>();
+        type_8 = new javax.swing.JComboBox<>();
+        type_9 = new javax.swing.JComboBox<>();
         huesp_1 = new javax.swing.JLabel();
         huesp_2 = new javax.swing.JLabel();
         huesp_3 = new javax.swing.JLabel();
@@ -1005,12 +1005,12 @@ public final class PackClient extends javax.swing.JFrame {
         fecha_ing.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         fecha_ing.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_ing.setText("jLabel5");
-        getContentPane().add(fecha_ing, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 60, -1));
+        getContentPane().add(fecha_ing, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 130, -1));
 
         fecha_sal.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         fecha_sal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_sal.setText("jLabel6");
-        getContentPane().add(fecha_sal, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 60, -1));
+        getContentPane().add(fecha_sal, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 120, -1));
 
         noches.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         noches.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
