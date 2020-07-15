@@ -264,6 +264,7 @@ public class FormAddClient extends javax.swing.JFrame {
                 txtTelMovil.getText(), txtEmail.getText());
 
         if (TypeForm == 8) {
+            client.setId(client.getid_ClienteSQL());
             new PackClientFinal(client, pack).setVisible(true);
             dispose();            
             System.out.println(pack.getArrIdHabitaciones());
@@ -319,7 +320,6 @@ public class FormAddClient extends javax.swing.JFrame {
 
         Con = getConeccion();
         PreparedStatement psmtpersonal = null;
-        PreparedStatement psmtcredencial = null;
 
         try {
             Con.setAutoCommit(false);

@@ -990,7 +990,7 @@ public final class PackClient extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("FECHA DE SALIDA");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1005,34 +1005,35 @@ public final class PackClient extends javax.swing.JFrame {
         fecha_ing.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         fecha_ing.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_ing.setText("jLabel5");
-        getContentPane().add(fecha_ing, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 130, -1));
+        getContentPane().add(fecha_ing, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 130, -1));
 
         fecha_sal.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         fecha_sal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fecha_sal.setText("jLabel6");
-        getContentPane().add(fecha_sal, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 120, -1));
+        getContentPane().add(fecha_sal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 120, -1));
 
         noches.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         noches.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         noches.setText("jLabel7");
-        getContentPane().add(noches, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 60, -1));
+        getContentPane().add(noches, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 60, -1));
 
         room.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         room.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         room.setText("jLabel8");
-        getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 60, -1));
+        getContentPane().add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 60, -1));
 
         jLabel9.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("HUESPEDES");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 104, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 104, -1));
 
         huespedes.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         huespedes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         huespedes.setText("jLabel10");
-        getContentPane().add(huespedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 60, -1));
+        getContentPane().add(huespedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 60, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Paquete"));
+        jPanel1.setBackground(new java.awt.Color(226, 166, 109));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paquete", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara Light", 0, 11))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         type_1.setFont(new java.awt.Font("Candara Light", 0, 10)); // NOI18N
@@ -1165,7 +1166,7 @@ public final class PackClient extends javax.swing.JFrame {
         huesp_1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         huesp_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         huesp_1.setText("jLabel5");
-        jPanel1.add(huesp_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 48, 20));
+        jPanel1.add(huesp_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 48, 20));
 
         huesp_2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         huesp_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1224,7 +1225,7 @@ public final class PackClient extends javax.swing.JFrame {
         price_1.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         price_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         price_1.setText("jLabel18");
-        jPanel1.add(price_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 65, -1, 20));
+        jPanel1.add(price_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, 20));
 
         price_2.setFont(new java.awt.Font("Candara Light", 1, 12)); // NOI18N
         price_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1271,12 +1272,12 @@ public final class PackClient extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("TOTAL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 104, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 104, -1));
 
         t_price.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         t_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         t_price.setText("jLabel6");
-        getContentPane().add(t_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 60, -1));
+        getContentPane().add(t_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 60, -1));
 
         jButton2.setBackground(new java.awt.Color(222, 74, 16));
         jButton2.setFont(new java.awt.Font("Candara Light", 1, 18)); // NOI18N
@@ -1291,12 +1292,12 @@ public final class PackClient extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("# HABITACIONES");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 190, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 190, -1));
 
         id_hab.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
         id_hab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         id_hab.setText("jLabel7");
-        getContentPane().add(id_hab, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 220, -1));
+        getContentPane().add(id_hab, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 220, -1));
 
         jLabel8.setFont(new java.awt.Font("Candara Light", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(28, 27, 26));
@@ -1311,6 +1312,7 @@ public final class PackClient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         costo();
+        LlenarArreglo();
         pack.setPersonas(huespedes.getText());
         pack.setEntrda(fecha_ing.getText());
         pack.setSalida(fecha_sal.getText());

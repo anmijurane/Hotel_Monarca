@@ -2,12 +2,17 @@ package Service;
 
 import Entidades.Cliente;
 import Entidades.Paquete;
+import Entidades.Reporte;
 import static SQLConex.Conection.getConeccion;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -94,7 +99,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         direccion.setText(cli.getCalle().toUpperCase() + " #" + cli.getNumExt() + " " + cli.getColonia().toUpperCase() + " " + cli.getDelegacion().toUpperCase());
         movil.setText(cli.getTelMovil());
         correo.setText(cli.getEmail());
-        id.setText(Integer.toString(cli.getid_ClienteSQL()));
+        id.setText(Integer.toString(cli.getId()));
         entrada.setText(pack.getEntrda());
         salida.setText(pack.getSalida());
         huespedes.setText(pack.getPersonas());
@@ -185,47 +190,37 @@ public class PackClientFinal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(226, 166, 109));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara Light", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara Light", 0, 14))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("NOMBRE:");
 
         jLabel2.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("DIRECCION:");
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("TEL MOVIL:");
 
         jLabel5.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CORREO:");
 
         jLabel4.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("ID:");
 
         nombre.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        nombre.setForeground(new java.awt.Color(0, 0, 0));
         nombre.setText("jLabel6");
 
         direccion.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        direccion.setForeground(new java.awt.Color(0, 0, 0));
         direccion.setText("jLabel7");
 
         movil.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        movil.setForeground(new java.awt.Color(0, 0, 0));
         movil.setText("jLabel8");
 
         correo.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        correo.setForeground(new java.awt.Color(0, 0, 0));
         correo.setText("jLabel9");
 
         id.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        id.setForeground(new java.awt.Color(0, 0, 0));
         id.setText("jLabel10");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -275,56 +270,46 @@ public class PackClientFinal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(correo))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 860, 180));
 
         jPanel2.setBackground(new java.awt.Color(226, 166, 109));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESERVACION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara Light", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESERVACION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara Light", 0, 14))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("ENTRADA:");
 
         jLabel7.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("SALIDA:");
 
         jLabel8.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("HUESPEDES:");
 
         jLabel9.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("TOTAL:");
 
         jLabel10.setFont(new java.awt.Font("Candara Light", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("HABITACION:");
 
         habitacion.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        habitacion.setForeground(new java.awt.Color(0, 0, 0));
         habitacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         habitacion.setText("jLabel11");
 
         total.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        total.setForeground(new java.awt.Color(0, 0, 0));
         total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         total.setText("jLabel12");
 
         huespedes.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        huespedes.setForeground(new java.awt.Color(0, 0, 0));
         huespedes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         huespedes.setText("jLabel13");
 
         salida.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        salida.setForeground(new java.awt.Color(0, 0, 0));
         salida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salida.setText("jLabel14");
 
         entrada.setFont(new java.awt.Font("Candara Light", 0, 15)); // NOI18N
-        entrada.setForeground(new java.awt.Color(0, 0, 0));
         entrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         entrada.setText("jLabel15");
 
@@ -432,6 +417,22 @@ public class PackClientFinal extends javax.swing.JFrame {
         } else if (confirmar == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "TU RESERVACION HA SIDO CANCELADA", "CANCELANDO", JOptionPane.ERROR_MESSAGE);
         }
+
+        int conf = JOptionPane.showConfirmDialog(null, "¿DESEA GENERAR SU REPORTE?", "REPORTE", JOptionPane.YES_NO_OPTION);
+
+        if (conf == JOptionPane.YES_OPTION) {
+            try {
+                Reporte.reporte(id.getText());
+                Reporte.abrir(id.getText());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(PackClientFinal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(PackClientFinal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (conf == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "REPORTE NO GENERADO", "", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
@@ -443,6 +444,21 @@ public class PackClientFinal extends javax.swing.JFrame {
         } else if (confirmar == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "TU RESERVACION HA SIDO CANCELADA", "CANCELANDO", JOptionPane.ERROR_MESSAGE);
         }
+
+        int conf = JOptionPane.showConfirmDialog(null, "¿DESEA GENERAR SU REPORTE?", "REPORTE", JOptionPane.YES_NO_OPTION);
+
+        if (conf == JOptionPane.YES_OPTION) {
+            try {
+                Reporte.reporte(id.getText());
+                Reporte.abrir(id.getText());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(PackClientFinal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(PackClientFinal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (conf == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "REPORTE NO GENERADO", "", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -451,28 +467,31 @@ public class PackClientFinal extends javax.swing.JFrame {
 
     public void insertC() {
 
+        String query = "INSERT INTO cliente("
+                + "nombre,apellido_m,apellido_p,calle,numero_ext,"
+                + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
+                + ") VALUES ( " + cli + ")";
+        
+        System.out.println(query);
+        
+        try {
+            PreparedStatement insertCliente = Con.prepareStatement(query);
+            insertCliente.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("ERROR EN INSERTC: " + e);
+            System.out.println(query);
+        }
+
         for (int indx = 0; indx < pack.getArrIdHabitaciones().size(); indx++) {
             querySQL("" + pack.getArrIdHabitaciones().get(indx).getIdHabitacion(),
-                    "" + cli.getid_ClienteSQL(),
+                    "" + cli.getId(),
                     pack.getPersonas(),
                     pack.getEntrda(),
                     pack.getSalida(),
                     pack.getCosto()
             );
 
-            String query = "INSERT INTO cliente("
-                    + "nombre,apellido_m,apellido_p,calle,numero_ext,"
-                    + "numero_int,colonia,delegacion,cp,tel_local,tel_movil,email"
-                    + ") VALUES ( " + cli + ")";
-            try {
-                PreparedStatement insertCliente = Con.prepareStatement(query);
-                insertCliente.executeUpdate();
-                
-            } catch (SQLException e) {
-                System.out.println("ERROR EN INSERTC: " +e);
-            }
-
-            System.out.println(query);
         }
 
     }
@@ -511,7 +530,7 @@ public class PackClientFinal extends javax.swing.JFrame {
             insertData.executeUpdate();
 
             PreparedStatement upd = Con.prepareStatement(updateEdoHabitacion);
-            int confirm = upd.executeUpdate();
+            upd.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "Se agrego la habitacion: " + idHab);
 
@@ -560,11 +579,11 @@ public class PackClientFinal extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnUsuario;
-    private javax.swing.JLabel correo;
-    private javax.swing.JLabel direccion;
-    private javax.swing.JLabel entrada;
-    private javax.swing.JLabel habitacion;
-    private javax.swing.JLabel huespedes;
+    public static javax.swing.JLabel correo;
+    public static javax.swing.JLabel direccion;
+    public static javax.swing.JLabel entrada;
+    public static javax.swing.JLabel habitacion;
+    public static javax.swing.JLabel huespedes;
     private javax.swing.JLabel id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -580,9 +599,9 @@ public class PackClientFinal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel movil;
-    private javax.swing.JLabel nombre;
-    private javax.swing.JLabel salida;
-    private javax.swing.JLabel total;
+    public static javax.swing.JLabel movil;
+    public static javax.swing.JLabel nombre;
+    public static javax.swing.JLabel salida;
+    public static javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }
