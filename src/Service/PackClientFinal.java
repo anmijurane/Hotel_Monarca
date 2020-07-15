@@ -510,7 +510,7 @@ public class PackClientFinal extends javax.swing.JFrame {
         String queryRenta = "INSERT INTO renta (id_habitacion, id_cliente, personas, entrada, salida,"
                 + "costo_renta, id_metpago) VALUES (" + idHab + ", " + idCliente + ", " + personas + ", \"" + In + "\", \"" + Out + "\", " + costoRnta + ", " + "1)";
 
-        String queryHistHabitacion = "INSERT INTO hist_habitacion(id_habitacion, id_cliente, fentrada, fsalida) VALUES ("
+        String queryHistHabitacion = "INSERT INTO hist_habitacion(id_habitacion, id_cliente, f_entrada, f_salida) VALUES ("
                 + idHab + ", " + idCliente + ", \"" + In + "\", \"" + Out + "\")";
 
         String updateEdoHabitacion = "UPDATE habitacion SET id_estado = 2 WHERE id_habitacion = " + idHab;

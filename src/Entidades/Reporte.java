@@ -20,23 +20,23 @@ public class Reporte extends PackClientFinal {
 
     public static void reporte(String id) throws FileNotFoundException, DocumentException {
 
-        FileOutputStream a = new FileOutputStream(id + ".pdf");
+        FileOutputStream a = new FileOutputStream(id+"REPORT" + ".pdf");
         Document b = new Document();
         PdfWriter.getInstance(b, a);
 
         b.open();
 
         Paragraph titulo = new Paragraph("\nHOTEL MONARCA\n");
+        b.add(titulo);
         b.add(new Paragraph("\n"));
         titulo.setAlignment(1);
         titulo.getFont().setSize(13);
         titulo.getFont().setSize(Font.BOLD);
-        b.add(titulo);
 
         Paragraph Subtitulo = new Paragraph("\nDATOS DEL CLIENTE\n");
+        b.add(Subtitulo);
         Subtitulo.getFont().setSize(13);
         Subtitulo.getFont().setSize(Font.BOLD);
-        b.add(Subtitulo);
         b.add(new Paragraph("\n"));
         b.add(new Paragraph("NOMBRE: " + nombre.getText()));
         b.add(new Paragraph("DIRECCION: " + direccion.getText()));
@@ -72,7 +72,7 @@ public class Reporte extends PackClientFinal {
     public static void abrir(String id) {
 
         try {
-            File path = new File(id + ".pdf");
+            File path = new File(id+"REPORT" + ".pdf");
             Desktop.getDesktop().open(path);
         } catch (IOException ex) {
             System.out.println("ERROR ABRIR REPORTE: " + ex);
